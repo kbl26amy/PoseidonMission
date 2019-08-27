@@ -13,7 +13,7 @@
         <!--Mission View Controller-->
         <scene sceneID="1qa-W9-Gm9">
             <objects>
-                <viewController id="1yj-4r-QQX" customClass="MissionViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MissionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1yj-4r-QQX" customClass="MissionViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7QD-fk-gqA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,6 +25,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIg-NL-efb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="760.86956521739137" y="106.47321428571428"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Pg0-O2-GPp">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tx9-p9-3IV" customClass="MapViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V5e-ty-1d1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Fvc-b8-Zkh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0uy-O5-bic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762" y="-477"/>
+        </scene>
+        <!--Login Today View Controller-->
+        <scene sceneID="utt-oy-ilZ">
+            <objects>
+                <viewController storyboardIdentifier="LoginTodayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b6h-ew-gq6" customClass="LoginTodayViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EzZ-l5-IAh" customClass="Login">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BXN-58-iYL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VSP-Na-LpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2557" y="-477"/>
+        </scene>
+        <!--Jellyfish View Controller-->
+        <scene sceneID="OAC-4Q-0Ru">
+            <objects>
+                <viewController storyboardIdentifier="JellyfishViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Ls-q3-ZtS" customClass="JellyfishViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kzw-Wf-NwC" customClass="F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rZb-hd-KoA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2LV-ji-pE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="220"/>
+        </scene>
+        <!--Fishing View Controller-->
+        <scene sceneID="fNA-2o-SkE">
+            <objects>
+                <viewController storyboardIdentifier="FishingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="agF-26-D6X" customClass="FishingViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OCa-bD-Ssb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ghq-1U-ZYM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VtY-V5-eNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="944"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uxu-kE-Pea">

@@ -21,8 +21,7 @@ class LobbyViewController: PMBaseViewController {
     
     var homeCollectionLabel = ["簽到", "邀請好友", "藏寶圖", "釣魚", "打水母"]
     
-    var homeCollectionLabelColor = [
-                                    UIColor(red: 249/255, green: 97/255, blue: 43/255, alpha: 1),
+    var homeCollectionLabelColor = [UIColor(red: 249/255, green: 97/255, blue: 43/255, alpha: 1),
                                     UIColor(red: 255/255, green: 181/255, blue: 37/255, alpha: 1),
                                     UIColor(red: 127/255, green: 197/255, blue: 0, alpha: 1),
                                     UIColor(red: 139/255, green: 152/255, blue: 206/255, alpha: 1),
@@ -33,10 +32,15 @@ class LobbyViewController: PMBaseViewController {
 
         setupCollectionViewLayout()
         
-
-    
+        
+       
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        homeCollectionView.contentInset = UIEdgeInsets(top: (homeCollectionView.contentSize.height) / 5 , left: 0, bottom: 0, right: 0)
+        
+    }
 
 }
 
@@ -72,7 +76,42 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         flowLayout.minimumLineSpacing = 0.0
         
+        
         homeCollectionView.collectionViewLayout = flowLayout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+            
+        case 0:
+            guard let mapController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {return}
+            
+            self.navigationController?.pushViewController(mapController, animated: true)
+            
+        case 4:
+            guard let jellyfishController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController") as? JellyfishViewController else {return}
+            
+            self.navigationController?.pushViewController(jellyfishController, animated: true)
+            
+        case 2:
+            guard let missionController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController") as? MissionViewController else {return}
+            
+            self.navigationController?.pushViewController(missionController, animated: true)
+            
+        case 3:
+            guard let fishingController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController") as? FishingViewController else {return}
+            
+            self.navigationController?.pushViewController(fishingController, animated: true)
+            
+        case 1:
+            guard let loginTodayController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController") as? LoginTodayViewController else {return}
+            
+            self.navigationController?.pushViewController(loginTodayController, animated: true)
+        default:
+            guard let missionController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController") as? MissionViewController else {return}
+            
+            self.navigationController?.pushViewController(missionController, animated: true)
+        }
     }
     
     

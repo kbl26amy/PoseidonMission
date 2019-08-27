@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         let tabBarController = self.window?.rootViewController as! UITabBarController
         tabBarController.tabBar.tintColor = UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
- 
-        tabBarController.tabBar.unselectedItemTintColor = UIColor.white
-        UINavigationBar.appearance().tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
+
+        tabBarController.tabBar.unselectedItemTintColor = UIColor.white   
+        
         
         return true
     }

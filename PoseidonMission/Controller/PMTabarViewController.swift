@@ -36,7 +36,7 @@ private enum Tab {
         
         controller.tabBarItem = tabBarItem()
         
-        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+//        controller.tabBarItem.imageInsets = UIEdgeInsets(top: -6, left: 0.0, bottom: -6, right: 0.0)
         
         return controller
 }
@@ -80,19 +80,12 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
         viewControllers = tabs.map({ $0.controller() })
-
  
         UITabBar.appearance().barTintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
-      
-        tabBarController?.tabBar.tintColor = .black
 
-        tabBarController?.tabBar.unselectedItemTintColor = .white
 
-        
-        
     }
 
 }
