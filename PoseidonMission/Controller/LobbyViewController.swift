@@ -9,7 +9,13 @@
 import UIKit
 
 class LobbyViewController: PMBaseViewController {
-
+    @IBOutlet weak var bannerCollectionView: UICollectionView!{
+        didSet{
+            bannerCollectionView.delegate = self
+            bannerCollectionView.dataSource = self
+        }
+    }
+    
     @IBOutlet weak var homeCollectionView: UICollectionView!{
         didSet{
             homeCollectionView.delegate = self
@@ -46,21 +52,39 @@ class LobbyViewController: PMBaseViewController {
 
 extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeCollectionLabel.count
+        
+        if collectionView == homeCollectionView {
+            return homeCollectionLabel.count
+        } else {
+            return homeCollectionImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        
+        if collectionView == homeCollectionView {
         let cell = homeCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: HomeCollectionViewCell.self),
-            for: indexPath
-        )
-        
+                withReuseIdentifier: String(describing: HomeCollectionViewCell.self),
+                for: indexPath)
+    
         guard let homeCell = cell as? HomeCollectionViewCell else { return cell }
-        
         homeCell.homeCollectionViewImage.image = UIImage(named:  homeCollectionImages[indexPath.row])
         homeCell.homeCollectonViewLabel.text = homeCollectionLabel[indexPath.row]
         homeCell.homeCollectonViewLabel.textColor = homeCollectionLabelColor[indexPath.row]
+        
         return homeCell
+        } else {
+        let cell = bannerCollectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: BannerCollectionViewCell.self),
+                for: indexPath)
+        guard let bannerCell = cell as? BannerCollectionViewCell else { return cell }
+            bannerCell.bannerImages.image = UIImage(named:  homeCollectionImages[indexPath.row])
+            
+            return bannerCell
+        }
+      
     }
     
     private func setupCollectionViewLayout() {
@@ -81,6 +105,8 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == homeCollectionView {
         switch indexPath.row {
             
         case 0:
@@ -111,6 +137,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             guard let missionController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController") as? MissionViewController else {return}
             
             self.navigationController?.pushViewController(missionController, animated: true)
+        }
         }
     }
     

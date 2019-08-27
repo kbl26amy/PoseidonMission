@@ -14,6 +14,7 @@
 		62353B6823153E7100A4FBA0 /* JellyfishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B6723153E7100A4FBA0 /* JellyfishViewController.swift */; };
 		62353B6A23153E9A00A4FBA0 /* LoginTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B6923153E9A00A4FBA0 /* LoginTodayViewController.swift */; };
 		62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B6B23153EB800A4FBA0 /* FishingViewController.swift */; };
+		62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B6F2315935200A4FBA0 /* BannerCollectionViewCell.swift */; };
 		62A964792314D48600BD4AE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0392313B73C007AC76D /* Main.storyboard */; };
 		62A9647A2314D57E00BD4AE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0612314D239007AC76D /* GoogleService-Info.plist */; };
 		62A9647E2314E02600BD4AE0 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9647D2314E02600BD4AE0 /* MissionViewController.swift */; };
@@ -40,6 +41,7 @@
 		62353B6723153E7100A4FBA0 /* JellyfishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyfishViewController.swift; sourceTree = "<group>"; };
 		62353B6923153E9A00A4FBA0 /* LoginTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTodayViewController.swift; sourceTree = "<group>"; };
 		62353B6B23153EB800A4FBA0 /* FishingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingViewController.swift; sourceTree = "<group>"; };
+		62353B6F2315935200A4FBA0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		62A9647D2314E02600BD4AE0 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
 		62A9647F2314E04200BD4AE0 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		62A964812314E05200BD4AE0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */,
 				62353B612314F5F700A4FBA0 /* Lobby.storyboard */,
 				62353B6323152B8700A4FBA0 /* HomeCollectionViewCell.swift */,
+				62353B6F2315935200A4FBA0 /* BannerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				62353B6623153E3F00A4FBA0 /* MapViewController.swift in Sources */,
 				62E1B05B2314C5CB007AC76D /* PMBaseViewController.swift in Sources */,
 				62E1B04E2313E45A007AC76D /* PMTabarViewController.swift in Sources */,
+				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,
 				62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */,
 				62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */,
 				62E1B0662314D23A007AC76D /* PoseidonMission.xcdatamodeld in Sources */,

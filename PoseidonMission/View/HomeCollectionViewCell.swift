@@ -11,6 +11,8 @@ import UIKit
 class HomeCollectionViewCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var bannerImageView: UIImageView!
+    
     @IBOutlet weak var homeCollectionViewImage: UIImageView!
     
     @IBOutlet weak var homeCollectonViewLabel: UILabel!

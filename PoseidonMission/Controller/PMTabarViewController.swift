@@ -36,7 +36,9 @@ private enum Tab {
         
         controller.tabBarItem = tabBarItem()
         
+// 客製化 tabBarItem 
 //        controller.tabBarItem.imageInsets = UIEdgeInsets(top: -6, left: 0.0, bottom: -6, right: 0.0)
+//         controller.tabBarItem.titlePositionAdjustment.vertical = 5
         
         return controller
 }
