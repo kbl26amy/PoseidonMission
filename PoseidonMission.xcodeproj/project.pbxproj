@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62E1B0362313B73C007AC76D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0352313B73C007AC76D /* AppDelegate.swift */; };
+		62E1B0382313B73C007AC76D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0372313B73C007AC76D /* ViewController.swift */; };
+		62E1B03B2313B73C007AC76D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0392313B73C007AC76D /* Main.storyboard */; };
+		62E1B03E2313B73C007AC76D /* PoseidonMission.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B03C2313B73C007AC76D /* PoseidonMission.xcdatamodeld */; };
+		62E1B0402313B73D007AC76D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B03F2313B73D007AC76D /* Assets.xcassets */; };
+		62E1B0432313B73D007AC76D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0412313B73D007AC76D /* LaunchScreen.storyboard */; };
+		62E1B04B2313B785007AC76D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B04A2313B785007AC76D /* GoogleService-Info.plist */; };
+		62E1B04E2313E45A007AC76D /* PMTabarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B04D2313E45A007AC76D /* PMTabarViewController.swift */; };
+		62E1B0512313E4EB007AC76D /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0502313E4EB007AC76D /* UIStoryboard+Extension.swift */; };
+		DB62E2D6D05F3628F39B6D6F /* Pods_PoseidonMission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF61ADE8E3E6223D74270F73 /* Pods_PoseidonMission.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.release.xcconfig"; sourceTree = "<group>"; };
+		62E1B0322313B73C007AC76D /* PoseidonMission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoseidonMission.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62E1B0352313B73C007AC76D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62E1B0372313B73C007AC76D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		62E1B03A2313B73C007AC76D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62E1B03D2313B73C007AC76D /* PoseidonMission.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PoseidonMission.xcdatamodel; sourceTree = "<group>"; };
+		62E1B03F2313B73D007AC76D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62E1B0422313B73D007AC76D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62E1B0442313B73D007AC76D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62E1B04A2313B785007AC76D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		62E1B04D2313E45A007AC76D /* PMTabarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMTabarViewController.swift; sourceTree = "<group>"; };
+		62E1B0502313E4EB007AC76D /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		BF61ADE8E3E6223D74270F73 /* Pods_PoseidonMission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoseidonMission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED2EB9E2E577FD63E399E8C1 /* Pods-PoseidonMission.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.debug.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62E1B02F2313B73C007AC76D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB62E2D6D05F3628F39B6D6F /* Pods_PoseidonMission.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62E1B0292313B73C007AC76D = {
+			isa = PBXGroup;
+			children = (
+				62E1B04F2313E4C3007AC76D /* Extension */,
+				62E1B04C2313E414007AC76D /* controller */,
+				62E1B0342313B73C007AC76D /* PoseidonMission */,
+				62E1B0332313B73C007AC76D /* Products */,
+				C5A718CBD54F6B3E9EDFD1AF /* Pods */,
+				A3474B76A12EE4047691BD20 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		62E1B0332313B73C007AC76D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62E1B0322313B73C007AC76D /* PoseidonMission.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62E1B0342313B73C007AC76D /* PoseidonMission */ = {
+			isa = PBXGroup;
+			children = (
+				62E1B0352313B73C007AC76D /* AppDelegate.swift */,
+				62E1B0372313B73C007AC76D /* ViewController.swift */,
+				62E1B0392313B73C007AC76D /* Main.storyboard */,
+				62E1B03F2313B73D007AC76D /* Assets.xcassets */,
+				62E1B0412313B73D007AC76D /* LaunchScreen.storyboard */,
+				62E1B0442313B73D007AC76D /* Info.plist */,
+				62E1B03C2313B73C007AC76D /* PoseidonMission.xcdatamodeld */,
+				62E1B04A2313B785007AC76D /* GoogleService-Info.plist */,
+			);
+			path = PoseidonMission;
+			sourceTree = "<group>";
+		};
+		62E1B04C2313E414007AC76D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				62E1B04D2313E45A007AC76D /* PMTabarViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		62E1B04F2313E4C3007AC76D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				62E1B0502313E4EB007AC76D /* UIStoryboard+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A3474B76A12EE4047691BD20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF61ADE8E3E6223D74270F73 /* Pods_PoseidonMission.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C5A718CBD54F6B3E9EDFD1AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED2EB9E2E577FD63E399E8C1 /* Pods-PoseidonMission.debug.xcconfig */,
+				45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62E1B0312313B73C007AC76D /* PoseidonMission */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62E1B0472313B73D007AC76D /* Build configuration list for PBXNativeTarget "PoseidonMission" */;
+			buildPhases = (
+				8DD6EFE9C6AC78FB74CB9049 /* [CP] Check Pods Manifest.lock */,
+				62E1B02E2313B73C007AC76D /* Sources */,
+				62E1B02F2313B73C007AC76D /* Frameworks */,
+				62E1B0302313B73C007AC76D /* Resources */,
+				3861515E925D95804EFD59F4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PoseidonMission;
+			productName = PoseidonMission;
+			productReference = 62E1B0322313B73C007AC76D /* PoseidonMission.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62E1B02A2313B73C007AC76D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = AmyYang;
+				TargetAttributes = {
+					62E1B0312313B73C007AC76D = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 62E1B02D2313B73C007AC76D /* Build configuration list for PBXProject "PoseidonMission" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62E1B0292313B73C007AC76D;
+			productRefGroup = 62E1B0332313B73C007AC76D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62E1B0312313B73C007AC76D /* PoseidonMission */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62E1B0302313B73C007AC76D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62E1B0432313B73D007AC76D /* LaunchScreen.storyboard in Resources */,
+				62E1B0402313B73D007AC76D /* Assets.xcassets in Resources */,
+				62E1B03B2313B73C007AC76D /* Main.storyboard in Resources */,
+				62E1B04B2313B785007AC76D /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3861515E925D95804EFD59F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DD6EFE9C6AC78FB74CB9049 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PoseidonMission-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62E1B02E2313B73C007AC76D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62E1B04E2313E45A007AC76D /* PMTabarViewController.swift in Sources */,
+				62E1B03E2313B73C007AC76D /* PoseidonMission.xcdatamodeld in Sources */,
+				62E1B0382313B73C007AC76D /* ViewController.swift in Sources */,
+				62E1B0362313B73C007AC76D /* AppDelegate.swift in Sources */,
+				62E1B0512313E4EB007AC76D /* UIStoryboard+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		62E1B0392313B73C007AC76D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62E1B03A2313B73C007AC76D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		62E1B0412313B73D007AC76D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62E1B0422313B73D007AC76D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62E1B0452313B73D007AC76D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		62E1B0462313B73D007AC76D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62E1B0482313B73D007AC76D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED2EB9E2E577FD63E399E8C1 /* Pods-PoseidonMission.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4MM6T8568W;
+				INFOPLIST_FILE = PoseidonMission/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amyyang.PoseidonMission;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62E1B0492313B73D007AC76D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4MM6T8568W;
+				INFOPLIST_FILE = PoseidonMission/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amyyang.PoseidonMission;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62E1B02D2313B73C007AC76D /* Build configuration list for PBXProject "PoseidonMission" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62E1B0452313B73D007AC76D /* Debug */,
+				62E1B0462313B73D007AC76D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62E1B0472313B73D007AC76D /* Build configuration list for PBXNativeTarget "PoseidonMission" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62E1B0482313B73D007AC76D /* Debug */,
+				62E1B0492313B73D007AC76D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62E1B03C2313B73C007AC76D /* PoseidonMission.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62E1B03D2313B73C007AC76D /* PoseidonMission.xcdatamodel */,
+			);
+			currentVersion = 62E1B03D2313B73C007AC76D /* PoseidonMission.xcdatamodel */;
+			path = PoseidonMission.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 62E1B02A2313B73C007AC76D /* Project object */;
+}
