@@ -10,17 +10,104 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lobby View Controller-->
+        <!--波賽頓出任務-->
         <scene sceneID="tJk-0B-jqV">
             <objects>
                 <viewController id="P1w-qc-p0b" customClass="LobbyViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zCe-F9-RXt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5V-F6-rTb">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyK-RD-95z">
+                                        <rect key="frame" x="69" y="10" width="276" height="30"/>
+                                        <state key="normal" title="現在就註冊一個免費的勇者帳號出發吧！">
+                                            <color key="titleColor" red="0.23198509219999999" green="0.3484609723" blue="0.59575754400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.58670729399999999" green="0.81480890510000004" blue="0.85883343219999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="AyK-RD-95z" firstAttribute="centerX" secondItem="C5V-F6-rTb" secondAttribute="centerX" id="DCU-8w-vRN"/>
+                                    <constraint firstAttribute="height" constant="50" id="Gqx-Kn-31r"/>
+                                    <constraint firstItem="AyK-RD-95z" firstAttribute="centerY" secondItem="C5V-F6-rTb" secondAttribute="centerY" id="hyu-mK-IH7"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BS-xC-Ht7">
+                                <rect key="frame" x="0.0" y="138" width="414" height="377"/>
+                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RhQ-sz-8lp">
+                                <rect key="frame" x="24" y="515" width="366" height="347"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fio-0K-GsC">
+                                    <size key="itemSize" width="148" height="139"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionViewCell" id="bkS-Mo-CFB" customClass="HomeCollectionViewCell" customModule="PoseidonMission" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="139"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="139"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bye-ze-WBT">
+                                                    <rect key="frame" x="24" y="12" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="bye-ze-WBT" secondAttribute="height" multiplier="1:1" id="gna-si-TTd"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUI-dB-nbH">
+                                                    <rect key="frame" x="6" y="112" width="136" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="XUI-dB-nbH" firstAttribute="top" secondItem="bye-ze-WBT" secondAttribute="bottom" id="IhE-fd-gc4"/>
+                                            <constraint firstItem="XUI-dB-nbH" firstAttribute="leading" secondItem="bkS-Mo-CFB" secondAttribute="leading" constant="6" id="MUm-kR-NJR"/>
+                                            <constraint firstItem="bye-ze-WBT" firstAttribute="leading" secondItem="bkS-Mo-CFB" secondAttribute="leading" constant="24" id="d5B-aE-JRu"/>
+                                            <constraint firstAttribute="trailing" secondItem="bye-ze-WBT" secondAttribute="trailing" constant="24" id="dX8-AN-l9a"/>
+                                            <constraint firstAttribute="bottom" secondItem="XUI-dB-nbH" secondAttribute="bottom" id="tyL-cG-Ujf"/>
+                                            <constraint firstAttribute="trailing" secondItem="XUI-dB-nbH" secondAttribute="trailing" constant="6" id="usv-dE-QCA"/>
+                                            <constraint firstItem="bye-ze-WBT" firstAttribute="top" secondItem="bkS-Mo-CFB" secondAttribute="top" constant="12" id="vha-wI-Yg4"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="homeCollectionViewImage" destination="bye-ze-WBT" id="LZ7-dQ-Qc7"/>
+                                            <outlet property="homeCollectonViewLabel" destination="XUI-dB-nbH" id="coN-7B-nQA"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2BS-xC-Ht7" firstAttribute="top" secondItem="C5V-F6-rTb" secondAttribute="bottom" id="0et-re-RGU"/>
+                            <constraint firstAttribute="leading" secondItem="RhQ-sz-8lp" secondAttribute="leading" constant="-24" id="22y-OB-fxu"/>
+                            <constraint firstItem="wIu-w7-isK" firstAttribute="centerY" secondItem="2BS-xC-Ht7" secondAttribute="bottom" constant="-40" id="5zU-fK-pLl"/>
+                            <constraint firstItem="2BS-xC-Ht7" firstAttribute="trailing" secondItem="RhQ-sz-8lp" secondAttribute="trailing" constant="24" id="DZA-b9-7Kp"/>
+                            <constraint firstItem="C5V-F6-rTb" firstAttribute="top" secondItem="wIu-w7-isK" secondAttribute="top" id="Dcg-mD-tgO"/>
+                            <constraint firstItem="wIu-w7-isK" firstAttribute="bottom" secondItem="RhQ-sz-8lp" secondAttribute="bottom" id="Gtr-qb-bu8"/>
+                            <constraint firstItem="2BS-xC-Ht7" firstAttribute="trailing" secondItem="wIu-w7-isK" secondAttribute="trailing" id="IND-Ox-BAw"/>
+                            <constraint firstItem="RhQ-sz-8lp" firstAttribute="top" secondItem="2BS-xC-Ht7" secondAttribute="bottom" id="UuE-eE-jOw"/>
+                            <constraint firstItem="C5V-F6-rTb" firstAttribute="leading" secondItem="wIu-w7-isK" secondAttribute="leading" id="W5U-c1-jrC"/>
+                            <constraint firstItem="2BS-xC-Ht7" firstAttribute="top" secondItem="C5V-F6-rTb" secondAttribute="bottom" id="jTP-Zs-qfL"/>
+                            <constraint firstItem="2BS-xC-Ht7" firstAttribute="leading" secondItem="wIu-w7-isK" secondAttribute="leading" id="sIL-ya-6um"/>
+                            <constraint firstItem="C5V-F6-rTb" firstAttribute="trailing" secondItem="wIu-w7-isK" secondAttribute="trailing" id="twu-Y9-Xcl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wIu-w7-isK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oEL-pZ-O8O"/>
+                    <navigationItem key="navigationItem" title="波賽頓出任務" id="oEL-pZ-O8O"/>
+                    <connections>
+                        <outlet property="homeCollectionView" destination="RhQ-sz-8lp" id="ye4-qg-RX6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIf-V3-31r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -34,6 +121,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FI5-yT-KWk">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.84997278451919556" blue="0.98924738168716431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.58670729398727417" green="0.81480890512466431" blue="0.8588334321975708" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

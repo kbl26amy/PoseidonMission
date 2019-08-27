@@ -46,7 +46,7 @@ class PMBaseViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Icons_24px_Back02")
         
         if var textAttributes = navigationController?.navigationBar.titleTextAttributes {
-            textAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
+            textAttributes[NSAttributedString.Key.foregroundColor] = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
             navigationController?.navigationBar.titleTextAttributes = textAttributes
         }
         
