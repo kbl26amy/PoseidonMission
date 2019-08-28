@@ -9,6 +9,13 @@
 import UIKit
 
 class LobbyViewController: PMBaseViewController {
+    
+    lazy var cardLayout: FlatCardCollectionViewLayout = {
+        let layout = FlatCardCollectionViewLayout()
+        layout.itemSize = CGSize(width: bannerCollectionView.contentSize.width, height: bannerCollectionView.contentSize.height)
+        return layout
+    }()
+    
     @IBOutlet weak var bannerCollectionView: UICollectionView!{
         didSet{
             bannerCollectionView.delegate = self
@@ -38,13 +45,14 @@ class LobbyViewController: PMBaseViewController {
 
         setupCollectionViewLayout()
         
+        self.bannerCollectionView.showsVerticalScrollIndicator = false
         
-       
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         homeCollectionView.contentInset = UIEdgeInsets(top: (homeCollectionView.contentSize.height) / 5 , left: 0, bottom: 0, right: 0)
+        self.bannerCollectionView.collectionViewLayout = cardLayout
         
     }
 
@@ -61,11 +69,9 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-        
+      
         if collectionView == homeCollectionView {
-        let cell = homeCollectionView.dequeueReusableCell(
+            let cell = homeCollectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: HomeCollectionViewCell.self),
                 for: indexPath)
     
@@ -75,11 +81,21 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         homeCell.homeCollectonViewLabel.textColor = homeCollectionLabelColor[indexPath.row]
         
         return homeCell
+            
         } else {
+            
         let cell = bannerCollectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: BannerCollectionViewCell.self),
                 for: indexPath)
         guard let bannerCell = cell as? BannerCollectionViewCell else { return cell }
+            
+            bannerCell.layer.cornerRadius = 6.0
+            bannerCell.layer.borderWidth = 1.0
+            bannerCell.layer.borderColor = UIColor.clear.cgColor
+            bannerCell.layer.shadowColor = UIColor.gray.cgColor
+            bannerCell.layer.shadowOffset = CGSize(width: 0, height: 3)
+            bannerCell.layer.shadowRadius = 6.0
+            
             bannerCell.bannerImages.image = UIImage(named:  homeCollectionImages[indexPath.row])
             
             return bannerCell
@@ -100,13 +116,13 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         flowLayout.minimumLineSpacing = 0.0
         
-        
         homeCollectionView.collectionViewLayout = flowLayout
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == homeCollectionView {
+            
         switch indexPath.row {
             
         case 0:

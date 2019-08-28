@@ -40,7 +40,7 @@ class PMBaseViewController: UIViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor.white.withAlphaComponent(0.9)
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "波賽頓出任務", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
         
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Icons_24px_Back02")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Icons_24px_Back02")
@@ -54,11 +54,11 @@ class PMBaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if isHideNavigationBar {
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
-        
+
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
