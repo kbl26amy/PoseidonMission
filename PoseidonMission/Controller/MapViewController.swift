@@ -10,21 +10,30 @@ import UIKit
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapBackground: UIImageView!
+    
+    @IBOutlet weak var mapTitleLabel: UILabel!
+    
+    @IBOutlet weak var mapchanceLabel: UILabel!
+    
+    @IBOutlet weak var baseMapImage: UIImageView!
+    
+    @IBOutlet weak var seeRecordButton: UIButton!
+    
+    @IBOutlet weak var seeRuleButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.mapBackground.image = UIImage(named: "mapbackground")
+        
+        self.baseMapImage.image = UIImage(named: "showmap")
+        
+        self.seeRuleButton.setImage(UIImage(named: "redbutton"), for: .normal)
+        
+         self.seeRecordButton.setImage(UIImage(named: "orangebutton"), for: .normal)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

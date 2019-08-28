@@ -10,6 +10,37 @@ import UIKit
 
 class LobbyViewController: PMBaseViewController {
     
+    @IBOutlet weak var runLightViewLabel: UILabel!
+    
+    func runlight () {
+  
+        self.runLightViewLabel.text = "跑馬燈跑起來"
+        
+        var frame = runLightViewLabel.frame
+        frame.origin.x = UIScreen.main.bounds.width
+        runLightViewLabel.frame = frame
+        UIView.beginAnimations("testAnimation", context: nil)
+        UIView.setAnimationDuration(8.8)
+        UIView.setAnimationCurve(.linear)
+        UIView.setAnimationDelegate(self)
+        UIView.setAnimationRepeatAutoreverses(false)
+        UIView.setAnimationRepeatCount(999999)
+        frame = runLightViewLabel.frame
+        frame.origin.x = -UIScreen.main.bounds.width
+        runLightViewLabel.frame = frame
+        UIView.commitAnimations()
+    
+    }
+    
+    @IBAction func goToLogin(_ sender: Any) {
+        
+        guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController() else { return }
+        
+        loginViewController.modalPresentationStyle = .overFullScreen
+        
+        present(loginViewController, animated: true, completion: nil)
+        
+    }
     lazy var cardLayout: FlatCardCollectionViewLayout = {
         let layout = FlatCardCollectionViewLayout()
         layout.itemSize = CGSize(width: bannerCollectionView.contentSize.width, height: bannerCollectionView.contentSize.height)
@@ -44,7 +75,7 @@ class LobbyViewController: PMBaseViewController {
         super.viewDidLoad()
 
         setupCollectionViewLayout()
-        
+        runlight ()
         self.bannerCollectionView.showsVerticalScrollIndicator = false
         
     }

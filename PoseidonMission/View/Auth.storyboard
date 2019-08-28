@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2FU-mD-kaa">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Auth View Controller-->
+        <scene sceneID="H3i-eS-HE3">
+            <objects>
+                <viewController storyboardIdentifier="AuthViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2FU-mD-kaa" customClass="AuthViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VDF-mK-SUM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="1x7-C0-bDh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treasure" translatesAutoresizingMaskIntoConstraints="NO" id="eHh-I8-y2J">
+                                <rect key="frame" x="50" y="191" width="314" height="314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eHh-I8-y2J" secondAttribute="height" multiplier="1:1" id="CC1-jZ-s6c"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nkx-RD-1Ha">
+                                <rect key="frame" x="50" y="555" width="314" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="wUQ-yd-ScH"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="register"/>
+                                <connections>
+                                    <action selector="appleLogin:" destination="2FU-mD-kaa" eventType="touchUpInside" id="adi-qI-FbR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYM-lC-oca">
+                                <rect key="frame" x="166" y="640" width="82" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="暫時不要">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelRegisterAction:" destination="2FU-mD-kaa" eventType="touchUpInside" id="WXm-ok-xNo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eHh-I8-y2J" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="3g0-4q-0h8"/>
+                            <constraint firstItem="eHh-I8-y2J" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" constant="50" id="51Q-Ji-IoM"/>
+                            <constraint firstAttribute="bottom" secondItem="1x7-C0-bDh" secondAttribute="bottom" id="6Kx-W2-HqB"/>
+                            <constraint firstItem="FY7-0I-zHW" firstAttribute="trailing" secondItem="eHh-I8-y2J" secondAttribute="trailing" constant="50" id="9nA-sA-4tI"/>
+                            <constraint firstItem="1x7-C0-bDh" firstAttribute="trailing" secondItem="FY7-0I-zHW" secondAttribute="trailing" id="Dsk-7m-Qir"/>
+                            <constraint firstItem="Nkx-RD-1Ha" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" constant="50" id="Eeg-UG-dLg"/>
+                            <constraint firstItem="eHh-I8-y2J" firstAttribute="centerY" secondItem="VDF-mK-SUM" secondAttribute="centerY" constant="-100" id="IV0-o7-lv0"/>
+                            <constraint firstItem="IYM-lC-oca" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="K06-a1-FHg"/>
+                            <constraint firstItem="FY7-0I-zHW" firstAttribute="trailing" secondItem="IYM-lC-oca" secondAttribute="trailing" constant="166" id="XEh-J8-gT9"/>
+                            <constraint firstItem="IYM-lC-oca" firstAttribute="top" secondItem="Nkx-RD-1Ha" secondAttribute="bottom" constant="30" id="YX7-l8-RpR"/>
+                            <constraint firstItem="1x7-C0-bDh" firstAttribute="top" secondItem="VDF-mK-SUM" secondAttribute="top" id="bNB-0a-VEF"/>
+                            <constraint firstItem="IYM-lC-oca" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" constant="166" id="dc5-YR-65E"/>
+                            <constraint firstItem="Nkx-RD-1Ha" firstAttribute="top" secondItem="eHh-I8-y2J" secondAttribute="bottom" constant="50" id="iBA-Am-uwQ"/>
+                            <constraint firstItem="Nkx-RD-1Ha" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="pmD-l3-fl6"/>
+                            <constraint firstItem="Nkx-RD-1Ha" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="qLx-dO-0MK"/>
+                            <constraint firstItem="FY7-0I-zHW" firstAttribute="trailing" secondItem="Nkx-RD-1Ha" secondAttribute="trailing" constant="50" id="tBY-OI-K8J"/>
+                            <constraint firstItem="1x7-C0-bDh" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" id="yHd-VA-bcY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FY7-0I-zHW"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="cancelRegister" destination="IYM-lC-oca" id="xRb-zo-Nq4"/>
+                        <outlet property="registerButtonLayout" destination="Nkx-RD-1Ha" id="ATk-K3-xez"/>
+                        <outlet property="treasureView" destination="eHh-I8-y2J" id="SXi-Nb-aSp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pmt-NT-tIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166.66666666666669" y="57.589285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="1242" height="2208"/>
+        <image name="register" width="815" height="151"/>
+        <image name="treasure" width="862" height="924"/>
+    </resources>
+</document>

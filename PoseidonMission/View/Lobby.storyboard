@@ -26,14 +26,28 @@
                                         <state key="normal" title="現在就註冊一個免費的勇者帳號出發吧！">
                                             <color key="titleColor" red="0.23198509219999999" green="0.3484609723" blue="0.59575754400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="goToLogin:" destination="P1w-qc-p0b" eventType="touchUpInside" id="nBx-VJ-NcB"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4Q-oE-0wg">
+                                        <rect key="frame" x="-80" y="0.0" width="494" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.58670729399999999" green="0.81480890510000004" blue="0.85883343219999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="i4Q-oE-0wg" secondAttribute="bottom" id="8L4-Gc-XKM"/>
                                     <constraint firstItem="AyK-RD-95z" firstAttribute="centerX" secondItem="C5V-F6-rTb" secondAttribute="centerX" id="DCU-8w-vRN"/>
+                                    <constraint firstItem="i4Q-oE-0wg" firstAttribute="leading" secondItem="C5V-F6-rTb" secondAttribute="leading" constant="-80" id="FHL-qL-sf4"/>
                                     <constraint firstAttribute="height" constant="50" id="Gqx-Kn-31r"/>
+                                    <constraint firstItem="i4Q-oE-0wg" firstAttribute="centerY" secondItem="C5V-F6-rTb" secondAttribute="centerY" id="P0B-uV-w1w"/>
                                     <constraint firstItem="AyK-RD-95z" firstAttribute="centerY" secondItem="C5V-F6-rTb" secondAttribute="centerY" id="hyu-mK-IH7"/>
+                                    <constraint firstAttribute="trailing" secondItem="i4Q-oE-0wg" secondAttribute="trailing" id="kfG-ZD-xay"/>
+                                    <constraint firstItem="i4Q-oE-0wg" firstAttribute="top" secondItem="C5V-F6-rTb" secondAttribute="top" id="uXv-qr-rhV"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RhQ-sz-8lp">
@@ -138,6 +152,7 @@
                     <connections>
                         <outlet property="bannerCollectionView" destination="xwj-hn-YpQ" id="YJ9-PY-j8O"/>
                         <outlet property="homeCollectionView" destination="RhQ-sz-8lp" id="ye4-qg-RX6"/>
+                        <outlet property="runLightViewLabel" destination="i4Q-oE-0wg" id="yZq-lo-LV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIf-V3-31r" userLabel="First Responder" sceneMemberID="firstResponder"/>

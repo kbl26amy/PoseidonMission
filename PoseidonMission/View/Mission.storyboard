@@ -29,17 +29,89 @@
         <!--Map View Controller-->
         <scene sceneID="Pg0-O2-GPp">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tx9-p9-3IV" customClass="MapViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tx9-p9-3IV" customClass="MapViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V5e-ty-1d1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pn9-o4-O8R">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-yM-rl6">
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vxi-yM-rl6" secondAttribute="height" multiplier="1:1" id="CYs-tt-cUT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點擊刮開地圖" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHg-br-rLD">
+                                <rect key="frame" x="60" y="115" width="294" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="yJI-12-TAu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您今日還有1次探索機會" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruu-Rn-H0A">
+                                <rect key="frame" x="50" y="180" width="314" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3YC-wB-rnr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-KS-62M">
+                                <rect key="frame" x="50" y="686" width="147" height="58"/>
+                                <state key="normal" title="查看積分"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61s-Mf-IeQ">
+                                <rect key="frame" x="227" y="686" width="150" height="58"/>
+                                <state key="normal" title="遊戲規則"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vxi-yM-rl6" firstAttribute="leading" secondItem="pn9-o4-O8R" secondAttribute="leading" id="2fG-CH-vIe"/>
+                            <constraint firstItem="pn9-o4-O8R" firstAttribute="trailing" secondItem="Fvc-b8-Zkh" secondAttribute="trailing" id="81o-iq-5HG"/>
+                            <constraint firstItem="Fvc-b8-Zkh" firstAttribute="trailing" secondItem="RHg-br-rLD" secondAttribute="trailing" constant="60" id="AU2-Gx-Gw4"/>
+                            <constraint firstItem="ruu-Rn-H0A" firstAttribute="centerX" secondItem="V5e-ty-1d1" secondAttribute="centerX" id="GW0-s1-Pku"/>
+                            <constraint firstItem="ruu-Rn-H0A" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" constant="50" id="Kvc-mZ-X9R"/>
+                            <constraint firstItem="RHg-br-rLD" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" constant="60" id="LDz-PE-hIa"/>
+                            <constraint firstItem="61s-Mf-IeQ" firstAttribute="top" secondItem="vxi-yM-rl6" secondAttribute="bottom" constant="31" id="QTe-xs-jME"/>
+                            <constraint firstItem="vxi-yM-rl6" firstAttribute="top" secondItem="ruu-Rn-H0A" secondAttribute="bottom" constant="40" id="SrR-1s-kJS"/>
+                            <constraint firstItem="pn9-o4-O8R" firstAttribute="top" secondItem="V5e-ty-1d1" secondAttribute="top" id="VXV-0L-s9h"/>
+                            <constraint firstItem="RHg-br-rLD" firstAttribute="leading" secondItem="ruu-Rn-H0A" secondAttribute="trailing" constant="-304" id="Wly-GU-Yf8"/>
+                            <constraint firstItem="IdH-KS-62M" firstAttribute="leading" secondItem="V5e-ty-1d1" secondAttribute="leading" constant="50" id="WoV-Q7-xhR"/>
+                            <constraint firstItem="IdH-KS-62M" firstAttribute="top" secondItem="vxi-yM-rl6" secondAttribute="bottom" constant="31" id="XAX-1V-anR"/>
+                            <constraint firstItem="vxi-yM-rl6" firstAttribute="centerY" secondItem="V5e-ty-1d1" secondAttribute="centerY" id="bic-ej-5CU"/>
+                            <constraint firstItem="ruu-Rn-H0A" firstAttribute="top" secondItem="RHg-br-rLD" secondAttribute="bottom" constant="8" symbolic="YES" id="cdR-tt-cFg"/>
+                            <constraint firstItem="RHg-br-rLD" firstAttribute="centerX" secondItem="V5e-ty-1d1" secondAttribute="centerX" id="cdi-9d-LCL"/>
+                            <constraint firstItem="61s-Mf-IeQ" firstAttribute="leading" secondItem="pn9-o4-O8R" secondAttribute="centerX" constant="20" id="ddy-Mh-NAL"/>
+                            <constraint firstItem="IdH-KS-62M" firstAttribute="bottom" secondItem="Fvc-b8-Zkh" secondAttribute="bottom" constant="-118" id="fGj-yv-Yyc"/>
+                            <constraint firstItem="Fvc-b8-Zkh" firstAttribute="trailing" secondItem="ruu-Rn-H0A" secondAttribute="trailing" constant="50" id="gXr-7X-m00"/>
+                            <constraint firstAttribute="bottom" secondItem="pn9-o4-O8R" secondAttribute="bottom" id="k2I-b2-3a7"/>
+                            <constraint firstItem="pn9-o4-O8R" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" id="lZF-EF-xzq"/>
+                            <constraint firstItem="vxi-yM-rl6" firstAttribute="centerX" secondItem="V5e-ty-1d1" secondAttribute="centerX" id="vz8-bI-DGa"/>
+                            <constraint firstItem="Fvc-b8-Zkh" firstAttribute="centerX" secondItem="IdH-KS-62M" secondAttribute="trailing" constant="10" id="yHT-Mm-fvm"/>
+                            <constraint firstItem="Fvc-b8-Zkh" firstAttribute="bottom" secondItem="61s-Mf-IeQ" secondAttribute="bottom" constant="118" id="yaZ-2j-TYW"/>
+                            <constraint firstAttribute="trailing" secondItem="61s-Mf-IeQ" secondAttribute="trailing" constant="37" id="zeb-rx-urv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fvc-b8-Zkh"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="baseMapImage" destination="vxi-yM-rl6" id="P0r-1Y-6zD"/>
+                        <outlet property="mapBackground" destination="pn9-o4-O8R" id="J4K-xC-eFH"/>
+                        <outlet property="mapTitleLabel" destination="RHg-br-rLD" id="861-N1-A23"/>
+                        <outlet property="mapchanceLabel" destination="ruu-Rn-H0A" id="rRL-Z9-X3Y"/>
+                        <outlet property="seeRecordButton" destination="IdH-KS-62M" id="QE9-c1-rrE"/>
+                        <outlet property="seeRuleButton" destination="61s-Mf-IeQ" id="ef1-QF-rF0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uy-O5-bic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762" y="-477"/>
+            <point key="canvasLocation" x="1760.8695652173915" y="-477.45535714285711"/>
         </scene>
         <!--Login Today View Controller-->
         <scene sceneID="utt-oy-ilZ">
