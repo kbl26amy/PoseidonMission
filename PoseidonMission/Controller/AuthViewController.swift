@@ -10,12 +10,19 @@ import UIKit
 
 class AuthViewController: PMBaseViewController {
 
+    @IBOutlet weak var authBackgroundImage: UIImageView!
     @IBOutlet weak var treasureView: UIImageView!
     
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var registerButtonLayout: UIButton!
     
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var cancelRegister: UIButton!
     
+    @IBOutlet weak var emailBackImage: UIImageView!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var passwordBackImage: UIImageView!
     @IBAction func cancelRegisterAction(_ sender: Any) {
         
         presentingViewController?.dismiss(animated: false, completion: nil)
@@ -27,9 +34,18 @@ class AuthViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = true
+       navigationController?.isNavigationBarHidden = true
        treasureView.isHidden = true
-        registerButtonLayout.isHidden = true
+      
+        self.authBackgroundImage.image = UIImage(named: "background")
+        self.treasureView.image = UIImage(named: "treasure")
+        self.registerButtonLayout.setImage(UIImage(named: "register"), for: .normal)
+        self.emailBackImage.image = UIImage(named: "account")
+        self.passwordBackImage.image = UIImage(named: "password")
+        self.loginButton.setImage(UIImage(named: "login"), for: .normal)
+        self.loginButton.imageView?.contentMode = .scaleAspectFit
+        self.registerButtonLayout.imageView?.contentMode = .scaleAspectFit
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,7 +54,7 @@ class AuthViewController: PMBaseViewController {
         UIView.animate(withDuration: 2, animations: { [weak self] in
             
             self?.treasureView.isHidden = false
-            self?.registerButtonLayout.isHidden = false
+        
         })
     }
        
