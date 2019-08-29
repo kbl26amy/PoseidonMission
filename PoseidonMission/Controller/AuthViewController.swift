@@ -7,45 +7,48 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class AuthViewController: PMBaseViewController {
 
     @IBOutlet weak var authBackgroundImage: UIImageView!
     @IBOutlet weak var treasureView: UIImageView!
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var registerButtonLayout: UIButton!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var cancelRegister: UIButton!
-    
     @IBOutlet weak var emailBackImage: UIImageView!
-    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordBackImage: UIImageView!
-    @IBAction func cancelRegisterAction(_ sender: Any) {
-        
-        presentingViewController?.dismiss(animated: false, completion: nil)
+    
+    var userNameView = UIImageView()
+    var userNameTextfield = UITextField()
+    
+    @IBAction func showRegisterButtonView(_ sender: UIButton) {
+        if userNameTextfield.text == ""{
+            setRegisterView()
+        }else {
+            createAccountAction(self)
+        }
     }
     
-    @IBAction func appleLogin(_ sender: Any) {
-        
+    @IBAction func loginButtonAction(_ sender: Any) {
+        loginAction(self)
     }
+    
+    @IBAction func cancelRegisterAction(_ sender: Any) {
+         presentingViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
        navigationController?.isNavigationBarHidden = true
        treasureView.isHidden = true
-      
-        self.authBackgroundImage.image = UIImage(named: "background")
-        self.treasureView.image = UIImage(named: "treasure")
-        self.registerButtonLayout.setImage(UIImage(named: "register"), for: .normal)
-        self.emailBackImage.image = UIImage(named: "account")
-        self.passwordBackImage.image = UIImage(named: "password")
-        self.loginButton.setImage(UIImage(named: "login"), for: .normal)
-        self.loginButton.imageView?.contentMode = .scaleAspectFit
-        self.registerButtonLayout.imageView?.contentMode = .scaleAspectFit
-        
+       setLoginView()
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +59,106 @@ class AuthViewController: PMBaseViewController {
             self?.treasureView.isHidden = false
         
         })
+    }
+    
+    func setLoginView(){
+        self.authBackgroundImage.image = UIImage(named: "background")
+        self.treasureView.image = UIImage(named: "treasure")
+        self.registerButtonLayout.setImage(UIImage(named: "register"), for: .normal)
+        self.emailBackImage.image = UIImage(named: "account")
+        self.passwordBackImage.image = UIImage(named: "password")
+        self.loginButton.setImage(UIImage(named: "login"), for: .normal)
+        self.loginButton.imageView?.contentMode = .scaleAspectFit
+        self.registerButtonLayout.imageView?.contentMode = .scaleAspectFit
+    }
+    
+    func setRegisterView(){
+        self.loginButton.isHidden = true
+        
+        self.userNameView = UIImageView(frame: CGRect(x: self.loginButton.frame.origin.x, y: self.loginButton.frame.origin.y, width: self.treasureView.frame.width * 5/7, height: self.treasureView.frame.height * 1/7)
+            )
+        
+        self.userNameView.image = UIImage(named:"password")
+        self.userNameView.center.x =  self.treasureView.center.x
+        view.addSubview(self.userNameView)
+        self.userNameTextfield = UITextField(frame: CGRect(
+            x: self.passwordTextField.frame.origin.x,
+            y: self.userNameView.frame.origin.y,
+            width: self.userNameView.frame.width * 5/7,
+            height: self.userNameView.frame.height))
+        
+        self.userNameTextfield.text = "Game Name"
+        self.userNameTextfield.textColor = UIColor(red: 58/255, green: 88/255, blue: 152/255, alpha: 1)
+        self.userNameTextfield.font = UIFont(name:self.userNameTextfield.font!.fontName
+            , size: 14)
+        view.addSubview(self.userNameTextfield)
+     
+    }
+    
+    func createAccountAction(_ sender: AnyObject) {
+        
+        if emailTextField.text == "" {
+            let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+        } else {
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                
+                if error == nil {
+                    print("You have successfully signed up")
+                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+                    
+                    self.presentingViewController?.dismiss(animated: false, completion: nil)
+                    
+                } else {
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    
+    func loginAction(_ sender: AnyObject) {
+        
+        if self.emailTextField.text == "" || self.passwordTextField.text == "" {
+            
+            // 提示用戶是不是忘記輸入 textfield ？
+            
+            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            
+            Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+                
+                if error == nil {
+                    
+                   self.presentingViewController?.dismiss(animated: false, completion: nil)
+                    
+                } else {
+                    
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
     }
        
     }

@@ -13,7 +13,7 @@
         <!--波賽頓出任務-->
         <scene sceneID="tJk-0B-jqV">
             <objects>
-                <viewController id="P1w-qc-p0b" customClass="LobbyViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LobbyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P1w-qc-p0b" customClass="LobbyViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zCe-F9-RXt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

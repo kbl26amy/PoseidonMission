@@ -22,29 +22,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eHh-I8-y2J">
-                                <rect key="frame" x="50" y="120" width="314" height="314"/>
+                                <rect key="frame" x="50" y="100" width="314" height="314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eHh-I8-y2J" secondAttribute="height" multiplier="1:1" id="CC1-jZ-s6c"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nkx-RD-1Ha">
-                                <rect key="frame" x="76" y="618.5" width="262" height="45"/>
+                                <rect key="frame" x="76" y="598.5" width="262" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="appleLogin:" destination="2FU-mD-kaa" eventType="touchUpInside" id="adi-qI-FbR"/>
+                                    <action selector="showRegisterButtonView:" destination="2FU-mD-kaa" eventType="touchUpInside" id="8Ma-a7-yp4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ys-X7-Rzq">
-                                <rect key="frame" x="76" y="563.5" width="262" height="45"/>
+                                <rect key="frame" x="76" y="543.5" width="262" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="appleLogin:" destination="2FU-mD-kaa" eventType="touchUpInside" id="w7Q-4C-2nT"/>
+                                    <action selector="loginButtonAction:" destination="2FU-mD-kaa" eventType="touchUpInside" id="qsa-45-rMh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYM-lC-oca">
-                                <rect key="frame" x="178" y="673.5" width="58" height="29"/>
+                                <rect key="frame" x="178" y="653.5" width="58" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="暫時不要">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -54,27 +54,27 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-6y-Ni4">
-                                <rect key="frame" x="76" y="454" width="262" height="45"/>
+                                <rect key="frame" x="76" y="434" width="262" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EgA-Hu-YGH">
-                                <rect key="frame" x="76" y="509" width="262" height="44.5"/>
+                                <rect key="frame" x="76" y="489" width="262" height="44.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-xa-Pxd">
-                                <rect key="frame" x="136" y="454" width="203" height="45"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-xa-Pxd">
+                                <rect key="frame" x="152" y="434" width="187" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="2Q9-dx-rYz"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.23198509219999999" green="0.3484609723" blue="0.59575754400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55X-3t-PM5">
-                                <rect key="frame" x="136" y="509" width="203" height="44.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55X-3t-PM5">
+                                <rect key="frame" x="152" y="489" width="187" height="44.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.23198509219999999" green="0.3484609723" blue="0.59575754400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -101,8 +101,8 @@
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="height" secondItem="eHh-I8-y2J" secondAttribute="height" multiplier="1:7" id="WZq-uK-IvO"/>
                             <constraint firstItem="EgA-Hu-YGH" firstAttribute="top" secondItem="jkr-6y-Ni4" secondAttribute="bottom" priority="750" constant="10" id="Xx2-tK-aZf"/>
                             <constraint firstItem="IYM-lC-oca" firstAttribute="top" secondItem="Nkx-RD-1Ha" secondAttribute="bottom" constant="10" id="YX7-l8-RpR"/>
-                            <constraint firstItem="eoo-xa-Pxd" firstAttribute="leading" relation="lessThanOrEqual" secondItem="jkr-6y-Ni4" secondAttribute="leading" constant="60" id="akk-tW-gD4"/>
-                            <constraint firstAttribute="top" secondItem="eHh-I8-y2J" secondAttribute="top" constant="-120" id="bId-8T-E4n"/>
+                            <constraint firstItem="eoo-xa-Pxd" firstAttribute="width" secondItem="jkr-6y-Ni4" secondAttribute="width" multiplier="5:7" id="aHj-sS-G3k"/>
+                            <constraint firstAttribute="top" secondItem="eHh-I8-y2J" secondAttribute="top" constant="-100" id="bId-8T-E4n"/>
                             <constraint firstItem="1x7-C0-bDh" firstAttribute="top" secondItem="VDF-mK-SUM" secondAttribute="top" id="bNB-0a-VEF"/>
                             <constraint firstItem="4ys-X7-Rzq" firstAttribute="top" secondItem="EgA-Hu-YGH" secondAttribute="bottom" constant="10" id="bkD-Ve-oI1"/>
                             <constraint firstItem="eoo-xa-Pxd" firstAttribute="centerY" secondItem="jkr-6y-Ni4" secondAttribute="centerY" id="dCa-Bv-kBB"/>
