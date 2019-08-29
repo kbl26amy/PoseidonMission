@@ -30,7 +30,7 @@
                                             <action selector="goToLogin:" destination="P1w-qc-p0b" eventType="touchUpInside" id="nBx-VJ-NcB"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4Q-oE-0wg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跑馬燈跑起來" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4Q-oE-0wg">
                                         <rect key="frame" x="-80" y="0.0" width="494" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,11 +148,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wIu-w7-isK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="波賽頓出任務" id="oEL-pZ-O8O"/>
+                    <navigationItem key="navigationItem" title="波賽頓出任務" id="oEL-pZ-O8O">
+                        <barButtonItem key="rightBarButtonItem" title="登出" id="mKg-Oo-X8G">
+                            <connections>
+                                <action selector="logOutAction:" destination="P1w-qc-p0b" id="AHB-Ag-f4B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bannerCollectionView" destination="xwj-hn-YpQ" id="YJ9-PY-j8O"/>
                         <outlet property="homeCollectionView" destination="RhQ-sz-8lp" id="ye4-qg-RX6"/>
+                        <outlet property="logoutOulet" destination="mKg-Oo-X8G" id="s5u-4h-Yaz"/>
                         <outlet property="runLightViewLabel" destination="i4Q-oE-0wg" id="yZq-lo-LV7"/>
+                        <outlet property="showRegisterButtonOutlet" destination="AyK-RD-95z" id="S9g-sa-AP9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIf-V3-31r" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,14 +7,33 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LobbyViewController: PMBaseViewController {
+    
+    @IBOutlet weak var logoutOulet: UIBarButtonItem!
+    @IBOutlet weak var showRegisterButtonOutlet: UIButton!
+    @IBAction func logOutAction(_ sender: Any) {
+        print("logout")
+       
+            if Auth.auth().currentUser != nil {
+                do {
+                    try Auth.auth().signOut()
+                    showRegisterButtonOutlet.isHidden = false
+                    logoutOulet.isEnabled = false
+                    logoutOulet.tintColor = .lightGray
+                    runLightViewLabel.alpha = 0
+                    
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+    }
+ 
     
     @IBOutlet weak var runLightViewLabel: UILabel!
     
     func runlight () {
-  
-        self.runLightViewLabel.text = "跑馬燈跑起來"
         
         var frame = runLightViewLabel.frame
         frame.origin.x = UIScreen.main.bounds.width
@@ -38,9 +57,11 @@ class LobbyViewController: PMBaseViewController {
         
         loginViewController.modalPresentationStyle = .overFullScreen
         
-        present(loginViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(loginViewController, animated: true)
+
         
     }
+    
     lazy var cardLayout: FlatCardCollectionViewLayout = {
         let layout = FlatCardCollectionViewLayout()
         layout.itemSize = CGSize(width: bannerCollectionView.contentSize.width, height: bannerCollectionView.contentSize.height)
@@ -76,15 +97,33 @@ class LobbyViewController: PMBaseViewController {
 
         setupCollectionViewLayout()
         runlight ()
+      
         self.bannerCollectionView.showsVerticalScrollIndicator = false
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        print("viewDidAppear")
+       
         homeCollectionView.contentInset = UIEdgeInsets(top: (homeCollectionView.contentSize.height) / 5 , left: 0, bottom: 0, right: 0)
         self.bannerCollectionView.collectionViewLayout = cardLayout
-        
+ 
+        if Auth.auth().currentUser != nil {
+            runLightViewLabel.alpha = 1
+            runlight ()
+            showRegisterButtonOutlet.isHidden = true
+            logoutOulet.isEnabled = true
+            logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
+        } else {
+            logoutOulet.isEnabled = false
+            logoutOulet.tintColor = .lightGray
+            runLightViewLabel.alpha = 0
+        }
     }
 
 }

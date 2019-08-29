@@ -25,6 +25,29 @@ class AuthViewController: PMBaseViewController {
     var userNameView = UIImageView()
     var userNameTextfield = UITextField()
     
+    func isLogin() {
+//    guard let lobbyViewController =  UIStoryboard.lobby.instantiateViewController(withIdentifier: "LobbyViewController") as? LobbyViewController else {return}
+//
+//    if Auth.auth().currentUser != nil {
+//        lobbyViewController.runLightViewLabel.alpha = 1
+//        lobbyViewController.showRegisterButtonOutlet.isHidden = true
+//        lobbyViewController.logoutOulet.isEnabled = true
+//        lobbyViewController.logoutOulet.tintColor = UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+//    } else {
+//        lobbyViewController.logoutOulet.isEnabled = false
+//        lobbyViewController.logoutOulet.tintColor = .lightGray
+//        lobbyViewController.runLightViewLabel.alpha = 0
+//    }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear")
+        
+        
+    }
+    
+    
     @IBAction func showRegisterButtonView(_ sender: UIButton) {
         if userNameTextfield.text == ""{
             setRegisterView()
@@ -38,7 +61,10 @@ class AuthViewController: PMBaseViewController {
     }
     
     @IBAction func cancelRegisterAction(_ sender: Any) {
-         presentingViewController?.dismiss(animated: false, completion: nil)
+        
+        print("cancel")
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
   
@@ -110,9 +136,8 @@ class AuthViewController: PMBaseViewController {
                 
                 if error == nil {
                     print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
-                    
-                    self.presentingViewController?.dismiss(animated: false, completion: nil)
+            
+                     self.navigationController?.popViewController(animated: true)
                     
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -131,8 +156,6 @@ class AuthViewController: PMBaseViewController {
         
         if self.emailTextField.text == "" || self.passwordTextField.text == "" {
             
-            // 提示用戶是不是忘記輸入 textfield ？
-            
             let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -145,9 +168,10 @@ class AuthViewController: PMBaseViewController {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
-                    
-                   self.presentingViewController?.dismiss(animated: false, completion: nil)
-                    
+                  
+
+                    self.navigationController?.popViewController(animated: true)
+                
                 } else {
                     
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
