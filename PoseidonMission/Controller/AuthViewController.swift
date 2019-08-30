@@ -25,28 +25,6 @@ class AuthViewController: PMBaseViewController {
     var userNameView = UIImageView()
     var userNameTextfield = UITextField()
     
-    func isLogin() {
-//    guard let lobbyViewController =  UIStoryboard.lobby.instantiateViewController(withIdentifier: "LobbyViewController") as? LobbyViewController else {return}
-//
-//    if Auth.auth().currentUser != nil {
-//        lobbyViewController.runLightViewLabel.alpha = 1
-//        lobbyViewController.showRegisterButtonOutlet.isHidden = true
-//        lobbyViewController.logoutOulet.isEnabled = true
-//        lobbyViewController.logoutOulet.tintColor = UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
-//    } else {
-//        lobbyViewController.logoutOulet.isEnabled = false
-//        lobbyViewController.logoutOulet.tintColor = .lightGray
-//        lobbyViewController.runLightViewLabel.alpha = 0
-//    }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("viewWillDisappear")
-        
-        
-    }
-    
     
     @IBAction func showRegisterButtonView(_ sender: UIButton) {
         if userNameTextfield.text == ""{
@@ -70,16 +48,15 @@ class AuthViewController: PMBaseViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       navigationController?.isNavigationBarHidden = true
-       treasureView.isHidden = true
-       setLoginView()
+        treasureView.isHidden = true
+        navigationController?.isNavigationBarHidden = true
+        setLoginView()
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    
         UIView.animate(withDuration: 2, animations: { [weak self] in
             
             self?.treasureView.isHidden = false
@@ -135,9 +112,19 @@ class AuthViewController: PMBaseViewController {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
-                    print("You have successfully signed up")
-            
-                     self.navigationController?.popViewController(animated: true)
+                    print("successfully signed up")
+                    let db = Firestore.firestore()
+                   
+                    
+                    let data: [String: Any] = ["userName": self.userNameTextfield.text!,"email": self.emailTextField.text! ]
+                    
+                    db.collection("user").addDocument(data: data) { (error) in
+                        if let error = error {
+                            print(error)
+                        }
+                    }
+                    
+                    self.navigationController?.popViewController(animated: true)
                     
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -184,9 +171,7 @@ class AuthViewController: PMBaseViewController {
             }
         }
     }
-       
-    }
-    
 
+}
 
 

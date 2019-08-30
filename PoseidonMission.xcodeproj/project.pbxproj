@@ -18,6 +18,8 @@
 		62353B722316270A00A4FBA0 /* BannerCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B712316270A00A4FBA0 /* BannerCollectionViewLayout.swift */; };
 		62353B742316361000A4FBA0 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B732316361000A4FBA0 /* Auth.storyboard */; };
 		62353B7823164F4000A4FBA0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B7723164F4000A4FBA0 /* AuthViewController.swift */; };
+		62353B7C2317CD6400A4FBA0 /* ScratchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B7B2317CD6400A4FBA0 /* ScratchCard.swift */; };
+		62353B7E2317CDC800A4FBA0 /* ScratchMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B7D2317CDC800A4FBA0 /* ScratchMask.swift */; };
 		62A964792314D48600BD4AE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0392313B73C007AC76D /* Main.storyboard */; };
 		62A9647A2314D57E00BD4AE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0612314D239007AC76D /* GoogleService-Info.plist */; };
 		62A9647E2314E02600BD4AE0 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9647D2314E02600BD4AE0 /* MissionViewController.swift */; };
@@ -48,6 +50,8 @@
 		62353B712316270A00A4FBA0 /* BannerCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewLayout.swift; sourceTree = "<group>"; };
 		62353B732316361000A4FBA0 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		62353B7723164F4000A4FBA0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		62353B7B2317CD6400A4FBA0 /* ScratchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchCard.swift; sourceTree = "<group>"; };
+		62353B7D2317CDC800A4FBA0 /* ScratchMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchMask.swift; sourceTree = "<group>"; };
 		62A9647D2314E02600BD4AE0 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
 		62A9647F2314E04200BD4AE0 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		62A964812314E05200BD4AE0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				62353B712316270A00A4FBA0 /* BannerCollectionViewLayout.swift */,
+				62353B7B2317CD6400A4FBA0 /* ScratchCard.swift */,
+				62353B7D2317CDC800A4FBA0 /* ScratchMask.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -320,10 +326,12 @@
 			files = (
 				62353B6623153E3F00A4FBA0 /* MapViewController.swift in Sources */,
 				62E1B05B2314C5CB007AC76D /* PMBaseViewController.swift in Sources */,
+				62353B7E2317CDC800A4FBA0 /* ScratchMask.swift in Sources */,
 				62E1B04E2313E45A007AC76D /* PMTabarViewController.swift in Sources */,
 				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,
 				62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */,
 				62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */,
+				62353B7C2317CD6400A4FBA0 /* ScratchCard.swift in Sources */,
 				62E1B0662314D23A007AC76D /* PoseidonMission.xcdatamodeld in Sources */,
 				62353B6823153E7100A4FBA0 /* JellyfishViewController.swift in Sources */,
 				62353B6A23153E9A00A4FBA0 /* LoginTodayViewController.swift in Sources */,

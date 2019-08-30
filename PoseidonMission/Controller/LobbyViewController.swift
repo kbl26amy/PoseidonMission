@@ -191,44 +191,25 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        var goToMissionViewController = UIViewController()
+        
         if collectionView == homeCollectionView {
             
         switch indexPath.row {
             
-        case 0:
-            guard let mapController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {return}
-            
-            self.navigationController?.pushViewController(mapController, animated: true)
-            
-        case 4:
-            guard let jellyfishController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController") as? JellyfishViewController else {return}
-            
-            self.navigationController?.pushViewController(jellyfishController, animated: true)
-            
         case 2:
-            guard let missionController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController") as? MissionViewController else {return}
-            
-            self.navigationController?.pushViewController(missionController, animated: true)
-            
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
+        case 4:
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
         case 3:
-            guard let fishingController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController") as? FishingViewController else {return}
-            
-            self.navigationController?.pushViewController(fishingController, animated: true)
-            
-        case 1:
-            guard let loginTodayController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController") as? LoginTodayViewController else {return}
-            
-            self.navigationController?.pushViewController(loginTodayController, animated: true)
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController")
+        case 0:
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController")
         default:
-            guard let missionController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController") as? MissionViewController else {return}
-            
-            self.navigationController?.pushViewController(missionController, animated: true)
+           goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController")
         }
+             self.navigationController?.pushViewController(goToMissionViewController, animated: true)
         }
     }
-    
-    
-    
-    
     
 }

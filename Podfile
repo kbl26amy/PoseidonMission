@@ -8,5 +8,6 @@ target 'PoseidonMission' do
   # Pods for PoseidonMission
   pod ‘Firebase/Core’
   pod ‘Firebase/Auth’
+  pod 'Firebase/Firestore'
 
 end
