@@ -198,7 +198,8 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         switch indexPath.row {
             
         case 2:
-            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "StoryViewController")
+            
         case 4:
             goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
         case 3:
@@ -209,6 +210,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController")
         }
              self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+     
         }
     }
     

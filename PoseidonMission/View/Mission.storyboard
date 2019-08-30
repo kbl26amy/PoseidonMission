@@ -26,6 +26,114 @@
             </objects>
             <point key="canvasLocation" x="760.86956521739137" y="106.47321428571428"/>
         </scene>
+        <!--Story View Controller-->
+        <scene sceneID="3Ti-5b-U5d">
+            <objects>
+                <viewController storyboardIdentifier="StoryViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4bv-ZJ-VSq" customClass="StoryViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g2T-tQ-b0X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-Pc-khV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pFm-bQ-Fhv">
+                                <rect key="frame" x="40" y="150" width="334" height="448"/>
+                                <color key="backgroundColor" red="0.58675003051757812" green="0.81872910261154175" blue="0.86275500059127808" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="故事劇情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-0C-GtN">
+                                <rect key="frame" x="156" y="112" width="102" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eho-tE-5t4">
+                                <rect key="frame" x="73.5" y="658" width="267" height="40"/>
+                                <color key="backgroundColor" red="0.58675003051757812" green="0.81872910261154175" blue="0.86275500059127808" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DXA-W6-MPc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" title="挑戰">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="tx9-p9-3IV" kind="show" id="t9d-yu-jCp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QER-Zr-EmH">
+                                <rect key="frame" x="50" y="210" width="314" height="330"/>
+                                <string key="text">鄰國的王子進貢了一張藏寶
+圖，據說這個藏寶圖埋藏著
+遠古海底寶藏的訊息，但是
+只有神選之人才可以獲得，
+  你，是否有資格?</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標:刮開藏寶圖找到真正的寶藏地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-mm-QJt">
+                                <rect key="frame" x="40" y="534" width="334" height="64"/>
+                                <color key="backgroundColor" red="0.99991124870000003" green="0.95706421139999998" blue="0.8510286212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jet-c0-tWJ">
+                                <rect key="frame" x="344" y="150" width="30" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveButton:" destination="4bv-ZJ-VSq" eventType="touchUpInside" id="1uB-cM-0Vt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eho-tE-5t4" firstAttribute="centerX" secondItem="g2T-tQ-b0X" secondAttribute="centerX" id="1aP-xU-HrS"/>
+                            <constraint firstItem="z1x-mm-QJt" firstAttribute="width" secondItem="pFm-bQ-Fhv" secondAttribute="width" id="2qD-S4-UEH"/>
+                            <constraint firstItem="eho-tE-5t4" firstAttribute="width" secondItem="z1x-mm-QJt" secondAttribute="width" multiplier="4:5" id="2tg-fj-hcS"/>
+                            <constraint firstItem="7sH-Pc-khV" firstAttribute="top" secondItem="g2T-tQ-b0X" secondAttribute="top" id="6EE-T8-i3P"/>
+                            <constraint firstItem="z1x-mm-QJt" firstAttribute="trailing" secondItem="pFm-bQ-Fhv" secondAttribute="trailing" id="IZ7-rY-8od"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="leading" secondItem="XZy-G2-fmY" secondAttribute="leading" constant="40" id="Isp-W9-61C"/>
+                            <constraint firstItem="z1x-mm-QJt" firstAttribute="height" secondItem="pFm-bQ-Fhv" secondAttribute="height" multiplier="1:7" id="L2O-3Y-Lc7"/>
+                            <constraint firstAttribute="bottom" secondItem="7sH-Pc-khV" secondAttribute="bottom" id="NSK-YN-ltX"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="centerX" secondItem="g2T-tQ-b0X" secondAttribute="centerX" id="PHU-vJ-kAd"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="top" secondItem="Dsa-0C-GtN" secondAttribute="bottom" constant="8" id="Pxl-qX-yse"/>
+                            <constraint firstItem="XZy-G2-fmY" firstAttribute="trailing" secondItem="pFm-bQ-Fhv" secondAttribute="trailing" constant="40" id="Ty6-KQ-yLW"/>
+                            <constraint firstItem="7sH-Pc-khV" firstAttribute="leading" secondItem="XZy-G2-fmY" secondAttribute="leading" id="WSa-5g-tzR"/>
+                            <constraint firstItem="QER-Zr-EmH" firstAttribute="centerX" secondItem="pFm-bQ-Fhv" secondAttribute="centerX" id="XU7-WO-Rdv"/>
+                            <constraint firstItem="Jet-c0-tWJ" firstAttribute="top" secondItem="pFm-bQ-Fhv" secondAttribute="top" id="aCb-Ne-rmh"/>
+                            <constraint firstItem="eho-tE-5t4" firstAttribute="top" secondItem="pFm-bQ-Fhv" secondAttribute="bottom" constant="60" id="c6a-Vm-Jmk"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="bottom" secondItem="g2T-tQ-b0X" secondAttribute="centerY" constant="150" id="cWs-2A-TMG"/>
+                            <constraint firstItem="QER-Zr-EmH" firstAttribute="top" secondItem="pFm-bQ-Fhv" secondAttribute="top" constant="60" id="dUd-qS-aMN"/>
+                            <constraint firstItem="QER-Zr-EmH" firstAttribute="centerY" secondItem="pFm-bQ-Fhv" secondAttribute="centerY" constant="1" id="h85-Ro-kHV"/>
+                            <constraint firstItem="z1x-mm-QJt" firstAttribute="bottom" secondItem="pFm-bQ-Fhv" secondAttribute="bottom" id="hmE-TN-5Tj"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="height" secondItem="7sH-Pc-khV" secondAttribute="height" multiplier="1:2" id="jYq-xE-ul7"/>
+                            <constraint firstItem="Dsa-0C-GtN" firstAttribute="centerX" secondItem="g2T-tQ-b0X" secondAttribute="centerX" id="n4q-sP-Rvk"/>
+                            <constraint firstItem="7sH-Pc-khV" firstAttribute="trailing" secondItem="XZy-G2-fmY" secondAttribute="trailing" id="rey-om-8qd"/>
+                            <constraint firstItem="QER-Zr-EmH" firstAttribute="leading" secondItem="pFm-bQ-Fhv" secondAttribute="leading" constant="10" id="sCY-9M-ycF"/>
+                            <constraint firstItem="z1x-mm-QJt" firstAttribute="leading" secondItem="pFm-bQ-Fhv" secondAttribute="leading" id="uIi-II-Kyq"/>
+                            <constraint firstItem="Jet-c0-tWJ" firstAttribute="trailing" secondItem="pFm-bQ-Fhv" secondAttribute="trailing" id="xwC-th-WNW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XZy-G2-fmY"/>
+                    </view>
+                    <connections>
+                        <outlet property="backImage" destination="pFm-bQ-Fhv" id="idN-FV-Sfs"/>
+                        <outlet property="backgroundImage" destination="7sH-Pc-khV" id="bQw-PB-eGb"/>
+                        <outlet property="chalengeButtonLayout" destination="eho-tE-5t4" id="Qes-ae-T0F"/>
+                        <outlet property="storyTextLabel" destination="QER-Zr-EmH" id="Vcn-mE-2r4"/>
+                        <outlet property="targetLabel" destination="z1x-mm-QJt" id="xhy-B1-gdp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="35X-JX-XLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="760.86956521739137" y="-590.625"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="Pg0-O2-GPp">
             <objects>
