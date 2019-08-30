@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var leaveOutlet: UIButton!
     
     @IBAction func leaveButton(_ sender: Any) {
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -42,7 +43,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = true
-
+        mapTitleLabel.adjustsFontSizeToFitWidth = true
         self.mapBackground.image = UIImage(named: "mapbackground")
         self.baseMapImage.image = UIImage(named: "showmap")
         
