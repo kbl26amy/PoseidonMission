@@ -63,11 +63,16 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-KS-62M">
                                 <rect key="frame" x="50" y="686" width="147" height="58"/>
+                                <color key="backgroundColor" red="0.90337103605270386" green="0.6082121729850769" blue="0.21554848551750183" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="查看積分"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61s-Mf-IeQ">
                                 <rect key="frame" x="227" y="686" width="150" height="58"/>
-                                <state key="normal" title="遊戲規則"/>
+                                <color key="backgroundColor" red="0.89174962043762207" green="0.32657265663146973" blue="0.29801204800605774" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="離開"/>
+                                <connections>
+                                    <action selector="leaveButton:" destination="tx9-p9-3IV" eventType="touchUpInside" id="bSM-iw-a0u"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,11 +107,11 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="baseMapImage" destination="vxi-yM-rl6" id="P0r-1Y-6zD"/>
+                        <outlet property="leaveOutlet" destination="61s-Mf-IeQ" id="ef1-QF-rF0"/>
                         <outlet property="mapBackground" destination="pn9-o4-O8R" id="J4K-xC-eFH"/>
                         <outlet property="mapTitleLabel" destination="RHg-br-rLD" id="861-N1-A23"/>
                         <outlet property="mapchanceLabel" destination="ruu-Rn-H0A" id="rRL-Z9-X3Y"/>
                         <outlet property="seeRecordButton" destination="IdH-KS-62M" id="QE9-c1-rrE"/>
-                        <outlet property="seeRuleButton" destination="61s-Mf-IeQ" id="ef1-QF-rF0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uy-O5-bic" userLabel="First Responder" sceneMemberID="firstResponder"/>

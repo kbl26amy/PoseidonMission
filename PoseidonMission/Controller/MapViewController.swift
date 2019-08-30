@@ -20,13 +20,21 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var seeRecordButton: UIButton!
     
-    @IBOutlet weak var seeRuleButton: UIButton!
+    @IBOutlet weak var leaveOutlet: UIButton!
+    
+    @IBAction func leaveButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     let firstButton = UIButton(frame: CGRect(x: 51, y: 93, width: 30, height: 30))
     let secondButton = UIButton(frame: CGRect(x: 225, y: 56, width: 30, height: 30))
     let thirdButton = UIButton(frame: CGRect(x: 156, y: 219, width: 30, height: 30))
     let forthButton = UIButton(frame: CGRect(x: 295, y: 311, width: 30, height: 30))
     let fifthButton = UIButton(frame: CGRect(x: 334, y: 277, width: 30, height: 30))
+    
+    var buttons: [UIButton] = []
+    var index = 0
+    var imageNames : [String] = ["unreward", "unreward", "unreward", "getreward", "getreward"]
     
     var scratchCard: ScratchCard?
     
@@ -37,8 +45,9 @@ class MapViewController: UIViewController {
 
         self.mapBackground.image = UIImage(named: "mapbackground")
         self.baseMapImage.image = UIImage(named: "showmap")
-        self.seeRuleButton.setImage(UIImage(named: "redbutton"), for: .normal)
-        self.seeRecordButton.setImage(UIImage(named: "orangebutton"), for: .normal)
+        
+        self.leaveOutlet.layer.cornerRadius = 30
+        self.seeRecordButton.layer.cornerRadius = 30
         
         showMap()
     }
@@ -68,7 +77,7 @@ extension MapViewController: ScratchCardDelegate {
         let percent = String(format: "%.1f", progress * 100)
         print("Finish：\(percent)%")
         
-        if progress >= 0.1 {
+        if progress >= 0.7 {
         
             mapTitleLabel.text = "請選擇你要航行的地點"
             
@@ -83,9 +92,8 @@ extension MapViewController: ScratchCardDelegate {
         
         self.baseMapImage.isUserInteractionEnabled = true
         
-        var index = 0
-                let buttons = [self.firstButton, self.secondButton, self.thirdButton, self.forthButton, self.fifthButton]
-                for button in buttons{
+                self.buttons = [self.firstButton, self.secondButton, self.thirdButton, self.forthButton, self.fifthButton]
+                for button in self.buttons{
                     button.tag = index
                     button.backgroundColor = .orange
                     button.layer.cornerRadius = 20
@@ -97,10 +105,18 @@ extension MapViewController: ScratchCardDelegate {
     }
     
     @objc func showResult(){
+        var imageNumber = Int.random(in: 0...4)
         let resultMap = UIImageView(frame: self.baseMapImage.frame)
-        resultMap.image = UIImage(named: "unreward")
+        
+        resultMap.image = UIImage(named: imageNames[imageNumber])
+        if imageNumber == 4{
+            imageNumber = 0
+        } else {
+            imageNumber += 1
+        }
         view.addSubview(resultMap)
         view.bringSubviewToFront(resultMap)
+      
     }
     
     func scratchEnded(point: CGPoint) {
