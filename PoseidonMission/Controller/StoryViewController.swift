@@ -21,9 +21,9 @@ class StoryViewController: UIViewController {
         chalengeButtonLayout.layer.cornerRadius = 20
         navigationController?.isNavigationBarHidden = true
         backgroundImage.image = UIImage(named: "background")
-        storyTextLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
-        storyTextLabel.shadowColor = .darkGray
-         storyTextLabel.shadowOffset = CGSize(width: 1, height: 1)
+//        storyTextLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
+//        storyTextLabel.shadowColor = .darkGray
+//         storyTextLabel.shadowOffset = CGSize(width: 1, height: 1)
         storyTextLabel.adjustsFontSizeToFitWidth = true
         targetLabel.adjustsFontSizeToFitWidth = true
     }
