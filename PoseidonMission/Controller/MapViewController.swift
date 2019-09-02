@@ -27,11 +27,11 @@ class MapViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    let firstButton = UIButton(frame: CGRect(x: 51, y: 93, width: 30, height: 30))
-    let secondButton = UIButton(frame: CGRect(x: 225, y: 56, width: 30, height: 30))
-    let thirdButton = UIButton(frame: CGRect(x: 156, y: 219, width: 30, height: 30))
-    let forthButton = UIButton(frame: CGRect(x: 295, y: 311, width: 30, height: 30))
-    let fifthButton = UIButton(frame: CGRect(x: 334, y: 277, width: 30, height: 30))
+    let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 51 / 414, y: UIScreen.main.bounds.height * 88 / 896, width: 40, height: 40))
+    let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 225 / 414, y: UIScreen.main.bounds.height * 56 / 896, width: 40, height: 40))
+    let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 156 / 414, y: UIScreen.main.bounds.height * 219 / 896, width: 40, height: 40))
+    let forthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 295 / 414, y: UIScreen.main.bounds.height * 311 / 896, width: 40, height: 40))
+    let fifthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 334 / 414, y: UIScreen.main.bounds.height * 277 / 896, width: 40, height: 40))
     
     var buttons: [UIButton] = []
     var index = 0
@@ -47,14 +47,13 @@ class MapViewController: UIViewController {
         self.mapBackground.image = UIImage(named: "mapbackground")
         self.baseMapImage.image = UIImage(named: "showmap")
         
-        self.leaveOutlet.layer.cornerRadius = 30
-        self.seeRecordButton.layer.cornerRadius = 30
-        
+        self.leaveOutlet.layer.cornerRadius = 20
+        self.seeRecordButton.layer.cornerRadius = 20
         showMap()
     }
     
     func showMap(){
-        
+        view.layoutIfNeeded()
         self.scratchCard = ScratchCard(frame: self.baseMapImage.frame,
                                       mapImage: UIImage(named: "showmap")!,
                                       maskImage: UIImage(named: "unmap")!)
@@ -78,7 +77,7 @@ extension MapViewController: ScratchCardDelegate {
         let percent = String(format: "%.1f", progress * 100)
         print("Finish：\(percent)%")
         
-        if progress >= 0.7 {
+        if progress >= 0.1 {
         
             mapTitleLabel.text = "請選擇你要航行的地點"
             
@@ -96,8 +95,10 @@ extension MapViewController: ScratchCardDelegate {
                 self.buttons = [self.firstButton, self.secondButton, self.thirdButton, self.forthButton, self.fifthButton]
                 for button in self.buttons{
                     button.tag = index
-                    button.backgroundColor = .orange
+//                    button.backgroundColor = .orange
                     button.layer.cornerRadius = 20
+                    button.showsTouchWhenHighlighted = true
+                    button.setTitle("📌", for: .normal)
                     button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
                     self.baseMapImage.addSubview(button)
                     index += 1
