@@ -102,17 +102,12 @@
                                     <segue destination="tx9-p9-3IV" kind="show" id="t9d-yu-jCp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QER-Zr-EmH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你獲得一張破舊不堪的藏寶圖，據說這裡埋藏著遠古海底寶藏的訊息，只有能夠看清真相並選中正確位置的人才能獲得。你，是否有資格?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QER-Zr-EmH">
                                 <rect key="frame" x="50" y="210" width="314" height="330"/>
-                                <string key="text">鄰國的王子進貢了一張藏寶
-圖，據說這個藏寶圖埋藏著
-遠古海底寶藏的訊息，但是
-只有神選之人才可以獲得，
-  你，是否有資格?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標:刮開藏寶圖找到真正的寶藏地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-mm-QJt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標:擦乾淨藏寶圖找到真正的寶藏地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-mm-QJt">
                                 <rect key="frame" x="40" y="534" width="334" height="64"/>
                                 <color key="backgroundColor" red="0.99991124870000003" green="0.95706421139999998" blue="0.8510286212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -190,18 +185,18 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請將地圖擦乾淨顯示真相" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHg-br-rLD">
-                                <rect key="frame" x="60" y="115" width="294" height="57"/>
+                                <rect key="frame" x="60" y="162" width="294" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="yJI-12-TAu"/>
+                                    <constraint firstAttribute="height" constant="30" id="2W1-pq-ov1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您今日還有1次探索機會" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruu-Rn-H0A">
-                                <rect key="frame" x="50" y="180" width="314" height="21"/>
+                                <rect key="frame" x="50" y="200" width="314" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="3YC-wB-rnr"/>
+                                    <constraint firstAttribute="height" constant="21" id="qzS-Ly-GdX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -236,7 +231,6 @@
                             <constraint firstItem="ruu-Rn-H0A" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" constant="50" id="Kvc-mZ-X9R"/>
                             <constraint firstItem="RHg-br-rLD" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" constant="60" id="LDz-PE-hIa"/>
                             <constraint firstItem="61s-Mf-IeQ" firstAttribute="top" secondItem="vxi-yM-rl6" secondAttribute="bottom" constant="31" id="QTe-xs-jME"/>
-                            <constraint firstItem="vxi-yM-rl6" firstAttribute="top" secondItem="ruu-Rn-H0A" secondAttribute="bottom" constant="40" id="SrR-1s-kJS"/>
                             <constraint firstItem="pn9-o4-O8R" firstAttribute="top" secondItem="V5e-ty-1d1" secondAttribute="top" id="VXV-0L-s9h"/>
                             <constraint firstItem="IdH-KS-62M" firstAttribute="leading" secondItem="V5e-ty-1d1" secondAttribute="leading" constant="50" id="WoV-Q7-xhR"/>
                             <constraint firstItem="IdH-KS-62M" firstAttribute="top" secondItem="vxi-yM-rl6" secondAttribute="bottom" constant="31" id="XAX-1V-anR"/>
@@ -249,6 +243,7 @@
                             <constraint firstAttribute="bottom" secondItem="pn9-o4-O8R" secondAttribute="bottom" id="k2I-b2-3a7"/>
                             <constraint firstItem="pn9-o4-O8R" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" id="lZF-EF-xzq"/>
                             <constraint firstItem="vxi-yM-rl6" firstAttribute="centerX" secondItem="V5e-ty-1d1" secondAttribute="centerX" id="vz8-bI-DGa"/>
+                            <constraint firstItem="vxi-yM-rl6" firstAttribute="top" secondItem="ruu-Rn-H0A" secondAttribute="bottom" constant="20" id="wLU-Jy-D6M"/>
                             <constraint firstItem="Fvc-b8-Zkh" firstAttribute="centerX" secondItem="IdH-KS-62M" secondAttribute="trailing" constant="10" id="yHT-Mm-fvm"/>
                             <constraint firstAttribute="trailing" secondItem="61s-Mf-IeQ" secondAttribute="trailing" constant="37" id="zeb-rx-urv"/>
                         </constraints>

@@ -82,6 +82,8 @@ class LobbyViewController: PMBaseViewController {
         }
     }
     
+    var bannerImages = ["logintoday", "friend", "map", "fish", "watermother"]
+    
     var homeCollectionImages = ["logintoday", "friend", "map", "fish", "watermother"]
     
     var homeCollectionLabel = ["簽到", "邀請好友", "藏寶圖", "釣魚", "打水母"]
@@ -134,7 +136,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if collectionView == homeCollectionView {
             return homeCollectionLabel.count
         } else {
-            return homeCollectionImages.count
+            return bannerImages.count
         }
     }
     
@@ -166,7 +168,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             bannerCell.layer.shadowOffset = CGSize(width: 0, height: 3)
             bannerCell.layer.shadowRadius = 6.0
             
-            bannerCell.bannerImages.image = UIImage(named:  homeCollectionImages[indexPath.row])
+            bannerCell.bannerImages.image = UIImage(named: bannerImages[indexPath.row])
             
             return bannerCell
         }

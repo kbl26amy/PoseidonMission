@@ -25,7 +25,6 @@ class AuthViewController: PMBaseViewController {
     var userNameView = UIImageView()
     var userNameTextfield = UITextField()
     
-    
     @IBAction func showRegisterButtonView(_ sender: UIButton) {
         if userNameTextfield.text == ""{
             setRegisterView()
@@ -51,6 +50,9 @@ class AuthViewController: PMBaseViewController {
         treasureView.isHidden = true
         navigationController?.isNavigationBarHidden = true
         setLoginView()
+        
+        emailTextField.placeholder = "Email Adress"
+        passwordTextField.placeholder = "Password"
     
     }
     
@@ -90,10 +92,10 @@ class AuthViewController: PMBaseViewController {
             width: self.userNameView.frame.width * 5/7,
             height: self.userNameView.frame.height))
         
-        self.userNameTextfield.text = "Game Name"
         self.userNameTextfield.textColor = UIColor(red: 58/255, green: 88/255, blue: 152/255, alpha: 1)
         self.userNameTextfield.font = UIFont(name:self.userNameTextfield.font!.fontName
             , size: 14)
+        self.userNameTextfield.placeholder = "User Name"
         view.addSubview(self.userNameTextfield)
      
     }
@@ -109,6 +111,7 @@ class AuthViewController: PMBaseViewController {
             present(alertController, animated: true, completion: nil)
             
         } else {
+            
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
@@ -117,10 +120,11 @@ class AuthViewController: PMBaseViewController {
                    
                     
                     let data: [String: Any] = ["userName": self.userNameTextfield.text!,"email": self.emailTextField.text! ]
-                    
-                    db.collection("user").addDocument(data: data) { (error) in
+                    db.collection("user").document((Auth.auth().currentUser?.uid)!).setData(data){ (error) in
                         if let error = error {
                             print(error)
+                        }else {
+                            print(Auth.auth().currentUser?.uid as Any)
                         }
                     }
                     
@@ -151,11 +155,12 @@ class AuthViewController: PMBaseViewController {
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            
+            let reference: DocumentReference? = nil
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
-                   self.navigationController?.popViewController(animated: true)
+                    
+                    self.navigationController?.popViewController(animated: true)
                 
                 } else {
                     

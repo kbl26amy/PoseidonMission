@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MapViewController: UIViewController {
 
@@ -27,16 +28,15 @@ class MapViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 51 / 414, y: UIScreen.main.bounds.height * 88 / 896, width: 40, height: 40))
-    let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 225 / 414, y: UIScreen.main.bounds.height * 56 / 896, width: 40, height: 40))
-    let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 156 / 414, y: UIScreen.main.bounds.height * 219 / 896, width: 40, height: 40))
-    let forthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 295 / 414, y: UIScreen.main.bounds.height * 311 / 896, width: 40, height: 40))
-    let fifthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 334 / 414, y: UIScreen.main.bounds.height * 277 / 896, width: 40, height: 40))
+    let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 49 / 414, y: UIScreen.main.bounds.height * 85 / 896, width: 40, height: 40))
+    let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 225 / 414, y: UIScreen.main.bounds.height * 45 / 896, width: 40, height: 40))
+    let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 158 / 414, y: UIScreen.main.bounds.height * 206 / 896, width: 40, height: 40))
+    let forthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 293 / 414, y: UIScreen.main.bounds.height * 300 / 896, width: 40, height: 40))
+    let fifthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 335 / 414, y: UIScreen.main.bounds.height * 265 / 896, width: 40, height: 40))
     
     var buttons: [UIButton] = []
     var index = 0
-    var imageNames : [String] = ["unreward", "unreward", "unreward", "getreward", "getreward"]
-    
+    var result :[Bool] = [true, true, false, false, false]
     var scratchCard: ScratchCard?
     
     override func viewDidLoad() {
@@ -77,7 +77,7 @@ extension MapViewController: ScratchCardDelegate {
         let percent = String(format: "%.1f", progress * 100)
         print("Finish：\(percent)%")
         
-        if progress >= 0.1 {
+        if progress >= 0.7 {
         
             mapTitleLabel.text = "請選擇你要航行的地點"
             
@@ -95,10 +95,10 @@ extension MapViewController: ScratchCardDelegate {
                 self.buttons = [self.firstButton, self.secondButton, self.thirdButton, self.forthButton, self.fifthButton]
                 for button in self.buttons{
                     button.tag = index
-//                    button.backgroundColor = .orange
-                    button.layer.cornerRadius = 20
                     button.showsTouchWhenHighlighted = true
                     button.setTitle("📌", for: .normal)
+                    button.titleLabel?.font = .systemFont(ofSize: 25)
+                    
                     button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
                     self.baseMapImage.addSubview(button)
                     index += 1
@@ -107,14 +107,39 @@ extension MapViewController: ScratchCardDelegate {
     }
     
     @objc func showResult(){
-        var imageNumber = Int.random(in: 0...4)
+        let mapResult = result.randomElement()
         let resultMap = UIImageView(frame: self.baseMapImage.frame)
         
-        resultMap.image = UIImage(named: imageNames[imageNumber])
-        if imageNumber == 4{
-            imageNumber = 0
+        if mapResult == true {
+           resultMap.image = UIImage(named: "getreward")
+            
+            let db = Firestore.firestore()
+            
+            let playTimesData: [String: Any] = ["mapPlayTime": Firebase.ServerTimestampBehavior.self ,"mapTimes": 1 ]
+            
+            let scoreRecordData: [String: Any] = ["mapPlayTime": Firebase.ServerTimestampBehavior.self ,"score": 2, "source": "map" ]
+            
+             db.collection("user").document(Auth.auth().currentUser!.uid).setData(playTimesData) { (error) in
+                if let error = error {
+                    print(error)
+                }
+            }
+            db.collection("user").document(Auth.auth().currentUser!.uid).collection("map").document().setData(scoreRecordData){ (error) in
+                if let error = error {
+                    print(error)
+                }
+            }
+            
+                db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    let document = querySnapshot.documents.first
+                    document?.reference.updateData(["totalScore": 2], completion: { (error) in
+                    })
+                }
+            }
+            
         } else {
-            imageNumber += 1
+           resultMap.image = UIImage(named: "unreward")
         }
         view.addSubview(resultMap)
         view.bringSubviewToFront(resultMap)
