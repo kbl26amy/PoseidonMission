@@ -22,7 +22,6 @@ class MissionViewController: PMBaseViewController  {
        
     }
     
-
 }
 extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +34,7 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
             for: indexPath)
         
         guard let missionCell = cell as? missionTableViewCell else { return cell }
-        return missionCell 
+        return missionCell
     }
     
     
