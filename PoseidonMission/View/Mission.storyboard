@@ -440,13 +440,32 @@
                     <view key="view" contentMode="scaleToFill" id="Kzw-Wf-NwC" customClass="F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x49-Kr-cEg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-2G-vkq">
+                                <rect key="frame" x="228" y="243" width="61" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="x49-Kr-cEg" secondAttribute="bottom" id="K9a-x7-tpi"/>
+                            <constraint firstItem="x49-Kr-cEg" firstAttribute="top" secondItem="Kzw-Wf-NwC" secondAttribute="top" id="Tjg-O9-X78"/>
+                            <constraint firstItem="x49-Kr-cEg" firstAttribute="leading" secondItem="Kzw-Wf-NwC" secondAttribute="leading" id="Zrd-b7-hV4"/>
+                            <constraint firstAttribute="trailing" secondItem="x49-Kr-cEg" secondAttribute="trailing" id="jIY-Uy-yBi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rZb-hd-KoA"/>
                     </view>
+                    <connections>
+                        <outlet property="jellyBackGroundView" destination="x49-Kr-cEg" id="XJO-ln-jik"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LV-ji-pE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="220"/>
+            <point key="canvasLocation" x="1760.8695652173915" y="219.64285714285714"/>
         </scene>
         <!--Fishing View Controller-->
         <scene sceneID="fNA-2o-SkE">

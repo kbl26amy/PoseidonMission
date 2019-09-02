@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class MapViewController: UIViewController {
 
@@ -77,7 +78,7 @@ extension MapViewController: ScratchCardDelegate {
         let percent = String(format: "%.1f", progress * 100)
         print("Finish：\(percent)%")
         
-        if progress >= 0.7 {
+        if progress >= 0.1 {
         
             mapTitleLabel.text = "請選擇你要航行的地點"
             
@@ -115,21 +116,24 @@ extension MapViewController: ScratchCardDelegate {
             
             let db = Firestore.firestore()
             
-            let playTimesData: [String: Any] = ["mapPlayTime": Firebase.ServerTimestampBehavior.self ,"mapTimes": 1 ]
+            let playTimesData: [String: Any] = ["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1, "email": Auth.auth().currentUser!.email as Any]
             
-            let scoreRecordData: [String: Any] = ["mapPlayTime": Firebase.ServerTimestampBehavior.self ,"score": 2, "source": "map" ]
+            let scoreRecordData: [String: Any] = ["mapPlayTime":FirebaseFirestore.Timestamp(date:Date()) ,"score": 2, "source": "map" ]
             
-             db.collection("user").document(Auth.auth().currentUser!.uid).setData(playTimesData) { (error) in
+//            let ref = Database.database().reference().root.child("user").child("totalScore").updateChildValues(["totalScore": 2])
+           //存用戶的遊玩次數
+            db.collection("user").document(Auth.auth().currentUser!.uid).setData(playTimesData) { (error) in
                 if let error = error {
                     print(error)
                 }
             }
-            db.collection("user").document(Auth.auth().currentUser!.uid).collection("map").document().setData(scoreRecordData){ (error) in
+           //存用戶積分紀錄
+            db.collection("user").document(Auth.auth().currentUser!.uid).collection("records").document().setData(scoreRecordData){ (error) in
                 if let error = error {
                     print(error)
                 }
             }
-            
+            //update用戶總積分
                 db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
