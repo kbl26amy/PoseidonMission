@@ -14,8 +14,25 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+   
+    var interfaceOrientations:UIInterfaceOrientationMask = .portrait{
+        didSet{
+            if interfaceOrientations == .portrait{
+                UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue,
+                                          forKey: "orientation")
+            }
+            else if !interfaceOrientations.contains(.portrait){
+                UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue,
+                                          forKey: "orientation")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor
+        window: UIWindow?)-> UIInterfaceOrientationMask {
+        return interfaceOrientations
+    }
+   
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         let tabBarController = self.window?.rootViewController as! UITabBarController

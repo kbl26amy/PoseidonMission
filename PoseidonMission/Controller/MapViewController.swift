@@ -116,17 +116,7 @@ extension MapViewController: ScratchCardDelegate {
             
             let db = Firestore.firestore()
             
-            let playTimesData: [String: Any] = ["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1, "email": Auth.auth().currentUser!.email as Any]
-            
             let scoreRecordData: [String: Any] = ["mapPlayTime":FirebaseFirestore.Timestamp(date:Date()) ,"score": 2, "source": "map" ]
-            
-//            let ref = Database.database().reference().root.child("user").child("totalScore").updateChildValues(["totalScore": 2])
-           //存用戶的遊玩次數
-            db.collection("user").document(Auth.auth().currentUser!.uid).setData(playTimesData) { (error) in
-                if let error = error {
-                    print(error)
-                }
-            }
            //存用戶積分紀錄
             db.collection("user").document(Auth.auth().currentUser!.uid).collection("records").document().setData(scoreRecordData){ (error) in
                 if let error = error {
@@ -137,7 +127,7 @@ extension MapViewController: ScratchCardDelegate {
                 db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
-                    document?.reference.updateData(["totalScore": 2], completion: { (error) in
+                    document?.reference.updateData(["totalScore": 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1], completion: { (error) in
                     })
                 }
             }
