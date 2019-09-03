@@ -8,13 +8,13 @@
 
 import UIKit
 
-class StoryViewController: UIViewController {
+class StoryViewController: PMBaseViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
-    
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var storyTextLabel: UILabel!
     @IBOutlet weak var chalengeButtonLayout: UIButton!
     @IBOutlet weak var backImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backImage.layer.cornerRadius = 15
@@ -30,6 +30,12 @@ class StoryViewController: UIViewController {
         
     }
     
+    @IBAction func goToChallenge(_ sender: Any) {
+        
+       let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
+        self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+   
+    }
     
 
 }

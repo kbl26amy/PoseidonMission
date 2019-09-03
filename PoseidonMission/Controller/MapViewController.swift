@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class MapViewController: UIViewController {
+class MapViewController: PMBaseViewController {
 
     @IBOutlet weak var mapBackground: UIImageView!
     
@@ -26,7 +26,9 @@ class MapViewController: UIViewController {
     
     @IBAction func leaveButton(_ sender: Any) {
         
-        self.navigationController?.popViewController(animated: true)
+//       self.navigationController?.popToRootViewController(animated: true)
+        backToRoot()
+    
     }
     var mapCouldTimes: Int = 1
     let db = Firestore.firestore()
@@ -124,9 +126,13 @@ extension MapViewController: ScratchCardDelegate {
  func checkMapTimes() {
     
         db.collection("user").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+            
             if let document = document, document.exists {
                 print(document.documentID, document.data() as Any)
                 
+                if document.data()!["mapPlayTime"] != nil {
+                ProfileViewController.totalScore = document.data()!["totalScore"] as! Int
+                }
                 //轉換 Time 格式
                 
                 if document.data()!["mapPlayTime"] != nil {
@@ -181,7 +187,7 @@ extension MapViewController: ScratchCardDelegate {
                 db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
-                    document?.reference.updateData(["totalScore": 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1], completion: { (error) in
+                    document?.reference.updateData(["totalScore": ProfileViewController.totalScore + 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1], completion: { (error) in
                     })
                 }
             }

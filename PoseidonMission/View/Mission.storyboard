@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rNn-Hf-8Wx">
-    <device id="retina6_1" orientation="landscape">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,18 +15,18 @@
             <objects>
                 <viewController storyboardIdentifier="MissionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1yj-4r-QQX" customClass="MissionViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7QD-fk-gqA">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-O1-dI7">
-                                <rect key="frame" x="44" y="44" width="808" height="349"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="missionTableViewCell" rowHeight="206" id="INp-Uy-FMR" customClass="missionTableViewCell" customModule="PoseidonMission" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="808" height="206"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="206"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="INp-Uy-FMR" id="hYn-4S-Xar">
-                                            <rect key="frame" x="0.0" y="0.0" width="808" height="205.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="205.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jd0-19-9Jh">
@@ -73,25 +73,25 @@
             <objects>
                 <viewController storyboardIdentifier="StoryViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4bv-ZJ-VSq" customClass="StoryViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g2T-tQ-b0X">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-Pc-khV">
-                                <rect key="frame" x="44" y="0.0" width="808" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pFm-bQ-Fhv">
-                                <rect key="frame" x="84" y="150" width="728" height="207"/>
+                                <rect key="frame" x="40" y="150" width="334" height="448"/>
                                 <color key="backgroundColor" red="0.66460222010000003" green="0.83821409940000002" blue="0.89020627740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="故事劇情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-0C-GtN">
-                                <rect key="frame" x="397" y="112" width="102" height="30"/>
+                                <rect key="frame" x="156" y="112" width="102" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eho-tE-5t4">
-                                <rect key="frame" x="229.5" y="417" width="437" height="22"/>
+                                <rect key="frame" x="107" y="658" width="200" height="48"/>
                                 <color key="backgroundColor" red="0.89174962040000005" green="0.32657265660000001" blue="0.29801204799999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
@@ -99,22 +99,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tx9-p9-3IV" kind="show" id="t9d-yu-jCp"/>
+                                    <action selector="goToChallenge:" destination="4bv-ZJ-VSq" eventType="touchUpInside" id="cYf-DV-tGa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你獲得一張破舊不堪的藏寶圖，據說這裡埋藏著遠古海底寶藏的訊息，只有能夠看清真相並選中正確位置的人才能獲得。你，是否有資格?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QER-Zr-EmH">
-                                <rect key="frame" x="94" y="210" width="708" height="89"/>
+                                <rect key="frame" x="50" y="210" width="314" height="330"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標:擦乾淨藏寶圖找到真正的寶藏地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-mm-QJt">
-                                <rect key="frame" x="84" y="327.5" width="728" height="29.5"/>
+                                <rect key="frame" x="40" y="534" width="334" height="64"/>
                                 <color key="backgroundColor" red="0.99991124870000003" green="0.95706421139999998" blue="0.8510286212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jet-c0-tWJ">
-                                <rect key="frame" x="782" y="150" width="30" height="42"/>
+                                <rect key="frame" x="344" y="150" width="30" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="X">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -172,20 +172,20 @@
             <objects>
                 <viewController storyboardIdentifier="MapViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tx9-p9-3IV" customClass="MapViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V5e-ty-1d1">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pn9-o4-O8R">
-                                <rect key="frame" x="44" y="0.0" width="808" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-yM-rl6">
-                                <rect key="frame" x="44" y="-197" width="808" height="808"/>
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vxi-yM-rl6" secondAttribute="height" multiplier="1:1" id="CYs-tt-cUT"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請將地圖擦乾淨顯示真相" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHg-br-rLD">
-                                <rect key="frame" x="104" y="-276" width="688" height="30"/>
+                                <rect key="frame" x="60" y="162" width="294" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2W1-pq-ov1"/>
                                 </constraints>
@@ -194,7 +194,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您今日還有1次探索機會" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruu-Rn-H0A">
-                                <rect key="frame" x="94" y="-238" width="708" height="21"/>
+                                <rect key="frame" x="50" y="200" width="314" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="qzS-Ly-GdX"/>
                                 </constraints>
@@ -203,7 +203,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-KS-62M">
-                                <rect key="frame" x="50" y="642" width="388" height="40"/>
+                                <rect key="frame" x="50" y="686" width="147" height="40"/>
                                 <color key="backgroundColor" red="0.90337103605270386" green="0.6082121729850769" blue="0.21554848551750183" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6cg-92-vzU"/>
@@ -211,7 +211,7 @@
                                 <state key="normal" title="查看積分"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61s-Mf-IeQ">
-                                <rect key="frame" x="468" y="642" width="391" height="40"/>
+                                <rect key="frame" x="227" y="686" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.89174962043762207" green="0.32657265663146973" blue="0.29801204800605774" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ywy-jn-P8k"/>
@@ -250,6 +250,7 @@
                         <viewLayoutGuide key="safeArea" id="Fvc-b8-Zkh"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="UCP-dy-OgV"/>
                     <connections>
                         <outlet property="baseMapImage" destination="vxi-yM-rl6" id="P0r-1Y-6zD"/>
                         <outlet property="leaveOutlet" destination="61s-Mf-IeQ" id="ef1-QF-rF0"/>
@@ -268,20 +269,20 @@
             <objects>
                 <viewController storyboardIdentifier="LoginTodayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b6h-ew-gq6" customClass="LoginTodayViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EzZ-l5-IAh" customClass="Login">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="saf-Vn-wuV">
-                                <rect key="frame" x="89.5" y="138" width="717" height="138"/>
+                                <rect key="frame" x="41.5" y="298.5" width="331" height="299"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成功簽到 ＋2 點數，已連續簽到1天" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-0K-WUR">
-                                        <rect key="frame" x="36" y="24" width="645" height="29"/>
+                                        <rect key="frame" x="36" y="24" width="259" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McB-it-e2z">
-                                        <rect key="frame" x="36" y="61" width="645" height="2"/>
+                                        <rect key="frame" x="36" y="89.5" width="259" height="2"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="jsf-Eq-GfR"/>
@@ -438,11 +439,11 @@
             <objects>
                 <viewController storyboardIdentifier="JellyfishViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Ls-q3-ZtS" customClass="JellyfishViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kzw-Wf-NwC" customClass="F">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x49-Kr-cEg">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYA-QY-4ca">
                                 <rect key="frame" x="360" y="130" width="176" height="91"/>
@@ -510,7 +511,7 @@
             <objects>
                 <viewController storyboardIdentifier="FishingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="agF-26-D6X" customClass="FishingViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OCa-bD-Ssb">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ghq-1U-ZYM"/>
@@ -526,7 +527,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rNn-Hf-8Wx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yPE-ip-Xii">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

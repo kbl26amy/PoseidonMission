@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileViewController: PMBaseViewController  {
+    
+    static var totalScore: Int = 0
 
     @IBOutlet weak var userTotalPoint: UILabel!
     @IBOutlet weak var userEmail: UILabel!
