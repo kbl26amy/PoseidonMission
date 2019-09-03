@@ -82,7 +82,7 @@ class LobbyViewController: PMBaseViewController {
         }
     }
     
-    var bannerImages = ["logintoday", "friend", "map", "fish", "watermother"]
+    var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
     var homeCollectionImages = ["logintoday", "friend", "map", "fish", "watermother"]
     
@@ -195,13 +195,13 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         var goToMissionViewController = UIViewController()
         
+        if Auth.auth().currentUser != nil {
         if collectionView == homeCollectionView {
             
         switch indexPath.row {
             
         case 2:
             goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "StoryViewController")
-            
         case 4:
             goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
         case 3:
@@ -214,6 +214,12 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
              self.navigationController?.pushViewController(goToMissionViewController, animated: true)
      
         }
-    }
+        }else {
+            guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController() else { return }
+            
+            loginViewController.modalPresentationStyle = .overFullScreen
+            
+            navigationController?.pushViewController(loginViewController, animated: true)
+        }
 }
-
+}

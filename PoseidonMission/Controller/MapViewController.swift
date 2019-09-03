@@ -26,8 +26,8 @@ class MapViewController: PMBaseViewController {
     
     @IBAction func leaveButton(_ sender: Any) {
         
-//       self.navigationController?.popToRootViewController(animated: true)
-        backToRoot()
+       self.navigationController?.popToRootViewController(animated: true)
+//        backToRoot()
     
     }
     var mapCouldTimes: Int = 1
@@ -130,7 +130,7 @@ extension MapViewController: ScratchCardDelegate {
             if let document = document, document.exists {
                 print(document.documentID, document.data() as Any)
                 
-                if document.data()!["mapPlayTime"] != nil {
+                if document.data()!["totalScore"] != nil {
                 ProfileViewController.totalScore = document.data()!["totalScore"] as! Int
                 }
                 //轉換 Time 格式
