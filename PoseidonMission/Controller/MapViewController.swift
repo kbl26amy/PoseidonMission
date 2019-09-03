@@ -28,7 +28,8 @@ class MapViewController: UIViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
-    
+    var mapCouldTimes: Int = 1
+    let db = Firestore.firestore()
     let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 49 / 414, y: UIScreen.main.bounds.height * 85 / 896, width: 40, height: 40))
     let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 225 / 414, y: UIScreen.main.bounds.height * 45 / 896, width: 40, height: 40))
     let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 158 / 414, y: UIScreen.main.bounds.height * 206 / 896, width: 40, height: 40))
@@ -43,6 +44,9 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkMapTimes()
+        showMap()
+        
         navigationController?.isNavigationBarHidden = true
         mapTitleLabel.adjustsFontSizeToFitWidth = true
         self.mapBackground.image = UIImage(named: "mapbackground")
@@ -50,7 +54,7 @@ class MapViewController: UIViewController {
         
         self.leaveOutlet.layer.cornerRadius = 20
         self.seeRecordButton.layer.cornerRadius = 20
-        showMap()
+
     }
     
     func showMap(){
@@ -107,16 +111,66 @@ extension MapViewController: ScratchCardDelegate {
         
     }
     
+    func isTodayMap() {
+        if mapCouldTimes == 0 {
+            mapchanceLabel.text = "您今日已無探索機會"
+            mapTitleLabel.text = "請明日再來"
+            self.baseMapImage.image = UIImage(named: "nomap")
+            view.bringSubviewToFront(self.baseMapImage)
+    }
+    }
+    
+   
+ func checkMapTimes() {
+    
+        db.collection("user").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+            if let document = document, document.exists {
+                print(document.documentID, document.data() as Any)
+                
+                //轉換 Time 格式
+                
+                if document.data()!["mapPlayTime"] != nil {
+                let timestamp = document.data()!["mapPlayTime"] as! Timestamp
+                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds) )
+                
+                let now:Date = Date()
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = NSTimeZone.local
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                
+                let mapPlayTime = dateFormatter.string(from: converted as Date)
+                let currentTime = dateFormatter.string(from: now as Date)
+                
+                print(mapPlayTime)
+                print(currentTime)
+                
+                if mapPlayTime == currentTime {
+                    self.mapCouldTimes = 0
+                    self.isTodayMap()
+                } else {
+                    self.mapCouldTimes = 1
+                }
+                } else {
+                    self.mapCouldTimes = 1
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
     @objc func showResult(){
         let mapResult = result.randomElement()
         let resultMap = UIImageView(frame: self.baseMapImage.frame)
         
         if mapResult == true {
-           resultMap.image = UIImage(named: "getreward")
-            
-            let db = Firestore.firestore()
+            resultMap.image = UIImage(named: "getreward")
+            mapchanceLabel.text = "您今日已無探索機會"
+            mapTitleLabel.text = "請明日再來"
             
             let scoreRecordData: [String: Any] = ["mapPlayTime":FirebaseFirestore.Timestamp(date:Date()) ,"score": 2, "source": "map" ]
+    
            //存用戶積分紀錄
             db.collection("user").document(Auth.auth().currentUser!.uid).collection("records").document().setData(scoreRecordData){ (error) in
                 if let error = error {
@@ -133,7 +187,17 @@ extension MapViewController: ScratchCardDelegate {
             }
             
         } else {
-           resultMap.image = UIImage(named: "unreward")
+            //update用戶總積分
+            db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    let document = querySnapshot.documents.first
+                    document?.reference.updateData(["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1], completion: { (error) in
+                    })
+                }
+            }
+            mapchanceLabel.text = "您今日已無探索機會"
+            mapTitleLabel.text = "請明日再來"
+            resultMap.image = UIImage(named: "unreward")
         }
         view.addSubview(resultMap)
         view.bringSubviewToFront(resultMap)
@@ -145,3 +209,5 @@ extension MapViewController: ScratchCardDelegate {
     }
     
 }
+
+

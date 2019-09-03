@@ -215,5 +215,5 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
      
         }
     }
-    
 }
+
