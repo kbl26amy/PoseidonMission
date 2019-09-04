@@ -28,6 +28,8 @@
 		62A9647E2314E02600BD4AE0 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9647D2314E02600BD4AE0 /* MissionViewController.swift */; };
 		62A964802314E04200BD4AE0 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9647F2314E04200BD4AE0 /* RankViewController.swift */; };
 		62A964822314E05200BD4AE0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A964812314E05200BD4AE0 /* ProfileViewController.swift */; };
+		62B84B3C231F91EC008C47EE /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B84B3B231F91EC008C47EE /* UIView+extension.swift */; };
+		62B84B3E231F93E1008C47EE /* UIbutton+ Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B84B3D231F93E1008C47EE /* UIbutton+ Extension.swift */; };
 		62E1B0362313B73C007AC76D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0352313B73C007AC76D /* AppDelegate.swift */; };
 		62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0372313B73C007AC76D /* LobbyViewController.swift */; };
 		62E1B0402313B73D007AC76D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B03F2313B73D007AC76D /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		62A9647D2314E02600BD4AE0 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
 		62A9647F2314E04200BD4AE0 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		62A964812314E05200BD4AE0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		62B84B3B231F91EC008C47EE /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		62B84B3D231F93E1008C47EE /* UIbutton+ Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIbutton+ Extension.swift"; sourceTree = "<group>"; };
 		62E1B0322313B73C007AC76D /* PoseidonMission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoseidonMission.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E1B0352313B73C007AC76D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E1B0372313B73C007AC76D /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				62E1B0502313E4EB007AC76D /* UIStoryboard+Extension.swift */,
+				62B84B3B231F91EC008C47EE /* UIView+extension.swift */,
+				62B84B3D231F93E1008C47EE /* UIbutton+ Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -335,9 +341,11 @@
 			files = (
 				62353B802318F53900A4FBA0 /* StoryViewController.swift in Sources */,
 				62A2B813231928CD0099509E /* GetPointTableViewCell.swift in Sources */,
+				62B84B3C231F91EC008C47EE /* UIView+extension.swift in Sources */,
 				62A2B81523192EC60099509E /* missionTableViewCell.swift in Sources */,
 				62353B6623153E3F00A4FBA0 /* MapViewController.swift in Sources */,
 				62E1B05B2314C5CB007AC76D /* PMBaseViewController.swift in Sources */,
+				62B84B3E231F93E1008C47EE /* UIbutton+ Extension.swift in Sources */,
 				62353B7E2317CDC800A4FBA0 /* ScratchMask.swift in Sources */,
 				62E1B04E2313E45A007AC76D /* PMTabarViewController.swift in Sources */,
 				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,

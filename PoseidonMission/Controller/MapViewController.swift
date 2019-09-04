@@ -31,7 +31,16 @@ class MapViewController: PMBaseViewController {
     
     }
     var mapCouldTimes: Int = 1
+    
+    var currewntProgress: String? = "當前探索進度：0%"{
+        
+        didSet{
+              mapchanceLabel.text = self.currewntProgress
+        }
+    }
+    
     let db = Firestore.firestore()
+    
     let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 49 / 414, y: UIScreen.main.bounds.height * 85 / 896, width: 40, height: 40))
     let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 225 / 414, y: UIScreen.main.bounds.height * 45 / 896, width: 40, height: 40))
     let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 158 / 414, y: UIScreen.main.bounds.height * 206 / 896, width: 40, height: 40))
@@ -48,7 +57,7 @@ class MapViewController: PMBaseViewController {
         
         checkMapTimes()
         showMap()
-        
+        mapchanceLabel.text = self.currewntProgress
         navigationController?.isNavigationBarHidden = true
         mapTitleLabel.adjustsFontSizeToFitWidth = true
         self.mapBackground.image = UIImage(named: "mapbackground")
@@ -61,6 +70,7 @@ class MapViewController: PMBaseViewController {
     
     func showMap(){
         view.layoutIfNeeded()
+    
         self.scratchCard = ScratchCard(frame: self.baseMapImage.frame,
                                       mapImage: UIImage(named: "showmap")!,
                                       maskImage: UIImage(named: "unmap")!)
@@ -80,14 +90,15 @@ extension MapViewController: ScratchCardDelegate {
     
     func scratchMoved(progress: Float) {
         print("Current：\(progress)")
-        
-        let percent = String(format: "%.1f", progress * 100)
+
+        let percent = String(format: "%.1f", progress * 1000 / 8 )
         print("Finish：\(percent)%")
+        self.currewntProgress = "當前探索進度：\(percent)%"
         
-        if progress >= 0.1 {
+        if progress >= 0.8 {
         
             mapTitleLabel.text = "請選擇你要航行的地點"
-            
+            mapchanceLabel.text = "五個座標中，僅 2 處有寶藏"
             self.scratchCard?.isHidden = true
             self.view.bringSubviewToFront(self.baseMapImage)
             self.setButton()
@@ -105,7 +116,7 @@ extension MapViewController: ScratchCardDelegate {
                     button.showsTouchWhenHighlighted = true
                     button.setTitle("📌", for: .normal)
                     button.titleLabel?.font = .systemFont(ofSize: 25)
-                    
+                    button.shake()
                     button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
                     self.baseMapImage.addSubview(button)
                     index += 1
