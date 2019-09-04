@@ -484,13 +484,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71y-dF-bik">
-                                <rect key="frame" x="425.5" y="179.5" width="45" height="51.5"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="goodWaterMother">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -506,13 +499,10 @@
                             <constraint firstAttribute="bottom" secondItem="x49-Kr-cEg" secondAttribute="bottom" id="K9a-x7-tpi"/>
                             <constraint firstItem="f9x-eq-LLA" firstAttribute="top" secondItem="xYA-QY-4ca" secondAttribute="top" id="Lmk-DP-q0P"/>
                             <constraint firstItem="pvQ-Wf-uHL" firstAttribute="centerX" secondItem="Kzw-Wf-NwC" secondAttribute="centerX" id="Ntd-e2-K8l"/>
-                            <constraint firstItem="71y-dF-bik" firstAttribute="height" secondItem="xYA-QY-4ca" secondAttribute="height" multiplier="1:2" id="S6y-v9-eVw"/>
                             <constraint firstItem="f9x-eq-LLA" firstAttribute="width" secondItem="xYA-QY-4ca" secondAttribute="width" id="Sbm-wR-A91"/>
                             <constraint firstItem="x49-Kr-cEg" firstAttribute="top" secondItem="Kzw-Wf-NwC" secondAttribute="top" id="Tjg-O9-X78"/>
-                            <constraint firstItem="71y-dF-bik" firstAttribute="centerY" secondItem="xYA-QY-4ca" secondAttribute="centerY" id="VGw-xx-J6k"/>
                             <constraint firstItem="3dF-zT-yQg" firstAttribute="leading" secondItem="xYA-QY-4ca" secondAttribute="trailing" constant="20" id="W4v-OV-zFs"/>
                             <constraint firstItem="xYA-QY-4ca" firstAttribute="height" secondItem="x49-Kr-cEg" secondAttribute="height" multiplier="1:4" id="WdI-BG-XBI"/>
-                            <constraint firstItem="71y-dF-bik" firstAttribute="centerX" secondItem="xYA-QY-4ca" secondAttribute="centerX" id="X4X-nh-0oj"/>
                             <constraint firstItem="x49-Kr-cEg" firstAttribute="leading" secondItem="Kzw-Wf-NwC" secondAttribute="leading" id="Zrd-b7-hV4"/>
                             <constraint firstItem="f9x-eq-LLA" firstAttribute="height" secondItem="xYA-QY-4ca" secondAttribute="height" id="aSP-XW-SV5"/>
                             <constraint firstItem="9na-Zt-kgx" firstAttribute="leading" secondItem="c2O-hm-RfA" secondAttribute="trailing" constant="22.5" id="dze-pc-v9V"/>
@@ -532,13 +522,11 @@
                             <constraint firstItem="c2O-hm-RfA" firstAttribute="bottom" secondItem="9na-Zt-kgx" secondAttribute="bottom" id="v6Q-U9-B0b"/>
                             <constraint firstItem="c2O-hm-RfA" firstAttribute="width" secondItem="xYA-QY-4ca" secondAttribute="width" id="vjW-AF-cQe"/>
                             <constraint firstItem="51h-Dn-sja" firstAttribute="height" secondItem="xYA-QY-4ca" secondAttribute="height" id="wxn-nE-DJW"/>
-                            <constraint firstItem="71y-dF-bik" firstAttribute="width" secondItem="xYA-QY-4ca" secondAttribute="width" multiplier="1:4" id="xin-sT-ebm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rZb-hd-KoA"/>
                     </view>
                     <connections>
                         <outlet property="jellyBackGroundView" destination="x49-Kr-cEg" id="XJO-ln-jik"/>
-                        <outlet property="middleUpFish" destination="71y-dF-bik" id="w8e-qH-3Zo"/>
                         <outlet property="openButtonOutlet" destination="M9J-yG-r9z" id="aff-kj-dD5"/>
                         <outlet property="secondLabel" destination="pvQ-Wf-uHL" id="i66-Wl-Ni0"/>
                         <outletCollection property="holeCollection" destination="f9x-eq-LLA" collectionClass="NSMutableArray" id="d7H-RY-mT2"/>
@@ -588,7 +576,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="goodWaterMother" width="328" height="424"/>
         <image name="open" width="369" height="336"/>
     </resources>
 </document>
