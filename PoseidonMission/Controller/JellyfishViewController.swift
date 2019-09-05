@@ -14,8 +14,12 @@ class JellyfishViewController: PMBaseViewController {
     var timer:Timer?
     var counter = 60
     var fishButtons : [UIButton] = []
+    var score = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
+    @IBAction func leaveButton(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     @IBOutlet weak var secondLabel: UILabel!
     
     @IBOutlet weak var openButtonOutlet: UIButton!
@@ -24,6 +28,8 @@ class JellyfishViewController: PMBaseViewController {
     
     @IBOutlet var holeCollection: [UIImageView]!
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     @IBAction func startAction(_ sender: Any) {
         
         self.timerEanbled()
@@ -31,25 +37,41 @@ class JellyfishViewController: PMBaseViewController {
         openButtonOutlet.isEnabled = false
   
         }
+    
+    @objc func getScore(){
+            score += 150
+            scoreLabel.text = "分數：\(score)"
+    }
+    
+    @objc func decreaseScore() {
+            score -= 150
+            scoreLabel.text = "分數：\(score)"
+    }
 
     func jellyFishSetingAnimation(){
         
         let fishButton = fishButtons.randomElement()
+        
         if counter % 2 == 0 {
         fishButton!.setImage(UIImage(named: "goodWaterMother"), for: .normal)
+        fishButton?.addTarget(self, action: #selector(getScore), for: .touchUpInside)
+        
         }else {
         fishButton!.setImage(UIImage(named: "badWaterMother"), for: .normal)
+        fishButton?.addTarget(self, action: #selector(decreaseScore), for: .touchUpInside)
+            
         }
         view.addSubview(fishButton!)
         loadViewIfNeeded()
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.3, options: [], animations: {
+        
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.3, options: [.allowUserInteraction], animations: {
             fishButton!.alpha = 1
             fishButton!.frame.origin.y -= 50
             fishButton!.transform = CGAffineTransform(scaleX: 2.0, y: 2.0 )
         }){
             if $0
             {
-                UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: .beginFromCurrentState, animations:
+                UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: .allowUserInteraction, animations:
                     {
                         fishButton!.alpha = 0
                         fishButton!.frame.origin.y += 50

@@ -484,6 +484,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkC-py-uJ2">
+                                <rect key="frame" x="52" y="20" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveButton:" destination="6Ls-q3-ZtS" eventType="touchUpInside" id="z6I-TH-WeZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -493,6 +503,7 @@
                             <constraint firstItem="xYA-QY-4ca" firstAttribute="centerX" secondItem="x49-Kr-cEg" secondAttribute="centerX" id="5ak-Ue-TRK"/>
                             <constraint firstItem="3dF-zT-yQg" firstAttribute="width" secondItem="xYA-QY-4ca" secondAttribute="width" id="8aS-VU-XlB"/>
                             <constraint firstItem="9na-Zt-kgx" firstAttribute="width" secondItem="xYA-QY-4ca" secondAttribute="width" id="9Vt-8T-Xwl"/>
+                            <constraint firstItem="x49-Kr-cEg" firstAttribute="top" secondItem="PkC-py-uJ2" secondAttribute="top" constant="-20" id="BNZ-My-6Yz"/>
                             <constraint firstItem="xYA-QY-4ca" firstAttribute="width" secondItem="x49-Kr-cEg" secondAttribute="width" multiplier="1:5" id="GFM-AF-Yg0"/>
                             <constraint firstItem="c2O-hm-RfA" firstAttribute="height" secondItem="xYA-QY-4ca" secondAttribute="height" id="Hyf-Vt-Rd9"/>
                             <constraint firstItem="x49-Kr-cEg" firstAttribute="top" secondItem="pvQ-Wf-uHL" secondAttribute="top" constant="-30" id="JsA-RS-6CX"/>
@@ -516,6 +527,7 @@
                             <constraint firstItem="x49-Kr-cEg" firstAttribute="top" secondItem="gMb-m4-x2t" secondAttribute="top" constant="-30" id="jqZ-cB-13l"/>
                             <constraint firstItem="9na-Zt-kgx" firstAttribute="height" secondItem="xYA-QY-4ca" secondAttribute="height" id="kxc-jJ-xVM"/>
                             <constraint firstItem="xYA-QY-4ca" firstAttribute="leading" secondItem="f9x-eq-LLA" secondAttribute="trailing" constant="21.5" id="oE0-yn-wQo"/>
+                            <constraint firstItem="x49-Kr-cEg" firstAttribute="leading" secondItem="PkC-py-uJ2" secondAttribute="leading" constant="-52" id="oih-n1-Ovq"/>
                             <constraint firstAttribute="trailing" secondItem="M9J-yG-r9z" secondAttribute="trailing" id="r57-A3-WYZ"/>
                             <constraint firstItem="9na-Zt-kgx" firstAttribute="top" secondItem="xYA-QY-4ca" secondAttribute="bottom" constant="30" id="s3w-in-iFp"/>
                             <constraint firstAttribute="bottom" secondItem="M9J-yG-r9z" secondAttribute="bottom" id="u8f-43-Kcd"/>
@@ -528,6 +540,7 @@
                     <connections>
                         <outlet property="jellyBackGroundView" destination="x49-Kr-cEg" id="XJO-ln-jik"/>
                         <outlet property="openButtonOutlet" destination="M9J-yG-r9z" id="aff-kj-dD5"/>
+                        <outlet property="scoreLabel" destination="gMb-m4-x2t" id="zxN-Gz-Hvr"/>
                         <outlet property="secondLabel" destination="pvQ-Wf-uHL" id="i66-Wl-Ni0"/>
                         <outletCollection property="holeCollection" destination="f9x-eq-LLA" collectionClass="NSMutableArray" id="d7H-RY-mT2"/>
                         <outletCollection property="holeCollection" destination="xYA-QY-4ca" collectionClass="NSMutableArray" id="96H-Qt-xcj"/>
