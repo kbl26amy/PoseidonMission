@@ -13,9 +13,11 @@ class JellyfishViewController: PMBaseViewController {
     var timeStop:Int!
     var timer:Timer?
     var counter = 60
+    var index = 0
     var fishButtons : [UIButton] = []
     var score = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var animateButton = UIButton()
     
     @IBAction func leaveButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
@@ -35,55 +37,63 @@ class JellyfishViewController: PMBaseViewController {
         self.timerEanbled()
         
         openButtonOutlet.isEnabled = false
-  
+   
         }
     
-    @objc func getScore(){
+    @objc func getScore(_ sender: UIButton){
+        print("click JellyFish")
+        if sender.imageView?.image == UIImage(named: "badWaterMother"){
             score += 150
             scoreLabel.text = "分數：\(score)"
-    }
-    
-    @objc func decreaseScore() {
+        }else {
             score -= 150
             scoreLabel.text = "分數：\(score)"
+            
+        }
     }
+
 
     func jellyFishSetingAnimation(){
         
-        let fishButton = fishButtons.randomElement()
+        self.animateButton = fishButtons.randomElement()!
+        print(self.animateButton.frame)
         
+//        self.animateButton.addTarget(self, action: #selector(getScore), for: .touchUpInside)
+//
         if counter % 2 == 0 {
-        fishButton!.setImage(UIImage(named: "goodWaterMother"), for: .normal)
-        fishButton?.addTarget(self, action: #selector(getScore), for: .touchUpInside)
-        
+            self.animateButton.setImage(UIImage(named: "goodWaterMother"), for: .normal)
+       
         }else {
-        fishButton!.setImage(UIImage(named: "badWaterMother"), for: .normal)
-        fishButton?.addTarget(self, action: #selector(decreaseScore), for: .touchUpInside)
-            
+            self.animateButton.setImage(UIImage(named: "badWaterMother"), for: .normal)
+        
         }
-        view.addSubview(fishButton!)
+        view.addSubview(self.animateButton)
         loadViewIfNeeded()
         
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.3, options: [.allowUserInteraction], animations: {
-            fishButton!.alpha = 1
-            fishButton!.frame.origin.y -= 50
-            fishButton!.transform = CGAffineTransform(scaleX: 2.0, y: 2.0 )
-        }){
-            if $0
-            {
-                UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: .allowUserInteraction, animations:
-                    {
-                        fishButton!.alpha = 0
-                        fishButton!.frame.origin.y += 50
-                }, completion: nil)
-            }
+        var upAnimation: UIViewPropertyAnimator?
+        var downAnimation: UIViewPropertyAnimator?
         
+        upAnimation = UIViewPropertyAnimator(duration: 1.8, dampingRatio: 30, animations: {
+            self.animateButton.alpha = 1
+            self.animateButton.frame.origin.y -= 50
+            self.animateButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0 )
+        })
+        upAnimation?.startAnimation()
+        upAnimation?.addCompletion() {_ in
+        downAnimation = UIViewPropertyAnimator(duration: 0.1, dampingRatio: 30, animations: {
+                        self.animateButton.alpha = 0
+                        self.animateButton.frame.origin.y += 50
+                })
+        downAnimation?.startAnimation()
         }
     }
     
     func timerEanbled(){
         
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(secondCount), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1,
+                                          target: self,
+                                          selector: #selector(secondCount),
+                                          userInfo: nil, repeats: true)
     }
     
     @objc func secondCount(){
@@ -117,22 +127,24 @@ class JellyfishViewController: PMBaseViewController {
         let rightDownJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         let middleDownJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
-        fishButtons = [middleUpJellyFish, leftUpJellyFish, rightUpJellyFish, middleDownJellyFish, leftDownJellyFish, rightDownJellyFish]
+        fishButtons = [middleUpJellyFish, leftUpJellyFish, rightUpJellyFish,
+                       middleDownJellyFish, leftDownJellyFish, rightDownJellyFish]
         loadViewIfNeeded()
-       
-        var index = 0
+    
         for button in fishButtons{
         
-        view.addSubview(button)
-        button.alpha = 0
-        button.setImage(UIImage(named: "badWaterMother"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalTo: holeCollection[index].widthAnchor, multiplier: 0.25).isActive = true
-        button.heightAnchor.constraint(equalTo: holeCollection[index].heightAnchor, multiplier: 0.5).isActive = true
-        button.centerXAnchor.constraint(equalTo: holeCollection[index].centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: holeCollection[index].centerYAnchor, constant: -50).isActive = true
+            view.addSubview(button)
+            button.addTarget(self, action: #selector(getScore(_:)), for: .touchUpInside)
+            
+            button.alpha = 0
+            button.setImage(UIImage(named: "badWaterMother"), for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.widthAnchor.constraint(equalTo: holeCollection[index].widthAnchor, multiplier: 0.25).isActive = true
+            button.heightAnchor.constraint(equalTo: holeCollection[index].heightAnchor, multiplier: 0.5).isActive = true
+            button.centerXAnchor.constraint(equalTo: holeCollection[index].centerXAnchor).isActive = true
+            button.centerYAnchor.constraint(equalTo: holeCollection[index].centerYAnchor, constant: -50).isActive = true
       
-        index += 1
+            index += 1
         }
     }
     
@@ -150,5 +162,6 @@ class JellyfishViewController: PMBaseViewController {
         super.viewDidLoad()
         
         setJellyFishView()
+        
     }
 }
