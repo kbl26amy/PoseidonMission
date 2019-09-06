@@ -17,7 +17,6 @@ class JellyfishViewController: PMBaseViewController {
     var fishButtons : [UIButton] = []
     var score = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var animateButton = UIButton()
     
     @IBAction func leaveButton(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
@@ -52,37 +51,34 @@ class JellyfishViewController: PMBaseViewController {
         }
     }
 
-
     func jellyFishSetingAnimation(){
         
-        self.animateButton = fishButtons.randomElement()!
-        print(self.animateButton.frame)
-        
-//        self.animateButton.addTarget(self, action: #selector(getScore), for: .touchUpInside)
-//
+        let animateButton = fishButtons.randomElement()!
+        print(animateButton.frame)
+
         if counter % 2 == 0 {
-            self.animateButton.setImage(UIImage(named: "goodWaterMother"), for: .normal)
+            animateButton.setImage(UIImage(named: "goodWaterMother"), for: .normal)
        
         }else {
-            self.animateButton.setImage(UIImage(named: "badWaterMother"), for: .normal)
+            animateButton.setImage(UIImage(named: "badWaterMother"), for: .normal)
         
         }
-        view.addSubview(self.animateButton)
+        view.addSubview(animateButton)
         loadViewIfNeeded()
         
         var upAnimation: UIViewPropertyAnimator?
         var downAnimation: UIViewPropertyAnimator?
         
-        upAnimation = UIViewPropertyAnimator(duration: 1.8, dampingRatio: 30, animations: {
-            self.animateButton.alpha = 1
-            self.animateButton.frame.origin.y -= 50
-            self.animateButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0 )
+        upAnimation = UIViewPropertyAnimator(duration: 1.9, dampingRatio: 30, animations: {
+            animateButton.alpha = 1
+            animateButton.frame.origin.y -= 50
+            animateButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0 )
         })
         upAnimation?.startAnimation()
         upAnimation?.addCompletion() {_ in
         downAnimation = UIViewPropertyAnimator(duration: 0.1, dampingRatio: 30, animations: {
-                        self.animateButton.alpha = 0
-                        self.animateButton.frame.origin.y += 50
+                        animateButton.alpha = 0
+                        animateButton.frame.origin.y += 50
                 })
         downAnimation?.startAnimation()
         }
@@ -103,6 +99,27 @@ class JellyfishViewController: PMBaseViewController {
             secondLabel.text = "\(counter)";
           
         }else{
+            
+            let controller = UIAlertController(title: "遊戲結束", message: "您的分數為\(score)，是否直接計算點數？", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
+                print("開始計算分數")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            
+            controller.addAction(okAction)
+            
+            let cancelAction = UIAlertAction(title: "再玩一次", style:.default ){ (_) in
+                self.counter = 60
+                self.score = 0
+                self.scoreLabel.text = "分數：0"
+                self.secondLabel.text = "60"
+                self.openButtonOutlet.isEnabled = true
+         
+            }
+            controller.addAction(cancelAction)
+            
+            present(controller, animated: true, completion: nil)
+            
             secondLabel.text = "時間到";
             self.timer?.invalidate()
             counter = 60
@@ -111,8 +128,6 @@ class JellyfishViewController: PMBaseViewController {
     
     func setJellyFishView()  {
         navigationController?.isNavigationBarHidden = true
-        
-        appDelegate.interfaceOrientations = [.landscapeLeft, .landscapeRight]
         
         jellyBackGroundView.image = UIImage(named: "jellyfishbackground")
         
@@ -161,6 +176,7 @@ class JellyfishViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        appDelegate.interfaceOrientations = [.landscapeLeft, .landscapeRight]
         setJellyFishView()
         
     }
