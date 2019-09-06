@@ -15,6 +15,9 @@ class StoryViewController: PMBaseViewController {
     @IBOutlet weak var chalengeButtonLayout: UIButton!
     @IBOutlet weak var backImage: UIImageView!
     
+    var targetText: String = ""
+    var storyText: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backImage.layer.cornerRadius = 15
@@ -23,6 +26,8 @@ class StoryViewController: PMBaseViewController {
         backgroundImage.image = UIImage(named: "background")
         storyTextLabel.adjustsFontSizeToFitWidth = true
         targetLabel.adjustsFontSizeToFitWidth = true
+        targetLabel.text = targetText
+        storyTextLabel.text = storyText
     }
     
     @IBAction func leaveButton(_ sender: Any) {
@@ -31,10 +36,21 @@ class StoryViewController: PMBaseViewController {
     }
     
     @IBAction func goToChallenge(_ sender: Any) {
+    
+        switch targetLabel.text {
+        case StoryContent.mapTarget:
+            let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
+            self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+            
+            case StoryContent.jellyFishTarget:
+                let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
+                self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+        default:
+            let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionController")
+            self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+        }
         
-       let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
-        self.navigationController?.pushViewController(goToMissionViewController, animated: true)
-   
+       
     }
     
 

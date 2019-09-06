@@ -135,7 +135,6 @@ extension MapViewController: ScratchCardDelegate {
     
    
  func checkMapTimes() {
-    
         db.collection("user").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
             
             if let document = document, document.exists {

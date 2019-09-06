@@ -21,6 +21,7 @@
 		62353B7C2317CD6400A4FBA0 /* ScratchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B7B2317CD6400A4FBA0 /* ScratchCard.swift */; };
 		62353B7E2317CDC800A4FBA0 /* ScratchMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B7D2317CDC800A4FBA0 /* ScratchMask.swift */; };
 		62353B802318F53900A4FBA0 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B7F2318F53900A4FBA0 /* StoryViewController.swift */; };
+		6286FF932322531F00C48899 /* StoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FF922322531F00C48899 /* StoryContent.swift */; };
 		62A2B813231928CD0099509E /* GetPointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2B812231928CD0099509E /* GetPointTableViewCell.swift */; };
 		62A2B81523192EC60099509E /* missionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2B81423192EC50099509E /* missionTableViewCell.swift */; };
 		62A964792314D48600BD4AE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0392313B73C007AC76D /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		62353B7B2317CD6400A4FBA0 /* ScratchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchCard.swift; sourceTree = "<group>"; };
 		62353B7D2317CDC800A4FBA0 /* ScratchMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchMask.swift; sourceTree = "<group>"; };
 		62353B7F2318F53900A4FBA0 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		6286FF922322531F00C48899 /* StoryContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContent.swift; sourceTree = "<group>"; };
 		62A2B812231928CD0099509E /* GetPointTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPointTableViewCell.swift; sourceTree = "<group>"; };
 		62A2B81423192EC50099509E /* missionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = missionTableViewCell.swift; sourceTree = "<group>"; };
 		62A9647D2314E02600BD4AE0 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				62353B7B2317CD6400A4FBA0 /* ScratchCard.swift */,
 				62353B7D2317CDC800A4FBA0 /* ScratchMask.swift */,
 				62A2B81423192EC50099509E /* missionTableViewCell.swift */,
+				6286FF922322531F00C48899 /* StoryContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				62A2B813231928CD0099509E /* GetPointTableViewCell.swift in Sources */,
 				62B84B3C231F91EC008C47EE /* UIView+extension.swift in Sources */,
 				62A2B81523192EC60099509E /* missionTableViewCell.swift in Sources */,
+				6286FF932322531F00C48899 /* StoryContent.swift in Sources */,
 				62353B6623153E3F00A4FBA0 /* MapViewController.swift in Sources */,
 				62E1B05B2314C5CB007AC76D /* PMBaseViewController.swift in Sources */,
 				62B84B3E231F93E1008C47EE /* UIbutton+ Extension.swift in Sources */,

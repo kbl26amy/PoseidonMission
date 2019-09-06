@@ -193,7 +193,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        var goToMissionViewController = UIViewController()
+        let goStoryViewController = UIStoryboard.mission.instantiateViewController(withIdentifier: "StoryViewController") as! StoryViewController
         
         if Auth.auth().currentUser != nil {
         if collectionView == homeCollectionView {
@@ -201,17 +201,20 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         switch indexPath.row {
             
         case 2:
-            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "StoryViewController")
+           goStoryViewController.storyText = StoryContent.mapStory
+            goStoryViewController.targetText = StoryContent.mapTarget
+          
         case 4:
-            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
+          goStoryViewController.storyText = StoryContent.jellyFishStory
+            goStoryViewController.targetText = StoryContent.jellyFishTarget
         case 3:
-            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController")
+           goStoryViewController.storyTextLabel.text = ""
         case 0:
-            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController")
+           goStoryViewController.storyTextLabel.text = ""
         default:
-           goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController")
+            print("no view")
         }
-             self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+            self.navigationController?.pushViewController(goStoryViewController, animated: true)
      
         }
         }else {
