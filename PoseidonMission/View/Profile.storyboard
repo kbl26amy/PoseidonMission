@@ -13,7 +13,7 @@
         <!--會員-->
         <scene sceneID="u65-x8-2YP">
             <objects>
-                <viewController id="zND-Cg-2uh" customClass="ProfileViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zND-Cg-2uh" customClass="ProfileViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XqW-YJ-62n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

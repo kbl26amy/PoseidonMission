@@ -36,19 +36,24 @@ class StoryViewController: PMBaseViewController {
     }
     
     @IBAction func goToChallenge(_ sender: Any) {
+        
+        var goToMissionViewController = UIViewController()
     
         switch targetLabel.text {
-        case StoryContent.mapTarget:
-            let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
-            self.navigationController?.pushViewController(goToMissionViewController, animated: true)
             
-            case StoryContent.jellyFishTarget:
-                let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
-                self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+        case StoryContent.mapTarget:
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
+           
+        case StoryContent.jellyFishTarget:
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
+            
+        case StoryContent.fishingTarget:
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController")
+            
         default:
-            let goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionController")
-            self.navigationController?.pushViewController(goToMissionViewController, animated: true)
+            goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController")
         }
+        self.navigationController?.pushViewController(goToMissionViewController, animated: true)
         
        
     }

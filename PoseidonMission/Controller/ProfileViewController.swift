@@ -26,6 +26,8 @@ class ProfileViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
   
+        navigationController?.isToolbarHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
 
 }

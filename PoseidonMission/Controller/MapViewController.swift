@@ -30,6 +30,14 @@ class MapViewController: PMBaseViewController {
 //        backToRoot()
     
     }
+    
+    @IBAction func goToRecordPage(_ sender: Any) {
+        
+        let userViewController = UIStoryboard.profile.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+       
+        navigationController?.pushViewController(userViewController, animated: true)
+    }
+    
     var mapCouldTimes: Int = 1
     
     var currewntProgress: String? = "當前探索進度：0%"{
@@ -224,6 +232,10 @@ extension MapViewController: ScratchCardDelegate {
         print("End：\(point)")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isToolbarHidden = false
+    }
 }
 
 

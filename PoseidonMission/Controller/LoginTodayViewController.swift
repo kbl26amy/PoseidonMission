@@ -10,10 +10,16 @@ import UIKit
 
 class LoginTodayViewController: UIViewController {
 
+    
+    @IBAction func closeLoginToday(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    @IBOutlet weak var loginTodayView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       loginTodayView.layer.cornerRadius = 20
     }
     
 

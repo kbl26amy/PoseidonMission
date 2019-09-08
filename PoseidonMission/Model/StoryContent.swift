@@ -17,5 +17,8 @@ struct StoryContent {
     
     static let jellyFishTarget = "目標：找到邪惡水母擊垮它"
     
+    static let fishingStory = "統御大海的你，必須讓所有魚類都聽你號令，能否獲得魚兒的忠誠，需要考驗你的反應與速度，展現你的實力讓它們呈服吧！"
+    
+    static let fishingTarget = "目標：在時間內釣起最多魚"
     
 }

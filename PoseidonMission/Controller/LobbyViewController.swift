@@ -106,6 +106,7 @@ class LobbyViewController: PMBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
          navigationController?.isNavigationBarHidden = false
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -191,32 +192,75 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         homeCollectionView.collectionViewLayout = flowLayout
     }
     
+    func shareClickButton(_ sender: Any) {
+        
+        let actionSheet = UIAlertController(title: "點擊分享", message: "分享 APP 給你的好友", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        let facebookPostAction = UIAlertAction(title: "分享", style: UIAlertAction.Style.default) { (action) -> Void in
+            
+            let shareMessage = URL(string: "https://trello.com/b/O8akxJeO/波賽頓出任務")
+            let shareViewController = UIActivityViewController(activityItems: [shareMessage as Any], applicationActivities: nil)
+            
+            shareViewController.excludedActivityTypes = [UIActivity.ActivityType.mail,UIActivity.ActivityType.airDrop,UIActivity.ActivityType.message]
+            
+            self.present(shareViewController, animated: true, completion: nil)
+            
+        }
+        
+        let dismissAction = UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel) { (action) -> Void in
+            
+        }
+        
+        actionSheet.addAction(facebookPostAction)
+        actionSheet.addAction(dismissAction)
+        
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let goStoryViewController = UIStoryboard.mission.instantiateViewController(withIdentifier: "StoryViewController") as! StoryViewController
         
         if Auth.auth().currentUser != nil {
-        if collectionView == homeCollectionView {
             
+        if collectionView == homeCollectionView {
+
         switch indexPath.row {
             
+        case 0:
+            let loginTodayController = UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController") as! LoginTodayViewController 
+            loginTodayController.modalPresentationStyle = .overCurrentContext
+            loginTodayController.modalTransitionStyle = .crossDissolve
+            present(loginTodayController, animated: true, completion: nil)
+            
+        case 1:
+            
+            shareClickButton(self)
         case 2:
-           goStoryViewController.storyText = StoryContent.mapStory
+            goStoryViewController.storyText = StoryContent.mapStory
             goStoryViewController.targetText = StoryContent.mapTarget
           
-        case 4:
-          goStoryViewController.storyText = StoryContent.jellyFishStory
-            goStoryViewController.targetText = StoryContent.jellyFishTarget
+            self.navigationController?.pushViewController(goStoryViewController, animated: true)
+            
         case 3:
-           goStoryViewController.storyTextLabel.text = ""
-        case 0:
-           goStoryViewController.storyTextLabel.text = ""
+            goStoryViewController.storyText = StoryContent.fishingStory
+            goStoryViewController.targetText = StoryContent.fishingTarget
+            
+            self.navigationController?.pushViewController(goStoryViewController, animated: true)
+            
+        case 4:
+            goStoryViewController.storyText = StoryContent.jellyFishStory
+            goStoryViewController.targetText = StoryContent.jellyFishTarget
+        
+            self.navigationController?.pushViewController(goStoryViewController, animated: true)
+            
         default:
             print("no view")
-        }
-            self.navigationController?.pushViewController(goStoryViewController, animated: true)
-     
-        }
+            
+            }
+            }
+            
         }else {
             guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController() else { return }
             
