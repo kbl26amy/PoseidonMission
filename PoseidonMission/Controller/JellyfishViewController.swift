@@ -21,8 +21,10 @@ class JellyfishViewController: PMBaseViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func leaveButton(_ sender: Any) {
+        appDelegate.interfaceOrientations = .portrait
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
     @IBOutlet weak var secondLabel: UILabel!
     
     @IBOutlet weak var openButtonOutlet: UIButton!
@@ -43,6 +45,7 @@ class JellyfishViewController: PMBaseViewController {
     
     @objc func getScore(_ sender: UIButton){
         print("click JellyFish")
+        
         if sender.imageView?.image == UIImage(named: "badWaterMother"){
             sender.isEnabled = true
             score += 150
@@ -182,8 +185,6 @@ class JellyfishViewController: PMBaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
- 
-        appDelegate.interfaceOrientations = .portrait
         
         if self.timer != nil{
             self.timer?.invalidate()

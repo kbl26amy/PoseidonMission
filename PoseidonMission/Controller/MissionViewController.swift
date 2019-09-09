@@ -19,6 +19,7 @@ class MissionViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       missionTableView.backgroundView = UIImageView(image: UIImage(named: "missionbackground"))
        
     }
     
@@ -28,12 +29,19 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         return 5
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = missionTableView.dequeueReusableCell(
-            withIdentifier: String(describing: missionTableViewCell.self),
+            withIdentifier: String(describing: MissionTableViewCell.self),
             for: indexPath)
         
-        guard let missionCell = cell as? missionTableViewCell else { return cell }
+        guard let missionCell = cell as? MissionTableViewCell else { return cell }
+        
+        missionCell.backgroundView = UIImageView(image: UIImage(named: "missiontask"))
+        missionCell.missionImage.image = UIImage(named: "mapmission")
         return missionCell
     }
     

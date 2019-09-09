@@ -204,7 +204,7 @@ extension MapViewController: ScratchCardDelegate {
                 db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
-                    document?.reference.updateData(["totalScore": ProfileViewController.totalScore + 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1], completion: { (error) in
+                    document?.reference.updateData(["totalScore": ProfileViewController.totalScore + 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in
                     })
                 }
             }
@@ -214,7 +214,7 @@ extension MapViewController: ScratchCardDelegate {
             db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
-                    document?.reference.updateData(["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"mapTimes": 1], completion: { (error) in
+                    document?.reference.updateData(["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in
                     })
                 }
             }

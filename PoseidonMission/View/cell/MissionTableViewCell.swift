@@ -8,15 +8,17 @@
 
 import UIKit
 
-class missionTableViewCell: UITableViewCell {
+class MissionTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var missionBannerImage: UIImageView!
+   
+    @IBOutlet weak var missionImage: UIImageView!
     
-    @IBOutlet weak var missionTitleLabel: UILabel!
+
+    @IBOutlet weak var missionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
+        missionImage.image = UIImage(named: "")
+            }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

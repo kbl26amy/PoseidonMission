@@ -9,12 +9,27 @@
 import Foundation
 
 struct UserData {
-    var email: String
-    var userName: String
-    var totalScore: Int
-    var mapPlayTime:String
-    var mapTimes:Int
-    var jellyFishPlayTime:String
-    var jellyFishHighest:Int 
     
+    let email: String
+    
+    let userName: String
+    
+    var totalScore: Int = 0
+    
+    var mapPlayTime: String = ""
+    
+    var jellyFishPlayTime: String = ""
+    
+    var jellyFishHighest: Int = 0
+    
+    var fishingHighest: Int = 0
+   
+    var fishingPlayTime: String = ""
+    
+    init(email: String, name: String) {
+        
+        self.email = email
+        
+        self.userName = name
+    }
 }

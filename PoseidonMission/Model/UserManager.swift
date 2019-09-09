@@ -10,23 +10,48 @@ import Foundation
 
 class UserManager {
     
-    private var document : UserData?
-    static let userManager = UserManager()
+    var user : UserData?
     
-//    func getUserData() ->UserData{
-//
-//        var doc = FireBaseHelper.getUserData()
+    static let shared = UserManager()
     
-//        if doc != nil {
-
-//            guard doc!.data()!["email"] != nil else {
-//                document.email = doc!.data()["email"] as String
-//            }
-//
-//            document.totalScore = doc!.data()["totalScore"] as Int
-//            document.jellyFishHighest = doc!.data()["totalScore"] as! Int
-//        }
-//        return document
-//}
-//}
+    func getUserData(completion: @escaping (UserData?) -> Void) {
+        
+        FireBaseHelper.getUserData(completion: { snapshot in
+            
+            guard let doc = snapshot,
+                  let email = doc.data()?["email"] as? String,
+                  let name = doc.data()?["userName"] as? String,
+                  let score = doc.data()?["totalScore"] as? Int,
+                  let jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? String,
+                  let mapPlayTime = doc.data()?["mapPlayTime"] as? String,
+                  let jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int,
+                  let fishingHighest = doc.data()?["fishingHighest"] as? Int,
+                  let fishingPlayTime = doc.data()?["fishingPlayTime"] as? String
+                
+            else {
+            
+                print("error")
+                
+                completion(nil)
+                
+                return
+            }
+            
+            //存到變數
+            var userData = UserData(email: email, name: name)
+            
+            userData.totalScore = score
+            userData.jellyFishPlayTime = jellyFishPlayTime
+            userData.jellyFishHighest = jellyFishHighest
+            userData.mapPlayTime = mapPlayTime
+            userData.fishingHighest = fishingHighest
+            userData.fishingPlayTime = fishingPlayTime
+            
+            self.user = userData
+            
+            completion(userData)
+            
+        })
+    }
 }
+
