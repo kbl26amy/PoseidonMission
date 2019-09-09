@@ -124,7 +124,6 @@ extension MapViewController: ScratchCardDelegate {
                     button.showsTouchWhenHighlighted = true
                     button.setTitle("📌", for: .normal)
                     button.titleLabel?.font = .systemFont(ofSize: 25)
-                    button.shake()
                     button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
                     self.baseMapImage.addSubview(button)
                     index += 1

@@ -165,7 +165,6 @@ class JellyfishViewController: PMBaseViewController {
                         
                     }else {
                         button.isEnabled = true
-                        button.shake()
                         
                     }
 
@@ -213,13 +212,22 @@ class JellyfishViewController: PMBaseViewController {
     //update用戶總積分
         db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
+                
                 let document = querySnapshot.documents.first
-                document?.reference.updateData(["totalScore": ProfileViewController.totalScore + self.score/1000,"jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in
+                if document!.data()["jellyFishHightest"] != nil {
+                    if self.score > document!.data()["jellyFishHightest"] as! Int {
+                        ProfileViewController.jellyFishHighest = self.score
+                    }
+                }else{
+                    ProfileViewController.jellyFishHighest = self.score
+                }
+                
+                document?.reference.updateData(["totalScore": ProfileViewController.totalScore + self.score/1000,"jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"jellyFishHightest":ProfileViewController.jellyFishHighest], completion: { (error) in
                 })
             }
         }
         }
-    
+   
     func checkJellyFishTimes() {
         let db = Firestore.firestore()
         db.collection("user").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
@@ -230,6 +238,7 @@ class JellyfishViewController: PMBaseViewController {
                 if document.data()!["totalScore"] != nil {
                     ProfileViewController.totalScore = document.data()!["totalScore"] as! Int
                 }
+                
                 //轉換 Time 格式
                 
                 if document.data()!["jellyFishPlayTime"] != nil {

@@ -74,43 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PoseidonMission/Controller/JellyfishViewController.swift"
-            timestampString = "589553487.388581"
+            timestampString = "589619846.469805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "setJellyFishView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PoseidonMission/Controller/JellyfishViewController.swift"
-            timestampString = "589553487.388658"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "isTodayJellyFish()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PoseidonMission/Controller/JellyfishViewController.swift"
-            timestampString = "589553487.388698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "checkJellyFishTimes()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PoseidonMission/Controller/JellyfishViewController.swift"
-            timestampString = "589553487.388736"
+            timestampString = "589619846.4698679"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "checkJellyFishTimes()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,43 +106,58 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PoseidonMission/Controller/JellyfishViewController.swift"
-            timestampString = "589553487.388772"
+            timestampString = "589619846.46992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "isTodayJellyFish()"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "saveData()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PoseidonMission.JellyfishViewController.isTodayJellyFish() -&gt; ()"
+                  symbolName = "closure #2 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PoseidonMission.JellyfishViewController.saveData() -&gt; ()"
                   moduleName = "PoseidonMission"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangyahan/IOSproject/PoseidonMission/PoseidonMission/Controller/JellyfishViewController.swift"
-                  timestampString = "589449858.243769"
+                  timestampString = "589618731.703668"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
-                  offsetFromSymbolStart = "488">
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "2116">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in PoseidonMission.JellyfishViewController.isTodayJellyFish() -&gt; ()"
+                  symbolName = "closure #2 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PoseidonMission.JellyfishViewController.saveData() -&gt; ()"
                   moduleName = "PoseidonMission"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangyahan/IOSproject/PoseidonMission/PoseidonMission/Controller/JellyfishViewController.swift"
-                  timestampString = "589449858.245489"
+                  timestampString = "589618731.7062221"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "40">
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "2546">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PoseidonMission.JellyfishViewController.saveData() -&gt; ()"
+                  moduleName = "PoseidonMission"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangyahan/IOSproject/PoseidonMission/PoseidonMission/Controller/JellyfishViewController.swift"
+                  timestampString = "589618731.707883"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "224"
+                  endingLineNumber = "224"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
