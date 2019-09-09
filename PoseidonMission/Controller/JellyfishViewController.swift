@@ -114,6 +114,7 @@ class JellyfishViewController: PMBaseViewController {
             let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
                 print("開始計算分數")
                 self.saveData()
+                self.appDelegate.interfaceOrientations = .portrait
                 self.navigationController?.popToRootViewController(animated: true)
             }
             
@@ -273,6 +274,7 @@ class JellyfishViewController: PMBaseViewController {
         if jellyFishCouldTimes == 0 {
             let controller = UIAlertController(title: "沒有次數", message: "您今日已經遊玩過了！", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "好", style: .default) { (_) in
+                self.appDelegate.interfaceOrientations = .portrait
                 self.navigationController?.popToRootViewController(animated: true)
             }
             
