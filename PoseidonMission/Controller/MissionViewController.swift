@@ -41,10 +41,11 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         guard let missionCell = cell as? MissionTableViewCell else { return cell }
         
         missionCell.backgroundView = UIImageView(image: UIImage(named: "missiontask"))
-        missionCell.missionImage.image = UIImage(named: "mapmission")
+        missionCell.missionImage.image = UIImage(named: MissionContent.missionPictures[indexPath.row].rawValue)
         missionCell.rewardView.layer.cornerRadius = 5
         missionCell.limitTimesView.layer.cornerRadius = 5
         missionCell.missionInstroduction.text = MissionContent.missionIntroduction[indexPath.row]
+        missionCell.missionTitle.text = MissionContent.missionTitles[indexPath.row].rawValue
         return missionCell
     }
     
