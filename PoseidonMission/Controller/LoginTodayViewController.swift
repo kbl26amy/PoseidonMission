@@ -15,22 +15,22 @@ class LoginTodayViewController: UIViewController {
         
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBOutlet weak var leftUpBlueView: UIView!
+    
+    @IBOutlet weak var rightDownView: UIView!
+    @IBOutlet weak var leftDownView: UIView!
+    @IBOutlet weak var rightUpBlueView: UIView!
     @IBOutlet weak var loginTodayView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       loginTodayView.layer.cornerRadius = 20
+        loginTodayView.layer.cornerRadius = 20
+        leftUpBlueView.layer.cornerRadius = 5
+        rightUpBlueView.layer.cornerRadius = 5
+        rightDownView.layer.cornerRadius = 5
+        leftDownView.layer.cornerRadius = 5
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

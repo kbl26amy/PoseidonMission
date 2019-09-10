@@ -99,8 +99,6 @@ class LobbyViewController: PMBaseViewController {
 
         setupCollectionViewLayout()
         runlight ()
-      
-//        self.bannerCollectionView.showsVerticalScrollIndicator = false
         
     }
     
