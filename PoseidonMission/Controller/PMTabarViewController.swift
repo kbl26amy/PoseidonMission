@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 private enum Tab {
     
@@ -87,7 +88,29 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
  
         UITabBar.appearance().barTintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
 
-
+        delegate = self
     }
-
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        guard let navVC = viewController as? UINavigationController,
+            let profileViewController = navVC.viewControllers.first as? ProfileViewController
+            else { return true }
+        
+        if Auth.auth().currentUser != nil{
+            
+            UserManager.shared.getUserData(completion:  { user in
+                profileViewController.userData = user
+            })
+            
+        } else {
+          
+           let loginViewController = UIStoryboard.auth.instantiateViewController(withIdentifier: "AuthViewController")
+            
+            present(loginViewController, animated: true, completion: nil)
+            
+            return false
+        }
+        return true
+    }
 }

@@ -26,16 +26,18 @@ class MapViewController: PMBaseViewController {
     
     @IBAction func leaveButton(_ sender: Any) {
         
-       self.navigationController?.popToRootViewController(animated: true)
-//        backToRoot()
+        self.navigationController?.popToRootViewController(animated: true)
     
     }
     
     @IBAction func goToRecordPage(_ sender: Any) {
-        
-        let userViewController = UIStoryboard.profile.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-       
-        navigationController?.pushViewController(userViewController, animated: true)
+   
+//        let appdelegate = UIApplication.shared.delegate
+//
+//        let tabBarController = appdelegate?.window??.rootViewController as? UITabBarController
+
+        self.tabBarController?.selectedIndex = 3
+
     }
     
     var mapCouldTimes: Int = 1
@@ -234,6 +236,7 @@ extension MapViewController: ScratchCardDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isToolbarHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
 }
 

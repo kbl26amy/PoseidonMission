@@ -40,8 +40,8 @@ class AuthViewController: PMBaseViewController {
     @IBAction func cancelRegisterAction(_ sender: Any) {
         
         print("cancel")
-        self.navigationController?.popViewController(animated: true)
-        
+        self.backToRoot()
+
     }
     
   
@@ -117,7 +117,6 @@ class AuthViewController: PMBaseViewController {
                 if error == nil {
                     print("successfully signed up")
                     let db = Firestore.firestore()
-                   
                     
                     let data: [String: Any] = ["userName": self.userNameTextfield.text!,"email": self.emailTextField.text! ]
                     db.collection("user").document((Auth.auth().currentUser?.uid)!).setData(data){ (error) in
@@ -127,8 +126,7 @@ class AuthViewController: PMBaseViewController {
                             print(Auth.auth().currentUser?.uid as Any)
                         }
                     }
-                    
-                    self.navigationController?.popViewController(animated: true)
+                    self.backToRoot()
                     
                 } else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -159,7 +157,7 @@ class AuthViewController: PMBaseViewController {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
-                    self.navigationController?.popViewController(animated: true)
+                    self.backToRoot()
                 
                 } else {
                     

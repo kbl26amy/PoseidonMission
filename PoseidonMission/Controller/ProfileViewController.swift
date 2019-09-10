@@ -10,6 +10,14 @@ import UIKit
 
 class ProfileViewController: PMBaseViewController  {
     
+    var userData: UserData? {
+        didSet{
+            userName.text = userData?.userName
+            userEmail.text = userData?.email
+            userTotalPoint.text = "暢遊卷： \(String(describing: userData?.totalScore))張"
+        }
+    }
+    
     static var totalScore: Int = 0
     static var jellyFishHighest: Int = 0
     static var fishingHighest: Int = 0
@@ -27,14 +35,12 @@ class ProfileViewController: PMBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+      
         navigationController?.isToolbarHidden = false
         tabBarController?.tabBar.isHidden = false
     }
 
 }
-
-
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,6 +53,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             for: indexPath)
         
         guard let getPointCell = cell as? GetPointTableViewCell else { return cell }
+        
+        
         return getPointCell
     }
     

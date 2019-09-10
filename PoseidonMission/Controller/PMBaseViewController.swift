@@ -111,6 +111,12 @@ extension UIViewController {
             (self as! UINavigationController).popToRootViewController(animated: false)
         }
         
+        if  ((self.navigationController?.viewControllers.first) != nil){
+            
+            self.navigationController!.popToRootViewController(animated: false)
+        }
+
+        
         completion?()
     }
 }

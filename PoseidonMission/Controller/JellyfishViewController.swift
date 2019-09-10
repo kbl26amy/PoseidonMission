@@ -22,7 +22,8 @@ class JellyfishViewController: PMBaseViewController {
     
     @IBAction func leaveButton(_ sender: Any) {
         appDelegate.interfaceOrientations = .portrait
-        self.navigationController?.popToRootViewController(animated: true)
+        
+        self.backToRoot()
     }
     
     @IBOutlet weak var secondLabel: UILabel!
@@ -115,7 +116,7 @@ class JellyfishViewController: PMBaseViewController {
                 print("開始計算分數")
                 self.saveData()
                 self.appDelegate.interfaceOrientations = .portrait
-                self.navigationController?.popToRootViewController(animated: true)
+                self.backToRoot()
             }
             
             controller.addAction(okAction)
@@ -275,7 +276,7 @@ class JellyfishViewController: PMBaseViewController {
             let controller = UIAlertController(title: "沒有次數", message: "您今日已經遊玩過了！", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "好", style: .default) { (_) in
                 self.appDelegate.interfaceOrientations = .portrait
-                self.navigationController?.popToRootViewController(animated: true)
+                self.backToRoot()
             }
             
             controller.addAction(okAction)

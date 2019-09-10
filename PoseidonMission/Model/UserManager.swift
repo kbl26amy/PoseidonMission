@@ -20,14 +20,8 @@ class UserManager {
             
             guard let doc = snapshot,
                   let email = doc.data()?["email"] as? String,
-                  let name = doc.data()?["userName"] as? String,
-                  let score = doc.data()?["totalScore"] as? Int,
-                  let jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? String,
-                  let mapPlayTime = doc.data()?["mapPlayTime"] as? String,
-                  let jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int,
-                  let fishingHighest = doc.data()?["fishingHighest"] as? Int,
-                  let fishingPlayTime = doc.data()?["fishingPlayTime"] as? String
-                
+                  let name = doc.data()?["userName"] as? String
+            
             else {
             
                 print("error")
@@ -40,12 +34,12 @@ class UserManager {
             //存到變數
             var userData = UserData(email: email, name: name)
             
-            userData.totalScore = score
-            userData.jellyFishPlayTime = jellyFishPlayTime
-            userData.jellyFishHighest = jellyFishHighest
-            userData.mapPlayTime = mapPlayTime
-            userData.fishingHighest = fishingHighest
-            userData.fishingPlayTime = fishingPlayTime
+            userData.totalScore = doc.data()?["totalScore"] as? Int ?? 0
+            userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? String ?? "never play"
+            userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int ?? 0
+            userData.mapPlayTime = doc.data()?["mapPlayTime"] as? String ?? "never play"
+            userData.fishingHighest = doc.data()?["fishingHighest"] as? Int ?? 0
+            userData.fishingPlayTime = doc.data()?["fishingPlayTime"] as? String ?? "never play"
             
             self.user = userData
             
