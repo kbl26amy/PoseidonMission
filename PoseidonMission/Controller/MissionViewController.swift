@@ -44,6 +44,7 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         missionCell.missionImage.image = UIImage(named: "mapmission")
         missionCell.rewardView.layer.cornerRadius = 5
         missionCell.limitTimesView.layer.cornerRadius = 5
+        missionCell.missionInstroduction.text = MissionContent.missionIntroduction[indexPath.row]
         return missionCell
     }
     

@@ -153,6 +153,7 @@
                                         <connections>
                                             <outlet property="limitTimesView" destination="Ha6-dE-Bvz" id="hIf-g6-hCj"/>
                                             <outlet property="missionImage" destination="z8P-Wh-vwK" id="cmk-vj-4Sy"/>
+                                            <outlet property="missionInstroduction" destination="dfj-QV-HEL" id="fvs-HW-cZs"/>
                                             <outlet property="missionLabel" destination="r7D-ZE-wn1" id="FrN-0n-Ch0"/>
                                             <outlet property="rewardView" destination="62r-pJ-CBp" id="RkG-7k-4ht"/>
                                         </connections>
@@ -392,8 +393,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="saf-Vn-wuV">
                                 <rect key="frame" x="41.5" y="298.5" width="331" height="299"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成功簽到 ＋2 點數，已連續簽到1天" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-0K-WUR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-0K-WUR">
                                         <rect key="frame" x="36" y="24" width="259" height="57.5"/>
+                                        <string key="text">成功簽到 ＋2 暢遊卷
+已連續簽到1天</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -427,8 +430,8 @@
                                                 <rect key="frame" x="0.0" y="26" width="123" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+8點數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9Y-hY-YmT">
-                                                        <rect key="frame" x="34" y="8" width="56" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+8暢遊卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9Y-hY-YmT">
+                                                        <rect key="frame" x="25" y="8" width="74" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -451,8 +454,8 @@
                                         <rect key="frame" x="36" y="124" width="123" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+2點數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-ib-lDO">
-                                                <rect key="frame" x="33" y="8" width="56" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+2暢遊卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mea-ib-lDO">
+                                                <rect key="frame" x="25" y="8" width="73" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -469,8 +472,8 @@
                                                 <rect key="frame" x="0.0" y="26" width="123" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+5點數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsH-jb-eeP">
-                                                        <rect key="frame" x="28" y="8" width="56" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+5暢遊卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsH-jb-eeP">
+                                                        <rect key="frame" x="25" y="8" width="73" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -497,8 +500,8 @@
                                                 <rect key="frame" x="0.0" y="26" width="123" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+10點數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhf-Zz-1yH">
-                                                        <rect key="frame" x="29" y="8" width="64" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+10暢遊卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhf-Zz-1yH">
+                                                        <rect key="frame" x="21" y="8" width="81" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -529,9 +532,8 @@
                                     <constraint firstItem="McB-it-e2z" firstAttribute="top" secondItem="nKP-0K-WUR" secondAttribute="bottom" constant="8" id="wjT-aS-jK0"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqT-m3-BYf">
-                                <rect key="frame" x="192" y="552" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqT-m3-BYf">
+                                <rect key="frame" x="191.5" y="552.5" width="31" height="30"/>
                                 <state key="normal" title="關閉">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -543,7 +545,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HvD-Ve-jwJ" firstAttribute="leading" secondItem="EzZ-l5-IAh" secondAttribute="leading" id="3Yq-7k-0Ye"/>
+                            <constraint firstItem="cqT-m3-BYf" firstAttribute="bottom" secondItem="saf-Vn-wuV" secondAttribute="bottom" constant="-15" id="JOc-wV-Thi"/>
                             <constraint firstItem="saf-Vn-wuV" firstAttribute="centerX" secondItem="EzZ-l5-IAh" secondAttribute="centerX" id="LhL-gk-GkS"/>
+                            <constraint firstItem="cqT-m3-BYf" firstAttribute="centerX" secondItem="EzZ-l5-IAh" secondAttribute="centerX" id="O6K-Gj-mXZ"/>
                             <constraint firstItem="saf-Vn-wuV" firstAttribute="width" secondItem="EzZ-l5-IAh" secondAttribute="width" multiplier="4:5" id="W6Q-BS-jQz"/>
                             <constraint firstItem="HvD-Ve-jwJ" firstAttribute="top" secondItem="EzZ-l5-IAh" secondAttribute="top" id="bzQ-z4-6CC"/>
                             <constraint firstItem="saf-Vn-wuV" firstAttribute="height" secondItem="EzZ-l5-IAh" secondAttribute="height" multiplier="1:3" id="cKh-5W-EfP"/>
