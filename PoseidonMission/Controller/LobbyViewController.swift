@@ -84,7 +84,7 @@ class LobbyViewController: PMBaseViewController {
     
     var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
-    var homeCollectionImages = ["logintoday", "friend", "map", "fish", "watermother"]
+    var homeCollectionImages = ["loginToday", "friend", "map", "fish", "jellyFish"]
     
     var homeCollectionLabel = ["簽到", "邀請好友", "藏寶圖", "釣魚", "打水母"]
     

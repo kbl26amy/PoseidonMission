@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import Firebase
 
 class UserManager {
     
-    var user : UserData?
+    var user: UserData?
+    var userRecord: [UserRecord] = []
     
     static let shared = UserManager()
     
@@ -44,6 +46,42 @@ class UserManager {
             self.user = userData
             
             completion(userData)
+            
+        })
+    }
+    
+    func getUserRecord(completion: @escaping ([UserRecord]?) -> Void) {
+        
+        FireBaseHelper.getUserRecord(completion: { querySnapshot in
+            
+            guard let docs = querySnapshot?.documents else {
+                    
+                    print("error")
+                    
+                    completion(nil)
+                    
+                    return
+            }
+            
+            // 0..< docs.count
+            for index in docs.indices {
+              
+                let score = docs[index].data()["score"] as! Int
+                let source = docs[index].data()["source"] as! String
+                let time = docs[index].data()["time"] as! Timestamp
+
+                    let converted = Date(timeIntervalSince1970: TimeInterval(time.seconds) )
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = NSTimeZone.local
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    let playTime = dateFormatter.string(from: converted as Date)
+        
+                self.userRecord.append(UserRecord(time: playTime, source: recordSource(rawValue: source) ?? .loginToday, score: score))
+            }
+            
+            
+            
+            completion(self.userRecord)
             
         })
     }

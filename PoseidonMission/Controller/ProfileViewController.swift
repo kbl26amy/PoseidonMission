@@ -14,7 +14,13 @@ class ProfileViewController: PMBaseViewController  {
         didSet{
             userName.text = userData?.userName
             userEmail.text = userData?.email
-            userTotalPoint.text = "暢遊卷： \(String(describing: userData?.totalScore))張"
+            userTotalPoint.text = "暢遊卷： \( userData?.totalScore ?? 0)張"
+        }
+    }
+    
+    var userRecordData: [UserRecord]?{
+        didSet{
+            getPointTableView.reloadData()
         }
     }
     
@@ -36,15 +42,13 @@ class ProfileViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        navigationController?.isToolbarHidden = false
-        tabBarController?.tabBar.isHidden = false
     }
 
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return userRecordData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +58,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         
         guard let getPointCell = cell as? GetPointTableViewCell else { return cell }
         
-        
+        getPointCell.getPointCount.text = "+ \(userRecordData?[indexPath.row].score ?? 0)"
+        getPointCell.GetPointTime.text = userRecordData?[indexPath.row].time
+        getPointCell.getPointImage.image = UIImage(named: userRecordData?[indexPath.row].source.rawValue ?? "map")
+        getPointCell.getPointLabel.text = userRecordData?[indexPath.row].source.rawValue
         return getPointCell
     }
     

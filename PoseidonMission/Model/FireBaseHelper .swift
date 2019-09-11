@@ -27,6 +27,23 @@ class FireBaseHelper {
         }
     }
     
+    //獲取用戶積分紀錄
+    static func getUserRecord(completion: @escaping (QuerySnapshot?) -> Void ) {
+        
+        let db = Firestore.firestore()
+        
+        db
+            .collection("user")
+            .document(Auth.auth().currentUser!.uid)
+            .collection("records")
+            .getDocuments { (querySnapshot, error) in
+                
+                completion(querySnapshot)
+                
+        }
+    }
+    
+    
     
     // 添加積分獲得紀錄
     func addUserDoc(){

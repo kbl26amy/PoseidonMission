@@ -20,7 +20,7 @@ class MissionViewController: PMBaseViewController  {
         super.viewDidLoad()
 
        missionTableView.backgroundView = UIImageView(image: UIImage(named: "missionbackground"))
-       
+       missionTableView.separatorStyle = .none
     }
     
 }
@@ -46,8 +46,33 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         missionCell.limitTimesView.layer.cornerRadius = 5
         missionCell.missionInstroduction.text = MissionContent.missionIntroduction[indexPath.row]
         missionCell.missionTitle.text = MissionContent.missionTitles[indexPath.row].rawValue
+        
+        missionCell.selectionStyle = .none
         return missionCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var goToMissionsController = UIViewController()
+        switch indexPath.row {
+        
+        case 0:
+            goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
+            
+        case 1:
+            goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
+        case 2:
+            goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController")
+        case 3:
+            goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController")
+            
+        default:
+            goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "MapTodayViewController")
+        }
+          self.navigationController?.pushViewController(goToMissionsController, animated: true)
+    }
+    
+    
     
     
 }

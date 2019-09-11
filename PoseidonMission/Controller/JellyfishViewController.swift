@@ -191,6 +191,8 @@ class JellyfishViewController: PMBaseViewController {
         if self.timer != nil{
             self.timer?.invalidate()
         }
+        
+        navigationController?.isNavigationBarHidden = false
     }
     
     override func viewDidLoad() {
@@ -206,7 +208,7 @@ class JellyfishViewController: PMBaseViewController {
     func saveData(){
     //存用戶積分紀錄
         let db = Firestore.firestore()
-        let scoreRecordData: [String: Any] = ["jellyFishPlayTime":FirebaseFirestore.Timestamp(date:Date()) ,"score": score/1000, "source": "jellyFish" ]
+        let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,"score": score/1000, "source": "jellyFish" ]
         db.collection("user").document(Auth.auth().currentUser!.uid).collection("records").document().setData(scoreRecordData){ (error) in
             if let error = error {
                 print(error)
@@ -217,7 +219,7 @@ class JellyfishViewController: PMBaseViewController {
             if let querySnapshot = querySnapshot {
                 
                 let document = querySnapshot.documents.first
-                if document!.data()["jellyFishHightest"] != nil {
+                if document?.data()["jellyFishHightest"] != nil {
                     if self.score > document!.data()["jellyFishHightest"] as! Int {
                         ProfileViewController.jellyFishHighest = self.score
                     }

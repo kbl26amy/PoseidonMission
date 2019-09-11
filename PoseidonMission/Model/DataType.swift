@@ -33,3 +33,23 @@ struct UserData {
         self.userName = name
     }
 }
+
+enum recordSource:String {
+    
+    case map = "map"
+    case jellyFish = "jellyFish"
+    case fishing = "fish"
+    case loginToday = "loginToday"
+    case share = "friend"
+    
+}
+
+struct UserRecord {
+    
+    var time: String
+    
+    var source:recordSource
+
+    var score: Int
+ 
+}

@@ -103,6 +103,11 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                 profileViewController.userData = user
             })
             
+            UserManager.shared.getUserRecord(completion: { records in
+                
+                profileViewController.userRecordData = records
+            })
+            
         } else {
           
            let loginViewController = UIStoryboard.auth.instantiateViewController(withIdentifier: "AuthViewController")

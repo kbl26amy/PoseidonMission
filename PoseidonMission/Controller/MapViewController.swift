@@ -32,11 +32,13 @@ class MapViewController: PMBaseViewController {
     
     @IBAction func goToRecordPage(_ sender: Any) {
    
-//        let appdelegate = UIApplication.shared.delegate
-//
-//        let tabBarController = appdelegate?.window??.rootViewController as? UITabBarController
+        let appdelegate = UIApplication.shared.delegate
 
-        self.tabBarController?.selectedIndex = 3
+        let tabBarController = appdelegate?.window??.rootViewController as? UITabBarController
+        
+        self.navigationController?.backToRoot()
+
+        tabBarController?.selectedIndex = 3
 
     }
     
@@ -194,7 +196,7 @@ extension MapViewController: ScratchCardDelegate {
             mapchanceLabel.text = "您今日已無探索機會"
             mapTitleLabel.text = "請明日再來"
             
-            let scoreRecordData: [String: Any] = ["mapPlayTime":FirebaseFirestore.Timestamp(date:Date()) ,"score": 2, "source": "map" ]
+            let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,"score": 2, "source": "map" ]
     
            //存用戶積分紀錄
             db.collection("user").document(Auth.auth().currentUser!.uid).collection("records").document().setData(scoreRecordData){ (error) in
@@ -235,8 +237,9 @@ extension MapViewController: ScratchCardDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isToolbarHidden = false
-        tabBarController?.tabBar.isHidden = false
+        
+        navigationController?.isNavigationBarHidden = false
+
     }
 }
 
