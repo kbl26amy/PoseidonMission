@@ -18,11 +18,11 @@ class LoginTodayViewController: UIViewController {
     
     
     @IBOutlet weak var leftUpBlueView: UIView!
-    
     @IBOutlet weak var rightDownView: UIView!
     @IBOutlet weak var leftDownView: UIView!
     @IBOutlet weak var rightUpBlueView: UIView!
     @IBOutlet weak var loginTodayView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

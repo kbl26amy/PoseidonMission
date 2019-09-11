@@ -126,6 +126,7 @@ class AuthViewController: PMBaseViewController {
                             print(Auth.auth().currentUser?.uid as Any)
                         }
                     }
+                    
                     self.backToRoot()
                     
                 } else {
@@ -157,6 +158,7 @@ class AuthViewController: PMBaseViewController {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
+             
                     self.backToRoot()
                 
                 } else {

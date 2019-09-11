@@ -41,6 +41,15 @@ class ProfileViewController: PMBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserManager.shared.getUserData(completion:  { user in
+            self.userData = user
+        })
+        
+        UserManager.shared.getUserRecord(completion: { records in
+            
+            self.userRecordData = records
+        })
       
     }
 

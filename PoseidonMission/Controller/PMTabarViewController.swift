@@ -92,24 +92,9 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+ 
+        if Auth.auth().currentUser == nil{
         
-        guard let navVC = viewController as? UINavigationController,
-            let profileViewController = navVC.viewControllers.first as? ProfileViewController
-            else { return true }
-        
-        if Auth.auth().currentUser != nil{
-            
-            UserManager.shared.getUserData(completion:  { user in
-                profileViewController.userData = user
-            })
-            
-            UserManager.shared.getUserRecord(completion: { records in
-                
-                profileViewController.userRecordData = records
-            })
-            
-        } else {
-          
            let loginViewController = UIStoryboard.auth.instantiateViewController(withIdentifier: "AuthViewController")
             
             present(loginViewController, animated: true, completion: nil)

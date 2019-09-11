@@ -79,8 +79,6 @@ class UserManager {
                 self.userRecord.append(UserRecord(time: playTime, source: recordSource(rawValue: source) ?? .loginToday, score: score))
             }
             
-            
-            
             completion(self.userRecord)
             
         })
