@@ -219,15 +219,15 @@ class JellyfishViewController: PMBaseViewController {
             if let querySnapshot = querySnapshot {
                 
                 let document = querySnapshot.documents.first
-                if document?.data()["jellyFishHightest"] != nil {
-                    if self.score > document!.data()["jellyFishHightest"] as! Int {
+                if document?.data()["jellyFishHighest"] != nil {
+                    if self.score > document!.data()["jellyFishHighest"] as! Int {
                         ProfileViewController.jellyFishHighest = self.score
                     }
                 }else{
                     ProfileViewController.jellyFishHighest = self.score
                 }
                 
-                document?.reference.updateData(["totalScore": ProfileViewController.totalScore + self.score/1000,"jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"jellyFishHightest":ProfileViewController.jellyFishHighest], completion: { (error) in
+                document?.reference.updateData(["totalScore": ProfileViewController.totalScore + self.score/1000,"jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"jellyFishHighest":ProfileViewController.jellyFishHighest], completion: { (error) in
                 })
             }
         }

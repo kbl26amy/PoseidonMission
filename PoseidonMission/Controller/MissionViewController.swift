@@ -73,7 +73,7 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
             present(loginTodayController, animated: true, completion: nil)
         
         case 4:
-            ShareManager.shareClickButton(self)
+            ShareManager.checkIsShareToday(sender: self)
             
         default:
             goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "MapTodayViewController")

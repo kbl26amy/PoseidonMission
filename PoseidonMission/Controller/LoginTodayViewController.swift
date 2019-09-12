@@ -27,7 +27,7 @@ class LoginTodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkisLoginToday()
+        checkIsLoginToday()
         
         loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
         loginTextMessage.numberOfLines = 0
@@ -41,18 +41,20 @@ class LoginTodayViewController: UIViewController {
     }
   
     
-    func checkisLoginToday() {
+    func checkIsLoginToday() {
         
         UserManager.shared.getUserData(completion: {user in
             
             if user?.loginTodayTime != nil {
-              
+                let timestamp = user?.loginTodayTime
+                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp!.seconds) )
+                
                 let now:Date = Date()
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeZone = NSTimeZone.local
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 
-                let loginTodayTime = dateFormatter.string(from: user?.loginTodayTime ?? Date())
+                let loginTodayTime = dateFormatter.string(from: converted as Date)
                 let currentTime = dateFormatter.string(from: now as Date)
                 
                 if loginTodayTime == currentTime {
@@ -63,6 +65,8 @@ class LoginTodayViewController: UIViewController {
                 } else {
                     self.saveLoginData()
                 }
+            } else {
+                 self.saveLoginData()
             }
         })
     }

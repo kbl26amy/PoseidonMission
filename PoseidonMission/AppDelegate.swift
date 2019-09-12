@@ -43,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
          if Auth.auth().currentUser != nil {
         UserManager.shared.getUserData(completion: {user in
-            
+
             if user?.totalScore != nil {
                 ProfileViewController.totalScore = user!.totalScore
             }
-            
+
             if user?.loginCounts != nil {
                 ProfileViewController.loginCounts = user!.loginCounts
             }

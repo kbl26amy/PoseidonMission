@@ -39,9 +39,13 @@ class ProfileViewController: PMBaseViewController  {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         UserManager.shared.getUserData(completion:  { user in
             self.userData = user
@@ -51,7 +55,6 @@ class ProfileViewController: PMBaseViewController  {
             
             self.userRecordData = records
         })
-      
     }
 
 }

@@ -208,7 +208,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             
         case 1:
             
-            ShareManager.shareClickButton(self)
+            ShareManager.checkIsShareToday(sender: self)
             
         case 2:
             goStoryViewController.storyText = StoryContent.mapStory

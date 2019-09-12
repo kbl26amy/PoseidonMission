@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct UserData {
     
@@ -16,19 +17,21 @@ struct UserData {
     
     var totalScore: Int = 0
     
-    var mapPlayTime: String = ""
+    var mapPlayTime: Timestamp = Timestamp()
     
-    var jellyFishPlayTime: String = ""
+    var jellyFishPlayTime: Timestamp = Timestamp()
     
     var jellyFishHighest: Int = 0
     
     var fishingHighest: Int = 0
-   
-    var fishingPlayTime: String = ""
+    
+    var fishingPlayTime: Timestamp = Timestamp()
     
     var loginCounts: Int = 0
     
-    var loginTodayTime: Date = Date()
+    var loginTodayTime: Timestamp = Timestamp()
+    
+    var shareTime: Timestamp = Timestamp()
     
     init(email: String, name: String) {
         

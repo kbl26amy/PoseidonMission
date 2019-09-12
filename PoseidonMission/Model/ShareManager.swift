@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class ShareManager {
     
@@ -21,7 +22,7 @@ class ShareManager {
             let shareViewController = UIActivityViewController(activityItems: [shareMessage as Any], applicationActivities: nil)
             
             shareViewController.excludedActivityTypes = [UIActivity.ActivityType.mail,UIActivity.ActivityType.airDrop,UIActivity.ActivityType.message]
-            
+            saveShareData()
             
            sender.present(shareViewController, animated: true, completion: nil)
             
@@ -36,6 +37,53 @@ class ShareManager {
         
         
         sender.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    static func saveShareData() {
+        
+        let loginRecord = ["score":2, "source": "share", "time": FirebaseFirestore.Timestamp(date:Date()) ] as [String : Any]
+        FireBaseHelper.saveUserRecord(saveData: loginRecord)
+        
+        let updateData = ["totalScore": ProfileViewController.totalScore + 2 ,
+                          "shareTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
+        
+        FireBaseHelper.updateData(update: updateData)
+        
+    }
+    
+    static func checkIsShareToday(sender: UIViewController) {
+        
+        UserManager.shared.getUserData(completion: {user in
+            
+            if user?.shareTime != nil {
+                
+                let now:Date = Date()
+                let timestamp = user?.shareTime as! Timestamp
+                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds) )
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = NSTimeZone.local
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                
+                let shareTodayTime = dateFormatter.string(from: converted ?? Date())
+                let currentTime = dateFormatter.string(from: now as Date)
+                
+                if shareTodayTime == currentTime {
+                    
+                    let controller = UIAlertController(title: "明日再來", message: "您已經分享過了！", preferredStyle: .alert)
+                    
+                    let cancelAction = UIAlertAction(title: "OK", style:.cancel )
+                    controller.addAction(cancelAction)
+                    
+                    sender.present(controller, animated: true, completion: nil)
+                    
+                } else {
+                    shareClickButton(sender)
+                }
+            } else {
+                shareClickButton(sender)
+            }
+        })
     }
 }
 

@@ -34,17 +34,20 @@ class UserManager {
             }
             
             //存到變數
-            var userData = UserData(email: email, name: name)
+            var userData = UserData(email: email, name: name)       
             
-            userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Date ?? Date()
+            userData.shareTime = doc.data()?["shareTime"] as? Timestamp ?? Timestamp()
+            userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Timestamp ?? Timestamp()
             userData.loginCounts = doc.data()?["loginCounts"] as? Int ?? 0
             userData.totalScore = doc.data()?["totalScore"] as? Int ?? 0
-            userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? String ?? "never play"
+            userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? Timestamp ?? Timestamp()
             userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int ?? 0
-            userData.mapPlayTime = doc.data()?["mapPlayTime"] as? String ?? "never play"
+            userData.mapPlayTime = doc.data()?["mapPlayTime"] as? Timestamp ?? Timestamp()
             userData.fishingHighest = doc.data()?["fishingHighest"] as? Int ?? 0
-            userData.fishingPlayTime = doc.data()?["fishingPlayTime"] as? String ?? "never play"
+            userData.fishingPlayTime = doc.data()?["fishingPlayTime"] as? Timestamp ?? Timestamp()
             
+            print(doc.data() as Any)
+            print(userData)
             self.user = userData
             
             completion(userData)
@@ -64,6 +67,8 @@ class UserManager {
                     
                     return
             }
+            
+            self.userRecord = []
             
             // 0..< docs.count
             for index in docs.indices {
