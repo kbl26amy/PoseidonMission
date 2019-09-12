@@ -26,6 +26,10 @@ struct UserData {
    
     var fishingPlayTime: String = ""
     
+    var loginCounts: Int = 0
+    
+    var loginTodayTime: Date = Date()
+    
     init(email: String, name: String) {
         
         self.email = email

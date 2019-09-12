@@ -58,18 +58,27 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         
         case 0:
             goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "MapViewController")
-            
+             self.navigationController?.pushViewController(goToMissionsController, animated: true)
         case 1:
             goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "JellyfishViewController")
+             self.navigationController?.pushViewController(goToMissionsController, animated: true)
         case 2:
             goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "FishingViewController")
+             self.navigationController?.pushViewController(goToMissionsController, animated: true)
         case 3:
-            goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController")
+            let loginTodayController = UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController")
+            
+            loginTodayController.modalPresentationStyle = .overCurrentContext
+            loginTodayController.modalTransitionStyle = .crossDissolve
+            present(loginTodayController, animated: true, completion: nil)
+        
+        case 4:
+            ShareManager.shareClickButton(self)
             
         default:
             goToMissionsController = UIStoryboard.mission.instantiateViewController(withIdentifier: "MapTodayViewController")
         }
-          self.navigationController?.pushViewController(goToMissionsController, animated: true)
+        
     }
     
     

@@ -36,6 +36,8 @@ class UserManager {
             //存到變數
             var userData = UserData(email: email, name: name)
             
+            userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Date ?? Date()
+            userData.loginCounts = doc.data()?["loginCounts"] as? Int ?? 0
             userData.totalScore = doc.data()?["totalScore"] as? Int ?? 0
             userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? String ?? "never play"
             userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int ?? 0
@@ -83,5 +85,6 @@ class UserManager {
             
         })
     }
+
 }
 

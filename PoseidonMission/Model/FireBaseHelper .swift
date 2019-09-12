@@ -42,28 +42,26 @@ class FireBaseHelper {
                 
         }
     }
-    
-    
-    
+
     // 添加積分獲得紀錄
-    func addUserDoc(){
-        let db = Firestore.firestore()
+    static func saveUserRecord(saveData:[String: Any]) {
         
+        let db = Firestore.firestore()
             db
             .collection("user")
             .document(Auth.auth().currentUser!.uid)
             .collection("records")
             .document()
-            .setData([:]){ (error) in
-                
-        if let error = error {
-            print(error)}
-        
+            .setData(saveData){ (error) in
+                if let error = error {
+                    print(error)
+                }
         }
-        
     }
+    
     //update用戶資料
-    func upDateData(){
+    static func updateData(update: [String:Any]) {
+        
         let db = Firestore.firestore()
         db
         .collection("user")
@@ -74,12 +72,12 @@ class FireBaseHelper {
                 
             let document = querySnapshot.documents.first
                 
-            document?.reference.updateData([:], completion: { (error) in
+            document?.reference.updateData(update, completion: { (error) in
+                
+            })
             
-        })
-        
-        }
-        
+            }
+            
         }
         
     }

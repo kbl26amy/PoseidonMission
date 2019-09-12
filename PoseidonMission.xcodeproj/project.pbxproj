@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		620BA31823276CD800BBF395 /* MissionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BA31723276CD800BBF395 /* MissionContent.swift */; };
+		6223F72F2328F74A003E249B /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6223F72E2328F74A003E249B /* ShareManager.swift */; };
 		62353B602314EBDE00A4FBA0 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */; };
 		62353B622314F5F700A4FBA0 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B612314F5F700A4FBA0 /* Lobby.storyboard */; };
 		62353B6423152B8700A4FBA0 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62353B6323152B8700A4FBA0 /* HomeCollectionViewCell.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.release.xcconfig"; sourceTree = "<group>"; };
 		620BA31723276CD800BBF395 /* MissionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionContent.swift; sourceTree = "<group>"; };
+		6223F72E2328F74A003E249B /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		62353B612314F5F700A4FBA0 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		62353B6323152B8700A4FBA0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				6286FF9923250EA300C48899 /* DataType.swift */,
 				6286FF9B2325295800C48899 /* UserManager.swift */,
 				620BA31723276CD800BBF395 /* MissionContent.swift */,
+				6223F72E2328F74A003E249B /* ShareManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				62E1B05B2314C5CB007AC76D /* PMBaseViewController.swift in Sources */,
 				62353B7E2317CDC800A4FBA0 /* ScratchMask.swift in Sources */,
 				62E1B04E2313E45A007AC76D /* PMTabarViewController.swift in Sources */,
+				6223F72F2328F74A003E249B /* ShareManager.swift in Sources */,
 				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,
 				6286FF9E232688D700C48899 /* RankTableViewCell.swift in Sources */,
 				62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */,

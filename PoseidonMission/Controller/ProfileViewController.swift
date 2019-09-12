@@ -27,6 +27,7 @@ class ProfileViewController: PMBaseViewController  {
     static var totalScore: Int = 0
     static var jellyFishHighest: Int = 0
     static var fishingHighest: Int = 0
+    static var loginCounts: Int = 0
 
     @IBOutlet weak var userTotalPoint: UILabel!
     @IBOutlet weak var userEmail: UILabel!
