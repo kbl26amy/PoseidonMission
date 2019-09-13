@@ -58,14 +58,14 @@ class ShareManager {
             if user?.shareTime != nil {
                 
                 let now:Date = Date()
-                let timestamp = user?.shareTime as! Timestamp
-                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds) )
+                let timestamp = user?.shareTime
+                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp!.seconds) )
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeZone = NSTimeZone.local
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 
-                let shareTodayTime = dateFormatter.string(from: converted ?? Date())
+                let shareTodayTime = dateFormatter.string(from: converted as Date)
                 let currentTime = dateFormatter.string(from: now as Date)
                 
                 if shareTodayTime == currentTime {

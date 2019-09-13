@@ -36,15 +36,15 @@ class UserManager {
             //存到變數
             var userData = UserData(email: email, name: name)       
             
-            userData.shareTime = doc.data()?["shareTime"] as? Timestamp ?? Timestamp()
-            userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Timestamp ?? Timestamp()
-            userData.loginCounts = doc.data()?["loginCounts"] as? Int ?? 0
-            userData.totalScore = doc.data()?["totalScore"] as? Int ?? 0
-            userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? Timestamp ?? Timestamp()
-            userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int ?? 0
-            userData.mapPlayTime = doc.data()?["mapPlayTime"] as? Timestamp ?? Timestamp()
-            userData.fishingHighest = doc.data()?["fishingHighest"] as? Int ?? 0
-            userData.fishingPlayTime = doc.data()?["fishingPlayTime"] as? Timestamp ?? Timestamp()
+            userData.shareTime = doc.data()?["shareTime"] as? Timestamp
+            userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Timestamp
+            userData.loginCounts = doc.data()?["loginCounts"] as? Int
+            userData.totalScore = doc.data()?["totalScore"] as? Int
+            userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? Timestamp
+            userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int
+            userData.mapPlayTime = doc.data()?["mapPlayTime"] as? Timestamp
+            userData.fishingHighest = doc.data()?["fishingHighest"] as? Int
+            userData.fishingPlayTime = doc.data()?["fishingPlayTime"] as? Timestamp
             
             print(doc.data() as Any)
             print(userData)
@@ -83,7 +83,8 @@ class UserManager {
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     let playTime = dateFormatter.string(from: converted as Date)
         
-                self.userRecord.append(UserRecord(time: playTime, source: recordSource(rawValue: source) ?? .loginToday, score: score))
+                self.userRecord.append(UserRecord(time: playTime,
+                                                  source: recordSource(rawValue: source) ?? .loginToday, score: score))
             }
             
             completion(self.userRecord)

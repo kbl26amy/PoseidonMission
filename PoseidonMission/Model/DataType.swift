@@ -15,23 +15,23 @@ struct UserData {
     
     let userName: String
     
-    var totalScore: Int = 0
+    var totalScore: Int?
     
-    var mapPlayTime: Timestamp = Timestamp()
+    var mapPlayTime: Timestamp?
     
-    var jellyFishPlayTime: Timestamp = Timestamp()
+    var jellyFishPlayTime: Timestamp?
     
-    var jellyFishHighest: Int = 0
+    var jellyFishHighest: Int?
     
-    var fishingHighest: Int = 0
+    var fishingHighest: Int?
     
-    var fishingPlayTime: Timestamp = Timestamp()
+    var fishingPlayTime: Timestamp?
     
-    var loginCounts: Int = 0
+    var loginCounts: Int?
     
-    var loginTodayTime: Timestamp = Timestamp()
+    var loginTodayTime: Timestamp?
     
-    var shareTime: Timestamp = Timestamp()
+    var shareTime: Timestamp?
     
     init(email: String, name: String) {
         
@@ -47,7 +47,7 @@ enum recordSource:String {
     case jellyFish = "jellyFish"
     case fishing = "fish"
     case loginToday = "loginToday"
-    case share = "friend"
+    case share = "share"
     
 }
 

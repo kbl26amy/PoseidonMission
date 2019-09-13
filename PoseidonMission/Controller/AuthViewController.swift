@@ -154,10 +154,21 @@ class AuthViewController: PMBaseViewController {
             self.present(alertController, animated: true, completion: nil)
             
         } else {
-            let reference: DocumentReference? = nil
+           
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
+                    
+                    UserManager.shared.getUserData(completion: {user in
+                        
+                        if user?.totalScore != nil {
+                            ProfileViewController.totalScore = user!.totalScore!
+                        }
+                        
+                        if user?.loginCounts != nil {
+                            ProfileViewController.loginCounts = user!.loginCounts!
+                        }
+                    })
              
                     self.backToRoot()
                 
