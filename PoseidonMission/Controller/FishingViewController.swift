@@ -11,8 +11,8 @@ import UIKit
 class FishingViewController: UIViewController {
 
     let fishGenerater: [FishGenerator] = [PathOne(), PathTwo(), PathThree(), PathForth()]
+    var fishViews: [UIImageView] = []
     var timer:Timer?
-    
  
     @IBOutlet weak var fishsView: UIView!
     @IBOutlet weak var ship: UIImageView!
@@ -27,7 +27,10 @@ class FishingViewController: UIViewController {
     
     var energyBarAnimator: UIViewPropertyAnimator?
     
-    let colorView = UIView(frame: CGRect(x:0, y: 0, width: 0, height: UIScreen.main.bounds.height / 26)
+    let colorView = UIView(frame: CGRect(x: 0,
+                                         y: 0,
+                                         width: 0,
+                                         height: UIScreen.main.bounds.height / 26)
     )
     
     @IBAction func backButton(_ sender: Any) {
@@ -37,11 +40,14 @@ class FishingViewController: UIViewController {
     
     @IBAction func clickLeftButton(_ sender: Any) {
         var shipLeftAnimation = UIViewPropertyAnimator()
-        shipLeftAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+        shipLeftAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
+                                                                           delay: 0,
+                                                                           animations: {
                 self.ship.frame.origin.x -= 10
                 self.fishingRod.frame.origin.x -= 10
                 self.fishingLine.frame.origin.x -= 10
                 }, completion: nil)
+        
         shipLeftAnimation.startAnimation()
     }
     
@@ -67,9 +73,14 @@ class FishingViewController: UIViewController {
             rotateUpRod(sender)
             
         } else {
-            self.colorView.frame = CGRect(x:0, y: 0, width: 0, height: UIScreen.main.bounds.height / 26)
+            self.colorView.frame = CGRect(x: 0,
+                                          y: 0,
+                                          width: 0,
+                                          height: UIScreen.main.bounds.height / 26)
             
-            let alertController = UIAlertController(title: "失敗", message: "能量條不足", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "失敗",
+                                                    message: "能量條不足",
+                                                    preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
                 
@@ -84,19 +95,24 @@ class FishingViewController: UIViewController {
         }
  
     }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
         setFishingView()
+//
+        let animation = CABasicAnimation()
+        animation.delegate = self
+        
+        
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+       
         energyBarAnimation()
         self.timerEanbled()
 
@@ -108,9 +124,15 @@ class FishingViewController: UIViewController {
         
         self.energyBar.addSubview(colorView)
         
-        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2.0, delay: 0, options: .repeat, animations: {
+        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2.0,
+                                                                           delay: 0,
+                                                                           options: .repeat,
+                                                                           animations: {
             UIView.setAnimationRepeatCount(999);
-            self.colorView.frame = CGRect(x:0, y: 0, width: self.energyBar.frame.width, height: self.energyBar.frame.height)
+            self.colorView.frame = CGRect(x: 0,
+                                          y: 0,
+                                          width: self.energyBar.frame.width,
+                                          height: self.energyBar.frame.height)
             
         }, completion: nil)
         
@@ -137,7 +159,9 @@ class FishingViewController: UIViewController {
         var rodUpAnimation: UIViewPropertyAnimator?
         var rodDownAnimation: UIViewPropertyAnimator?
       
-        rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+        rodUpAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
+                                                                        delay: 0,
+                                                                        animations: {
             
             self.fishingLine.alpha = 0
             self.fishingRod.transform = CGAffineTransform(rotationAngle: (20.0 * .pi) / 90.0)
@@ -146,27 +170,30 @@ class FishingViewController: UIViewController {
         rodUpAnimation?.startAnimation()
         
         rodUpAnimation?.addCompletion() {_ in
-            rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+            rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
+                                                                              delay: 0,
+                                                                              animations: {
 
                 self.fishingRod.transform = CGAffineTransform(rotationAngle: (-20.0 * .pi) / 90.0)
+                                                                     
             }, completion: nil)
             
             rodDownAnimation?.startAnimation()
-        }
-        rodUpAnimation?.addCompletion() {_ in
-            
-            self.fishLineAnimation()
-            
+            rodDownAnimation?.addCompletion() {_ in
+    
+                self.fishLineAnimation()
+                
+            }
         }
     }
     
-    
     var fishTouchSquare:UIView!
+    let pathLayer = CAShapeLayer()
+    
     func fishLineAnimation() {
         
-        fishTouchSquare = UIImageView(image: UIImage(named: "fishingLine"))
-        fishTouchSquare.backgroundColor = UIColor.orange
-        fishTouchSquare.frame = CGRect(x:0, y:0, width:20, height:20)
+        fishTouchSquare = UIImageView(image: UIImage(named: "fishingHook"))
+        fishTouchSquare.frame = CGRect(x: -100, y: 0, width: 25, height: 25)
       
         let fishingRodWidth = self.fishingRod.frame.width
         let decreaseX = fishingRodWidth - CGFloat(cos(40 * Double.pi / 180)) * fishingRodWidth
@@ -174,7 +201,9 @@ class FishingViewController: UIViewController {
         let transform = CGAffineTransform(translationX: centerX, y: 5)
         let path =  CGMutablePath()
         path.move(to: CGPoint(x:0 ,y:0), transform: transform)
-        path.addLine(to: CGPoint(x: 0 ,y: UIScreen.main.bounds.height - 400), transform: transform)
+        path.addLine(to: CGPoint(x: 0 ,
+                                 y: UIScreen.main.bounds.height - 400),
+                     transform: transform)
         
         let orbit = CAKeyframeAnimation(keyPath:"position")
         orbit.duration = 5
@@ -184,7 +213,7 @@ class FishingViewController: UIViewController {
         orbit.fillMode = CAMediaTimingFillMode.forwards
         fishTouchSquare.layer.add(orbit,forKey:"Move")
         
-        let pathLayer = CAShapeLayer()
+        
         pathLayer.frame = self.view.bounds
         pathLayer.path = path
         pathLayer.fillColor = nil
@@ -197,9 +226,55 @@ class FishingViewController: UIViewController {
         pathAnimation.toValue = 1
         
         pathLayer.add(pathAnimation , forKey: "strokeEnd")
+        animationDidStop(pathAnimation, finished: true)
         
         self.fishsView.addSubview(fishTouchSquare)
         self.fishsView.layer.addSublayer(pathLayer)
+        
+        fishingSucess()
+    }
+    
+    func fishingSucess() {
+        
+        for fish in fishViews {
+            print(fish.frame.origin.x)
+            if fishTouchSquare.frame.origin.x == fish.frame.origin.x {
+                
+                let alertController = UIAlertController(title: "成功",
+                                                        message: "積分 ＋ 150",
+                                                        preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                    
+                    print("積分 ＋ 150")
+                }
+                
+                alertController.addAction(defaultAction)
+                
+                present(alertController, animated: true, completion: nil)
+                
+            }
+        }
+        
+    }
+    
+    func fishingFailure() {
+        let alertController = UIAlertController(title: "失敗",
+                                                message: "沒有釣到任何魚",
+                                                preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+       
+            self.loadView()
+            self.setFishingView()
+            self.energyBarAnimation()
+            
+   
+        }
+        
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func timerEanbled(){
@@ -211,7 +286,17 @@ class FishingViewController: UIViewController {
     }
     
     @objc func generateFish(){
-        fishsView.addSubview(fishGenerater.randomElement()!.fetchFishImageView())
+        
+        fishViews = [fishGenerater.randomElement()!.fetchFishImageView()]
+        self.fishsView.addSubview(fishViews.last!)
     }
             
+}
+
+extension FishingViewController: CAAnimationDelegate {
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        
+        fishingFailure()
+    }
 }
