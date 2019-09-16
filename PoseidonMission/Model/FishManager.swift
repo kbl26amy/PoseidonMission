@@ -21,7 +21,6 @@ extension FishGenerator {
         let fishs = ["fish1", "fish2", "fish3", "fish4", "fish5", "fish6", "fish7", "fish8", "fish9"]
         
         let fishImageView = UIImageView(image:  UIImage(named: fishs.randomElement()!))
-        fishImageView.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
         
         return fishImageView
     }
@@ -31,7 +30,7 @@ struct PathOne: FishGenerator {
     
     func fetchFishImageView() -> UIImageView {
         let fish = randomFishImage()
-        fish?.frame = CGRect(x: 0, y: 300, width: 60, height: 40)
+        fish?.frame = CGRect(x: -60, y: 300, width: 60, height: 40)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 11, delay: 0, animations: {
             fish?.frame.origin.x = UIScreen.main.bounds.size.width
          
@@ -49,7 +48,7 @@ struct PathTwo: FishGenerator {
     func fetchFishImageView() -> UIImageView {
        let fish = randomFishImage()
         
-        fish?.frame = CGRect(x: 0, y: 450, width: 60, height: 40)
+        fish?.frame = CGRect(x: -60, y: 450, width: 60, height: 40)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 12, delay: 0, animations: {
             fish?.frame.origin.x = UIScreen.main.bounds.size.width
             
@@ -66,7 +65,7 @@ struct PathThree: FishGenerator {
     func fetchFishImageView() -> UIImageView {
        let fish = randomFishImage()
         
-        fish?.frame = CGRect(x: 0, y: 200, width: 60, height: 40)
+        fish?.frame = CGRect(x: -60, y: 200, width: 60, height: 40)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 10, delay: 0, animations: {
             fish?.frame.origin.x = UIScreen.main.bounds.size.width
             
@@ -83,7 +82,7 @@ struct PathForth: FishGenerator {
     func fetchFishImageView() -> UIImageView {
         let fish = randomFishImage()
         
-        fish?.frame = CGRect(x: 0, y: 50, width: 60, height: 40)
+        fish?.frame = CGRect(x: -60, y: 50, width: 60, height: 40)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 15, delay: 0, animations: {
             fish?.frame.origin.x = UIScreen.main.bounds.size.width
             

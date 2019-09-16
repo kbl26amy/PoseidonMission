@@ -12,6 +12,7 @@ class FishingViewController: UIViewController {
 
     let fishGenerater: [FishGenerator] = [PathOne(), PathTwo(), PathThree(), PathForth()]
     var timer:Timer?
+    
  
     @IBOutlet weak var fishsView: UIView!
     @IBOutlet weak var ship: UIImageView!
@@ -135,21 +136,67 @@ class FishingViewController: UIViewController {
   
         var rodUpAnimation: UIViewPropertyAnimator?
         var rodDownAnimation: UIViewPropertyAnimator?
+        var lineDownAnimation: UIViewPropertyAnimator?
         
         rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.5, delay: 0, animations: {
             
+//            let fishingRodWidth = self.fishingRod.frame.width
+//            let decreaseX = fishingRodWidth - CGFloat(cos(40 * Double.pi / 180)) * fishingRodWidth
+             self.fishingLine.frame.origin.x = self.fishingRod.frame.origin.x
             self.fishingRod.transform = CGAffineTransform(rotationAngle: (20.0 * .pi) / 90.0)
  
         }, completion: nil)
         rodUpAnimation?.startAnimation()
         rodUpAnimation?.addCompletion() {_ in
-            rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.5, delay: 0, animations: {
-//                self.fishingRod.frame.origin.y += 20
+            rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+                let fishingRodHeight = self.fishingRod.frame.height
+                let decreaseY = fishingRodHeight - CGFloat(sin(40 * Double.pi / 180)) * fishingRodHeight
+                self.fishingLine.frame.origin.y += decreaseY
+                
                 self.fishingRod.transform = CGAffineTransform(rotationAngle: (-20.0 * .pi) / 90.0)
             }, completion: nil)
             
             rodDownAnimation?.startAnimation()
         }
+        rodUpAnimation?.addCompletion() {_ in
+            
+            lineDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 5, delay: 0, animations: {
+
+            self.fishLineAnimation()
+            self.fishingLine.frame.origin.y += UIScreen.main.bounds.height - 400
+                
+            }, completion: nil)
+            lineDownAnimation?.startAnimation()
+        }
+    }
+    
+    
+    func fishLineAnimation() {
+      
+        let fishingRodWidth = self.fishingRod.frame.width
+        let decreaseX = fishingRodWidth - CGFloat(cos(40 * Double.pi / 180)) * fishingRodWidth
+        let centerX = self.fishingRod.frame.origin.x + decreaseX
+        let transform = CGAffineTransform(translationX: centerX, y: 5)
+        let path =  CGMutablePath()
+        path.move(to: CGPoint(x:0 ,y:0), transform: transform)
+        path.addLine(to: CGPoint(x: 0 ,y: UIScreen.main.bounds.height - 400), transform: transform)
+        
+        let pathLayer = CAShapeLayer()
+        pathLayer.frame = self.view.bounds
+        pathLayer.path = path
+        pathLayer.fillColor = nil
+        pathLayer.lineWidth = 1
+        pathLayer.strokeColor = UIColor.darkGray.cgColor
+        
+        //给运动轨迹添加动画
+        let pathAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
+        pathAnimation.duration = 4.5
+        pathAnimation.fromValue = 0
+        pathAnimation.toValue = 1
+        
+        pathLayer.add(pathAnimation , forKey: "strokeEnd")
+        
+        self.fishsView.layer.addSublayer(pathLayer)
     }
     
     func timerEanbled(){
