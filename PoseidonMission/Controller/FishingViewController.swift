@@ -73,10 +73,6 @@ class FishingViewController: UIViewController {
             rotateUpRod(sender)
             
         } else {
-            self.colorView.frame = CGRect(x: 0,
-                                          y: 0,
-                                          width: 0,
-                                          height: UIScreen.main.bounds.height / 26)
             
             let alertController = UIAlertController(title: "失敗",
                                                     message: "能量條不足",
@@ -96,18 +92,14 @@ class FishingViewController: UIViewController {
  
     }
   
+    let animation = CABasicAnimation()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
         setFishingView()
-//
-        let animation = CABasicAnimation()
-        animation.delegate = self
-        
-        
-    
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -120,6 +112,10 @@ class FishingViewController: UIViewController {
     
     func energyBarAnimation() {
      
+        self.colorView.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: 0,
+                                      height: UIScreen.main.bounds.height / 26)
         colorView.backgroundColor = .red
         
         self.energyBar.addSubview(colorView)
@@ -224,41 +220,58 @@ class FishingViewController: UIViewController {
         pathAnimation.duration = 5
         pathAnimation.fromValue = 0
         pathAnimation.toValue = 1
-        
+        pathAnimation.delegate = self
+        // CABasicAnimation 在被加到 layer 時，會複製一份 object 加上去
         pathLayer.add(pathAnimation , forKey: "strokeEnd")
-        animationDidStop(pathAnimation, finished: true)
-        
+        pathAnimation.duration = 0.5
+
         self.fishsView.addSubview(fishTouchSquare)
         self.fishsView.layer.addSublayer(pathLayer)
+        fishingProcess()
         
-        fishingSucess()
     }
     
-    func fishingSucess() {
+    @objc func fishingSucess() {
         
         for fish in fishViews {
-            print(fish.frame.origin.x)
-            if fishTouchSquare.frame.origin.x == fish.frame.origin.x {
-                
+      
+            // CAlayer 屬性
+            print(fish.layer.presentation()?.frame.origin.x as Any)
+            print(fishTouchSquare.layer.presentation()?.frame.origin.x as Any)
+            print(fish.layer.presentation()?.frame.origin.y as Any)
+            print(fishTouchSquare.layer.presentation()?.frame.origin.y as Any)
+         
+            let fishTouchX = Int((fishTouchSquare.layer.presentation()?.frame.origin.x)! + 40)
+            let fishTouchY = Int((fishTouchSquare.layer.presentation()?.frame.origin.y)! )
+            let fishX = Int((fish.layer.presentation()?.frame.origin.x)!) + 40
+            
+            let fishY = Int((fish.layer.presentation()?.frame.origin.y)!)
+            
+            print(fishTouchX)
+            print(fishX)
+            if  fishTouchX >= fishX - 50 && fishTouchY >= fishY - 50 &&  fishTouchX <= fishX + 50  && fishTouchY <= fishY + 50 {
+
                 let alertController = UIAlertController(title: "成功",
                                                         message: "積分 ＋ 150",
                                                         preferredStyle: .alert)
-                
+
                 let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                    
+
                     print("積分 ＋ 150")
                 }
-                
+
                 alertController.addAction(defaultAction)
-                
                 present(alertController, animated: true, completion: nil)
-                
+            
             }
         }
         
     }
     
     func fishingFailure() {
+        
+        print(fishTouchSquare.frame)
+        
         let alertController = UIAlertController(title: "失敗",
                                                 message: "沒有釣到任何魚",
                                                 preferredStyle: .alert)
@@ -269,7 +282,6 @@ class FishingViewController: UIViewController {
             self.setFishingView()
             self.energyBarAnimation()
             
-   
         }
         
         alertController.addAction(defaultAction)
@@ -277,7 +289,7 @@ class FishingViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func timerEanbled(){
+    func timerEanbled() {
         
         self.timer = Timer.scheduledTimer(timeInterval: 2,
                                           target: self,
@@ -285,9 +297,17 @@ class FishingViewController: UIViewController {
                                           userInfo: nil, repeats: true)
     }
     
+    func fishingProcess() {
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 1,
+                                          target: self,
+                                          selector: #selector(fishingSucess),
+                                          userInfo: nil, repeats: true)
+    }
+    
     @objc func generateFish(){
         
-        fishViews = [fishGenerater.randomElement()!.fetchFishImageView()]
+        fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
         self.fishsView.addSubview(fishViews.last!)
     }
             
@@ -298,5 +318,6 @@ extension FishingViewController: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         
         fishingFailure()
+        
     }
 }
