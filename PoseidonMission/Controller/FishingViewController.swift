@@ -136,23 +136,18 @@ class FishingViewController: UIViewController {
   
         var rodUpAnimation: UIViewPropertyAnimator?
         var rodDownAnimation: UIViewPropertyAnimator?
-        var lineDownAnimation: UIViewPropertyAnimator?
-        
-        rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.5, delay: 0, animations: {
+      
+        rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
             
-//            let fishingRodWidth = self.fishingRod.frame.width
-//            let decreaseX = fishingRodWidth - CGFloat(cos(40 * Double.pi / 180)) * fishingRodWidth
-             self.fishingLine.frame.origin.x = self.fishingRod.frame.origin.x
+            self.fishingLine.alpha = 0
             self.fishingRod.transform = CGAffineTransform(rotationAngle: (20.0 * .pi) / 90.0)
  
         }, completion: nil)
         rodUpAnimation?.startAnimation()
+        
         rodUpAnimation?.addCompletion() {_ in
             rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
-                let fishingRodHeight = self.fishingRod.frame.height
-                let decreaseY = fishingRodHeight - CGFloat(sin(40 * Double.pi / 180)) * fishingRodHeight
-                self.fishingLine.frame.origin.y += decreaseY
-                
+
                 self.fishingRod.transform = CGAffineTransform(rotationAngle: (-20.0 * .pi) / 90.0)
             }, completion: nil)
             
@@ -160,13 +155,8 @@ class FishingViewController: UIViewController {
         }
         rodUpAnimation?.addCompletion() {_ in
             
-            lineDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 5, delay: 0, animations: {
-
             self.fishLineAnimation()
-            self.fishingLine.frame.origin.y += UIScreen.main.bounds.height - 400
-                
-            }, completion: nil)
-            lineDownAnimation?.startAnimation()
+            
         }
     }
     
@@ -187,10 +177,9 @@ class FishingViewController: UIViewController {
         pathLayer.fillColor = nil
         pathLayer.lineWidth = 1
         pathLayer.strokeColor = UIColor.darkGray.cgColor
-        
-        //给运动轨迹添加动画
+    
         let pathAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
-        pathAnimation.duration = 4.5
+        pathAnimation.duration = 5
         pathAnimation.fromValue = 0
         pathAnimation.toValue = 1
         
