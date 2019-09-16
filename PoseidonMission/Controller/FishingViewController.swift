@@ -161,7 +161,12 @@ class FishingViewController: UIViewController {
     }
     
     
+    var fishTouchSquare:UIView!
     func fishLineAnimation() {
+        
+        fishTouchSquare = UIImageView(image: UIImage(named: "fishingLine"))
+        fishTouchSquare.backgroundColor = UIColor.orange
+        fishTouchSquare.frame = CGRect(x:0, y:0, width:20, height:20)
       
         let fishingRodWidth = self.fishingRod.frame.width
         let decreaseX = fishingRodWidth - CGFloat(cos(40 * Double.pi / 180)) * fishingRodWidth
@@ -170,6 +175,14 @@ class FishingViewController: UIViewController {
         let path =  CGMutablePath()
         path.move(to: CGPoint(x:0 ,y:0), transform: transform)
         path.addLine(to: CGPoint(x: 0 ,y: UIScreen.main.bounds.height - 400), transform: transform)
+        
+        let orbit = CAKeyframeAnimation(keyPath:"position")
+        orbit.duration = 5
+        orbit.path = path
+        orbit.calculationMode = CAAnimationCalculationMode.paced
+        orbit.isRemovedOnCompletion = false
+        orbit.fillMode = CAMediaTimingFillMode.forwards
+        fishTouchSquare.layer.add(orbit,forKey:"Move")
         
         let pathLayer = CAShapeLayer()
         pathLayer.frame = self.view.bounds
@@ -185,6 +198,7 @@ class FishingViewController: UIViewController {
         
         pathLayer.add(pathAnimation , forKey: "strokeEnd")
         
+        self.fishsView.addSubview(fishTouchSquare)
         self.fishsView.layer.addSublayer(pathLayer)
     }
     
