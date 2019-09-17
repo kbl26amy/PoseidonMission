@@ -90,7 +90,7 @@ class LoginTodayViewController: UIViewController {
         default:
             bonus = 0
         }
-        
+
         let updateData = ["totalScore": ProfileViewController.totalScore + 2 + bonus,
                           "loginCounts": ProfileViewController.loginCounts + 1,
                           "loginTodayTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]

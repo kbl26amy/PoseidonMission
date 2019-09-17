@@ -33,6 +33,12 @@ struct UserData {
     
     var shareTime: Timestamp?
     
+    var fishingCounts: Int?
+    
+    var currentFishingScore: Int?
+    
+    var fishingTime: Timestamp?
+    
     init(email: String, name: String) {
         
         self.email = email

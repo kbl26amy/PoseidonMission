@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class FishingViewController: UIViewController {
 
-    let fishGenerater: [FishGenerator] = [PathOne(), PathTwo(), PathThree(), PathForth(), PathFifth()]
+    let fishGenerater: [FishGenerator] = [PathOne(),
+                                          PathTwo(),
+                                          PathThree(),
+                                          PathForth(),
+                                          PathFifth()]
     var fishViews: [UIImageView] = []
     var timer:Timer?
     var fishingTimer: Timer?
     var isSucess: Bool = false
+    var fishingCounts = 10
+    var score = 0
  
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var fishingChance: UILabel!
     @IBOutlet weak var fishsView: UIView!
     @IBOutlet weak var ship: UIImageView!
     @IBOutlet weak var fishingButton: UIButton!
@@ -54,7 +63,9 @@ class FishingViewController: UIViewController {
     }
     
     @IBAction func clickRightButton(_ sender: Any) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
+                                                       delay: 0,
+                                                       animations: {
             self.ship.frame.origin.x += 10
             self.fishingRod.frame.origin.x += 10
             self.fishingLine.frame.origin.x += 10
@@ -66,7 +77,25 @@ class FishingViewController: UIViewController {
          self.energyBarAnimator?.stopAnimation(true)
         
         if self.colorView.frame.width >= self.energyBar.frame.width * 0.95 {
+            
+            if fishingCounts > 0 {
             rotateUpRod(sender)
+            } else {
+                let alertController = UIAlertController(title: "次數不足",
+                                                        message: "您的魚餌不足，請明日再來",
+                                                        preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                    
+                    self.backToRoot()
+                    
+                }
+                
+                alertController.addAction(defaultAction)
+                
+                present(alertController, animated: true, completion: nil)
+                
+            }
             
         } else {
             
@@ -95,20 +124,21 @@ class FishingViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
         setFishingView()
+        checkIsFishingToday()
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-       
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
         energyBarAnimation()
         self.timerEanbled()
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     
+        saveFishingData()
         self.timer?.invalidate()
         self.fishingTimer?.invalidate()
        
@@ -162,7 +192,9 @@ class FishingViewController: UIViewController {
     func rotateUpRod(_ sender: Any) {
       
         self.isSucess = false
-        rodUpAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
+        self.fishingCounts -= 1
+        self.fishingChance.text = "您還有\(self.fishingCounts)次釣魚機會"
+        rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
                                                                         delay: 0,
                                                                         animations: {
             
@@ -197,7 +229,7 @@ class FishingViewController: UIViewController {
     func fishLineAnimation() {
         
         fishTouchSquare = UIImageView(image: UIImage(named: "fishingHook"))
-        fishTouchSquare.frame = CGRect(x: -100, y: 0, width: 25, height: 25)
+        fishTouchSquare.frame = CGRect(x: -100, y: 0, width: 15, height: 15)
       
         let fishingRodWidth = self.fishingRod.frame.width
         let decreaseX = fishingRodWidth - CGFloat(cos(40 * Double.pi / 180)) * fishingRodWidth
@@ -210,7 +242,7 @@ class FishingViewController: UIViewController {
                      transform: transform)
         
         let orbit = CAKeyframeAnimation(keyPath:"position")
-        orbit.duration = 4
+        orbit.duration = 5
         orbit.path = path
         orbit.calculationMode = CAAnimationCalculationMode.paced
         orbit.isRemovedOnCompletion = false
@@ -224,7 +256,7 @@ class FishingViewController: UIViewController {
         pathLayer.strokeColor = UIColor.darkGray.cgColor
     
        
-        pathAnimation.duration = 4
+        pathAnimation.duration = 5
         pathAnimation.fromValue = 0
         pathAnimation.toValue = 1
         pathAnimation.delegate = self
@@ -248,9 +280,9 @@ class FishingViewController: UIViewController {
             let fishX = Int((fish.layer.presentation()?.frame.origin.x)!)
             let fishY = Int((fish.layer.presentation()?.frame.origin.y)!)
           
-            if  fishTouchX >= fishX - 40 && fishTouchY >= fishY - 40 &&
+            if  fishTouchX >= fishX - 40 && fishTouchY >= fishY - 20 &&
                 fishTouchX <= fishX + Int((fish.layer.presentation()?.frame.width)!) + 40 &&
-                fishTouchY <= fishY + Int((fish.layer.presentation()?.frame.height)!) + 40 {
+                fishTouchY <= fishY + Int((fish.layer.presentation()?.frame.height)!) + 20 {
 
                 self.resetAnimation()
                 self.isSucess = true
@@ -259,7 +291,9 @@ class FishingViewController: UIViewController {
                                                         preferredStyle: .alert)
 
                 let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                    
+                    self.score += 150
+                    self.scoreLabel.text = "\(self.score)分"
+                  
                 }
 
                 alertController.addAction(defaultAction)
@@ -279,6 +313,7 @@ class FishingViewController: UIViewController {
                                                 preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            
             self.resetAnimation()
             
         }
@@ -295,8 +330,6 @@ class FishingViewController: UIViewController {
         self.fishingLine.layer.removeAllAnimations()
         self.fishingLine.alpha = 1
         self.fishingLine.layer.transform = CATransform3DIdentity
-        self.ship.layer.removeAllAnimations()
-        self.ship.layer.transform = CATransform3DIdentity
         self.fishingRod.layer.removeAllAnimations()
         self.fishingRod.layer.transform = CATransform3DIdentity
         self.energyBarAnimation()
@@ -325,7 +358,64 @@ class FishingViewController: UIViewController {
         fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
         self.fishsView.addSubview(fishViews.last!)
     }
-            
+    
+    func saveFishingData() {
+        
+        let fishingRecord = ["score":self.score / 300, "source": "fishing", "time": FirebaseFirestore.Timestamp(date:Date()) ] as [String : Any]
+        
+        FireBaseHelper.saveUserRecord(saveData: fishingRecord)
+        
+        let updateData = ["totalScore": ProfileViewController.totalScore + self.score / 300,
+                          "fishingCounts": self.fishingCounts,
+                          "currentFishingScore":  self.score,
+                      "fishingTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
+    
+        FireBaseHelper.updateData(update: updateData)
+    }
+    
+    func checkIsFishingToday() {
+        
+        UserManager.shared.getUserData(completion: {user in
+            if user?.fishingTime != nil {
+                let timestamp = user?.fishingTime
+                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp!.seconds) )
+                
+                let now:Date = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = NSTimeZone.local
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                
+                let fishingTime = dateFormatter.string(from: converted as Date)
+                let currentTime = dateFormatter.string(from: now as Date)
+                
+                if fishingTime != currentTime {
+                    self.fishingCounts = 10
+                    self.score = 0
+                    
+                } else {
+                    if user?.fishingCounts != nil {
+                        self.fishingCounts = (user?.fishingCounts)!
+                    }
+                    
+                    if user?.currentFishingScore != nil {
+                        self.score = (user?.currentFishingScore)!
+                    }
+                }
+            } else {
+                if user?.fishingCounts != nil {
+                    self.fishingCounts = (user?.fishingCounts)!
+                }else {
+                    self.fishingCounts = 10
+                }
+                
+                if user?.currentFishingScore != nil {
+                    self.score = (user?.currentFishingScore)!
+                }else {
+                    self.score = 0
+                }
+            }
+        })
+    }
 }
 
 extension FishingViewController: CAAnimationDelegate {

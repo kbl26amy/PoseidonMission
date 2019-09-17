@@ -35,7 +35,10 @@ class UserManager {
             
             //存到變數
             var userData = UserData(email: email, name: name)       
-            
+        
+            userData.fishingTime = doc.data()?["fishingTime"] as? Timestamp
+            userData.currentFishingScore = doc.data()?["currentFishingScore"] as? Int
+            userData.fishingCounts = doc.data()?["fishingCounts"] as? Int
             userData.shareTime = doc.data()?["shareTime"] as? Timestamp
             userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Timestamp
             userData.loginCounts = doc.data()?["loginCounts"] as? Int

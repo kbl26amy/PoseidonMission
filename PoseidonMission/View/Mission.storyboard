@@ -794,8 +794,8 @@
                                 <rect key="frame" x="83" y="54" width="248" height="34.5"/>
                                 <color key="backgroundColor" red="0.24096706509590149" green="0.34517431259155273" blue="0.64316755533218384" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTP-W9-OR0">
-                                <rect key="frame" x="190" y="62" width="34" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTP-W9-OR0">
+                                <rect key="frame" x="207" y="71" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -832,9 +832,8 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="624.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="150分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9P-LZ-uHf">
-                                <rect key="frame" x="186" y="772" width="46" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9P-LZ-uHf">
+                                <rect key="frame" x="336" y="54" width="58" height="34.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -847,12 +846,14 @@
                             <constraint firstItem="dxU-JQ-cLh" firstAttribute="height" secondItem="21r-zZ-2ge" secondAttribute="height" id="66I-TE-rlu"/>
                             <constraint firstItem="eAX-Ez-dCy" firstAttribute="centerY" secondItem="0zm-CO-Fgt" secondAttribute="centerY" id="7Qv-EM-NeM"/>
                             <constraint firstItem="eAX-Ez-dCy" firstAttribute="leading" secondItem="bkq-bI-wly" secondAttribute="leading" constant="-5" id="8FI-sV-KHC"/>
+                            <constraint firstItem="E9P-LZ-uHf" firstAttribute="centerY" secondItem="e1V-BD-t8J" secondAttribute="centerY" id="8We-Jh-7bk"/>
                             <constraint firstItem="mTP-W9-OR0" firstAttribute="centerY" secondItem="e1V-BD-t8J" secondAttribute="centerY" id="8i1-rN-RgP"/>
                             <constraint firstItem="ghq-1U-ZYM" firstAttribute="bottom" secondItem="21r-zZ-2ge" secondAttribute="bottom" constant="5" id="CAB-OX-wm2"/>
                             <constraint firstItem="0zm-CO-Fgt" firstAttribute="trailing" secondItem="CJI-Yf-mU5" secondAttribute="trailing" id="D6l-Ic-MQv"/>
                             <constraint firstItem="e1V-BD-t8J" firstAttribute="top" secondItem="ghq-1U-ZYM" secondAttribute="top" constant="10" id="E4X-n3-VCo"/>
                             <constraint firstItem="21r-zZ-2ge" firstAttribute="height" secondItem="e1V-BD-t8J" secondAttribute="height" id="FKu-ZH-bEn"/>
                             <constraint firstItem="eAX-Ez-dCy" firstAttribute="width" secondItem="0zm-CO-Fgt" secondAttribute="width" multiplier="2" id="H8W-oW-iVR"/>
+                            <constraint firstItem="E9P-LZ-uHf" firstAttribute="leading" secondItem="e1V-BD-t8J" secondAttribute="trailing" constant="5" id="IBD-bK-lQ4"/>
                             <constraint firstItem="dxU-JQ-cLh" firstAttribute="top" secondItem="CvE-yc-lns" secondAttribute="bottom" id="JQA-i9-rtq"/>
                             <constraint firstItem="dxU-JQ-cLh" firstAttribute="width" secondItem="OCa-bD-Ssb" secondAttribute="width" multiplier="4:5" id="JkE-TN-Oqt"/>
                             <constraint firstItem="ghq-1U-ZYM" firstAttribute="bottom" secondItem="Pxs-3e-Mxb" secondAttribute="bottom" constant="5" id="KXk-Ok-CPW"/>
@@ -863,6 +864,7 @@
                             <constraint firstItem="5j2-1G-I44" firstAttribute="centerY" secondItem="e1V-BD-t8J" secondAttribute="centerY" id="SII-k9-bP2"/>
                             <constraint firstItem="bkq-bI-wly" firstAttribute="height" secondItem="0zm-CO-Fgt" secondAttribute="height" id="SVh-W3-5UK"/>
                             <constraint firstItem="CJI-Yf-mU5" firstAttribute="top" secondItem="OCa-bD-Ssb" secondAttribute="top" id="TZw-b1-bjs"/>
+                            <constraint firstItem="E9P-LZ-uHf" firstAttribute="trailing" secondItem="CJI-Yf-mU5" secondAttribute="trailing" constant="-20" id="Xpv-O9-RHe"/>
                             <constraint firstItem="mTP-W9-OR0" firstAttribute="centerX" secondItem="e1V-BD-t8J" secondAttribute="centerX" id="bik-Yz-szD"/>
                             <constraint firstItem="fut-5U-rlJ" firstAttribute="height" secondItem="21r-zZ-2ge" secondAttribute="height" id="c4f-Ct-OIc"/>
                             <constraint firstItem="ghq-1U-ZYM" firstAttribute="bottom" secondItem="fut-5U-rlJ" secondAttribute="bottom" constant="5" id="dNM-Da-19i"/>
@@ -877,6 +879,7 @@
                             <constraint firstItem="CvE-yc-lns" firstAttribute="leading" secondItem="OCa-bD-Ssb" secondAttribute="leading" id="pBR-LD-lLJ"/>
                             <constraint firstItem="0zm-CO-Fgt" firstAttribute="height" secondItem="e1V-BD-t8J" secondAttribute="height" multiplier="2" id="rbw-x2-aE1"/>
                             <constraint firstItem="5j2-1G-I44" firstAttribute="leading" secondItem="ghq-1U-ZYM" secondAttribute="leading" constant="23" id="tJn-Nv-Cfm"/>
+                            <constraint firstItem="E9P-LZ-uHf" firstAttribute="height" secondItem="e1V-BD-t8J" secondAttribute="height" id="trL-YY-pcx"/>
                             <constraint firstItem="eAX-Ez-dCy" firstAttribute="trailing" secondItem="0zm-CO-Fgt" secondAttribute="centerX" constant="25" id="uPZ-2X-UA9"/>
                             <constraint firstItem="dxU-JQ-cLh" firstAttribute="centerX" secondItem="OCa-bD-Ssb" secondAttribute="centerX" id="wnl-F3-35r"/>
                             <constraint firstItem="e1V-BD-t8J" firstAttribute="width" secondItem="OCa-bD-Ssb" secondAttribute="width" multiplier="3:5" id="xfq-UE-skI"/>
@@ -890,11 +893,13 @@
                         <outlet property="energyBar" destination="dxU-JQ-cLh" id="rEf-Eo-4DC"/>
                         <outlet property="fishingBackground" destination="CJI-Yf-mU5" id="ZM9-lc-eYA"/>
                         <outlet property="fishingButton" destination="21r-zZ-2ge" id="Nm5-2I-4RB"/>
+                        <outlet property="fishingChance" destination="mTP-W9-OR0" id="fRw-t4-yCr"/>
                         <outlet property="fishingLine" destination="bkq-bI-wly" id="LMY-TI-zLn"/>
                         <outlet property="fishingRod" destination="eAX-Ez-dCy" id="z4O-AQ-1Nf"/>
                         <outlet property="fishsView" destination="CvE-yc-lns" id="x43-E5-IMK"/>
                         <outlet property="leftMoveButton" destination="fut-5U-rlJ" id="o2k-Gc-8lf"/>
                         <outlet property="rightMoveButton" destination="Pxs-3e-Mxb" id="5bX-F1-uEs"/>
+                        <outlet property="scoreLabel" destination="E9P-LZ-uHf" id="EB9-yJ-IzO"/>
                         <outlet property="ship" destination="0zm-CO-Fgt" id="InL-Ir-PpG"/>
                     </connections>
                 </viewController>
