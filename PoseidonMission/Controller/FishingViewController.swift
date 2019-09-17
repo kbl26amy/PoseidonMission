@@ -171,6 +171,8 @@ class FishingViewController: UIViewController {
     
     func setFishingView() {
         
+        self.scoreLabel.text = "\(score)分"
+        self.fishingChance.text = "您還有\(self.fishingCounts)次釣魚機會"
         ship.image = UIImage(named: "ship")
         chanceBagroundView.layer.cornerRadius = 15
         fishingButton.layer.cornerRadius = 15
@@ -391,6 +393,7 @@ class FishingViewController: UIViewController {
                 if fishingTime != currentTime {
                     self.fishingCounts = 10
                     self.score = 0
+                 
                     
                 } else {
                     if user?.fishingCounts != nil {
