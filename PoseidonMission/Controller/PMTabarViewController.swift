@@ -86,7 +86,7 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         viewControllers = tabs.map({ $0.controller() })
  
-        UITabBar.appearance().barTintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
+//        UITabBar.appearance().barTintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
 
         delegate = self
     }
