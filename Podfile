@@ -10,5 +10,6 @@ target 'PoseidonMission' do
   pod ‘Firebase/Auth’
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
+  pod 'IQKeyboardManagerSwift'
 
 end

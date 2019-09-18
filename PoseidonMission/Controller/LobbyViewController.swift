@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class LobbyViewController: PMBaseViewController {
     
+    
+    @IBOutlet weak var runLightView: UIView!
     @IBOutlet weak var logoutOulet: UIBarButtonItem!
     @IBOutlet weak var showRegisterButtonOutlet: UIButton!
     @IBAction func logOutAction(_ sender: Any) {
@@ -34,6 +36,8 @@ class LobbyViewController: PMBaseViewController {
     @IBOutlet weak var runLightViewLabel: UILabel!
     
     func runlight () {
+        
+        self.runLightView.backgroundColor = UIColor(red: 255/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6)
         
         var frame = runLightViewLabel.frame
         frame.origin.x = UIScreen.main.bounds.width
@@ -186,7 +190,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         flowLayout.minimumInteritemSpacing = 0
         
         flowLayout.minimumLineSpacing = 0.0
-        
+//        homeCollectionView.backgroundColor = UIColor(red: 78/255.0, green: 139/255.0, blue: 157/255.0, alpha: 1)
         homeCollectionView.collectionViewLayout = flowLayout
     }
     
