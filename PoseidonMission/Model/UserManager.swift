@@ -47,7 +47,6 @@ class UserManager {
             userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int
             userData.mapPlayTime = doc.data()?["mapPlayTime"] as? Timestamp
             userData.fishingHighest = doc.data()?["fishingHighest"] as? Int
-            userData.fishingPlayTime = doc.data()?["fishingPlayTime"] as? Timestamp
             
             print(doc.data() as Any)
             print(userData)

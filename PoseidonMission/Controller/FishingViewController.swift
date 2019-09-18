@@ -20,8 +20,16 @@ class FishingViewController: UIViewController {
     var timer:Timer?
     var fishingTimer: Timer?
     var isSucess: Bool = false
-    var fishingCounts = 10
-    var score = 0
+    var fishingCounts = 10 {
+        didSet {
+             self.fishingChance.text = "您還有\(self.fishingCounts)次釣魚機會"
+        }
+    }
+    var score = 0 {
+        didSet {
+             self.scoreLabel.text = "\(score)分"
+        }
+    }
  
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var fishingChance: UILabel!
@@ -35,6 +43,9 @@ class FishingViewController: UIViewController {
     @IBOutlet weak var leftMoveButton: UIButton!
     @IBOutlet weak var rightMoveButton: UIButton!
     @IBOutlet weak var fishingLine: UIImageView!
+    
+    @IBOutlet weak var sucessText: UILabel!
+    @IBOutlet weak var failureText: UILabel!
     
     var energyBarAnimator: UIViewPropertyAnimator?
     
@@ -109,6 +120,7 @@ class FishingViewController: UIViewController {
             
             let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
                 
+                     self.energyBarAnimation()
                 }
       
             alertController.addAction(defaultAction)
@@ -139,7 +151,6 @@ class FishingViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     
-        saveFishingData()
         self.timer?.invalidate()
         self.fishingTimer?.invalidate()
        
@@ -151,7 +162,7 @@ class FishingViewController: UIViewController {
                                       y: 0,
                                       width: 0,
                                       height: UIScreen.main.bounds.height / 26)
-        colorView.backgroundColor = .red
+        colorView.backgroundColor = UIColor(red: 249/255, green: 191/255, blue: 90/255, alpha: 1)
         
         self.energyBar.addSubview(colorView)
         
@@ -172,8 +183,6 @@ class FishingViewController: UIViewController {
     
     func setFishingView() {
         
-        self.scoreLabel.text = "\(score)分"
-        self.fishingChance.text = "您還有\(self.fishingCounts)次釣魚機會"
         ship.image = UIImage(named: "ship")
         chanceBagroundView.layer.cornerRadius = 15
         fishingButton.layer.cornerRadius = 15
@@ -186,6 +195,8 @@ class FishingViewController: UIViewController {
         energyBar.layer.borderWidth = 3
         energyBar.layer.borderColor = #colorLiteral(red: 0.1359939873, green: 0.3958500326, blue: 0.4860774279, alpha: 1)
         pathLayer.removeAllAnimations()
+        sucessText.text = "積分 ＋150"
+        sucessText.alpha = 0
        
     }
     
@@ -197,7 +208,7 @@ class FishingViewController: UIViewController {
         var rodDownAnimation: UIViewPropertyAnimator?
         self.isSucess = false
         self.fishingCounts -= 1
-        self.fishingChance.text = "您還有\(self.fishingCounts)次釣魚機會"
+        
         rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
                                                                         delay: 0,
                                                                         options:.beginFromCurrentState,
@@ -244,11 +255,11 @@ class FishingViewController: UIViewController {
         let path =  CGMutablePath()
         path.move(to: CGPoint(x:0 ,y:0), transform: transform)
         path.addLine(to: CGPoint(x: 0 ,
-                                 y: UIScreen.main.bounds.height - 400),
+                                 y: UIScreen.main.bounds.height * 3 / 4 - 40),
                      transform: transform)
         
         let orbit = CAKeyframeAnimation(keyPath:"position")
-        orbit.duration = 5
+        orbit.duration = 4
         orbit.path = path
         orbit.calculationMode = CAAnimationCalculationMode.paced
         orbit.isRemovedOnCompletion = false
@@ -262,7 +273,7 @@ class FishingViewController: UIViewController {
         pathLayer.strokeColor = UIColor.darkGray.cgColor
     
        
-        pathAnimation.duration = 5
+        pathAnimation.duration = 4
         pathAnimation.fromValue = 0
         pathAnimation.toValue = 1
         pathAnimation.delegate = self
@@ -292,19 +303,29 @@ class FishingViewController: UIViewController {
 
                 self.resetAnimation()
                 self.isSucess = true
-                let alertController = UIAlertController(title: "成功",
-                                                        message: "積分 ＋ 150",
-                                                        preferredStyle: .alert)
-
-                let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                    self.score += 150
-                    self.scoreLabel.text = "\(self.score)分"
-                  
-                }
-
-                alertController.addAction(defaultAction)
-                present(alertController, animated: true, completion: nil)
-            
+                self.score += 150
+               
+                UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1,
+                                                               delay: 0,
+                                                               animations: {
+                   fish.frame.origin.y = -80
+                   fish.frame.origin.x = self.view.bounds.width
+                   
+                   self.sucessText.frame.origin.y -= 40;
+                   self.sucessText.alpha = 1
+                   self.sucessText.transform.scaledBy(x: 3, y: 3)
+                                                                
+                }, completion: { _ in
+                    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1,
+                                                                   delay: 0,
+                                                                   animations: {
+                                                                    
+                    self.sucessText.alpha = 0
+                    fish.alpha = 0
+                                                                      })
+                })
+                
+                break
             }
         }
         
@@ -312,21 +333,23 @@ class FishingViewController: UIViewController {
     
     func fishingFailure() {
         
-        print(fishTouchSquare.frame)
+       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1,
+                                                       delay: 0,
+                                                       animations: {
+                 self.failureText.frame.origin.y -= 80;
+                 self.failureText.alpha = 1
+                 self.failureText.transform.scaledBy(x: 3, y: 3)
+                                                        
+        }, completion: { _ in
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2,
+                                                           delay: 0,
+                                                           animations: {
+            self.failureText.alpha = 0
+            })
+        })
         
-        let alertController = UIAlertController(title: "失敗",
-                                                message: "沒有釣到任何魚",
-                                                preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
-            
-            self.resetAnimation()
-            
-        }
-        
-        alertController.addAction(defaultAction)
-        
-        present(alertController, animated: true, completion: nil)
+         self.resetAnimation()
+      
     }
     
     func resetAnimation(){
@@ -398,7 +421,6 @@ class FishingViewController: UIViewController {
                     self.fishingCounts = 10
                     self.score = 0
                  
-                    
                 } else {
                     if user?.fishingCounts != nil {
                         self.fishingCounts = (user?.fishingCounts)!
@@ -429,6 +451,7 @@ extension FishingViewController: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         
+        saveFishingData()
         if self.isSucess == false {
         fishingFailure()
         }

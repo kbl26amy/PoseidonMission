@@ -24,9 +24,7 @@ struct UserData {
     var jellyFishHighest: Int?
     
     var fishingHighest: Int?
-    
-    var fishingPlayTime: Timestamp?
-    
+   
     var loginCounts: Int?
     
     var loginTodayTime: Timestamp?

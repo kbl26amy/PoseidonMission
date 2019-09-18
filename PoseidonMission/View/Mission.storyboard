@@ -830,7 +830,27 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CvE-yc-lns">
                                 <rect key="frame" x="0.0" y="140" width="414" height="614.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="積分＋150分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxJ-nx-pwX">
+                                        <rect key="frame" x="149.5" y="295" width="115.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="很遺憾沒有釣到魚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSV-6N-wRv">
+                                        <rect key="frame" x="125.5" y="295" width="163.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="sSV-6N-wRv" firstAttribute="centerY" secondItem="CvE-yc-lns" secondAttribute="centerY" id="3tT-Cx-nrj"/>
+                                    <constraint firstItem="kxJ-nx-pwX" firstAttribute="centerX" secondItem="CvE-yc-lns" secondAttribute="centerX" id="Y8R-W8-zWq"/>
+                                    <constraint firstItem="sSV-6N-wRv" firstAttribute="centerX" secondItem="CvE-yc-lns" secondAttribute="centerX" id="hTT-JG-4XY"/>
+                                    <constraint firstItem="kxJ-nx-pwX" firstAttribute="centerY" secondItem="CvE-yc-lns" secondAttribute="centerY" id="zd8-0W-Ofp"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9P-LZ-uHf">
                                 <rect key="frame" x="336" y="54" width="58" height="34.5"/>
@@ -891,6 +911,7 @@
                     <connections>
                         <outlet property="chanceBagroundView" destination="e1V-BD-t8J" id="8pm-U5-XIE"/>
                         <outlet property="energyBar" destination="dxU-JQ-cLh" id="rEf-Eo-4DC"/>
+                        <outlet property="failureText" destination="sSV-6N-wRv" id="Tnk-D4-hBh"/>
                         <outlet property="fishingBackground" destination="CJI-Yf-mU5" id="ZM9-lc-eYA"/>
                         <outlet property="fishingButton" destination="21r-zZ-2ge" id="Nm5-2I-4RB"/>
                         <outlet property="fishingChance" destination="mTP-W9-OR0" id="fRw-t4-yCr"/>
@@ -902,6 +923,7 @@
                         <outlet property="scoreLabel" destination="E9P-LZ-uHf" id="EB9-yJ-IzO"/>
                         <outlet property="ship" destination="0zm-CO-Fgt" id="InL-Ir-PpG"/>
                         <outlet property="shipTrailingConstraint" destination="D6l-Ic-MQv" id="EIC-ZD-tag"/>
+                        <outlet property="sucessText" destination="kxJ-nx-pwX" id="wZS-ep-esJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtY-V5-eNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
