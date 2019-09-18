@@ -49,20 +49,24 @@ class FishingViewController: UIViewController {
         backToRoot()
     }
     
+    @IBOutlet weak var shipTrailingConstraint: NSLayoutConstraint!
     @IBAction func clickLeftButton(_ sender: Any) {
-        var shipLeftAnimation = UIViewPropertyAnimator()
-        shipLeftAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
-                                                                           delay: 0,
-                                                                           animations: {
-                self.ship.frame.origin.x -= 10
-                self.fishingRod.frame.origin.x -= 10
-                self.fishingLine.frame.origin.x -= 10
-                }, completion: nil)
-        
-        shipLeftAnimation.startAnimation()
+        self.view.layoutIfNeeded()
+    
+        let clikLeftAnimator = UIViewPropertyAnimator()
+        clikLeftAnimator.addAnimations {
+   
+            self.shipTrailingConstraint.constant -= 10
+            self.view.layoutIfNeeded()
+
+                }
+    
+        clikLeftAnimator.startAnimation()
+
     }
     
     @IBAction func clickRightButton(_ sender: Any) {
+        
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
                                                        delay: 0,
                                                        animations: {
@@ -105,8 +109,6 @@ class FishingViewController: UIViewController {
             
             let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
                 
-                self.energyBarAnimation()
-                
                 }
       
             alertController.addAction(defaultAction)
@@ -116,8 +118,7 @@ class FishingViewController: UIViewController {
         }
  
     }
-  
-    let animation = CABasicAnimation()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -188,38 +189,41 @@ class FishingViewController: UIViewController {
        
     }
     
-    var rodUpAnimation: UIViewPropertyAnimator?
-    var rodDownAnimation: UIViewPropertyAnimator?
+   
     
     func rotateUpRod(_ sender: Any) {
       
+        var rodUpAnimation: UIViewPropertyAnimator?
+        var rodDownAnimation: UIViewPropertyAnimator?
         self.isSucess = false
         self.fishingCounts -= 1
         self.fishingChance.text = "您還有\(self.fishingCounts)次釣魚機會"
         rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
                                                                         delay: 0,
+                                                                        options:.beginFromCurrentState,
                                                                         animations: {
-            
+                                                                            
             self.fishingLine.alpha = 0
             self.fishingRod.transform = CGAffineTransform(rotationAngle: (20.0 * .pi) / 90.0)
  
         }, completion: nil)
         rodUpAnimation?.startAnimation()
-        
+
         rodUpAnimation?.addCompletion() {_ in
-            self.rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
+            rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
                                                                               delay: 0,
+                                                                              options:.beginFromCurrentState,
                                                                               animations: {
 
                 self.fishingRod.transform = CGAffineTransform(rotationAngle: (-20.0 * .pi) / 90.0)
-                                                                     
+
             }, completion: nil)
-            
-            self.rodDownAnimation?.startAnimation()
-            self.rodDownAnimation?.addCompletion() {_ in
-    
+
+            rodDownAnimation?.startAnimation()
+            rodDownAnimation?.addCompletion() {_ in
+
                 self.fishLineAnimation()
-                
+
             }
         }
     }

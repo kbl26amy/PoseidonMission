@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PoseidonMission/Controller/FishingViewController.swift"
-            timestampString = "590417186.197755"
+            timestampString = "590494528.319985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "energyBarAnimation()"
             landmarkType = "7">
          </BreakpointContent>
