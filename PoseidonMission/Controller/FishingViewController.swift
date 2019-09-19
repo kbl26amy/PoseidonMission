@@ -130,6 +130,27 @@ class FishingViewController: UIViewController {
         }
  
     }
+    
+    func checkFishingHighest() {
+        
+        UserManager.shared.getUserData(completion:  { user in
+            
+            if user?.fishingHighest != nil {
+                if self.score > (user?.fishingHighest)! {
+                    ProfileViewController.fishingHighest = self.score
+                    
+                }
+            }else {
+                ProfileViewController.fishingHighest = self.score
+            }
+        })
+
+        let updateData = ["fishingHighest":ProfileViewController.fishingHighest] as [String : Any]
+        
+        FireBaseHelper.updateData(update: updateData)
+        
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -452,6 +473,7 @@ extension FishingViewController: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         
         saveFishingData()
+        checkFishingHighest()
         if self.isSucess == false {
         fishingFailure()
         }

@@ -64,3 +64,15 @@ struct UserRecord {
     var score: Int
  
 }
+
+struct FishRank {
+    
+    var name: String
+    var fishHighest: Int
+}
+
+struct JellyRank {
+    
+    var name: String
+    var jellyHighest: Int
+}

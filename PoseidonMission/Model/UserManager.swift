@@ -13,6 +13,8 @@ class UserManager {
     
     var user: UserData?
     var userRecord: [UserRecord] = []
+    var fishRankData:[FishRank] = []
+    var jellyRankData:[JellyRank] = []
     
     static let shared = UserManager()
     
@@ -92,6 +94,61 @@ class UserManager {
             completion(self.userRecord)
             
         })
+    }
+    
+    func getJellyHighestData(completion: @escaping ([JellyRank]?) -> Void) {
+        
+        FireBaseHelper.getJellyFishHighestData(completion: {querySnapshot in
+            
+            guard let docs = querySnapshot?.documents else {
+                
+                print("error")
+                
+                completion(nil)
+                
+                return
+            }
+            
+            for index in docs.indices {
+                
+                let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
+                let name = docs[index].data()["userName"] as? String
+                
+                self.jellyRankData.append(JellyRank( name: name!,
+                                                     jellyHighest: jellyFishHighest!))
+            }
+        
+            completion(self.jellyRankData)
+       
+        })
+        
+    }
+    func getFishHighestData(completion: @escaping ([FishRank]?) -> Void) {
+        
+        FireBaseHelper.getFishingHighestData(completion: {querySnapshot in
+            
+            guard let docs = querySnapshot?.documents else {
+                
+                print("error")
+                
+                completion(nil)
+                
+                return
+            }
+            
+            for index in docs.indices {
+                
+                let fishHighest = docs[index].data()["fishingHighest"] as? Int
+                let name = docs[index].data()["userName"] as? String
+                
+                self.fishRankData.append(FishRank( name: name ?? "no name",
+                                                   fishHighest: fishHighest ?? 0))
+            }
+            
+            completion(self.fishRankData)
+            
+        })
+        
     }
 
 }

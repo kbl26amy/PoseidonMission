@@ -36,9 +36,9 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
         let attributes = super.layoutAttributesForElements(in: rect)
 
         let centerX = collectionView!.contentOffset.x + collectionView!.bounds.width / 2.0
-        
+
         for attribute in attributes! {
-            
+
             // cell 中心點 和 collectionView 中心點的間距
             let delta = Swift.abs(attribute.center.x - centerX)
 
@@ -48,12 +48,50 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
             // 設置縮放比例
             attribute.transform = CGAffineTransform(scaleX: scale, y: scale);
 
-            
+
         }
-    
+
         return attributes
     }
 
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+}
+
+class PageCollectionViewLayout: UICollectionViewFlowLayout {
+    
+    override open func prepare() {
+        super.prepare()
+        
+        scrollDirection = .horizontal
+        sectionInset = UIEdgeInsets(top:  0, left: 0, bottom: 0, right: 0)
+        
+    }
+    
+    override open var collectionViewContentSize: CGSize {
+        if collectionView == nil { return CGSize.zero }
+        
+       var itemsCount = CGFloat()
+        if collectionView?.numberOfSections == 0{
+        
+            if collectionView!.numberOfItems(inSection: 0) % 3 == 0 {
+                itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0) / 3)
+            } else {
+                itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0) / 3 + 1)
+            }
+        } else {
+            if collectionView!.numberOfItems(inSection: 0) % 3 == 0 {
+                itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 1) / 3)
+            } else {
+                itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 1) / 3 + 1)
+            }
+        }
+        
+        return CGSize(width: collectionView!.bounds.width * itemsCount ,
+                      height: collectionView!.bounds.height )
+    }
+    
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }

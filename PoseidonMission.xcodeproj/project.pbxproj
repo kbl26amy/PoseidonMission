@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		620BA31823276CD800BBF395 /* MissionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BA31723276CD800BBF395 /* MissionContent.swift */; };
+		620F600A23331BE9007CFBCA /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */; };
 		6223F72F2328F74A003E249B /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6223F72E2328F74A003E249B /* ShareManager.swift */; };
 		62353B602314EBDE00A4FBA0 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */; };
 		62353B622314F5F700A4FBA0 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B612314F5F700A4FBA0 /* Lobby.storyboard */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.release.xcconfig"; sourceTree = "<group>"; };
 		620BA31723276CD800BBF395 /* MissionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionContent.swift; sourceTree = "<group>"; };
+		620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		6223F72E2328F74A003E249B /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		62353B612314F5F700A4FBA0 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				62A2B812231928CD0099509E /* GetPointTableViewCell.swift */,
 				6286FF9D232688D700C48899 /* RankTableViewCell.swift */,
 				6286FF9F23268D7100C48899 /* RankBannerCollectionViewCell.swift */,
+				620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				62353B7823164F4000A4FBA0 /* AuthViewController.swift in Sources */,
 				62A9647E2314E02600BD4AE0 /* MissionViewController.swift in Sources */,
 				62353B6423152B8700A4FBA0 /* HomeCollectionViewCell.swift in Sources */,
+				620F600A23331BE9007CFBCA /* ContentCollectionViewCell.swift in Sources */,
 				62E1B0362313B73C007AC76D /* AppDelegate.swift in Sources */,
 				62353B722316270A00A4FBA0 /* BannerCollectionViewLayout.swift in Sources */,
 				62A964822314E05200BD4AE0 /* ProfileViewController.swift in Sources */,
