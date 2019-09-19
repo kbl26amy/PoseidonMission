@@ -77,14 +77,15 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
         
         guard let contentCell = cell as? ContentCollectionViewCell else { return cell }
         
+        
 //            contentCell.userImage.image = UIImage(named: "profile")
-        contentCell.rankNumber.text = "\(indexPath.row + 1)"
-        contentCell.rankNumber.layer.cornerRadius = contentCell.rankNumber.frame.width / 2
+            contentCell.rankNumber.text = "\(indexPath.row + 1)"
+            contentCell.rankNumber.layer.cornerRadius = contentCell.rankNumber.frame.width / 2
             contentCell.rankNumber.backgroundColor = UIColor(red: 157/255, green: 215/255, blue: 229/255, alpha: 1)
             contentCell.userName.text = self.rankData[indexPath.row].name
-            contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].fishHighest)"
-        
-        contentCell.likeClosure = { cell in
+       
+            contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].highest)"   
+            contentCell.likeClosure = { cell in
             
             self.likeRecord[indexPath.row] = true
             

@@ -29,7 +29,7 @@ class RankViewController: PMBaseViewController  {
     }
     
     var sectionTitle = ["釣魚排行", "打水母排行"]
-    var bannerImages = ["fishingPic", "jellyFishPic"]
+    var bannerImages = ["fishingPic", "jellyFishPic", "loginPic"]
     
     @IBOutlet weak var rankCollectionView: UICollectionView!{
         didSet{
@@ -38,10 +38,10 @@ class RankViewController: PMBaseViewController  {
         }
     }
     
-    lazy var cardLayout: BannerCollectionViewLayout = {
+    lazy var bannerLayout: BannerCollectionViewLayout = {
         
         let layout = BannerCollectionViewLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 * 4,
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 2 / 5,
                                  height: rankCollectionView.contentSize.height)
         return layout
     }()
@@ -68,7 +68,7 @@ class RankViewController: PMBaseViewController  {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.rankCollectionView.collectionViewLayout = cardLayout
+        self.rankCollectionView.collectionViewLayout = bannerLayout
     }
     
     
@@ -78,7 +78,7 @@ extension RankViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
     
-            return 2
+            return bannerImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView,

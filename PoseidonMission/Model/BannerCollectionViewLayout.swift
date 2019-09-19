@@ -104,7 +104,7 @@ class BannerCollectionViewLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         scrollDirection = .horizontal
-        sectionInset = UIEdgeInsets(top:  0, left: 0, bottom: 0, right: 0)
+        sectionInset = UIEdgeInsets(top:  8, left: 16, bottom: 0, right: 0)
         
     }
     
@@ -115,7 +115,7 @@ class BannerCollectionViewLayout: UICollectionViewFlowLayout {
         itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0) )
         
         
-        return CGSize(width: collectionView!.bounds.width / 3 * itemsCount ,
+        return CGSize(width: collectionView!.bounds.width * itemsCount ,
                       height: collectionView!.bounds.height )
     }
     
