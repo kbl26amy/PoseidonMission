@@ -11,6 +11,13 @@ import Firebase
 
 class RankViewController: PMBaseViewController  {
 
+    var userRankData = UserData(email: "", name: "") {
+        didSet {
+            rankCollectionView.reloadData()
+            print(userRankData)
+        }
+    }
+    
     var fishRankData: [RankData] = []{
         didSet {
             rankTableView.delegate = self
@@ -32,11 +39,12 @@ class RankViewController: PMBaseViewController  {
     var bannerImages = ["fishingPic", "jellyFishPic", "loginPic"]
     
     @IBOutlet weak var rankCollectionView: UICollectionView!{
-        didSet{
+        didSet {
             rankCollectionView.delegate = self
             rankCollectionView.dataSource = self
         }
     }
+       
     
     lazy var bannerLayout: BannerCollectionViewLayout = {
         
@@ -51,6 +59,12 @@ class RankViewController: PMBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserManager.shared.getUserData(completion: {data in
+            guard let data = data else {return}
+            self.userRankData = data
+            
+        })
 
         UserManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
@@ -91,13 +105,14 @@ extension RankViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         
             bannerCell.layer.cornerRadius = 6.0
             bannerCell.layer.borderWidth = 1.0
+        
             bannerCell.layer.borderColor = UIColor.clear.cgColor
             bannerCell.layer.shadowColor = UIColor.gray.cgColor
-            bannerCell.layer.shadowOffset = CGSize(width: 0, height: 3)
+            bannerCell.layer.shadowOffset = CGSize(width: 1, height: 3)
             bannerCell.layer.shadowRadius = 6.0
         
             bannerCell.bannerImage.image = UIImage(named: bannerImages[indexPath.row])
-        
+            bannerCell.bannerLabel.text = "\(self.userRankData.fishingHighest)"
             return bannerCell
             
     }
