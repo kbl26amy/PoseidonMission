@@ -68,6 +68,6 @@ struct UserRecord {
 struct RankData {
     
     var name: String
-    var fishHighest: Int
-    var jellyHighest: Int
+    var highest: Int
+   
 }

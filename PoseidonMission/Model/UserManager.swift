@@ -110,13 +110,11 @@ class UserManager {
             }
             
             for index in docs.indices {
-                 let fishHighest = docs[index].data()["fishingHighest"] as? Int
                 let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
                 let name = docs[index].data()["userName"] as? String
                 
                 self.jellyRankData.append(RankData( name: name!,
-                                                    fishHighest: fishHighest ?? 0,
-                                                    jellyHighest: jellyFishHighest ?? 0))
+                                                highest: jellyFishHighest ?? 0))
             }
         
             completion(self.jellyRankData)
@@ -141,10 +139,9 @@ class UserManager {
                 
                 let fishHighest = docs[index].data()["fishingHighest"] as? Int
                 let name = docs[index].data()["userName"] as? String
-                 let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
                 
                 self.fishRankData.append(RankData( name: name ?? "no name",
-                                                   fishHighest: fishHighest ?? 0, jellyHighest: jellyFishHighest ?? 0))
+                                                highest: fishHighest ?? 0))
             }
             
             completion(self.fishRankData)

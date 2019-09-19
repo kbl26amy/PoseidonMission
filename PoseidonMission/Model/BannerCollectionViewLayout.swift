@@ -97,3 +97,29 @@ class PageCollectionViewLayout: UICollectionViewFlowLayout {
         return true
     }
 }
+
+class BannerCollectionViewLayout: UICollectionViewFlowLayout {
+    
+    override open func prepare() {
+        super.prepare()
+        
+        scrollDirection = .horizontal
+        sectionInset = UIEdgeInsets(top:  0, left: 0, bottom: 0, right: 0)
+        
+    }
+    
+    override open var collectionViewContentSize: CGSize {
+        if collectionView == nil { return CGSize.zero }
+        
+        var itemsCount = CGFloat()
+        itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0) )
+        
+        
+        return CGSize(width: collectionView!.bounds.width / 3 * itemsCount ,
+                      height: collectionView!.bounds.height )
+    }
+    
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+}
