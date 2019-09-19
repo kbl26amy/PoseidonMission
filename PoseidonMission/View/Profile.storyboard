@@ -48,6 +48,13 @@
                                             <constraint firstAttribute="width" secondItem="g5N-qy-ZFi" secondAttribute="height" multiplier="1:1" id="ehZ-mw-26h"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKC-O7-EFB">
+                                        <rect key="frame" x="88" y="86" width="24" height="24"/>
+                                        <state key="normal" image="mission"/>
+                                        <connections>
+                                            <action selector="editPhoto:" destination="zND-Cg-2uh" eventType="touchUpInside" id="obC-p2-m5Z"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.66460222010000003" green="0.83821409940000002" blue="0.89020627740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -56,11 +63,15 @@
                                     <constraint firstAttribute="trailing" secondItem="55J-kd-MYs" secondAttribute="trailing" constant="16" id="8vO-bX-wKe"/>
                                     <constraint firstItem="dm7-J7-trI" firstAttribute="leading" secondItem="g5N-qy-ZFi" secondAttribute="trailing" constant="10" id="IVq-Zz-Yk7"/>
                                     <constraint firstItem="dm7-J7-trI" firstAttribute="top" secondItem="55J-kd-MYs" secondAttribute="bottom" constant="8" id="OEO-T0-zAK"/>
+                                    <constraint firstItem="PKC-O7-EFB" firstAttribute="height" secondItem="g5N-qy-ZFi" secondAttribute="height" multiplier="1:5" constant="3.5999999999999979" id="RGm-T6-g2Y"/>
                                     <constraint firstAttribute="height" constant="118" id="WJe-qr-jYK"/>
                                     <constraint firstItem="sq4-LL-RQ2" firstAttribute="leading" secondItem="g5N-qy-ZFi" secondAttribute="trailing" constant="10" id="WXQ-VO-IiL"/>
+                                    <constraint firstItem="PKC-O7-EFB" firstAttribute="width" secondItem="g5N-qy-ZFi" secondAttribute="height" multiplier="4:17" id="b6a-YA-2eV"/>
                                     <constraint firstItem="g5N-qy-ZFi" firstAttribute="leading" secondItem="H9u-GK-M3G" secondAttribute="leading" constant="10" id="cHv-3i-6xB"/>
                                     <constraint firstItem="sq4-LL-RQ2" firstAttribute="top" secondItem="H9u-GK-M3G" secondAttribute="top" constant="16" id="dDv-g6-q7F"/>
+                                    <constraint firstItem="PKC-O7-EFB" firstAttribute="trailing" secondItem="g5N-qy-ZFi" secondAttribute="trailing" id="dU1-ZO-M7y"/>
                                     <constraint firstItem="g5N-qy-ZFi" firstAttribute="centerY" secondItem="H9u-GK-M3G" secondAttribute="centerY" id="sZk-P6-tZO"/>
+                                    <constraint firstItem="PKC-O7-EFB" firstAttribute="bottom" secondItem="g5N-qy-ZFi" secondAttribute="bottom" id="sxg-b7-q2A"/>
                                     <constraint firstItem="g5N-qy-ZFi" firstAttribute="top" secondItem="H9u-GK-M3G" secondAttribute="top" constant="8" id="uvo-mp-sWL"/>
                                     <constraint firstItem="55J-kd-MYs" firstAttribute="top" secondItem="sq4-LL-RQ2" secondAttribute="bottom" constant="8" id="vVC-tM-Ljb"/>
                                     <constraint firstAttribute="trailing" secondItem="sq4-LL-RQ2" secondAttribute="trailing" constant="16" id="yH2-KS-yoy"/>
@@ -152,6 +163,7 @@
                     <connections>
                         <outlet property="getPointTableView" destination="inq-fk-sdJ" id="I6e-K5-NBY"/>
                         <outlet property="userEmail" destination="55J-kd-MYs" id="AGO-bm-xFX"/>
+                        <outlet property="userImage" destination="g5N-qy-ZFi" id="ePm-wH-fpA"/>
                         <outlet property="userName" destination="sq4-LL-RQ2" id="A53-yu-GLS"/>
                         <outlet property="userTotalPoint" destination="dm7-J7-trI" id="umh-fC-xKD"/>
                     </connections>
@@ -181,6 +193,7 @@
     </scenes>
     <resources>
         <image name="map" width="253" height="254"/>
+        <image name="mission" width="24" height="24"/>
         <image name="ship" width="199" height="210"/>
     </resources>
 </document>

@@ -61,9 +61,12 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awi-1i-zeY">
-                                                                        <rect key="frame" x="338" y="15.5" width="46" height="30"/>
-                                                                        <state key="normal" title="Button"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awi-1i-zeY">
+                                                                        <rect key="frame" x="353.5" y="15.5" width="30.5" height="30.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="awi-1i-zeY" secondAttribute="height" multiplier="1:1" id="zCm-3X-ZUc"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button" image="clickGood"/>
                                                                     </button>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZGs-Jg-Mnm">
                                                                         <rect key="frame" x="16" y="0.0" width="61" height="61"/>
@@ -71,9 +74,20 @@
                                                                             <constraint firstAttribute="width" secondItem="ZGs-Jg-Mnm" secondAttribute="height" multiplier="1:1" id="jDC-0X-7ke"/>
                                                                         </constraints>
                                                                     </imageView>
+                                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E43-Cb-lBQ">
+                                                                        <rect key="frame" x="16" y="0.0" width="61" height="61"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="E43-Cb-lBQ" secondAttribute="height" multiplier="1:1" id="KfX-TH-BO0"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
+                                                                <constraint firstItem="E43-Cb-lBQ" firstAttribute="width" secondItem="ZGs-Jg-Mnm" secondAttribute="width" id="0rW-bh-vKR"/>
                                                                 <constraint firstAttribute="centerY" secondItem="Izd-jT-fwj" secondAttribute="bottom" id="2Cg-16-Un7"/>
                                                                 <constraint firstItem="ZGs-Jg-Mnm" firstAttribute="height" secondItem="2Xx-tL-WbW" secondAttribute="height" id="CGq-Yg-xce"/>
                                                                 <constraint firstItem="9VN-r6-pRz" firstAttribute="leading" secondItem="ZGs-Jg-Mnm" secondAttribute="trailing" constant="30" id="Ghq-2r-eqa"/>
@@ -81,11 +95,15 @@
                                                                 <constraint firstItem="9VN-r6-pRz" firstAttribute="top" secondItem="Izd-jT-fwj" secondAttribute="bottom" constant="8" id="KZg-lY-WIu"/>
                                                                 <constraint firstItem="ZGs-Jg-Mnm" firstAttribute="centerY" secondItem="2Xx-tL-WbW" secondAttribute="centerY" id="PDa-wl-0ux"/>
                                                                 <constraint firstItem="awi-1i-zeY" firstAttribute="centerY" secondItem="2Xx-tL-WbW" secondAttribute="centerY" id="YO5-Fg-2yd"/>
+                                                                <constraint firstItem="E43-Cb-lBQ" firstAttribute="centerX" secondItem="ZGs-Jg-Mnm" secondAttribute="centerX" id="Yfp-cb-Ene"/>
+                                                                <constraint firstItem="awi-1i-zeY" firstAttribute="height" secondItem="2Xx-tL-WbW" secondAttribute="height" multiplier="1:2" id="dyV-fV-HtV"/>
+                                                                <constraint firstItem="E43-Cb-lBQ" firstAttribute="centerY" secondItem="2Xx-tL-WbW" secondAttribute="centerY" id="hNC-uM-cje"/>
                                                                 <constraint firstAttribute="trailing" secondItem="awi-1i-zeY" secondAttribute="trailing" constant="30" id="iJ9-jK-duX"/>
                                                                 <constraint firstItem="Izd-jT-fwj" firstAttribute="leading" secondItem="ZGs-Jg-Mnm" secondAttribute="trailing" constant="30" id="won-kT-CZG"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="clickGoodButton" destination="awi-1i-zeY" id="neo-Va-AGI"/>
+                                                                <outlet property="rankNumber" destination="E43-Cb-lBQ" id="OWs-MI-l3x"/>
                                                                 <outlet property="userImage" destination="ZGs-Jg-Mnm" id="2mc-E7-IZ6"/>
                                                                 <outlet property="userName" destination="Izd-jT-fwj" id="6aR-AD-IeQ"/>
                                                                 <outlet property="userScore" destination="9VN-r6-pRz" id="I3s-xp-je4"/>
@@ -184,4 +202,7 @@
             <point key="canvasLocation" x="569.56521739130437" y="-22.098214285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clickGood" width="597" height="570"/>
+    </resources>
 </document>

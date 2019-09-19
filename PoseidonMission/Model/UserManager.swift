@@ -13,8 +13,8 @@ class UserManager {
     
     var user: UserData?
     var userRecord: [UserRecord] = []
-    var fishRankData:[FishRank] = []
-    var jellyRankData:[JellyRank] = []
+    var fishRankData:[RankData] = []
+    var jellyRankData:[RankData] = []
     
     static let shared = UserManager()
     
@@ -96,7 +96,7 @@ class UserManager {
         })
     }
     
-    func getJellyHighestData(completion: @escaping ([JellyRank]?) -> Void) {
+    func getJellyHighestData(completion: @escaping ([RankData]?) -> Void) {
         
         FireBaseHelper.getJellyFishHighestData(completion: {querySnapshot in
             
@@ -110,12 +110,13 @@ class UserManager {
             }
             
             for index in docs.indices {
-                
+                 let fishHighest = docs[index].data()["fishingHighest"] as? Int
                 let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
                 let name = docs[index].data()["userName"] as? String
                 
-                self.jellyRankData.append(JellyRank( name: name!,
-                                                     jellyHighest: jellyFishHighest!))
+                self.jellyRankData.append(RankData( name: name!,
+                                                    fishHighest: fishHighest ?? 0,
+                                                    jellyHighest: jellyFishHighest ?? 0))
             }
         
             completion(self.jellyRankData)
@@ -123,7 +124,7 @@ class UserManager {
         })
         
     }
-    func getFishHighestData(completion: @escaping ([FishRank]?) -> Void) {
+    func getFishHighestData(completion: @escaping ([RankData]?) -> Void) {
         
         FireBaseHelper.getFishingHighestData(completion: {querySnapshot in
             
@@ -140,9 +141,10 @@ class UserManager {
                 
                 let fishHighest = docs[index].data()["fishingHighest"] as? Int
                 let name = docs[index].data()["userName"] as? String
+                 let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
                 
-                self.fishRankData.append(FishRank( name: name ?? "no name",
-                                                   fishHighest: fishHighest ?? 0))
+                self.fishRankData.append(RankData( name: name ?? "no name",
+                                                   fishHighest: fishHighest ?? 0, jellyHighest: jellyFishHighest ?? 0))
             }
             
             completion(self.fishRankData)

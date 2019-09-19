@@ -65,14 +65,9 @@ struct UserRecord {
  
 }
 
-struct FishRank {
+struct RankData {
     
     var name: String
     var fishHighest: Int
-}
-
-struct JellyRank {
-    
-    var name: String
     var jellyHighest: Int
 }

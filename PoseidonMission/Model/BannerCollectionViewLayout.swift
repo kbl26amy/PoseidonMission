@@ -65,7 +65,8 @@ class PageCollectionViewLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         scrollDirection = .horizontal
-        sectionInset = UIEdgeInsets(top:  0, left: 0, bottom: 0, right: 0)
+        let inset = (collectionView!.frame.size.width - itemSize.width) * 0.5
+        sectionInset = UIEdgeInsets(top:  0, left: inset, bottom: 0, right: inset)
         
     }
     

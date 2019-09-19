@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: PMBaseViewController  {
     
@@ -18,6 +19,55 @@ class ProfileViewController: PMBaseViewController  {
         }
     }
     
+    @IBAction func editPhoto(_ sender: Any) {
+        
+        let imagePickerController = UIImagePickerController()
+        
+        // 委任代理
+        imagePickerController.delegate = self
+        
+        // 建立一個 UIAlertController 的實體
+        // 設定 UIAlertController 的標題與樣式為 動作清單 (actionSheet)
+        let imagePickerAlertController = UIAlertController(title: "上傳圖片", message: "請選擇要上傳的圖片", preferredStyle: .actionSheet)
+        
+        // 建立三個 UIAlertAction 的實體
+        // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
+        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (Void) in
+            
+            // 判斷是否可以從照片圖庫取得照片來源
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                
+                // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.photoLibrary)，並 present UIImagePickerController
+                imagePickerController.sourceType = .photoLibrary
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+        }
+        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (Void) in
+            
+            // 判斷是否可以從相機取得照片來源
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                
+                // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.camera)，並 present UIImagePickerController
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+        }
+        
+        // 新增一個取消動作，讓使用者可以跳出 UIAlertController
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+            
+            imagePickerAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // 將上面三個 UIAlertAction 動作加入 UIAlertController
+        imagePickerAlertController.addAction(imageFromLibAction)
+        imagePickerAlertController.addAction(imageFromCameraAction)
+        imagePickerAlertController.addAction(cancelAction)
+        
+        // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
+        present(imagePickerAlertController, animated: true, completion: nil)
+    
+    }
     var userRecordData: [UserRecord]?{
         didSet{
             getPointTableView.reloadData()
@@ -29,6 +79,8 @@ class ProfileViewController: PMBaseViewController  {
     static var fishingHighest: Int = 0
     static var loginCounts: Int = 0
 
+    var selectedImageFromPicker: UIImage?
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userTotalPoint: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userName: UILabel!
@@ -42,6 +94,7 @@ class ProfileViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
   
+       
     }
  
     override func viewWillAppear(_ animated: Bool) {
@@ -82,4 +135,28 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         return 90
     }
    
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // 取得從 UIImagePickerController 選擇的檔案
+            
+            guard let pickedImage = info[.originalImage] as? UIImage else {
+                fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            }
+            
+            selectedImageFromPicker = pickedImage
+        
+        // 當判斷有 selectedImage 時，我們會在 if 判斷式裡將圖片上傳
+        if let selectedImage = selectedImageFromPicker {
+            
+            self.userImage.image = selectedImage
+          
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
 }

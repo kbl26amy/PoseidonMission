@@ -10,22 +10,12 @@ import UIKit
 import Firebase
 class RankTableViewCell: UITableViewCell {
 
-    var fishRankData: [FishRank] = []{
-        didSet {
-            contentCollectionView.delegate = self
-            contentCollectionView.dataSource = self
+    var rankData:[RankData] = [] {
+        didSet{
             contentCollectionView.reloadData()
-            print(fishRankData)
         }
     }
-    var jellyRankData: [JellyRank] = [] {
-        didSet {
-            contentCollectionView.delegate = self
-            contentCollectionView.dataSource = self
-            contentCollectionView.reloadData()
-            print(jellyRankData)
-        }
-    }
+   
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var userRecord: UILabel!
     @IBOutlet weak var userName: UILabel!
@@ -42,17 +32,9 @@ class RankTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        UserManager.shared.getFishHighestData(completion: {data in
-            guard let data = data else {return}
-            self.fishRankData = data
-            
-        })
-        UserManager.shared.getJellyHighestData(completion: {data in
-            guard let data = data else {return}
-            self.jellyRankData = data
-            
-        })
         
+            contentCollectionView.delegate = self
+            contentCollectionView.dataSource = self
         
     }
 
@@ -71,13 +53,9 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if section == 0{
-            return self.fishRankData.count
-        } else {
-            return self.jellyRankData.count
-        }
-        
+        print(self.rankData.count)
+        return self.rankData.count
+    
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -89,25 +67,13 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
         
         guard let contentCell = cell as? ContentCollectionViewCell else { return cell }
         
-        switch indexPath.section {
-        
-        case 0 :
-           
-            contentCell.userImage.image = UIImage(named: "profile")
-            contentCell.userName.text = self.fishRankData[indexPath.row].name
-            contentCell.userScore.text = "\(self.fishRankData[indexPath.row].fishHighest)"
-       
-           
-        case 1 :
-          
-            contentCell.userImage.image = UIImage(named: "profile")
-            contentCell.userName.text = self.jellyRankData[indexPath.row].name
-            contentCell.userScore.text = "\(self.jellyRankData[indexPath.row].jellyHighest)"
-       
-        default:
-        print("error")
-       
-        }
+//            contentCell.userImage.image = UIImage(named: "profile")
+        contentCell.rankNumber.text = "\(indexPath.row + 1)"
+        contentCell.rankNumber.layer.cornerRadius = contentCell.rankNumber.frame.width / 2
+            contentCell.rankNumber.backgroundColor = UIColor(red: 157/255, green: 215/255, blue: 229/255, alpha: 1)
+            contentCell.userName.text = self.rankData[indexPath.row].name
+            contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].fishHighest)"
+
             return contentCell
     }
   
@@ -116,11 +82,7 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
      
          self.contentCollectionView.collectionViewLayout = cardLayout
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        
-       
-    }
+
 }
     
 

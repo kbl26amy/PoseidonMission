@@ -10,6 +10,7 @@ import UIKit
 
 class ContentCollectionViewCell: UICollectionViewCell {
    
+    @IBOutlet weak var rankNumber: UILabel!
     @IBOutlet weak var clickGoodButton: UIButton!
     @IBOutlet weak var userScore: UILabel!
     @IBOutlet weak var userName: UILabel!

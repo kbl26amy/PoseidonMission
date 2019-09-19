@@ -11,6 +11,23 @@ import Firebase
 
 class RankViewController: PMBaseViewController  {
 
+    var fishRankData: [RankData] = []{
+        didSet {
+            rankTableView.delegate = self
+            rankTableView.dataSource = self
+            rankTableView.reloadData()
+            print(fishRankData)
+        }
+    }
+    var jellyRankData: [RankData] = [] {
+        didSet {
+            rankTableView.delegate = self
+            rankTableView.dataSource = self
+            rankTableView.reloadData()
+            print(jellyRankData)
+        }
+    }
+    
     var sectionTitle = ["釣魚排行", "打水母排行"]
     var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
@@ -29,18 +46,23 @@ class RankViewController: PMBaseViewController  {
         return layout
     }()
     
-    @IBOutlet weak var rankTableView: UITableView!{
-        didSet{
-            rankTableView.delegate = self
-            rankTableView.dataSource = self
-        }
-    }
+    @IBOutlet weak var rankTableView: UITableView!
+       
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
+        UserManager.shared.getFishHighestData(completion: {data in
+            guard let data = data else {return}
+            self.fishRankData = data
+            
+        })
+        UserManager.shared.getJellyHighestData(completion: {data in
+            guard let data = data else {return}
+            self.jellyRankData = data
+            
+        })
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,6 +118,20 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource{
         
         guard let rankCell = cell as? RankTableViewCell else { return cell }
         
+        switch indexPath.section {
+            
+        case 0 :
+            
+            rankCell.rankData = self.fishRankData
+            
+        case 1 :
+            
+            rankCell.rankData = self.jellyRankData
+            
+        default:
+            print("error")
+            
+        }
         return rankCell
      
     }
