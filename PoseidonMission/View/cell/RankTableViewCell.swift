@@ -10,6 +10,16 @@ import UIKit
 import Firebase
 class RankTableViewCell: UITableViewCell {
 
+    var likeRecord: [Bool]  = {
+        
+        var array: [Bool] = []
+        
+        for i in 0...1000 {
+            array.append(false)
+        }
+        
+        return array
+    }()
     var rankData:[RankData] = [] {
         didSet{
             contentCollectionView.reloadData()
@@ -73,6 +83,18 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
             contentCell.rankNumber.backgroundColor = UIColor(red: 157/255, green: 215/255, blue: 229/255, alpha: 1)
             contentCell.userName.text = self.rankData[indexPath.row].name
             contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].fishHighest)"
+        
+        contentCell.likeClosure = { cell in
+            
+            self.likeRecord[indexPath.row] = true
+            
+        }
+        
+        if self.likeRecord[indexPath.row]{
+            contentCell.clickGoodButton.setImage(UIImage(named: "clickGood"), for: .normal)
+        } else {
+            contentCell.clickGoodButton.setImage(UIImage(named: "unClickGood"), for: .normal)
+        }
 
             return contentCell
     }

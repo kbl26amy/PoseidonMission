@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PoseidonMission/View/cell/RankTableViewCell.swift"
-            timestampString = "590583056.067484"
+            timestampString = "590587603.663269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
