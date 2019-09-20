@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d9h-XX-Bts">
                                 <rect key="frame" x="0.0" y="162.5" width="414" height="150"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="kkC-od-9M8"/>
                                 </constraints>
@@ -68,7 +68,7 @@
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-ud-WAK">
                                 <rect key="frame" x="0.0" y="312.5" width="414" height="583.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankTableViewCell" rowHeight="270" id="7vc-dg-P5q" customClass="RankTableViewCell" customModule="PoseidonMission" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="270"/>
@@ -79,7 +79,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VVs-ie-ldJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="210" id="8eg-06-Ggc"/>
                                                     </constraints>
@@ -137,6 +137,7 @@
                                                                     </label>
                                                                 </subviews>
                                                             </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="E43-Cb-lBQ" firstAttribute="width" secondItem="ZGs-Jg-Mnm" secondAttribute="width" id="0rW-bh-vKR"/>
                                                                 <constraint firstAttribute="centerY" secondItem="Izd-jT-fwj" secondAttribute="bottom" id="2Cg-16-Un7"/>
@@ -163,6 +164,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="VVs-ie-ldJ" secondAttribute="trailing" id="7Qp-Kk-7UP"/>
                                                 <constraint firstAttribute="bottom" secondItem="VVs-ie-ldJ" secondAttribute="bottom" id="bIg-6V-fJF"/>
@@ -170,6 +172,7 @@
                                                 <constraint firstItem="VVs-ie-ldJ" firstAttribute="top" secondItem="A1G-ec-UOP" secondAttribute="top" id="uHK-59-i7C"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="contentCollectionView" destination="VVs-ie-ldJ" id="XUS-RG-hRz"/>
                                         </connections>
@@ -186,7 +189,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yWN-vW-bZF" firstAttribute="centerY" secondItem="oCr-EW-IYM" secondAttribute="centerY" id="Pry-Oy-p7I"/>
                                     <constraint firstItem="yWN-vW-bZF" firstAttribute="height" secondItem="oCr-EW-IYM" secondAttribute="height" multiplier="1:2" id="hJg-Dk-X4d"/>

@@ -46,19 +46,20 @@ class LobbyViewController: PMBaseViewController {
     
     func runlight () {
         
-        self.runLightView.backgroundColor = UIColor(red: 255/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6)
+        self.runLightView.backgroundColor = UIColor.clear
+//            UIColor(red: 255/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6)
         
         var frame = runLightViewLabel.frame
         frame.origin.x = UIScreen.main.bounds.width
         runLightViewLabel.frame = frame
         UIView.beginAnimations("testAnimation", context: nil)
-        UIView.setAnimationDuration(8.8)
+        UIView.setAnimationDuration(20.8)
         UIView.setAnimationCurve(.linear)
         UIView.setAnimationDelegate(self)
         UIView.setAnimationRepeatAutoreverses(false)
         UIView.setAnimationRepeatCount(999999)
         frame = runLightViewLabel.frame
-        frame.origin.x = -UIScreen.main.bounds.width
+        frame.origin.x = -UIScreen.main.bounds.width * 5
         runLightViewLabel.frame = frame
         UIView.commitAnimations()
     
@@ -77,7 +78,7 @@ class LobbyViewController: PMBaseViewController {
     
     lazy var cardLayout: FlatCardCollectionViewLayout = {
         let layout = FlatCardCollectionViewLayout()
-        layout.itemSize = CGSize(width: bannerCollectionView.contentSize.width, height: bannerCollectionView.contentSize.height)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 2 / 3 , height: 300)
         return layout
     }()
     
@@ -121,6 +122,9 @@ class LobbyViewController: PMBaseViewController {
             
         })
         setupCollectionViewLayout()
+        bannerCollectionView.delegate = self
+        bannerCollectionView.dataSource = self
+        
         
     }
     
@@ -182,14 +186,32 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 for: indexPath)
         guard let bannerCell = cell as? BannerCollectionViewCell else { return cell }
             
-            bannerCell.layer.cornerRadius = 6.0
-            bannerCell.layer.borderWidth = 1.0
-            bannerCell.layer.borderColor = UIColor.clear.cgColor
-            bannerCell.layer.shadowColor = UIColor.gray.cgColor
-            bannerCell.layer.shadowOffset = CGSize(width: 0, height: 3)
-            bannerCell.layer.shadowRadius = 6.0
+            bannerCell.bannerImages.image = UIImage(named: "trophy")
             
-            bannerCell.bannerImages.image = UIImage(named: bannerImages[indexPath.row])
+            var title = ""
+            var iconName = ""
+            var championName = ""
+            var championScore = ""
+            
+            switch indexPath.row {
+            case 0: title = "釣魚冠軍"
+                    iconName = "fishingPic"
+                   championName = "用戶暱稱：\( self.fishRankData.first?.name ?? "無排行")"
+            championScore =  "最高積分：\(self.fishRankData.first?.highest ?? 0)"
+            case 1: title = "打水母冠軍"
+                    iconName = "jellyFishPic"
+                    championName = "用戶暱稱：\(self.jellyRankData.first?.name ?? "無排行")"
+            championScore =  "最高積分：\(self.jellyRankData.first?.highest ?? 0)"
+            case 2: title = "簽到冠軍"
+                    iconName = "loginPic"
+                
+            default:
+                title = "冠軍排行"
+            }
+            bannerCell.bannerTitle.text = title
+            bannerCell.iconImage.image = UIImage(named: iconName)
+            bannerCell.nameLabel.text = championName
+            bannerCell.rankScore.text = championScore
             
             return bannerCell
         }

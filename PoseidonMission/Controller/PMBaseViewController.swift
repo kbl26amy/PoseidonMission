@@ -38,6 +38,8 @@ class PMBaseViewController: UIViewController {
             navigationItem.hidesBackButton = true
         }
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "missionbackground")!)
+        
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
     
         navigationController?.navigationBar.barTintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1)

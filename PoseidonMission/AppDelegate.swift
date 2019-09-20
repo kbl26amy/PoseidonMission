@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = self.window?.rootViewController as! UITabBarController
         tabBarController.tabBar.tintColor = UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
 
-        tabBarController.tabBar.unselectedItemTintColor = UIColor.lightGray
+        tabBarController.tabBar.unselectedItemTintColor = UIColor.white
         UITabBar.appearance().isTranslucent = false
         
          if Auth.auth().currentUser != nil {

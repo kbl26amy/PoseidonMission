@@ -177,7 +177,7 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource{
         
         headerView.frame = CGRect(x: 0, y: 0,
                                   width: tableView.frame.width, height: 60)
-        headerView.backgroundColor = UIColor.white
+        headerView.backgroundColor = UIColor.clear
         
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.black

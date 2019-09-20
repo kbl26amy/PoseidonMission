@@ -16,16 +16,16 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
         
         scrollDirection = .horizontal
         
-        let inset = (collectionView!.frame.size.width - itemSize.width) * 0.5
+        let inset = (UIScreen.main.bounds.width - itemSize.width) * 0.5
         sectionInset = UIEdgeInsets(top:  0, left: inset, bottom: 0, right: inset)
-        
+//
     }
     
     override open var collectionViewContentSize: CGSize {
         if collectionView == nil { return CGSize.zero }
         
         let itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0))
-        return CGSize(width: collectionView!.bounds.width * itemsCount,
+        return CGSize(width: collectionView!.bounds.width * itemsCount * 4 / 5,
                       height: collectionView!.bounds.height )
     }
     
