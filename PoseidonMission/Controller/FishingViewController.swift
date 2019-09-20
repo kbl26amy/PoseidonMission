@@ -411,15 +411,20 @@ class FishingViewController: UIViewController {
     
     func saveFishingData() {
         
+        let updateData = ["fishingCounts": self.fishingCounts,
+                          "currentFishingScore":  self.score,
+                      "fishingTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
+    
+        FireBaseHelper.updateData(update: updateData)
+    }
+    
+    func saveFishingRecord() {
         let fishingRecord = ["score":self.score / 300, "source": "fishing", "time": FirebaseFirestore.Timestamp(date:Date()) ] as [String : Any]
         
         FireBaseHelper.saveUserRecord(saveData: fishingRecord)
         
-        let updateData = ["totalScore": ProfileViewController.totalScore + self.score / 300,
-                          "fishingCounts": self.fishingCounts,
-                          "currentFishingScore":  self.score,
-                      "fishingTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
-    
+        let updateData = ["totalScore": ProfileViewController.totalScore + self.score / 300] as [String : Any]
+        
         FireBaseHelper.updateData(update: updateData)
     }
     
@@ -476,6 +481,10 @@ extension FishingViewController: CAAnimationDelegate {
         checkFishingHighest()
         if self.isSucess == false {
         fishingFailure()
+        }
+        
+        if self.fishingCounts == 0 {
+            saveFishingRecord()
         }
     }
 }

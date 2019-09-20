@@ -95,13 +95,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="藏寶圖" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xci-C9-7ps">
-                                                    <rect key="frame" x="117.5" y="25" width="52" height="21"/>
+                                                    <rect key="frame" x="117.5" y="28" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019-08-15 00:33:22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-MU-aOd">
-                                                    <rect key="frame" x="117.5" y="54" width="167" height="21"/>
+                                                    <rect key="frame" x="117.5" y="57" width="167" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -119,10 +119,9 @@
                                                 <constraint firstItem="Xci-C9-7ps" firstAttribute="leading" secondItem="9GH-tv-fp4" secondAttribute="trailing" constant="20" id="O3k-ff-O9a"/>
                                                 <constraint firstItem="9GH-tv-fp4" firstAttribute="top" secondItem="OWb-BQ-nxu" secondAttribute="top" constant="8" id="UVN-xo-SWW"/>
                                                 <constraint firstItem="9GH-tv-fp4" firstAttribute="leading" secondItem="OWb-BQ-nxu" secondAttribute="leading" constant="16" id="Wdc-2j-jjD"/>
-                                                <constraint firstAttribute="bottom" secondItem="ToF-MU-aOd" secondAttribute="bottom" constant="22.5" id="cUR-Eg-1QJ"/>
                                                 <constraint firstItem="ToF-MU-aOd" firstAttribute="top" secondItem="Xci-C9-7ps" secondAttribute="bottom" constant="8" id="dHm-AP-Ltk"/>
-                                                <constraint firstItem="Xci-C9-7ps" firstAttribute="top" secondItem="OWb-BQ-nxu" secondAttribute="top" constant="25" id="eSr-bi-Ncb"/>
                                                 <constraint firstItem="BJY-Ag-1hw" firstAttribute="centerY" secondItem="OWb-BQ-nxu" secondAttribute="centerY" id="ehM-xJ-s89"/>
+                                                <constraint firstItem="Xci-C9-7ps" firstAttribute="bottom" secondItem="9GH-tv-fp4" secondAttribute="centerY" id="wEd-RX-hkT"/>
                                                 <constraint firstAttribute="trailing" secondItem="BJY-Ag-1hw" secondAttribute="trailing" constant="20" id="ymE-zm-bAF"/>
                                             </constraints>
                                         </tableViewCellContentView>

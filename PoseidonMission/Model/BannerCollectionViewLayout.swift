@@ -115,7 +115,7 @@ class BannerCollectionViewLayout: UICollectionViewFlowLayout {
         itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0) )
         
         
-        return CGSize(width: collectionView!.bounds.width * itemsCount ,
+        return CGSize(width: collectionView!.bounds.width * itemsCount * 2 / 5 ,
                       height: collectionView!.bounds.height )
     }
     

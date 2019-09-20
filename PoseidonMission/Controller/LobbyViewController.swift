@@ -11,7 +11,16 @@ import FirebaseAuth
 
 class LobbyViewController: PMBaseViewController {
     
-    
+    var fishRankData: [RankData] = []{
+        didSet{
+        runLightViewLabel.text = "恭喜玩家：\(self.fishRankData.first?.name ?? "匿名")獲得釣魚高手排行第一名"
+        }
+    }
+    var jellyRankData: [RankData] = []{
+        didSet{
+        runLightViewLabel.text = "恭喜玩家：\(self.jellyRankData.first?.name ?? "匿名")獲得打水母排行第一名"
+        }
+    }
     @IBOutlet weak var runLightView: UIView!
     @IBOutlet weak var logoutOulet: UIBarButtonItem!
     @IBOutlet weak var showRegisterButtonOutlet: UIButton!
@@ -23,7 +32,7 @@ class LobbyViewController: PMBaseViewController {
                     try Auth.auth().signOut()
                     showRegisterButtonOutlet.isHidden = false
                     logoutOulet.isEnabled = false
-                    logoutOulet.tintColor = .lightGray
+                    logoutOulet.tintColor = .white
                     runLightViewLabel.alpha = 0
                     
                 } catch let error as NSError {
@@ -88,7 +97,7 @@ class LobbyViewController: PMBaseViewController {
     
     var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
-    var homeCollectionImages = ["loginToday", "share", "map", "fish", "jellyFish"]
+    var homeCollectionImages = ["loginToday", "share", "map", "fishing", "jellyFish"]
     
     var homeCollectionLabel = ["簽到", "邀請好友", "藏寶圖", "釣魚", "打水母"]
     
@@ -101,8 +110,17 @@ class LobbyViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        UserManager.shared.getFishHighestData(completion: {data in
+            guard let data = data else {return}
+            self.fishRankData = data
+            
+        })
+        UserManager.shared.getJellyHighestData(completion: {data in
+            guard let data = data else {return}
+            self.jellyRankData = data
+            
+        })
         setupCollectionViewLayout()
-        runlight ()
         
     }
     
@@ -123,10 +141,10 @@ class LobbyViewController: PMBaseViewController {
             runlight ()
             showRegisterButtonOutlet.isHidden = true
             logoutOulet.isEnabled = true
-            logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
+            logoutOulet.tintColor = .white
         } else {
             logoutOulet.isEnabled = false
-            logoutOulet.tintColor = .lightGray
+            logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
             runLightViewLabel.alpha = 0
         }
     }

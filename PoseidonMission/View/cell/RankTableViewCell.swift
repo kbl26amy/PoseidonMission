@@ -35,7 +35,7 @@ class RankTableViewCell: UITableViewCell {
         
         let layout = PageCollectionViewLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 18 / 20,
-                                 height: contentCollectionView.bounds.height / 3 - 10)
+                                 height: 60)
         return layout
     }()
     
@@ -43,26 +43,24 @@ class RankTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-            contentCollectionView.delegate = self
-            contentCollectionView.dataSource = self
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        contentCollectionView.delegate = self
+        contentCollectionView.dataSource = self
+        self.contentCollectionView.collectionViewLayout = cardLayout
 
     }
-    
+
     @IBOutlet weak var contentCollectionView: UICollectionView!
 
 }
+
 extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         print(self.rankData.count)
         return self.rankData.count
     
@@ -76,7 +74,6 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
             for: indexPath)
         
         guard let contentCell = cell as? ContentCollectionViewCell else { return cell }
-        
         
 //            contentCell.userImage.image = UIImage(named: "profile")
             contentCell.rankNumber.text = "\(indexPath.row + 1)"
@@ -98,12 +95,6 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
         }
 
             return contentCell
-    }
-  
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-     
-         self.contentCollectionView.collectionViewLayout = cardLayout
     }
 
 }

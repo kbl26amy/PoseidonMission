@@ -49,7 +49,7 @@ enum recordSource:String {
     
     case map = "map"
     case jellyFish = "jellyFish"
-    case fishing = "fish"
+    case fishing = "fishing"
     case loginToday = "loginToday"
     case share = "share"
     

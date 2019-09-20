@@ -13,6 +13,7 @@ class RankViewController: PMBaseViewController  {
 
     var userRankData = UserData(email: "", name: "") {
         didSet {
+           
             rankCollectionView.reloadData()
             print(userRankData)
         }
@@ -38,19 +39,20 @@ class RankViewController: PMBaseViewController  {
     var sectionTitle = ["釣魚排行", "打水母排行"]
     var bannerImages = ["fishingPic", "jellyFishPic", "loginPic"]
     
-    @IBOutlet weak var rankCollectionView: UICollectionView!{
-        didSet {
+    @IBOutlet weak var rankCollectionView: UICollectionView! {
+        didSet{
             rankCollectionView.delegate = self
             rankCollectionView.dataSource = self
         }
     }
-       
+      
     
     lazy var bannerLayout: BannerCollectionViewLayout = {
         
         let layout = BannerCollectionViewLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 2 / 5,
-                                 height: rankCollectionView.contentSize.height)
+                                 height: 145
+        )
         return layout
     }()
     
@@ -64,6 +66,7 @@ class RankViewController: PMBaseViewController  {
             guard let data = data else {return}
             self.userRankData = data
             
+            self.rankCollectionView.collectionViewLayout = self.bannerLayout
         })
 
         UserManager.shared.getFishHighestData(completion: {data in
@@ -82,7 +85,7 @@ class RankViewController: PMBaseViewController  {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.rankCollectionView.collectionViewLayout = bannerLayout
+        
     }
     
     
@@ -106,13 +109,23 @@ extension RankViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             bannerCell.layer.cornerRadius = 6.0
             bannerCell.layer.borderWidth = 1.0
         
-            bannerCell.layer.borderColor = UIColor.clear.cgColor
+            bannerCell.layer.borderColor = UIColor.darkGray.cgColor
             bannerCell.layer.shadowColor = UIColor.gray.cgColor
             bannerCell.layer.shadowOffset = CGSize(width: 1, height: 3)
             bannerCell.layer.shadowRadius = 6.0
         
             bannerCell.bannerImage.image = UIImage(named: bannerImages[indexPath.row])
-            bannerCell.bannerLabel.text = "\(self.userRankData.fishingHighest)"
+        
+            var bannerLabelText = "尚無遊戲資料"
+            switch indexPath.row {
+            case 0: bannerLabelText = "最高積分：\(self.userRankData.fishingHighest ?? 0)"
+            case 1: bannerLabelText = "最高積分：\(self.userRankData.jellyFishHighest ?? 0)"
+            case 2: bannerLabelText = "登入次數：\(self.userRankData.loginCounts ?? 0)"
+            default:
+                bannerLabelText = "尚無遊戲資料"
+            }
+            bannerCell.bannerLabel.text = bannerLabelText
+        
             return bannerCell
             
     }

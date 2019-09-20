@@ -108,6 +108,7 @@ class UserManager {
                 
                 return
             }
+            self.jellyRankData = []
             
             for index in docs.indices {
                 let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
@@ -134,7 +135,7 @@ class UserManager {
                 
                 return
             }
-            
+            self.fishRankData = []
             for index in docs.indices {
                 
                 let fishHighest = docs[index].data()["fishingHighest"] as? Int
