@@ -13,12 +13,26 @@ class LobbyViewController: PMBaseViewController {
     
     var fishRankData: [RankData] = []{
         didSet{
-        runLightViewLabel.text = "恭喜玩家：\(self.fishRankData.first?.name ?? "匿名")獲得釣魚高手排行第一名"
+        runLightViewLabel.text = "恭喜玩家：\(self.fishRankData.first?.name ?? "")獲得釣魚高手排行第一名"
+            bannerCollectionView.delegate = self
+            bannerCollectionView.dataSource = self
+            bannerCollectionView.reloadData()
         }
     }
     var jellyRankData: [RankData] = []{
         didSet{
-        runLightViewLabel.text = "恭喜玩家：\(self.jellyRankData.first?.name ?? "匿名")獲得打水母排行第一名"
+        runLightViewLabel.text = "恭喜玩家：\(self.jellyRankData.first?.name ?? "")獲得打水母排行第一名"
+            bannerCollectionView.delegate = self
+            bannerCollectionView.dataSource = self
+            bannerCollectionView.reloadData()
+        }
+    }
+    
+    var loginRankData: [RankData] = []{
+        didSet{
+            bannerCollectionView.delegate = self
+            bannerCollectionView.dataSource = self
+            bannerCollectionView.reloadData()
         }
     }
     @IBOutlet weak var runLightView: UIView!
@@ -70,7 +84,6 @@ class LobbyViewController: PMBaseViewController {
         guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController() else { return }
         
         loginViewController.modalPresentationStyle = .overFullScreen
-        
         navigationController?.pushViewController(loginViewController, animated: true)
 
         
@@ -82,19 +95,22 @@ class LobbyViewController: PMBaseViewController {
         return layout
     }()
     
-    @IBOutlet weak var bannerCollectionView: UICollectionView!{
+    @IBOutlet weak var bannerCollectionView: UICollectionView!
+        {
         didSet{
             bannerCollectionView.delegate = self
             bannerCollectionView.dataSource = self
+            
         }
     }
     
-    @IBOutlet weak var homeCollectionView: UICollectionView!{
-        didSet{
-            homeCollectionView.delegate = self
-            homeCollectionView.dataSource = self
-        }
-    }
+    @IBOutlet weak var homeCollectionView: UICollectionView!
+//        {
+//        didSet{
+//            homeCollectionView.delegate = self
+//            homeCollectionView.dataSource = self
+//        }
+//    }
     
     var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
@@ -121,9 +137,13 @@ class LobbyViewController: PMBaseViewController {
             self.jellyRankData = data
             
         })
+        UserManager.shared.getLoginHighestData(completion: {data in
+            guard let data = data else {return}
+            self.loginRankData = data
+            print(self.loginRankData)
+        })
         setupCollectionViewLayout()
-        bannerCollectionView.delegate = self
-        bannerCollectionView.dataSource = self
+
         
         
     }
@@ -196,14 +216,16 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             switch indexPath.row {
             case 0: title = "釣魚冠軍"
                     iconName = "fishingPic"
-                   championName = "用戶暱稱：\( self.fishRankData.first?.name ?? "無排行")"
+                   championName = "暱稱：\( self.fishRankData.first?.name ?? "無排行")"
             championScore =  "最高積分：\(self.fishRankData.first?.highest ?? 0)"
             case 1: title = "打水母冠軍"
                     iconName = "jellyFishPic"
-                    championName = "用戶暱稱：\(self.jellyRankData.first?.name ?? "無排行")"
+                    championName = "暱稱：\(self.jellyRankData.first?.name ?? "無排行")"
             championScore =  "最高積分：\(self.jellyRankData.first?.highest ?? 0)"
             case 2: title = "簽到冠軍"
                     iconName = "loginPic"
+            championName = "暱稱：\(self.loginRankData.first?.name ?? "無排行")"
+            championScore =  "登入天數：\(self.loginRankData.first?.highest ?? 0)"
                 
             default:
                 title = "冠軍排行"

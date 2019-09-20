@@ -70,6 +70,21 @@ class FireBaseHelper {
                 
         }
     }
+    static func getLoginHighestData(completion: @escaping (QuerySnapshot?) -> Void ) {
+        
+        let db = Firestore.firestore()
+        
+        db
+            .collection("user")
+            .order(by: "loginCounts", descending: true)
+            .getDocuments { (document, error) in
+                
+                completion(document)
+                
+        }
+    }
+    
+    
 
     // 添加積分獲得紀錄
     static func saveUserRecord(saveData:[String: Any]) {

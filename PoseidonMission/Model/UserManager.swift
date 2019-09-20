@@ -15,7 +15,7 @@ class UserManager {
     var userRecord: [UserRecord] = []
     var fishRankData:[RankData] = []
     var jellyRankData:[RankData] = []
-    
+    var loginRankData:[RankData] = []
     static let shared = UserManager()
     
     func getUserData(completion: @escaping (UserData?) -> Void) {
@@ -146,6 +146,33 @@ class UserManager {
             }
             
             completion(self.fishRankData)
+            
+        })
+        
+    }
+    func getLoginHighestData(completion: @escaping ([RankData]?) -> Void) {
+        
+        FireBaseHelper.getLoginHighestData(completion: {querySnapshot in
+            
+            guard let docs = querySnapshot?.documents else {
+                
+                print("error")
+                
+                completion(nil)
+                
+                return
+            }
+            self.loginRankData = []
+            for index in docs.indices {
+                
+                let loginHighest = docs[index].data()["loginCounts"] as? Int
+                let name = docs[index].data()["userName"] as? String
+                
+                self.loginRankData.append(RankData( name: name ?? "no name",
+                                                   highest: loginHighest ?? 0))
+            }
+            
+            completion(self.loginRankData)
             
         })
         
