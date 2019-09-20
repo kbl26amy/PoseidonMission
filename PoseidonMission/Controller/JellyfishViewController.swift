@@ -13,7 +13,7 @@ class JellyfishViewController: PMBaseViewController {
     
     var timeStop:Int!
     var timer:Timer?
-    var counter = 60
+    var counter = 5
     var index = 0
     var fishButtons : [UIButton] = []
     var score = 0
@@ -215,23 +215,29 @@ class JellyfishViewController: PMBaseViewController {
             }
         }
     //update用戶總積分
-        db.collection("user").whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email").getDocuments { (querySnapshot, error) in
-            if let querySnapshot = querySnapshot {
-                
-                let document = querySnapshot.documents.first
-                if document?.data()["jellyFishHighest"] != nil {
-                    if self.score > document!.data()["jellyFishHighest"] as! Int {
-                        ProfileViewController.jellyFishHighest = self.score
-                    }
-                }else{
+        
+        UserManager.shared.getUserData(completion:  { user in
+            
+            if user?.jellyFishHighest != nil {
+                if self.score > (user?.jellyFishHighest)! {
                     ProfileViewController.jellyFishHighest = self.score
+                    self.saveUser()
                 }
-                
-                document?.reference.updateData(["totalScore": ProfileViewController.totalScore + self.score/1000,"jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()) ,"jellyFishHighest":ProfileViewController.jellyFishHighest], completion: { (error) in
-                })
+            }else {
+                ProfileViewController.jellyFishHighest = self.score
+                self.saveUser()
             }
+        })
+
         }
-        }
+    
+    func saveUser() {
+        let updateData = ["totalScore": ProfileViewController.totalScore + self.score/1000,
+                          "jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()),
+                          "jellyFishHighest":ProfileViewController.jellyFishHighest] as [String : Any]
+        
+        FireBaseHelper.updateData(update: updateData)
+    }
    
     func checkJellyFishTimes() {
         let db = Firestore.firestore()
@@ -243,9 +249,7 @@ class JellyfishViewController: PMBaseViewController {
                 if document.data()!["totalScore"] != nil {
                     ProfileViewController.totalScore = document.data()!["totalScore"] as! Int
                 }
-                
                 //轉換 Time 格式
-                
                 if document.data()!["jellyFishPlayTime"] != nil {
                     let timestamp = document.data()!["jellyFishPlayTime"] as! Timestamp
                     let converted = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds) )

@@ -39,7 +39,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ship" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-qy-ZFi">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ship" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-qy-ZFi">
                                         <rect key="frame" x="10" y="8" width="102" height="102"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g5N-qy-ZFi" secondAttribute="height" multiplier="1:1" id="ehZ-mw-26h"/>

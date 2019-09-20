@@ -13,7 +13,8 @@ class LobbyViewController: PMBaseViewController {
     
     var fishRankData: [RankData] = []{
         didSet{
-        runLightViewLabel.text = "恭喜玩家：\(self.fishRankData.first?.name ?? "")獲得釣魚高手排行第一名"
+        runLightViewLabel.text =
+            "恭喜玩家：\(self.fishRankData.first?.name ?? "")獲得釣魚高手排行第一名"
             bannerCollectionView.delegate = self
             bannerCollectionView.dataSource = self
             bannerCollectionView.reloadData()
@@ -21,7 +22,8 @@ class LobbyViewController: PMBaseViewController {
     }
     var jellyRankData: [RankData] = []{
         didSet{
-        runLightViewLabel.text = "恭喜玩家：\(self.jellyRankData.first?.name ?? "")獲得打水母排行第一名"
+        runLightViewLabel.text =
+            "恭喜玩家：\(self.jellyRankData.first?.name ?? "")獲得打水母排行第一名"
             bannerCollectionView.delegate = self
             bannerCollectionView.dataSource = self
             bannerCollectionView.reloadData()
@@ -81,7 +83,8 @@ class LobbyViewController: PMBaseViewController {
     
     @IBAction func goToLogin(_ sender: Any) {
         
-        guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController() else { return }
+        guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController()
+            else { return }
         
         loginViewController.modalPresentationStyle = .overFullScreen
         navigationController?.pushViewController(loginViewController, animated: true)
@@ -104,13 +107,12 @@ class LobbyViewController: PMBaseViewController {
         }
     }
     
-    @IBOutlet weak var homeCollectionView: UICollectionView!
-//        {
-//        didSet{
-//            homeCollectionView.delegate = self
-//            homeCollectionView.dataSource = self
-//        }
-//    }
+    @IBOutlet weak var homeCollectionView: UICollectionView!{
+        didSet{
+            homeCollectionView.delegate = self
+            homeCollectionView.dataSource = self
+        }
+    }
     
     var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
@@ -127,6 +129,14 @@ class LobbyViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        setupCollectionViewLayout()
+
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         UserManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
             self.fishRankData = data
@@ -142,13 +152,6 @@ class LobbyViewController: PMBaseViewController {
             self.loginRankData = data
             print(self.loginRankData)
         })
-        setupCollectionViewLayout()
-
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
          navigationController?.isNavigationBarHidden = false
     
     }
@@ -157,7 +160,8 @@ class LobbyViewController: PMBaseViewController {
         super.viewDidAppear(animated)
         print("viewDidAppear")
        
-        homeCollectionView.contentInset = UIEdgeInsets(top: (homeCollectionView.contentSize.height) / 5 , left: 0, bottom: 0, right: 0)
+        homeCollectionView.contentInset = UIEdgeInsets(top: (homeCollectionView.contentSize.height) / 5 ,
+                                                       left: 0, bottom: 0, right: 0)
         self.bannerCollectionView.collectionViewLayout = cardLayout
  
         if Auth.auth().currentUser != nil {
@@ -168,7 +172,8 @@ class LobbyViewController: PMBaseViewController {
             logoutOulet.tintColor = .white
         } else {
             logoutOulet.isEnabled = false
-            logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1.0)
+            logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0,
+                                            blue: 222.0/255.0, alpha: 1.0)
             runLightViewLabel.alpha = 0
         }
     }
@@ -176,7 +181,8 @@ class LobbyViewController: PMBaseViewController {
 }
 
 extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == homeCollectionView {
             return homeCollectionLabel.count
@@ -185,7 +191,8 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       
         if collectionView == homeCollectionView {
             let cell = homeCollectionView.dequeueReusableCell(
@@ -193,7 +200,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 for: indexPath)
     
         guard let homeCell = cell as? HomeCollectionViewCell else { return cell }
-        homeCell.homeCollectionViewImage.image = UIImage(named:  homeCollectionImages[indexPath.row])
+        homeCell.homeCollectionViewImage.image = UIImage(named: homeCollectionImages[indexPath.row])
         homeCell.homeCollectonViewLabel.text = homeCollectionLabel[indexPath.row]
         homeCell.homeCollectonViewLabel.textColor = homeCollectionLabelColor[indexPath.row]
         
@@ -206,7 +213,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 for: indexPath)
         guard let bannerCell = cell as? BannerCollectionViewCell else { return cell }
             
-            bannerCell.bannerImages.image = UIImage(named: "trophy")
+            bannerCell.bannerImages.image = UIImage(named: "champion")
             
             var title = ""
             var iconName = ""
@@ -214,7 +221,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             var championScore = ""
             
             switch indexPath.row {
-            case 0: title = "釣魚冠軍"
+            case 0: title = "釣魚總冠軍"
                     iconName = "fishingPic"
                    championName = "暱稱：\( self.fishRankData.first?.name ?? "無排行")"
             championScore =  "最高積分：\(self.fishRankData.first?.highest ?? 0)"
@@ -222,7 +229,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     iconName = "jellyFishPic"
                     championName = "暱稱：\(self.jellyRankData.first?.name ?? "無排行")"
             championScore =  "最高積分：\(self.jellyRankData.first?.highest ?? 0)"
-            case 2: title = "簽到冠軍"
+            case 2: title = "簽到總冠軍"
                     iconName = "loginPic"
             championName = "暱稱：\(self.loginRankData.first?.name ?? "無排行")"
             championScore =  "登入天數：\(self.loginRankData.first?.highest ?? 0)"
@@ -234,7 +241,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             bannerCell.iconImage.image = UIImage(named: iconName)
             bannerCell.nameLabel.text = championName
             bannerCell.rankScore.text = championScore
-            
+           
             return bannerCell
         }
       
@@ -252,13 +259,16 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         flowLayout.minimumInteritemSpacing = 0
         
         flowLayout.minimumLineSpacing = 0.0
-//        homeCollectionView.backgroundColor = UIColor(red: 78/255.0, green: 139/255.0, blue: 157/255.0, alpha: 1)
         homeCollectionView.collectionViewLayout = flowLayout
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         
-        let goStoryViewController = UIStoryboard.mission.instantiateViewController(withIdentifier: "StoryViewController") as! StoryViewController
+        let goStoryViewController = UIStoryboard
+            .mission
+            .instantiateViewController(withIdentifier: "StoryViewController")
+            as! StoryViewController
         
         if Auth.auth().currentUser != nil {
             
@@ -267,7 +277,10 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         switch indexPath.row {
             
         case 0:
-            let loginTodayController = UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController") as! LoginTodayViewController 
+            let loginTodayController = UIStoryboard
+                .mission
+                .instantiateViewController(withIdentifier: "LoginTodayViewController")
+                as! LoginTodayViewController
             loginTodayController.modalPresentationStyle = .overCurrentContext
             loginTodayController.modalTransitionStyle = .crossDissolve
             present(loginTodayController, animated: true, completion: nil)
@@ -280,19 +293,22 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             goStoryViewController.storyText = StoryContent.mapStory
             goStoryViewController.targetText = StoryContent.mapTarget
           
-            self.navigationController?.pushViewController(goStoryViewController, animated: true)
+            self.navigationController?.pushViewController(goStoryViewController,
+                                                          animated: true)
             
         case 3:
             goStoryViewController.storyText = StoryContent.fishingStory
             goStoryViewController.targetText = StoryContent.fishingTarget
             
-            self.navigationController?.pushViewController(goStoryViewController, animated: true)
+            self.navigationController?.pushViewController(goStoryViewController,
+                                                          animated: true)
             
         case 4:
             goStoryViewController.storyText = StoryContent.jellyFishStory
             goStoryViewController.targetText = StoryContent.jellyFishTarget
         
-            self.navigationController?.pushViewController(goStoryViewController, animated: true)
+            self.navigationController?.pushViewController(goStoryViewController,
+                                                          animated: true)
             
         default:
             print("no view")
@@ -301,7 +317,10 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             }
             
         }else {
-            guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController() else { return }
+            guard let loginViewController = UIStoryboard
+                                            .auth
+                                            .instantiateInitialViewController()
+                else { return }
             
             loginViewController.modalPresentationStyle = .overFullScreen
             

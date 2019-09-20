@@ -62,13 +62,20 @@ class RankViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        self.rankTableView.separatorStyle = .none
+      
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         UserManager.shared.getUserData(completion: {data in
             guard let data = data else {return}
             self.userRankData = data
             
             self.rankCollectionView.collectionViewLayout = self.bannerLayout
         })
-
+        
         UserManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
             self.fishRankData = data
@@ -79,15 +86,7 @@ class RankViewController: PMBaseViewController  {
             self.jellyRankData = data
             
         })
-      
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
     
 }
 extension RankViewController: UICollectionViewDelegate,UICollectionViewDataSource {
@@ -176,33 +175,33 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource{
         let headerView = UIView()
         
         headerView.frame = CGRect(x: 0, y: 0,
-                                  width: tableView.frame.width, height: 60)
+                                  width: tableView.frame.width, height: 40)
         headerView.backgroundColor = UIColor.clear
         
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.black
         titleLabel.text = sectionTitle[section]
-        titleLabel.frame = CGRect(x: 16, y: 8,
-                                  width: tableView.frame.width, height: 50)
+        titleLabel.frame = CGRect(x: 16, y: 0,
+                                  width: tableView.frame.width, height: 40)
         headerView.addSubview(titleLabel)
         
-        let seeRecord = UIButton()
-        seeRecord.frame = CGRect(x: tableView.frame.width - tableView.frame.width / 5,
-                                 y: 8, width: tableView.frame.width / 5, height: 50)
-        seeRecord.setTitle("查看全部", for: .normal)
-        seeRecord.setTitleColor(UIColor(red: 147/255, green: 208/255,
-                                        blue: 218/255, alpha: 1),
-                                for: .normal)
-        seeRecord.titleLabel?.font = .systemFont(ofSize: 14)
-        
-        headerView.addSubview(seeRecord)
+//        let seeRecord = UIButton()
+//        seeRecord.frame = CGRect(x: tableView.frame.width - tableView.frame.width / 5,
+//                                 y: 0, width: tableView.frame.width / 5, height: 50)
+//        seeRecord.setTitle("查看全部", for: .normal)
+//        seeRecord.setTitleColor(UIColor(red: 147/255, green: 208/255,
+//                                        blue: 218/255, alpha: 1),
+//                                for: .normal)
+//        seeRecord.titleLabel?.font = .systemFont(ofSize: 14)
+//        
+//        headerView.addSubview(seeRecord)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 40
     }
     
   

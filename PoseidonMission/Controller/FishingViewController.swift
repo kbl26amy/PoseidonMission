@@ -156,7 +156,6 @@ class FishingViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.isNavigationBarHidden = true
-        tabBarController?.tabBar.isHidden = true
         setFishingView()
         checkIsFishingToday()
 
@@ -205,14 +204,14 @@ class FishingViewController: UIViewController {
     func setFishingView() {
         
         ship.image = UIImage(named: "ship")
-        chanceBagroundView.layer.cornerRadius = 15
-        fishingButton.layer.cornerRadius = 15
+        chanceBagroundView.layer.cornerRadius = 10
+        fishingButton.layer.cornerRadius = 10
         fishingBackground.image = UIImage(named: "background")
         fishingRod.image = UIImage(named: "fishingRod")
         fishingLine.image = UIImage(named: "fishingLine")
         rightMoveButton.setImage(UIImage(named: "rightButton"), for: .normal)
         leftMoveButton.setImage(UIImage(named: "leftButton"), for: .normal)
-        energyBar.layer.cornerRadius = 15
+        energyBar.layer.cornerRadius = 10
         energyBar.layer.borderWidth = 3
         energyBar.layer.borderColor = #colorLiteral(red: 0.1359939873, green: 0.3958500326, blue: 0.4860774279, alpha: 1)
         pathLayer.removeAllAnimations()

@@ -53,11 +53,11 @@ class MapViewController: PMBaseViewController {
     
     let db = Firestore.firestore()
     
-    let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 49 / 414, y: UIScreen.main.bounds.height * 85 / 896, width: 40, height: 40))
-    let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 225 / 414, y: UIScreen.main.bounds.height * 45 / 896, width: 40, height: 40))
-    let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 158 / 414, y: UIScreen.main.bounds.height * 206 / 896, width: 40, height: 40))
-    let forthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 293 / 414, y: UIScreen.main.bounds.height * 300 / 896, width: 40, height: 40))
-    let fifthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 335 / 414, y: UIScreen.main.bounds.height * 265 / 896, width: 40, height: 40))
+    let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 67 / 414 - 20, y: UIScreen.main.bounds.height * 89 / 736 - 20, width: 40, height: 40))
+    let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 239 / 414 - 20, y: UIScreen.main.bounds.height * 56 / 736 - 20, width: 40, height: 40))
+    let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 174 / 414 - 20, y: UIScreen.main.bounds.height * 205 / 736 - 20, width: 40, height: 40))
+    let forthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 310 / 414 - 20, y: UIScreen.main.bounds.height * 291 / 736 - 20, width: 40, height: 40))
+    let fifthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 351 / 414 - 20, y: UIScreen.main.bounds.height * 260 / 736 - 20, width: 40, height: 40))
     
     var buttons: [UIButton] = []
     var index = 0
@@ -112,7 +112,8 @@ extension MapViewController: ScratchCardDelegate {
             mapTitleLabel.text = "請選擇你要航行的地點"
             mapchanceLabel.text = "五個座標中，僅 2 處有寶藏"
             self.scratchCard?.isHidden = true
-            self.view.bringSubviewToFront(self.baseMapImage)
+            view.layoutIfNeeded()
+//            self.view.bringSubviewToFront(self.baseMapImage)
             self.setButton()
       
         }
@@ -139,8 +140,10 @@ extension MapViewController: ScratchCardDelegate {
         if mapCouldTimes == 0 {
             mapchanceLabel.text = "您今日已無探索機會"
             mapTitleLabel.text = "請明日再來"
+           
             self.baseMapImage.image = UIImage(named: "nomap")
-            view.bringSubviewToFront(self.baseMapImage)
+            self.scratchCard?.isHidden = true
+
     }
     }
     
@@ -189,10 +192,10 @@ extension MapViewController: ScratchCardDelegate {
     
     @objc func showResult(){
         let mapResult = result.randomElement()
-        let resultMap = UIImageView(frame: self.baseMapImage.frame)
-        
+       
+        self.scratchCard?.isHidden = true
         if mapResult == true {
-            resultMap.image = UIImage(named: "getreward")
+            self.baseMapImage.image = UIImage(named: "getreward")
             mapchanceLabel.text = "您今日已無探索機會"
             mapTitleLabel.text = "請明日再來"
             
@@ -224,10 +227,9 @@ extension MapViewController: ScratchCardDelegate {
             }
             mapchanceLabel.text = "您今日已無探索機會"
             mapTitleLabel.text = "請明日再來"
-            resultMap.image = UIImage(named: "unreward")
+            self.baseMapImage.image = UIImage(named: "unreward")
         }
-        view.addSubview(resultMap)
-        view.bringSubviewToFront(resultMap)
+       
       
     }
     

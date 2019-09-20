@@ -292,14 +292,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pn9-o4-O8R">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-yM-rl6">
-                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="vxi-yM-rl6" secondAttribute="height" multiplier="1:1" id="CYs-tt-cUT"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-yM-rl6">
+                                <rect key="frame" x="0.0" y="224" width="414" height="448"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請將地圖擦乾淨顯示真相" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHg-br-rLD">
-                                <rect key="frame" x="60" y="162" width="294" height="30"/>
+                                <rect key="frame" x="60" y="145" width="294" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2W1-pq-ov1"/>
                                 </constraints>
@@ -308,7 +305,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="當前探索進度：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruu-Rn-H0A">
-                                <rect key="frame" x="50" y="200" width="314" height="21"/>
+                                <rect key="frame" x="50" y="183" width="314" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="qzS-Ly-GdX"/>
                                 </constraints>
@@ -317,7 +314,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-KS-62M">
-                                <rect key="frame" x="50" y="686" width="147" height="40"/>
+                                <rect key="frame" x="50" y="703" width="147" height="40"/>
                                 <color key="backgroundColor" red="0.90337103605270386" green="0.6082121729850769" blue="0.21554848551750183" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6cg-92-vzU"/>
@@ -328,7 +325,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61s-Mf-IeQ">
-                                <rect key="frame" x="227" y="686" width="150" height="40"/>
+                                <rect key="frame" x="227" y="703" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.89174962043762207" green="0.32657265663146973" blue="0.29801204800605774" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ywy-jn-P8k"/>
@@ -359,6 +356,7 @@
                             <constraint firstItem="Fvc-b8-Zkh" firstAttribute="trailing" secondItem="ruu-Rn-H0A" secondAttribute="trailing" constant="50" id="gXr-7X-m00"/>
                             <constraint firstAttribute="bottom" secondItem="pn9-o4-O8R" secondAttribute="bottom" id="k2I-b2-3a7"/>
                             <constraint firstItem="pn9-o4-O8R" firstAttribute="leading" secondItem="Fvc-b8-Zkh" secondAttribute="leading" id="lZF-EF-xzq"/>
+                            <constraint firstItem="vxi-yM-rl6" firstAttribute="height" secondItem="pn9-o4-O8R" secondAttribute="height" multiplier="1:2" id="ogQ-Xo-gnQ"/>
                             <constraint firstItem="vxi-yM-rl6" firstAttribute="centerX" secondItem="V5e-ty-1d1" secondAttribute="centerX" id="vz8-bI-DGa"/>
                             <constraint firstItem="vxi-yM-rl6" firstAttribute="top" secondItem="ruu-Rn-H0A" secondAttribute="bottom" constant="20" id="wLU-Jy-D6M"/>
                             <constraint firstItem="Fvc-b8-Zkh" firstAttribute="centerX" secondItem="IdH-KS-62M" secondAttribute="trailing" constant="10" id="yHT-Mm-fvm"/>
@@ -752,7 +750,7 @@
         <!--Fishing View Controller-->
         <scene sceneID="fNA-2o-SkE">
             <objects>
-                <viewController storyboardIdentifier="FishingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="agF-26-D6X" customClass="FishingViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FishingViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="agF-26-D6X" customClass="FishingViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OCa-bD-Ssb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

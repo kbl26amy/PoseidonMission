@@ -22,15 +22,15 @@ class ContentCollectionViewCell: UICollectionViewCell {
         likeClosure?(sender)
     }
     
-    var isLikedUser: Bool = true
+    var isLikedUser: Bool = false
     {
         didSet {
             switch isLikedUser {
             case true:
                 let image = UIImage(named: "clickGood")
                 clickGoodButton.setImage(image, for: .normal)
-                
-                
+
+
             case false:
                 let image = UIImage(named: "unClickGood")
                 clickGoodButton.setImage(image, for: .normal)

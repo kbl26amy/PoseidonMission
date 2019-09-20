@@ -20,8 +20,8 @@ class StoryViewController: PMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.backImage.layer.cornerRadius = 15
-        chalengeButtonLayout.layer.cornerRadius = 20
+        self.backImage.layer.cornerRadius = 10
+        chalengeButtonLayout.layer.cornerRadius = 15
         navigationController?.isNavigationBarHidden = true
         backgroundImage.image = UIImage(named: "background")
         storyTextLabel.adjustsFontSizeToFitWidth = true

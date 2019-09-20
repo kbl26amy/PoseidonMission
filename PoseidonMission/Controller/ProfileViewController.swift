@@ -8,9 +8,12 @@
 
 import UIKit
 import Firebase
+import Kingfisher
+//import CoreImage
 
 class ProfileViewController: PMBaseViewController  {
     
+    var photoArray:[String] = []
     var userData: UserData? {
         didSet{
             userName.text = userData?.userName
@@ -93,8 +96,15 @@ class ProfileViewController: PMBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
-       
+        userImage.layer.cornerRadius = userImage.frame.width / 2
+        loadFile()
+        if photoArray != []{
+            let fileManager = FileManager.default
+            let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+            let docUrl = docUrls.last
+            let url =  docUrl?.appendingPathComponent(photoArray.last!)
+            userImage.image = UIImage(contentsOfFile: url!.path)
+        }
     }
  
     override func viewWillAppear(_ animated: Bool) {
@@ -154,9 +164,43 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         if let selectedImage = selectedImageFromPicker {
             
             self.userImage.image = selectedImage
+            //取得路徑
+            let fileManager = FileManager.default
+            let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+            let docUrl = docUrls.first
+            //檔名
+            let interval = Date.timeIntervalSinceReferenceDate
+            let name = "\(interval).jpg"
+            let url = docUrl?.appendingPathComponent(name)
+            let data = pickedImage.jpegData(compressionQuality:0.9)
+            try! data?.write(to: url!)
+            photoArray.append(name)
+            saveFile()
           
         }
         
         dismiss(animated: true, completion: nil)
     }
+    
+    //儲存紀錄位址的photoArray
+    func saveFile(){
+        let fileManager = FileManager.default
+        let docUrls = fileManager.urls(for: .documentDirectory, in:
+            .userDomainMask)
+        let docUrl = docUrls.first
+        let url = docUrl?.appendingPathComponent("photoArray.txt")
+        let array = photoArray
+        (array as NSArray).write(to: url!, atomically: true)
+    }
+    
+    //讀取紀錄位址的photoArray
+    func loadFile(){
+        let fileManager = FileManager.default
+        let docUrls = fileManager.urls(for: .documentDirectory, in:
+            .userDomainMask)
+        let docUrl = docUrls.first
+        let url = docUrl?.appendingPathComponent("photoArray.txt")
+        if let array = NSArray(contentsOf: url!){
+            photoArray = array as! [String]
+        }}
 }

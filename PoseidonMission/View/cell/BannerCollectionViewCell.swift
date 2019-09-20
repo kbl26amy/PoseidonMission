@@ -15,5 +15,5 @@ class BannerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var bannerTitle: UILabel!
     @IBOutlet weak var bannerImages: UIImageView!
-    
+   
 }

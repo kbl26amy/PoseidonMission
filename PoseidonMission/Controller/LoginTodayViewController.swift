@@ -33,7 +33,7 @@ class LoginTodayViewController: UIViewController {
         loginTextMessage.numberOfLines = 0
         loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts) 天"
         
-        loginTodayView.layer.cornerRadius = 20
+        loginTodayView.layer.cornerRadius = 15
         leftUpBlueView.layer.cornerRadius = 5
         rightUpBlueView.layer.cornerRadius = 5
         rightDownView.layer.cornerRadius = 5
