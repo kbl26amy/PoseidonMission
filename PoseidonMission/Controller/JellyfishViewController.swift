@@ -13,7 +13,7 @@ class JellyfishViewController: PMBaseViewController {
     
     var timeStop:Int!
     var timer:Timer?
-    var counter = 5
+    var counter = 60
     var index = 0
     var fishButtons : [UIButton] = []
     var score = 0

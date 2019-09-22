@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		620BA31823276CD800BBF395 /* MissionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BA31723276CD800BBF395 /* MissionContent.swift */; };
 		620F600A23331BE9007CFBCA /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */; };
+		6213667D23376A2B00EE0696 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6213667C23376A2B00EE0696 /* Social.framework */; };
 		6223F72F2328F74A003E249B /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6223F72E2328F74A003E249B /* ShareManager.swift */; };
 		62353B602314EBDE00A4FBA0 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */; };
 		62353B622314F5F700A4FBA0 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B612314F5F700A4FBA0 /* Lobby.storyboard */; };
@@ -56,6 +57,7 @@
 		45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.release.xcconfig"; sourceTree = "<group>"; };
 		620BA31723276CD800BBF395 /* MissionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionContent.swift; sourceTree = "<group>"; };
 		620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		6213667C23376A2B00EE0696 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6223F72E2328F74A003E249B /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		62353B612314F5F700A4FBA0 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB62E2D6D05F3628F39B6D6F /* Pods_PoseidonMission.framework in Frameworks */,
+				6213667D23376A2B00EE0696 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +236,7 @@
 		A3474B76A12EE4047691BD20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6213667C23376A2B00EE0696 /* Social.framework */,
 				BF61ADE8E3E6223D74270F73 /* Pods_PoseidonMission.framework */,
 			);
 			name = Frameworks;

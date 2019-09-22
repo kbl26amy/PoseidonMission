@@ -123,15 +123,19 @@ extension MapViewController: ScratchCardDelegate {
         
         self.baseMapImage.isUserInteractionEnabled = true
         
-                self.buttons = [self.firstButton, self.secondButton, self.thirdButton, self.forthButton, self.fifthButton]
-                for button in self.buttons{
-                    button.tag = index
-                    button.showsTouchWhenHighlighted = true
-                    button.setTitle("📌", for: .normal)
-                    button.titleLabel?.font = .systemFont(ofSize: 25)
-                    button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
-                    self.baseMapImage.addSubview(button)
-                    index += 1
+        self.buttons = [self.firstButton,
+                        self.secondButton,
+                        self.thirdButton,
+                        self.forthButton,
+                        self.fifthButton]
+        for button in self.buttons{
+                button.tag = index
+                button.showsTouchWhenHighlighted = true
+                button.setTitle("📌", for: .normal)
+                button.titleLabel?.font = .systemFont(ofSize: 25)
+                button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
+                self.baseMapImage.addSubview(button)
+                index += 1
                 }
         
     }
@@ -194,6 +198,12 @@ extension MapViewController: ScratchCardDelegate {
         let mapResult = result.randomElement()
        
         self.scratchCard?.isHidden = true
+        self.firstButton.isHidden = true
+        self.secondButton.isHidden = true
+        self.thirdButton.isHidden = true
+        self.forthButton.isHidden = true
+        self.fifthButton.isHidden = true
+        
         if mapResult == true {
             self.baseMapImage.image = UIImage(named: "getreward")
             mapchanceLabel.text = "您今日已無探索機會"

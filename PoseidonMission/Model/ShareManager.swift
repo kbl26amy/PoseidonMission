@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
+
 class ShareManager {
     
     static func shareClickButton(_ sender: UIViewController) {
@@ -18,10 +19,21 @@ class ShareManager {
         
         let facebookPostAction = UIAlertAction(title: "分享", style: UIAlertAction.Style.default) { (action) -> Void in
             
-            let shareMessage = URL(string: "https://trello.com/b/O8akxJeO/波賽頓出任務")
-            let shareViewController = UIActivityViewController(activityItems: [shareMessage as Any], applicationActivities: nil)
+            let shareMessage = URL(string: "https://www.facebook.com")
+            let shareViewController = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
             
-            shareViewController.excludedActivityTypes = [UIActivity.ActivityType.mail,UIActivity.ActivityType.airDrop,UIActivity.ActivityType.message]
+         
+            shareViewController
+                .excludedActivityTypes = [UIActivity.ActivityType.mail,
+                                          UIActivity.ActivityType.airDrop,
+                                          UIActivity.ActivityType.message,
+                                          UIActivity.ActivityType.addToReadingList,
+                                          UIActivity.ActivityType.copyToPasteboard,
+                                          UIActivity.ActivityType.assignToContact,
+                                          UIActivity.ActivityType.print,
+                                          UIActivity.ActivityType.openInIBooks,
+                                         
+            ]
             saveShareData()
             
            sender.present(shareViewController, animated: true, completion: nil)

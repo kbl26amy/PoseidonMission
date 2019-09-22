@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 
+
 class LobbyViewController: PMBaseViewController {
     
     var fishRankData: [RankData] = []{

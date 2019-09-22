@@ -204,3 +204,4 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             photoArray = array as! [String]
         }}
 }
+
