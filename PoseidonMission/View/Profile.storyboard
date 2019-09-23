@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="功能尚未開放" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UkS-YF-CyK">
+                                <rect key="frame" x="0.0" y="407" width="414" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9u-GK-M3G">
                                 <rect key="frame" x="0.0" y="88" width="414" height="118"/>
                                 <subviews>
@@ -40,7 +47,7 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ship" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-qy-ZFi">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ship" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-qy-ZFi">
                                         <rect key="frame" x="10" y="8" width="102" height="102"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g5N-qy-ZFi" secondAttribute="height" multiplier="1:1" id="ehZ-mw-26h"/>
@@ -142,6 +149,9 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedSegmentTintColor" red="0.51227706670761108" green="0.82727676630020142" blue="0.87036764621734619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentedControll:" destination="zND-Cg-2uh" eventType="valueChanged" id="OrP-Lj-GmM"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -154,6 +164,7 @@
                             <constraint firstItem="H9u-GK-M3G" firstAttribute="trailing" secondItem="mbe-Xe-MGe" secondAttribute="trailing" id="NlC-AR-I6o"/>
                             <constraint firstItem="5rp-x1-dzU" firstAttribute="top" secondItem="H9u-GK-M3G" secondAttribute="bottom" constant="8" id="UgL-Ln-4MK"/>
                             <constraint firstAttribute="bottom" secondItem="inq-fk-sdJ" secondAttribute="bottom" id="cHF-Ub-IPR"/>
+                            <constraint firstItem="inq-fk-sdJ" firstAttribute="centerX" secondItem="mbe-Xe-MGe" secondAttribute="centerX" id="l4C-Zq-Q7E"/>
                             <constraint firstItem="H9u-GK-M3G" firstAttribute="leading" secondItem="mbe-Xe-MGe" secondAttribute="leading" id="xe7-q1-tMR"/>
                             <constraint firstItem="5rp-x1-dzU" firstAttribute="leading" secondItem="mbe-Xe-MGe" secondAttribute="leading" id="xt5-ne-CKc"/>
                         </constraints>
@@ -162,6 +173,7 @@
                     <navigationItem key="navigationItem" title="會員" id="OZ2-Yk-xJ9"/>
                     <connections>
                         <outlet property="getPointTableView" destination="inq-fk-sdJ" id="I6e-K5-NBY"/>
+                        <outlet property="hintLabel" destination="UkS-YF-CyK" id="WuM-ri-kje"/>
                         <outlet property="userEmail" destination="55J-kd-MYs" id="AGO-bm-xFX"/>
                         <outlet property="userImage" destination="g5N-qy-ZFi" id="ePm-wH-fpA"/>
                         <outlet property="userName" destination="sq4-LL-RQ2" id="A53-yu-GLS"/>

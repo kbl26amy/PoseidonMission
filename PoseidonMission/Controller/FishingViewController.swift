@@ -60,7 +60,9 @@ class FishingViewController: UIViewController {
         backToRoot()
     }
     
+    @IBOutlet var moveButtonCollection: [UIButton]!
     @IBOutlet weak var shipTrailingConstraint: NSLayoutConstraint!
+    
     @IBAction func clickLeftButton(_ sender: Any) {
         self.view.layoutIfNeeded()
     
@@ -90,6 +92,9 @@ class FishingViewController: UIViewController {
     @IBAction func clickFishingButton(_ sender: UIButton) {
         
          self.energyBarAnimator?.stopAnimation(true)
+       
+        for button in self.moveButtonCollection{ button.isEnabled = false
+        }
         
         if self.colorView.frame.width >= self.energyBar.frame.width * 0.95 {
             
@@ -373,7 +378,9 @@ class FishingViewController: UIViewController {
     }
     
     func resetAnimation(){
-        
+        for button in self.moveButtonCollection{
+            button.isEnabled = true
+        }
         self.pathLayer.removeFromSuperlayer()
         self.fishTouchSquare.removeFromSuperview()
         self.fishingLine.layer.removeAllAnimations()

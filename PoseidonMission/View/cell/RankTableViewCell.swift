@@ -34,7 +34,7 @@ class RankTableViewCell: UITableViewCell {
     lazy var cardLayout: PageCollectionViewLayout = {
         
         let layout = PageCollectionViewLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 18 / 20,
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 4 / 5,
                                  height: 60)
         return layout
     }()

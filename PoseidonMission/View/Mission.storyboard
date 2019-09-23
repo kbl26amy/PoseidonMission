@@ -923,6 +923,8 @@
                         <outlet property="ship" destination="0zm-CO-Fgt" id="InL-Ir-PpG"/>
                         <outlet property="shipTrailingConstraint" destination="D6l-Ic-MQv" id="EIC-ZD-tag"/>
                         <outlet property="sucessText" destination="kxJ-nx-pwX" id="wZS-ep-esJ"/>
+                        <outletCollection property="moveButtonCollection" destination="fut-5U-rlJ" collectionClass="NSMutableArray" id="G4d-fA-8a1"/>
+                        <outletCollection property="moveButtonCollection" destination="Pxs-3e-Mxb" collectionClass="NSMutableArray" id="ak7-NT-Wcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtY-V5-eNt" userLabel="First Responder" sceneMemberID="firstResponder"/>

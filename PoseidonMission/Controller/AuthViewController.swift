@@ -44,7 +44,13 @@ class AuthViewController: PMBaseViewController {
 
     }
     
-  
+    @IBAction func privacyButton(_ sender: Any) {
+        
+        let urlString = "https://www.privacypolicies.com/privacy/view/f78b09e7f5f28526f436ca247afd748a"
+        let url = URL(string: urlString)
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         treasureView.isHidden = true

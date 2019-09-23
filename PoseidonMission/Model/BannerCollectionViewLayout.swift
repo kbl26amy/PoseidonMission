@@ -89,7 +89,7 @@ class PageCollectionViewLayout: UICollectionViewFlowLayout {
             }
         }
         
-        return CGSize(width: collectionView!.bounds.width * itemsCount ,
+        return CGSize(width: collectionView!.bounds.width * itemsCount - (collectionView!.frame.size.width - itemSize.width) * 0.5 ,
                       height: collectionView!.bounds.height )
     }
     

@@ -22,6 +22,17 @@ class ProfileViewController: PMBaseViewController  {
         }
     }
     
+    
+    @IBOutlet weak var hintLabel: UILabel!
+    @IBAction func segmentedControll(_ sender: Any) {
+        if (sender as AnyObject).selectedSegmentIndex == 0 {
+            self.getPointTableView.isHidden = false
+                   self.hintLabel.alpha = 0
+               } else {
+            self.getPointTableView.isHidden = true
+            self.hintLabel.alpha = 1
+               }
+    }
     @IBAction func editPhoto(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
@@ -105,6 +116,7 @@ class ProfileViewController: PMBaseViewController  {
             let url =  docUrl?.appendingPathComponent(photoArray.last!)
             userImage.image = UIImage(contentsOfFile: url!.path)
         }
+        
     }
  
     override func viewWillAppear(_ animated: Bool) {

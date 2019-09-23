@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2FU-mD-kaa">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2FU-mD-kaa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYM-lC-oca">
-                                <rect key="frame" x="178" y="653.5" width="58" height="29"/>
+                                <rect key="frame" x="178" y="702" width="58" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="暫時不要">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -76,11 +74,36 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="0.23198509219999999" green="0.3484609723" blue="0.59575754400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQV-1Q-H1E">
+                                <rect key="frame" x="207" y="659.5" width="104" height="26.5"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="服務與隱私權政策">
+                                            <attributes>
+                                                <color key="NSColor" red="0.27569746971130371" green="0.5626378059387207" blue="0.9608268141746521" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <font key="NSFont" size="13" name=".PingFangTC-Regular"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="privacyButton:" destination="2FU-mD-kaa" eventType="touchUpInside" id="Kgc-JC-LQg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊即代表您同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXq-Ru-IL6">
+                                <rect key="frame" x="100.5" y="659.5" width="106.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="RQV-1Q-H1E" firstAttribute="leading" secondItem="fXq-Ru-IL6" secondAttribute="trailing" id="0xc-tL-86y"/>
+                            <constraint firstItem="RQV-1Q-H1E" firstAttribute="top" secondItem="Nkx-RD-1Ha" secondAttribute="bottom" constant="16" id="2Ci-uC-oXK"/>
                             <constraint firstItem="eHh-I8-y2J" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="3g0-4q-0h8"/>
                             <constraint firstItem="Nkx-RD-1Ha" firstAttribute="height" secondItem="4ys-X7-Rzq" secondAttribute="height" id="4aV-rH-GQr"/>
                             <constraint firstItem="eHh-I8-y2J" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" constant="50" id="51Q-Ji-IoM"/>
@@ -96,11 +119,12 @@
                             <constraint firstItem="4ys-X7-Rzq" firstAttribute="leading" secondItem="Nkx-RD-1Ha" secondAttribute="leading" id="Hha-wu-9gL"/>
                             <constraint firstItem="IYM-lC-oca" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="K06-a1-FHg"/>
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="OX7-dD-N7S"/>
+                            <constraint firstItem="RQV-1Q-H1E" firstAttribute="leading" secondItem="1x7-C0-bDh" secondAttribute="centerX" id="PCu-og-sE8"/>
                             <constraint firstItem="4ys-X7-Rzq" firstAttribute="width" secondItem="EgA-Hu-YGH" secondAttribute="width" id="Q08-mw-xEe"/>
+                            <constraint firstItem="IYM-lC-oca" firstAttribute="top" secondItem="RQV-1Q-H1E" secondAttribute="bottom" constant="16" id="T8l-WB-Eqd"/>
                             <constraint firstItem="55X-3t-PM5" firstAttribute="height" secondItem="EgA-Hu-YGH" secondAttribute="height" id="Tw3-Nt-dBY"/>
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="height" secondItem="eHh-I8-y2J" secondAttribute="height" multiplier="1:7" id="WZq-uK-IvO"/>
                             <constraint firstItem="EgA-Hu-YGH" firstAttribute="top" secondItem="jkr-6y-Ni4" secondAttribute="bottom" priority="750" constant="10" id="Xx2-tK-aZf"/>
-                            <constraint firstItem="IYM-lC-oca" firstAttribute="top" secondItem="Nkx-RD-1Ha" secondAttribute="bottom" constant="10" id="YX7-l8-RpR"/>
                             <constraint firstItem="eoo-xa-Pxd" firstAttribute="width" secondItem="jkr-6y-Ni4" secondAttribute="width" multiplier="5:7" id="aHj-sS-G3k"/>
                             <constraint firstAttribute="top" secondItem="eHh-I8-y2J" secondAttribute="top" constant="-100" id="bId-8T-E4n"/>
                             <constraint firstItem="1x7-C0-bDh" firstAttribute="top" secondItem="VDF-mK-SUM" secondAttribute="top" id="bNB-0a-VEF"/>
@@ -114,6 +138,8 @@
                             <constraint firstItem="Nkx-RD-1Ha" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="qLx-dO-0MK"/>
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="top" relation="lessThanOrEqual" secondItem="eHh-I8-y2J" secondAttribute="bottom" constant="20" id="vhH-nj-kcq"/>
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="width" secondItem="eHh-I8-y2J" secondAttribute="width" multiplier="5:6" id="xC0-Fk-hbV"/>
+                            <constraint firstItem="fXq-Ru-IL6" firstAttribute="top" secondItem="RQV-1Q-H1E" secondAttribute="top" id="xXA-aY-BN6"/>
+                            <constraint firstItem="RQV-1Q-H1E" firstAttribute="height" secondItem="fXq-Ru-IL6" secondAttribute="height" id="xfL-tE-HRb"/>
                             <constraint firstItem="1x7-C0-bDh" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" id="yHd-VA-bcY"/>
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="height" secondItem="EgA-Hu-YGH" secondAttribute="height" id="yYX-hD-E1t"/>
                         </constraints>
