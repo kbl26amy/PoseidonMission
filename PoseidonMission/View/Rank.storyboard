@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJI-ch-VYn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,14 +94,14 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izd-jT-fwj">
-                                                                        <rect key="frame" x="93" y="9.5" width="45" height="21"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Izd-jT-fwj">
+                                                                        <rect key="frame" x="93" y="9.5" width="258.5" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VN-r6-pRz">
-                                                                        <rect key="frame" x="93" y="38.5" width="45" height="21"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9VN-r6-pRz">
+                                                                        <rect key="frame" x="93" y="38.5" width="258.5" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -139,7 +138,9 @@
                                                             <constraints>
                                                                 <constraint firstItem="E43-Cb-lBQ" firstAttribute="width" secondItem="ZGs-Jg-Mnm" secondAttribute="width" id="0rW-bh-vKR"/>
                                                                 <constraint firstAttribute="centerY" secondItem="Izd-jT-fwj" secondAttribute="bottom" id="2Cg-16-Un7"/>
+                                                                <constraint firstItem="awi-1i-zeY" firstAttribute="leading" secondItem="9VN-r6-pRz" secondAttribute="trailing" constant="16" id="7xj-LC-NBD"/>
                                                                 <constraint firstItem="ZGs-Jg-Mnm" firstAttribute="height" secondItem="2Xx-tL-WbW" secondAttribute="height" id="CGq-Yg-xce"/>
+                                                                <constraint firstItem="awi-1i-zeY" firstAttribute="leading" secondItem="Izd-jT-fwj" secondAttribute="trailing" constant="16" id="DBG-BE-SiY"/>
                                                                 <constraint firstItem="9VN-r6-pRz" firstAttribute="leading" secondItem="ZGs-Jg-Mnm" secondAttribute="trailing" constant="16" id="Ghq-2r-eqa"/>
                                                                 <constraint firstItem="ZGs-Jg-Mnm" firstAttribute="leading" secondItem="2Xx-tL-WbW" secondAttribute="leading" constant="16" id="HeC-tk-7Wk"/>
                                                                 <constraint firstItem="9VN-r6-pRz" firstAttribute="top" secondItem="Izd-jT-fwj" secondAttribute="bottom" constant="8" id="KZg-lY-WIu"/>
@@ -149,6 +150,7 @@
                                                                 <constraint firstItem="awi-1i-zeY" firstAttribute="height" secondItem="2Xx-tL-WbW" secondAttribute="height" multiplier="1:2" id="dyV-fV-HtV"/>
                                                                 <constraint firstItem="E43-Cb-lBQ" firstAttribute="centerY" secondItem="2Xx-tL-WbW" secondAttribute="centerY" id="hNC-uM-cje"/>
                                                                 <constraint firstAttribute="trailing" secondItem="awi-1i-zeY" secondAttribute="trailing" constant="16" id="iJ9-jK-duX"/>
+                                                                <constraint firstItem="E43-Cb-lBQ" firstAttribute="leading" secondItem="2Xx-tL-WbW" secondAttribute="leading" constant="16" id="siy-wl-eAG"/>
                                                                 <constraint firstItem="Izd-jT-fwj" firstAttribute="leading" secondItem="ZGs-Jg-Mnm" secondAttribute="trailing" constant="16" id="won-kT-CZG"/>
                                                             </constraints>
                                                             <connections>

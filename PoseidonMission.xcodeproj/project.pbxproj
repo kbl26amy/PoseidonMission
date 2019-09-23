@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		620BA31823276CD800BBF395 /* MissionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BA31723276CD800BBF395 /* MissionContent.swift */; };
 		620F600A23331BE9007CFBCA /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */; };
+		621F440F2338915E005989C6 /* LobbyCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F440E2338915E005989C6 /* LobbyCollectionReusableView.swift */; };
 		6223F72F2328F74A003E249B /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6223F72E2328F74A003E249B /* ShareManager.swift */; };
 		62353B602314EBDE00A4FBA0 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */; };
 		62353B622314F5F700A4FBA0 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62353B612314F5F700A4FBA0 /* Lobby.storyboard */; };
@@ -57,6 +58,7 @@
 		620BA31723276CD800BBF395 /* MissionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionContent.swift; sourceTree = "<group>"; };
 		620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		6213667C23376A2B00EE0696 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		621F440E2338915E005989C6 /* LobbyCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyCollectionReusableView.swift; sourceTree = "<group>"; };
 		6223F72E2328F74A003E249B /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		62353B5F2314EBDE00A4FBA0 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		62353B612314F5F700A4FBA0 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		62E1B0522314C361007AC76D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				621F440E2338915E005989C6 /* LobbyCollectionReusableView.swift */,
 				62353B7623164EE400A4FBA0 /* cell */,
 				62E1B0392313B73C007AC76D /* Main.storyboard */,
 				62E1B0582314C49B007AC76D /* Profile.storyboard */,
@@ -370,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				621F440F2338915E005989C6 /* LobbyCollectionReusableView.swift in Sources */,
 				62353B802318F53900A4FBA0 /* StoryViewController.swift in Sources */,
 				62A2B813231928CD0099509E /* GetPointTableViewCell.swift in Sources */,
 				62A2B81523192EC60099509E /* MissionTableViewCell.swift in Sources */,
@@ -552,7 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4MM6T8568W;
 				INFOPLIST_FILE = PoseidonMission/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,7 +576,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4MM6T8568W;
 				INFOPLIST_FILE = PoseidonMission/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

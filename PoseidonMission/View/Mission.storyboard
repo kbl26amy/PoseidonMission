@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rNn-Hf-8Wx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -193,17 +192,17 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pFm-bQ-Fhv">
-                                <rect key="frame" x="40" y="150" width="334" height="448"/>
+                                <rect key="frame" x="40" y="298.5" width="334" height="299"/>
                                 <color key="backgroundColor" red="0.66460222010000003" green="0.83821409940000002" blue="0.89020627740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="故事劇情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-0C-GtN">
-                                <rect key="frame" x="156" y="112" width="102" height="30"/>
+                                <rect key="frame" x="156" y="260.5" width="102" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eho-tE-5t4">
-                                <rect key="frame" x="107" y="658" width="200" height="48"/>
+                                <rect key="frame" x="107" y="657.5" width="200" height="32"/>
                                 <color key="backgroundColor" red="0.89174962040000005" green="0.32657265660000001" blue="0.29801204799999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
@@ -214,21 +213,21 @@
                                     <action selector="goToChallenge:" destination="4bv-ZJ-VSq" eventType="touchUpInside" id="cYf-DV-tGa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你獲得一張破舊不堪的藏寶圖，據說這裡埋藏著遠古海底寶藏的訊息，只有能夠看清真相並選中正確位置的人才能獲得。你，是否有資格?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QER-Zr-EmH">
-                                <rect key="frame" x="50" y="210" width="314" height="330"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你獲得一張破舊不堪的藏寶圖，據說這裡埋藏著遠古海底寶藏的訊息，只有能夠看清真相並選中正確位置的人才能獲得。你，是否有資格?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QER-Zr-EmH">
+                                <rect key="frame" x="50" y="358.5" width="314" height="179"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標:擦乾淨藏寶圖找到真正的寶藏地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-mm-QJt">
-                                <rect key="frame" x="40" y="534" width="334" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目標:擦乾淨藏寶圖找到寶藏地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-mm-QJt">
+                                <rect key="frame" x="40" y="554.5" width="334" height="43"/>
                                 <color key="backgroundColor" red="0.99991124870000003" green="0.95706421139999998" blue="0.8510286212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jet-c0-tWJ">
-                                <rect key="frame" x="344" y="150" width="30" height="42"/>
+                                <rect key="frame" x="344" y="298.5" width="30" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="X">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,11 +254,11 @@
                             <constraint firstItem="QER-Zr-EmH" firstAttribute="centerX" secondItem="pFm-bQ-Fhv" secondAttribute="centerX" id="XU7-WO-Rdv"/>
                             <constraint firstItem="Jet-c0-tWJ" firstAttribute="top" secondItem="pFm-bQ-Fhv" secondAttribute="top" id="aCb-Ne-rmh"/>
                             <constraint firstItem="eho-tE-5t4" firstAttribute="top" secondItem="pFm-bQ-Fhv" secondAttribute="bottom" constant="60" id="c6a-Vm-Jmk"/>
-                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="bottom" secondItem="g2T-tQ-b0X" secondAttribute="centerY" constant="150" id="cWs-2A-TMG"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="centerY" secondItem="g2T-tQ-b0X" secondAttribute="centerY" id="cWs-2A-TMG"/>
                             <constraint firstItem="QER-Zr-EmH" firstAttribute="top" secondItem="pFm-bQ-Fhv" secondAttribute="top" constant="60" id="dUd-qS-aMN"/>
-                            <constraint firstItem="QER-Zr-EmH" firstAttribute="centerY" secondItem="pFm-bQ-Fhv" secondAttribute="centerY" constant="1" id="h85-Ro-kHV"/>
+                            <constraint firstItem="QER-Zr-EmH" firstAttribute="centerY" secondItem="pFm-bQ-Fhv" secondAttribute="centerY" id="h85-Ro-kHV"/>
                             <constraint firstItem="z1x-mm-QJt" firstAttribute="bottom" secondItem="pFm-bQ-Fhv" secondAttribute="bottom" id="hmE-TN-5Tj"/>
-                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="height" secondItem="7sH-Pc-khV" secondAttribute="height" multiplier="1:2" id="jYq-xE-ul7"/>
+                            <constraint firstItem="pFm-bQ-Fhv" firstAttribute="height" secondItem="7sH-Pc-khV" secondAttribute="height" multiplier="1:3" id="jYq-xE-ul7"/>
                             <constraint firstItem="Dsa-0C-GtN" firstAttribute="centerX" secondItem="g2T-tQ-b0X" secondAttribute="centerX" id="n4q-sP-Rvk"/>
                             <constraint firstItem="eho-tE-5t4" firstAttribute="height" secondItem="z1x-mm-QJt" secondAttribute="height" multiplier="3:4" id="nMu-4Z-Egp"/>
                             <constraint firstItem="7sH-Pc-khV" firstAttribute="trailing" secondItem="XZy-G2-fmY" secondAttribute="trailing" id="rey-om-8qd"/>

@@ -11,7 +11,7 @@ import FirebaseAuth
 
 
 class LobbyViewController: PMBaseViewController {
-    
+    var headerTitles = ["熱門遊戲", "每日任務"]
     var fishRankData: [RankData] = []{
         didSet{
         runLightViewLabel.text =
@@ -64,7 +64,6 @@ class LobbyViewController: PMBaseViewController {
     func runlight () {
         
         self.runLightView.backgroundColor = UIColor.clear
-//            UIColor(red: 255/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.6)
         
         var frame = runLightViewLabel.frame
         frame.origin.x = UIScreen.main.bounds.width
@@ -95,7 +94,7 @@ class LobbyViewController: PMBaseViewController {
     
     lazy var cardLayout: FlatCardCollectionViewLayout = {
         let layout = FlatCardCollectionViewLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 2 / 3 , height: 300)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 3 / 5 , height: homeCollectionView.contentSize.height)
         return layout
     }()
     
@@ -117,24 +116,24 @@ class LobbyViewController: PMBaseViewController {
     
     var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
     
-    var homeCollectionImages = ["loginToday", "share", "map", "fishing", "jellyFish"]
+    var homeCollectionImages = [ "map", "fishing", "jellyFish", "loginToday", "share"]
     
-    var homeCollectionLabel = ["簽到", "邀請好友", "藏寶圖", "釣魚", "打水母"]
+    var homeCollectionLabel = [ "藏寶圖", "釣魚", "打水母", "簽到", "邀請好友"]
     
-    var homeCollectionLabelColor = [UIColor(red: 249/255, green: 97/255, blue: 43/255, alpha: 1),
-                                    UIColor(red: 255/255, green: 181/255, blue: 37/255, alpha: 1),
+    var homeCollectionLabelColor = [
                                     UIColor(red: 127/255, green: 197/255, blue: 0, alpha: 1),
                                     UIColor(red: 139/255, green: 152/255, blue: 206/255, alpha: 1),
-                                    UIColor(red: 0, green: 188/255, blue: 232/255, alpha: 1)]
+                                    UIColor(red: 0, green: 188/255, blue: 232/255, alpha: 1),
+                                    UIColor(red: 249/255, green: 97/255, blue: 43/255, alpha: 1),
+                                    UIColor(red: 255/255, green: 181/255, blue: 37/255, alpha: 1)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         setupCollectionViewLayout()
-
-        
-        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,7 +180,43 @@ class LobbyViewController: PMBaseViewController {
 
 }
 
-extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+
+extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                               viewForSupplementaryElementOfKind kind: String,
+                               at indexPath: IndexPath) -> UICollectionReusableView {
+    
+        if collectionView == homeCollectionView {
+        if kind == UICollectionView.elementKindSectionHeader {
+
+            let header = collectionView.dequeueReusableSupplementaryView(
+                      ofKind: UICollectionView.elementKindSectionHeader,
+                      withReuseIdentifier: String(describing: LobbyCollectionReusableView.self),
+                      for: indexPath
+                  )
+
+            guard let headerView = header as? LobbyCollectionReusableView else { return header }
+
+            view.layoutIfNeeded()
+            headerView.headerTitle.text = headerTitles[indexPath.row]
+                  return headerView
+                }
+        }
+        
+        return UICollectionReusableView()
+  }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if collectionView == homeCollectionView {
+            return CGSize(width: UIScreen.main.bounds.width, height: 40.0)
+        }
+        return CGSize(width: 0, height: 0)
+    }
+    
+
+    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         
@@ -262,6 +297,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         flowLayout.minimumLineSpacing = 0.0
         homeCollectionView.collectionViewLayout = flowLayout
     }
+
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
@@ -278,6 +314,26 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         switch indexPath.row {
             
         case 0:
+            goStoryViewController.storyText = StoryContent.mapStory
+              goStoryViewController.targetText = StoryContent.mapTarget
+            
+              self.navigationController?.pushViewController(goStoryViewController,
+                                                            animated: true)
+        case 1:
+            
+            goStoryViewController.storyText = StoryContent.fishingStory
+            goStoryViewController.targetText = StoryContent.fishingTarget
+            
+            self.navigationController?.pushViewController(goStoryViewController,
+                                                          animated: true)
+        case 2:
+            goStoryViewController.storyText = StoryContent.jellyFishStory
+                goStoryViewController.targetText = StoryContent.jellyFishTarget
+            
+                self.navigationController?.pushViewController(goStoryViewController,
+                                                              animated: true)
+        case 3:
+            
             let loginTodayController = UIStoryboard
                 .mission
                 .instantiateViewController(withIdentifier: "LoginTodayViewController")
@@ -286,30 +342,9 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             loginTodayController.modalTransitionStyle = .crossDissolve
             present(loginTodayController, animated: true, completion: nil)
             
-        case 1:
-            
-            ShareManager.checkIsShareToday(sender: self)
-            
-        case 2:
-            goStoryViewController.storyText = StoryContent.mapStory
-            goStoryViewController.targetText = StoryContent.mapTarget
-          
-            self.navigationController?.pushViewController(goStoryViewController,
-                                                          animated: true)
-            
-        case 3:
-            goStoryViewController.storyText = StoryContent.fishingStory
-            goStoryViewController.targetText = StoryContent.fishingTarget
-            
-            self.navigationController?.pushViewController(goStoryViewController,
-                                                          animated: true)
             
         case 4:
-            goStoryViewController.storyText = StoryContent.jellyFishStory
-            goStoryViewController.targetText = StoryContent.jellyFishTarget
-        
-            self.navigationController?.pushViewController(goStoryViewController,
-                                                          animated: true)
+            ShareManager.checkIsShareToday(sender: self)
             
         default:
             print("no view")

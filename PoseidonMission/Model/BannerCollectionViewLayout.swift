@@ -25,7 +25,7 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
         if collectionView == nil { return CGSize.zero }
         
         let itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0))
-        return CGSize(width: collectionView!.bounds.width * itemsCount * 4 / 5,
+        return CGSize(width: collectionView!.bounds.width * itemsCount * 3 / 4 ,
                       height: collectionView!.bounds.height )
     }
     
@@ -43,7 +43,7 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
             let delta = Swift.abs(attribute.center.x - centerX)
 
             // 根據間隔距離計算縮放比例
-            let scale = 1.35 - delta / collectionView!.frame.size.width
+            let scale = 1.3 - delta / collectionView!.frame.size.width
 
             // 設置縮放比例
             attribute.transform = CGAffineTransform(scaleX: scale, y: scale);
