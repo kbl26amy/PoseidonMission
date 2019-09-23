@@ -12,5 +12,6 @@ target 'PoseidonMission' do
   pod 'Firebase/Database'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher'
-
+  pod 'Crashlytics'
+  pod 'KeychainSwift'
 end

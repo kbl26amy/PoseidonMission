@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import AuthenticationServices
 
 class AuthViewController: PMBaseViewController {
 
@@ -25,6 +26,32 @@ class AuthViewController: PMBaseViewController {
     var userNameView = UIImageView()
     var userNameTextfield = UITextField()
     
+    func showAppleSignIn() {
+        let appleButton = ASAuthorizationAppleIDButton()
+    appleButton.translatesAutoresizingMaskIntoConstraints = false
+        appleButton.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
+        view.addSubview(appleButton)
+        view.layoutIfNeeded()
+        NSLayoutConstraint.activate([
+        appleButton.centerXAnchor.constraint(equalTo: self.registerButtonLayout.centerXAnchor),
+        appleButton.topAnchor.constraint(equalTo: self.registerButtonLayout.bottomAnchor, constant: 10),
+        appleButton.widthAnchor.constraint(equalToConstant: self.registerButtonLayout.frame.width * 5/7)
+        ])
+    }
+    
+    @objc
+       func didTapAppleButton() {
+           let provider = ASAuthorizationAppleIDProvider()
+           let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+           
+           let controller = ASAuthorizationController(authorizationRequests: [request])
+           
+           controller.delegate = self
+           controller.presentationContextProvider = self
+           
+           controller.performRequests()
+       }
     @IBAction func showRegisterButtonView(_ sender: UIButton) {
         if userNameTextfield.text == ""{
             setRegisterView()
@@ -64,7 +91,7 @@ class AuthViewController: PMBaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
+        showAppleSignIn()
         UIView.animate(withDuration: 2, animations: { [weak self] in
             
             self?.treasureView.isHidden = false
@@ -122,14 +149,18 @@ class AuthViewController: PMBaseViewController {
                 
                 if error == nil {
                     print("successfully signed up")
+                    
+                    KeyChainManager.shared.set(Auth.auth().currentUser!.uid, forKey: "userid")
+                    KeyChainManager.shared.set(self.emailTextField.text!, forKey: "userEmail")
+                    
                     let db = Firestore.firestore()
                     
                     let data: [String: Any] = ["userName": self.userNameTextfield.text!,"email": self.emailTextField.text! ]
-                    db.collection("user").document((Auth.auth().currentUser?.uid)!).setData(data){ (error) in
+                    db.collection("user").document((KeyChainManager.shared.get("userid")!)).setData(data){ (error) in
                         if let error = error {
                             print(error)
                         }else {
-                            print(Auth.auth().currentUser?.uid as Any)
+                            print((KeyChainManager.shared.get("userid")!) as Any)
                         }
                     }
                     
@@ -191,6 +222,51 @@ class AuthViewController: PMBaseViewController {
         }
     }
 
+}
+
+extension AuthViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
+        switch authorization.credential {
+            
+        case let credentials as ASAuthorizationAppleIDCredential:
+            let user = AppleUser(credentials: credentials)
+            print(user)
+            
+            KeyChainManager.shared.set(user.id, forKey: "userid")
+             KeyChainManager.shared.set(self.emailTextField.text!, forKey: "userEmail")
+            let loginRecord = ["email":user.email, "userName": user.lastName + user.firstName] as [String : Any]
+            
+            let db = Firestore.firestore()
+                db
+                .collection("user")
+                    .document(user.id)
+                .setData(loginRecord){ (error) in
+                    if let error = error {
+                        print(error)
+                    }
+            }
+            backToRoot()
+            
+        default: break
+            
+        }
+
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("something bad happened", error)
+    }
+}
+
+extension AuthViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        
+        return view.window!
+
+    }
+    
+    
 }
 
 

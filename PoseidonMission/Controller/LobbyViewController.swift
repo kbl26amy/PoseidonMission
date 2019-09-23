@@ -44,7 +44,7 @@ class LobbyViewController: PMBaseViewController {
     @IBAction func logOutAction(_ sender: Any) {
         print("logout")
        
-            if Auth.auth().currentUser != nil {
+            if KeyChainManager.shared.get("userid") != nil {
                 do {
                     try Auth.auth().signOut()
                     showRegisterButtonOutlet.isHidden = false
@@ -164,7 +164,7 @@ class LobbyViewController: PMBaseViewController {
                                                        left: 0, bottom: 0, right: 0)
         self.bannerCollectionView.collectionViewLayout = cardLayout
  
-        if Auth.auth().currentUser != nil {
+        if KeyChainManager.shared.get("userid") != nil {
             runLightViewLabel.alpha = 1
             runlight ()
             showRegisterButtonOutlet.isHidden = true
@@ -307,7 +307,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             .instantiateViewController(withIdentifier: "StoryViewController")
             as! StoryViewController
         
-        if Auth.auth().currentUser != nil {
+        if KeyChainManager.shared.get("userid") != nil {
             
         if collectionView == homeCollectionView {
 

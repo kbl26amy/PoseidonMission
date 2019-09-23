@@ -209,7 +209,7 @@ class JellyfishViewController: PMBaseViewController {
     //存用戶積分紀錄
         let db = Firestore.firestore()
         let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,"score": score/1000, "source": "jellyFish" ]
-        db.collection("user").document(Auth.auth().currentUser!.uid).collection("records").document().setData(scoreRecordData){ (error) in
+        db.collection("user").document(KeyChainManager.shared.get("userid")!).collection("records").document().setData(scoreRecordData){ (error) in
             if let error = error {
                 print(error)
             }
@@ -241,7 +241,7 @@ class JellyfishViewController: PMBaseViewController {
    
     func checkJellyFishTimes() {
         let db = Firestore.firestore()
-        db.collection("user").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+        db.collection("user").document(KeyChainManager.shared.get("userid")!).getDocument { (document, error) in
             
             if let document = document, document.exists {
                 print(document.documentID, document.data() as Any)

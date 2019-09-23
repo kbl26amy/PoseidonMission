@@ -19,7 +19,7 @@ class FireBaseHelper {
      
         db
         .collection("user")
-        .document(Auth.auth().currentUser!.uid)
+            .document(KeyChainManager.shared.get("userid")!)
         .getDocument { (document, error) in
             
             completion(document)
@@ -34,7 +34,7 @@ class FireBaseHelper {
         
         db
             .collection("user")
-            .document(Auth.auth().currentUser!.uid)
+            .document(KeyChainManager.shared.get("userid")!)
             .collection("records")
             .getDocuments { (querySnapshot, error) in
                 
@@ -92,7 +92,7 @@ class FireBaseHelper {
         let db = Firestore.firestore()
             db
             .collection("user")
-            .document(Auth.auth().currentUser!.uid)
+                .document(KeyChainManager.shared.get("userid")!)
             .collection("records")
             .document()
             .setData(saveData){ (error) in
@@ -108,7 +108,7 @@ class FireBaseHelper {
         let db = Firestore.firestore()
         db
         .collection("user")
-        .whereField("email", isEqualTo: Auth.auth().currentUser!.email ?? "no email")
+            .whereField("email", isEqualTo: KeyChainManager.shared.get("userEmail") ?? "no email")
         .getDocuments { (querySnapshot, error) in
                 
         if let querySnapshot = querySnapshot {
