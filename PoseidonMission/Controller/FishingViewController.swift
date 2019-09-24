@@ -196,6 +196,7 @@ class FishingViewController: UIViewController {
                                                                            options: .repeat,
                                                                            animations: {
             UIView.setAnimationRepeatCount(999);
+                                                                        
             self.colorView.frame = CGRect(x: 0,
                                           y: 0,
                                           width: self.energyBar.frame.width,

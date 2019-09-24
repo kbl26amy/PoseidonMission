@@ -19,8 +19,8 @@ class ShareManager {
         
         let facebookPostAction = UIAlertAction(title: "分享", style: UIAlertAction.Style.default) { (action) -> Void in
             
-            let shareMessage = URL(string: "https://www.facebook.com")
-            let shareViewController = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
+            let shareMessage = URL(string: "https://itunes.apple.com/tw/app/id1481162004")
+            let shareViewController = UIActivityViewController(activityItems: [shareMessage as Any], applicationActivities: nil)
             
          
             shareViewController

@@ -73,7 +73,7 @@ class AuthViewController: PMBaseViewController {
     
     @IBAction func privacyButton(_ sender: Any) {
         
-        let urlString = "https://www.privacypolicies.com/privacy/view/f78b09e7f5f28526f436ca247afd748a"
+        let urlString = "https://www.privacypolicies.com/privacy/view/9365f69ef7a7434aeed4d5f09ca3f683"
         let url = URL(string: urlString)
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
@@ -83,7 +83,7 @@ class AuthViewController: PMBaseViewController {
         treasureView.isHidden = true
         navigationController?.isNavigationBarHidden = true
         setLoginView()
-        
+        showAppleSignIn()
         emailTextField.placeholder = "Email Adress"
         passwordTextField.placeholder = "Password"
     
@@ -91,7 +91,7 @@ class AuthViewController: PMBaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showAppleSignIn()
+        
         UIView.animate(withDuration: 2, animations: { [weak self] in
             
             self?.treasureView.isHidden = false
@@ -233,7 +233,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
             
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = AppleUser(credentials: credentials)
-//            print(user)
+            print(user)
             
             KeyChainManager.shared.set(user.id, forKey: "userid")
             KeyChainManager.shared.set(user.email, forKey: "useremail")
@@ -247,7 +247,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                 if let error = error {
                     print(error)
                 }
-                    self?.navigationController!.popToRootViewController(animated: false)
+                    self?.backToRoot()
             })
                 
         default: break
