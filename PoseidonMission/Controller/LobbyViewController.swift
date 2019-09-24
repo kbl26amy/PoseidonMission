@@ -46,7 +46,7 @@ class LobbyViewController: PMBaseViewController {
        
             if KeyChainManager.shared.get("userid") != nil {
                 do {
-                    try Auth.auth().signOut()
+                    try KeyChainManager.shared.delete("userid")
                     showRegisterButtonOutlet.isHidden = false
                     logoutOulet.isEnabled = false
                     logoutOulet.tintColor = .white

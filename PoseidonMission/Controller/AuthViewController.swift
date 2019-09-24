@@ -151,7 +151,7 @@ class AuthViewController: PMBaseViewController {
                     print("successfully signed up")
                     
                     KeyChainManager.shared.set(Auth.auth().currentUser!.uid, forKey: "userid")
-                    KeyChainManager.shared.set(self.emailTextField.text!, forKey: "userEmail")
+                    KeyChainManager.shared.set(self.emailTextField.text!, forKey: "useremail")
                     
                     let db = Firestore.firestore()
                     
@@ -195,6 +195,8 @@ class AuthViewController: PMBaseViewController {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 
                 if error == nil {
+                    KeyChainManager.shared.set(Auth.auth().currentUser!.uid, forKey: "userid")
+                    KeyChainManager.shared.set(self.emailTextField.text!, forKey: "useremail")
                     
                     UserManager.shared.getUserData(completion: {user in
                         
@@ -231,23 +233,23 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
             
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = AppleUser(credentials: credentials)
-            print(user)
+//            print(user)
             
             KeyChainManager.shared.set(user.id, forKey: "userid")
-             KeyChainManager.shared.set(self.emailTextField.text!, forKey: "userEmail")
+            KeyChainManager.shared.set(user.email, forKey: "useremail")
             let loginRecord = ["email":user.email, "userName": user.lastName + user.firstName] as [String : Any]
             
             let db = Firestore.firestore()
-                db
-                .collection("user")
-                    .document(user.id)
-                .setData(loginRecord){ (error) in
-                    if let error = error {
-                        print(error)
-                    }
-            }
-            backToRoot()
             
+            db
+            .collection("user")
+                .document(user.id).setData(loginRecord, merge: true, completion: {[weak self] (error) in
+                if let error = error {
+                    print(error)
+                }
+                    self?.navigationController!.popToRootViewController(animated: false)
+            })
+                
         default: break
             
         }

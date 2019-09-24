@@ -218,7 +218,7 @@ extension MapViewController: ScratchCardDelegate {
                 }
             }
             //update用戶總積分
-                db.collection("user").whereField("email", isEqualTo: KeyChainManager.shared.get("userEmail") ?? "no email").getDocuments { (querySnapshot, error) in
+                db.collection("user").whereField("email", isEqualTo: KeyChainManager.shared.get("useremail") ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
                     document?.reference.updateData(["totalScore": ProfileViewController.totalScore + 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in
@@ -228,7 +228,7 @@ extension MapViewController: ScratchCardDelegate {
             
         } else {
             //update用戶總積分
-            db.collection("user").whereField("email", isEqualTo: KeyChainManager.shared.get("userEmail") ?? "no email").getDocuments { (querySnapshot, error) in
+            db.collection("user").whereField("email", isEqualTo: KeyChainManager.shared.get("useremail") ?? "no email").getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     let document = querySnapshot.documents.first
                     document?.reference.updateData(["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in

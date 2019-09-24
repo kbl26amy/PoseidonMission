@@ -108,7 +108,7 @@ class FireBaseHelper {
         let db = Firestore.firestore()
         db
         .collection("user")
-            .whereField("email", isEqualTo: KeyChainManager.shared.get("userEmail") ?? "no email")
+            .whereField("email", isEqualTo: KeyChainManager.shared.get("useremail") ?? "no email")
         .getDocuments { (querySnapshot, error) in
                 
         if let querySnapshot = querySnapshot {

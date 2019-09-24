@@ -50,8 +50,8 @@ class UserManager {
             userData.mapPlayTime = doc.data()?["mapPlayTime"] as? Timestamp
             userData.fishingHighest = doc.data()?["fishingHighest"] as? Int
             
-            print(doc.data() as Any)
-            print(userData)
+//            print(doc.data() as Any)
+//            print(userData)
             self.user = userData
             
             completion(userData)
