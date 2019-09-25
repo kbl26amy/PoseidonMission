@@ -47,6 +47,11 @@ class LobbyViewController: PMBaseViewController {
             if KeyChainManager.shared.get("userid") != nil {
                 do {
                     try KeyChainManager.shared.delete("userid")
+                    ProfileViewController.totalScore = 0
+                    ProfileViewController.loginCounts = 0
+                    
+                    ProfileViewController.fishingHighest = 0
+                    ProfileViewController.jellyFishHighest = 0
                     showRegisterButtonOutlet.isHidden = false
                     logoutOulet.isEnabled = false
                     logoutOulet.tintColor = .white

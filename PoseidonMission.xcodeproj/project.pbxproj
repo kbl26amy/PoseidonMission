@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		620BA31823276CD800BBF395 /* MissionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620BA31723276CD800BBF395 /* MissionContent.swift */; };
 		620F600A23331BE9007CFBCA /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */; };
+		620F8E66233B5B7500A189AA /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620F8E65233B5B7500A189AA /* UserInfo.swift */; };
 		621F440F2338915E005989C6 /* LobbyCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F440E2338915E005989C6 /* LobbyCollectionReusableView.swift */; };
 		621F44132339023C005989C6 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F44122339023C005989C6 /* KeyChainManager.swift */; };
 		6223F72F2328F74A003E249B /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6223F72E2328F74A003E249B /* ShareManager.swift */; };
@@ -58,6 +59,7 @@
 		45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.release.xcconfig"; sourceTree = "<group>"; };
 		620BA31723276CD800BBF395 /* MissionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionContent.swift; sourceTree = "<group>"; };
 		620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		620F8E65233B5B7500A189AA /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		6213667C23376A2B00EE0696 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		621F440E2338915E005989C6 /* LobbyCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyCollectionReusableView.swift; sourceTree = "<group>"; };
 		621F44112338C790005989C6 /* PoseidonMission.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PoseidonMission.entitlements; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				624029C8232BBC9800363D29 /* FishManager.swift */,
 				62A427C3233075800032B12E /* DateManager.swift */,
 				621F44122339023C005989C6 /* KeyChainManager.swift */,
+				620F8E65233B5B7500A189AA /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,
 				6286FF9E232688D700C48899 /* RankTableViewCell.swift in Sources */,
 				62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */,
+				620F8E66233B5B7500A189AA /* UserInfo.swift in Sources */,
 				62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */,
 				6286FF9A23250EA300C48899 /* DataType.swift in Sources */,
 				62353B7C2317CD6400A4FBA0 /* ScratchCard.swift in Sources */,

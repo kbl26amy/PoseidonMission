@@ -86,7 +86,7 @@ class AuthViewController: PMBaseViewController {
         showAppleSignIn()
         emailTextField.placeholder = "Email Adress"
         passwordTextField.placeholder = "Password"
-    
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,7 +130,7 @@ class AuthViewController: PMBaseViewController {
             , size: 14)
         self.userNameTextfield.placeholder = "User Name"
         view.addSubview(self.userNameTextfield)
-     
+        userNameTextfield.delegate = self
     }
     
     func createAccountAction(_ sender: AnyObject) {
@@ -273,10 +273,28 @@ extension AuthViewController: ASAuthorizationControllerPresentationContextProvid
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         
         return view.window!
-
     }
-    
-    
+   
 }
 
+extension AuthViewController: UITextFieldDelegate,UITextViewDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let countOfWords = string.count +  textField.text!.count - range.length
+     
+        if countOfWords > 6 {
+     
+        let controller = UIAlertController(title: "字數過長", message: "用戶名稱須低於六個字！", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "OK", style:.cancel )
+        controller.addAction(cancelAction)
+
+        present(controller, animated: true, completion: nil)
+        
+        return false
+       }
+     
+       return true
+    }
+}
 
