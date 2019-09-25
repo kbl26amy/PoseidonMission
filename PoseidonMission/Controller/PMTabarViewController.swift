@@ -96,7 +96,7 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         if KeyChainManager.shared.get("userid") == nil{
         
            let loginViewController = UIStoryboard.auth.instantiateViewController(withIdentifier: "AuthViewController")
-            
+            loginViewController.modalPresentationStyle = .fullScreen
             present(loginViewController, animated: true, completion: nil)
             
             return false

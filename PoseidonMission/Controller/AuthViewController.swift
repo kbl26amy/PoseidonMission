@@ -254,12 +254,10 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                                 if let error = error {
                                     print(error)
                                 }
-                                self?.dismiss(animated: true, completion: nil)
-                                self?.navigationController?.popToRootViewController(animated: false)
+                                self?.backToRoot()
                     })
             } else {
-                self.dismiss(animated: true, completion: nil)
-                self.navigationController?.popToRootViewController(animated: false)
+                backToRoot()
             }
         default: break
         }

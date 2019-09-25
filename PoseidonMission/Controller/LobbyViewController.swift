@@ -137,6 +137,7 @@ class LobbyViewController: PMBaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UserManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
             self.fishRankData = data
@@ -152,6 +153,20 @@ class LobbyViewController: PMBaseViewController {
             self.loginRankData = data
             print(self.loginRankData)
         })
+        
+        if KeyChainManager.shared.get("userid") != nil {
+               runLightViewLabel.alpha = 1
+               runlight ()
+               showRegisterButtonOutlet.isHidden = true
+               logoutOulet.isEnabled = true
+               logoutOulet.tintColor = .white
+           } else {
+               logoutOulet.isEnabled = false
+               logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0,
+                                               blue: 222.0/255.0, alpha: 1.0)
+               runLightViewLabel.alpha = 0
+           }
+        
          navigationController?.isNavigationBarHidden = false
     
     }
@@ -164,18 +179,6 @@ class LobbyViewController: PMBaseViewController {
                                                        left: 0, bottom: 0, right: 0)
         self.bannerCollectionView.collectionViewLayout = cardLayout
  
-        if KeyChainManager.shared.get("userid") != nil {
-            runLightViewLabel.alpha = 1
-            runlight ()
-            showRegisterButtonOutlet.isHidden = true
-            logoutOulet.isEnabled = true
-            logoutOulet.tintColor = .white
-        } else {
-            logoutOulet.isEnabled = false
-            logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0,
-                                            blue: 222.0/255.0, alpha: 1.0)
-            runLightViewLabel.alpha = 0
-        }
     }
 
 }

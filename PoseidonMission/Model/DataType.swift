@@ -46,7 +46,7 @@ struct UserData {
     }
 }
 
-enum recordSource:String {
+enum RecordSource:String {
     
     case map = "map"
     case jellyFish = "jellyFish"
@@ -60,7 +60,7 @@ struct UserRecord {
     
     var time: String
     
-    var source:recordSource
+    var source:RecordSource
 
     var score: Int
  
