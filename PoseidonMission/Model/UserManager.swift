@@ -88,7 +88,8 @@ class UserManager {
                     let playTime = dateFormatter.string(from: converted as Date)
         
                 self.userRecord.append(UserRecord(time: playTime,
-                                                  source: recordSource(rawValue: source) ?? .loginToday, score: score))
+                                                  source: RecordSource(rawValue: source) ?? .loginToday,
+                                                  score: score))
             }
             
             completion(self.userRecord)

@@ -10,7 +10,7 @@
         <!--Auth View Controller-->
         <scene sceneID="H3i-eS-HE3">
             <objects>
-                <viewController storyboardIdentifier="AuthViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2FU-mD-kaa" customClass="AuthViewController" customModule="PoseidonMission" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2FU-mD-kaa" customClass="AuthViewController" customModule="波賽頓出任務" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VDF-mK-SUM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,10 +88,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYM-lC-oca">
-                                <rect key="frame" x="24" y="24" width="30" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="&lt;">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYM-lC-oca">
+                                <rect key="frame" x="24" y="30" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2xD-ah-slz"/>
+                                    <constraint firstAttribute="width" constant="30" id="xwP-IC-W0M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" image="back">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
@@ -124,7 +128,7 @@
                             <constraint firstItem="jkr-6y-Ni4" firstAttribute="height" secondItem="eHh-I8-y2J" secondAttribute="height" multiplier="1:7" id="WZq-uK-IvO"/>
                             <constraint firstItem="EgA-Hu-YGH" firstAttribute="top" secondItem="jkr-6y-Ni4" secondAttribute="bottom" priority="750" constant="10" id="Xx2-tK-aZf"/>
                             <constraint firstItem="eoo-xa-Pxd" firstAttribute="width" secondItem="jkr-6y-Ni4" secondAttribute="width" multiplier="5:7" id="aHj-sS-G3k"/>
-                            <constraint firstItem="1x7-C0-bDh" firstAttribute="top" secondItem="IYM-lC-oca" secondAttribute="top" constant="-24" id="azo-dy-mfy"/>
+                            <constraint firstItem="1x7-C0-bDh" firstAttribute="top" secondItem="IYM-lC-oca" secondAttribute="top" constant="-30" id="azo-dy-mfy"/>
                             <constraint firstItem="1x7-C0-bDh" firstAttribute="top" secondItem="VDF-mK-SUM" secondAttribute="top" id="bNB-0a-VEF"/>
                             <constraint firstItem="4ys-X7-Rzq" firstAttribute="top" secondItem="EgA-Hu-YGH" secondAttribute="bottom" constant="10" id="bkD-Ve-oI1"/>
                             <constraint firstItem="eoo-xa-Pxd" firstAttribute="centerY" secondItem="jkr-6y-Ni4" secondAttribute="centerY" id="dCa-Bv-kBB"/>
@@ -159,7 +163,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmt-NT-tIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165.59999999999999" y="57.121439280359823"/>
+            <point key="canvasLocation" x="165.21739130434784" y="56.919642857142854"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="72" height="72"/>
+    </resources>
 </document>

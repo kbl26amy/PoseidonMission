@@ -227,7 +227,8 @@ class AuthViewController: PMBaseViewController {
 }
 
 extension AuthViewController: ASAuthorizationControllerDelegate {
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
         
         switch authorization.credential {
             
@@ -235,28 +236,37 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
             let user = AppleUser(credentials: credentials)
             print(user)
             
-            KeyChainManager.shared.set(user.id, forKey: "userid")
-            KeyChainManager.shared.set(user.email, forKey: "useremail")
-            let loginRecord = ["email":user.email, "userName": user.lastName + user.firstName] as [String : Any]
+            if KeyChainManager.shared.get("userid") == nil {
+                KeyChainManager.shared.set(user.id, forKey: "userid")
+                KeyChainManager.shared.set(user.id, forKey: "useremail")
+            }
+            if user.email != "" {
+                let loginRecord = ["email":user.email,
+                               "userName": user.lastName + user.firstName] as [String : Any]
             
-            let db = Firestore.firestore()
+                let db = Firestore.firestore()
             
-            db
-            .collection("user")
-                .document(user.id).setData(loginRecord, merge: true, completion: {[weak self] (error) in
-                if let error = error {
-                    print(error)
-                }
-                    self?.backToRoot()
-            })
-                
+                db
+                    .collection("user")
+                    .document(user.id)
+                    .setData(loginRecord,merge: true,
+                             completion: {[weak self] (error) in
+                                if let error = error {
+                                    print(error)
+                                }
+                                self?.dismiss(animated: true, completion: nil)
+                                self?.navigationController?.popToRootViewController(animated: false)
+                    })
+            } else {
+                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popToRootViewController(animated: false)
+            }
         default: break
-            
         }
-
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithError error: Error) {
         print("something bad happened", error)
     }
 }

@@ -36,6 +36,7 @@ class FireBaseHelper {
             .collection("user")
             .document(KeyChainManager.shared.get("userid")!)
             .collection("records")
+            .order(by: "time", descending: true)
             .getDocuments { (querySnapshot, error) in
                 
                 completion(querySnapshot)
@@ -83,8 +84,6 @@ class FireBaseHelper {
                 
         }
     }
-    
-    
 
     // 添加積分獲得紀錄
     static func saveUserRecord(saveData:[String: Any]) {
@@ -104,25 +103,17 @@ class FireBaseHelper {
     
     //update用戶資料
     static func updateData(update: [String:Any]) {
-        
         let db = Firestore.firestore()
-        db
-        .collection("user")
-            .whereField("email", isEqualTo: KeyChainManager.shared.get("useremail") ?? "no email")
-        .getDocuments { (querySnapshot, error) in
-                
-        if let querySnapshot = querySnapshot {
-                
-            let document = querySnapshot.documents.first
-                
-            document?.reference.updateData(update, completion: { (error) in
-                
-            })
             
-            }
-            
+            db
+            .collection("user")
+            .document(KeyChainManager.shared.get("userid")!)
+            .getDocument { (document, error) in
+                
+                document?.reference.updateData(update, completion: { (error) in
+                    
+                })
         }
-        
     }
 }
 

@@ -12,7 +12,6 @@ import Kingfisher
 //import CoreImage
 
 class ProfileViewController: PMBaseViewController  {
-    
     var photoArray:[String] = []
     var userData: UserData? {
         didSet{
@@ -149,7 +148,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         getPointCell.getPointCount.text = "+ \(userRecordData?[indexPath.row].score ?? 0)"
         getPointCell.GetPointTime.text = userRecordData?[indexPath.row].time
         getPointCell.getPointImage.image = UIImage(named: userRecordData?[indexPath.row].source.rawValue ?? "map")
-        getPointCell.getPointLabel.text = userRecordData?[indexPath.row].source.rawValue
+        
+        var source: String?
+        
+        switch userRecordData?[indexPath.row].source {
+            case .map: source = "藏寶圖"
+            case .jellyFish: source = "打水母"
+            case .fishing: source = "釣魚"
+            case .loginToday: source = "簽到"
+            case .share: source = "邀請好友"
+            case .none: source = ""
+        }
+        getPointCell.getPointLabel.text = source
         return getPointCell
     }
     
