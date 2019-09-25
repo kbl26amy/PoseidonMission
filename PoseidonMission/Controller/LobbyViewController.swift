@@ -9,8 +9,8 @@
 import UIKit
 import FirebaseAuth
 
-
 class LobbyViewController: PMBaseViewController {
+    
     var headerTitles = ["熱門遊戲", "每日任務"]
     var fishRankData: [RankData] = []{
         didSet{
