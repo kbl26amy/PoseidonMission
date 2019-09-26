@@ -69,9 +69,11 @@ class FishingViewController: UIViewController {
         let clikLeftAnimator = UIViewPropertyAnimator()
         clikLeftAnimator.addAnimations {
    
+            if self.shipTrailingConstraint.constant > -UIScreen.main.bounds.width + 60 {
+                self.leftMoveButton.isHighlighted = true
             self.shipTrailingConstraint.constant -= 10
             self.view.layoutIfNeeded()
-
+            }
                 }
     
         clikLeftAnimator.startAnimation()
@@ -83,9 +85,10 @@ class FishingViewController: UIViewController {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
                                                        delay: 0,
                                                        animations: {
-            self.ship.frame.origin.x += 10
-            self.fishingRod.frame.origin.x += 10
-            self.fishingLine.frame.origin.x += 10
+            if self.shipTrailingConstraint.constant < 0 {
+                self.rightMoveButton.isHighlighted = true
+            self.shipTrailingConstraint.constant += 10
+            self.view.layoutIfNeeded()                                            }
         }, completion: nil)
         
     }
