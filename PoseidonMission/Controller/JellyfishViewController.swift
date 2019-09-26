@@ -114,9 +114,23 @@ class JellyfishViewController: PMBaseViewController {
             let controller = UIAlertController(title: "遊戲結束", message: "您的分數為\(score)，是否直接計算點數？", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
                 print("開始計算分數")
+                if self.score >= 0 {
                 self.saveData()
                 self.appDelegate.interfaceOrientations = .portrait
                 self.backToRoot()
+                } else {
+                    let controller = UIAlertController(title: "分數不足", message: "分數需大於0分才可以獲得暢遊卷，請重新遊戲", preferredStyle: .alert)
+                   let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
+                    
+                    self.counter = 60
+                    self.score = 0
+                    self.scoreLabel.text = "分數：0"
+                    self.secondLabel.text = "60"
+                    self.openButtonOutlet.isEnabled = true
+                    }
+                    controller.addAction(okAction)
+                    self.present(controller, animated: true, completion: nil)
+                }
             }
             
             controller.addAction(okAction)

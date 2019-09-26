@@ -31,7 +31,7 @@ class LoginTodayViewController: UIViewController {
         
         loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
         loginTextMessage.numberOfLines = 0
-        loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts) 天"
+        loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts + 1) 天"
         
         loginTodayView.layer.cornerRadius = 15
         leftUpBlueView.layer.cornerRadius = 5
