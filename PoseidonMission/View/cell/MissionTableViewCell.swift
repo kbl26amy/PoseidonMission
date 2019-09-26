@@ -10,6 +10,7 @@ import UIKit
 
 class MissionTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var rewardLabel: UILabel!
     @IBOutlet weak var missionTitle: UILabel!
     @IBOutlet weak var missionInstroduction: UILabel!
     @IBOutlet weak var rewardView: UIView!

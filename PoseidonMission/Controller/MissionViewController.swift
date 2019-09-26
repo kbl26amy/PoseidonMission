@@ -47,7 +47,7 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         missionCell.limitTimesView.layer.cornerRadius = 5
         missionCell.missionInstroduction.text = MissionContent.missionIntroduction[indexPath.row]
         missionCell.missionTitle.text = MissionContent.missionTitles[indexPath.row].rawValue
-        
+        missionCell.rewardLabel.text = "\(MissionContent.missionReward[indexPath.row])暢遊卷"
         missionCell.selectionStyle = .none
         return missionCell
     }
