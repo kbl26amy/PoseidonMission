@@ -69,7 +69,7 @@ extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
         case 3:
             let loginTodayController = UIStoryboard.mission.instantiateViewController(withIdentifier: "LoginTodayViewController")
             
-            loginTodayController.modalPresentationStyle = .overCurrentContext
+            loginTodayController.modalPresentationStyle = .overFullScreen
             loginTodayController.modalTransitionStyle = .crossDissolve
             present(loginTodayController, animated: true, completion: nil)
         

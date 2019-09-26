@@ -68,21 +68,18 @@ class LobbyViewController: PMBaseViewController {
     
     func runlight () {
         
-        self.runLightView.backgroundColor = UIColor.clear
+        self.runLightView.backgroundColor = .clear
         
-        var frame = runLightViewLabel.frame
-        frame.origin.x = UIScreen.main.bounds.width
-        runLightViewLabel.frame = frame
-        UIView.beginAnimations("testAnimation", context: nil)
-        UIView.setAnimationDuration(20.8)
-        UIView.setAnimationCurve(.linear)
-        UIView.setAnimationDelegate(self)
-        UIView.setAnimationRepeatAutoreverses(false)
-        UIView.setAnimationRepeatCount(999999)
-        frame = runLightViewLabel.frame
-        frame.origin.x = -UIScreen.main.bounds.width * 5
-        runLightViewLabel.frame = frame
-        UIView.commitAnimations()
+        self.runLightViewLabel.frame.origin.x = UIScreen.main.bounds.width
+        
+       var runLightAnimation: UIViewPropertyAnimator?
+    
+        runLightAnimation = UIViewPropertyAnimator(duration: 15, curve: .linear, animations: {
+           UIView.setAnimationRepeatCount(999);
+            self.runLightViewLabel.frame.origin.x = -self.runLightViewLabel.frame.width
+          
+       })
+       runLightAnimation?.startAnimation()
     
     }
     
@@ -136,13 +133,13 @@ class LobbyViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         setupCollectionViewLayout()
        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewwillappear")
         UserManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
             self.fishRankData = data
@@ -346,7 +343,7 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 .mission
                 .instantiateViewController(withIdentifier: "LoginTodayViewController")
                 as! LoginTodayViewController
-            loginTodayController.modalPresentationStyle = .overCurrentContext
+            loginTodayController.modalPresentationStyle = .overFullScreen
             loginTodayController.modalTransitionStyle = .crossDissolve
             present(loginTodayController, animated: true, completion: nil)
             

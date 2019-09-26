@@ -178,7 +178,7 @@ class FishingViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        energyBarAnimation()
+//        energyBarAnimation()
     }
     
     
@@ -202,9 +202,9 @@ class FishingViewController: UIViewController {
         
         energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2.0,
                                                                            delay: 0,
-                                                                           options: .repeat,
+                                                                           options: .curveLinear,
                                                                            animations: {
-            UIView.setAnimationRepeatCount(999);
+//            UIView.setAnimationRepeatCount(999);
             
             self.colorView.frame = CGRect(x: 0,
                                           y: 0,
@@ -421,6 +421,7 @@ class FishingViewController: UIViewController {
     
     @objc func generateFish(){
         
+        self.energyBarAnimation()
         fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
         self.fishsView.addSubview(fishViews.last!)
     }

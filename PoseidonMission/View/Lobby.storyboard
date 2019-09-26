@@ -182,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4Q-oE-0wg">
-                                        <rect key="frame" x="-80" y="0.0" width="455" height="50"/>
+                                        <rect key="frame" x="-600" y="0.0" width="975" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,7 +192,7 @@
                                 <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="i4Q-oE-0wg" secondAttribute="bottom" id="8L4-Gc-XKM"/>
-                                    <constraint firstItem="i4Q-oE-0wg" firstAttribute="leading" secondItem="C5V-F6-rTb" secondAttribute="leading" constant="-80" id="FHL-qL-sf4"/>
+                                    <constraint firstItem="i4Q-oE-0wg" firstAttribute="leading" secondItem="C5V-F6-rTb" secondAttribute="leading" constant="-600" id="FHL-qL-sf4"/>
                                     <constraint firstAttribute="height" constant="50" id="Gqx-Kn-31r"/>
                                     <constraint firstItem="i4Q-oE-0wg" firstAttribute="centerY" secondItem="C5V-F6-rTb" secondAttribute="centerY" id="P0B-uV-w1w"/>
                                     <constraint firstAttribute="trailing" secondItem="i4Q-oE-0wg" secondAttribute="trailing" id="kfG-ZD-xay"/>
