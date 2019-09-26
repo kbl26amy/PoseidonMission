@@ -116,7 +116,7 @@ class AuthViewController: PMBaseViewController {
         self.userNameView = UIImageView(frame: CGRect(x: self.loginButton.frame.origin.x, y: self.loginButton.frame.origin.y, width: self.treasureView.frame.width * 5/7, height: self.treasureView.frame.height * 1/7)
             )
         
-        self.userNameView.image = UIImage(named:"password")
+        self.userNameView.image = UIImage(named:"account")
         self.userNameView.center.x =  self.treasureView.center.x
         view.addSubview(self.userNameView)
         self.userNameTextfield = UITextField(frame: CGRect(

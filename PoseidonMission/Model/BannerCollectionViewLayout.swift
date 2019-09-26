@@ -89,7 +89,7 @@ class PageCollectionViewLayout: UICollectionViewFlowLayout {
             }
         }
         
-        return CGSize(width: collectionView!.bounds.width * itemsCount - (collectionView!.frame.size.width - itemSize.width) * 0.5 ,
+        return CGSize(width: collectionView!.bounds.width * itemsCount - (UIScreen.main.bounds.width - itemSize.width) * itemsCount * 0.7,
                       height: collectionView!.bounds.height )
     }
     
@@ -115,7 +115,7 @@ class BannerCollectionViewLayout: UICollectionViewFlowLayout {
         itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0) )
         
         
-        return CGSize(width: collectionView!.bounds.width * itemsCount * 2 / 5 ,
+        return CGSize(width: collectionView!.bounds.width * itemsCount * 2 / 5 + (collectionView!.frame.size.width - itemSize.width) * 0.3,
                       height: collectionView!.bounds.height )
     }
     
