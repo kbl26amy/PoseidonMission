@@ -8,9 +8,11 @@
 
 import UIKit
 import Firebase
+import NVActivityIndicatorView
 
 class RankViewController: PMBaseViewController  {
-
+    @IBOutlet weak var loadingView: NVActivityIndicatorView!
+    
     var userRankData = UserData(email: "", name: "") {
         didSet {
            
@@ -24,6 +26,7 @@ class RankViewController: PMBaseViewController  {
             rankTableView.delegate = self
             rankTableView.dataSource = self
             rankTableView.reloadData()
+            loadingView.stopAnimating()
             print(fishRankData)
         }
     }
@@ -61,7 +64,7 @@ class RankViewController: PMBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadingView.startAnimating()
         
         
         self.rankTableView.separatorStyle = .none

@@ -9,9 +9,12 @@
 import UIKit
 import Firebase
 import Kingfisher
+import NVActivityIndicatorView
 //import CoreImage
 
 class ProfileViewController: PMBaseViewController  {
+    
+    @IBOutlet weak var loadingView: NVActivityIndicatorView!
     var photoArray:[String] = []
     var userData: UserData? {
         didSet{
@@ -84,6 +87,7 @@ class ProfileViewController: PMBaseViewController  {
     var userRecordData: [UserRecord]?{
         didSet{
             getPointTableView.reloadData()
+            loadingView.stopAnimating()
         }
     }
     
@@ -107,7 +111,7 @@ class ProfileViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         userImage.layer.cornerRadius = userImage.frame.width / 2
-        
+        loadingView.startAnimating()
         
     }
  

@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
-class RankTableViewCell: UITableViewCell {
+import NVActivityIndicatorView
 
+class RankTableViewCell: UITableViewCell {
+    
     var likeRecord: [Bool]  = {
         
         var array: [Bool] = []
@@ -23,6 +25,7 @@ class RankTableViewCell: UITableViewCell {
     var rankData:[RankData] = [] {
         didSet{
             contentCollectionView.reloadData()
+            
         }
     }
    
@@ -46,7 +49,7 @@ class RankTableViewCell: UITableViewCell {
         contentCollectionView.delegate = self
         contentCollectionView.dataSource = self
         self.contentCollectionView.collectionViewLayout = cardLayout
-
+        
     }
 
     @IBOutlet weak var contentCollectionView: UICollectionView!
@@ -75,7 +78,6 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
         
         guard let contentCell = cell as? ContentCollectionViewCell else { return cell }
         
-//            contentCell.userImage.image = UIImage(named: "profile")
             contentCell.rankNumber.text = "\(indexPath.row + 1)"
             contentCell.rankNumber.layer.cornerRadius = contentCell.rankNumber.frame.width / 2
             contentCell.rankNumber.backgroundColor = UIColor(red: 157/255, green: 215/255, blue: 229/255, alpha: 1)

@@ -14,4 +14,5 @@ target 'PoseidonMission' do
   pod 'Kingfisher'
   pod 'Crashlytics'
   pod 'KeychainSwift'
+  pod 'NVActivityIndicatorView'
 end

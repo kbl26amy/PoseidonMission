@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJI-ch-VYn">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,16 @@
             <objects>
                 <viewController id="EqH-eC-fa7" customClass="RankViewController" customModule="波賽頓出任務" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EBo-BT-LgX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="avX-ag-Tys" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="0.0" y="373" width="414" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d9h-XX-Bts">
-                                <rect key="frame" x="0.0" y="162.5" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="84" width="320" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="kkC-od-9M8"/>
@@ -29,7 +34,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RankCollectionViewCell" id="mkd-Ds-CSw" customClass="RankCollectionViewCell" customModule="波賽頓出任務" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="166" height="147"/>
+                                        <rect key="frame" x="77" y="0.0" width="166" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="166" height="147"/>
@@ -64,18 +69,18 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-ud-WAK">
-                                <rect key="frame" x="0.0" y="328.5" width="414" height="567.5"/>
+                                <rect key="frame" x="0.0" y="250" width="320" height="230"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankTableViewCell" rowHeight="270" id="7vc-dg-P5q" customClass="RankTableViewCell" customModule="波賽頓出任務" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="270"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7vc-dg-P5q" id="A1G-ec-UOP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VVs-ie-ldJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="210" id="8eg-06-Ggc"/>
@@ -88,7 +93,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContentCollectionViewCell" id="2Xx-tL-WbW" customClass="ContentCollectionViewCell" customModule="波賽頓出任務" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                                                            <rect key="frame" x="-47" y="0.0" width="414" height="61"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -180,10 +185,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCr-EW-IYM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="74.5"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的積分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWN-vW-bZF">
-                                        <rect key="frame" x="24" y="18.5" width="90" height="37.5"/>
+                                        <rect key="frame" x="24" y="10" width="90" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -215,6 +220,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="排行榜" id="Gbc-JB-kzC"/>
                     <connections>
+                        <outlet property="loadingView" destination="avX-ag-Tys" id="YNQ-yn-JQt"/>
                         <outlet property="rankCollectionView" destination="d9h-XX-Bts" id="kEY-Z1-SG8"/>
                         <outlet property="rankTableView" destination="lp0-ud-WAK" id="N45-qe-Muo"/>
                     </connections>
@@ -229,7 +235,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IJI-ch-VYn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RhM-2l-cEq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

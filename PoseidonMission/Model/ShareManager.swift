@@ -19,8 +19,13 @@ class ShareManager {
         
         let facebookPostAction = UIAlertAction(title: "分享", style: UIAlertAction.Style.default) { (action) -> Void in
             
-            let shareMessage = URL(string: "https://itunes.apple.com/tw/app/id1481162004")
-            let shareViewController = UIActivityViewController(activityItems: [shareMessage as Any], applicationActivities: nil)
+            guard let url = URL(string: "https://itunes.apple.com/tw/app/id1481162004"),
+                let image = UIImage(named: "fbbanner")
+                else { return }
+            
+            let text = "和我一起玩波賽頓出任務，前往海底尋找神秘寶藏吧！"
+            let shareMessage: [Any] = [text, image, url]
+            let shareViewController = UIActivityViewController(activityItems: shareMessage, applicationActivities: nil)
             
          
             shareViewController
@@ -98,5 +103,7 @@ class ShareManager {
         })
     }
 }
+
+
 
 

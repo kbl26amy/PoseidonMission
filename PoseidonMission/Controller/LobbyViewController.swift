@@ -264,15 +264,15 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
             switch indexPath.row {
             case 0: title = "釣魚總冠軍"
                     iconName = "fishingPic"
-                   championName = "暱稱：\( self.fishRankData.first?.name ?? "無排行")"
+                   championName = "暱稱：\( self.fishRankData.first?.name ?? "讀取資料中")"
             championScore =  "最高積分：\(self.fishRankData.first?.highest ?? 0)"
             case 1: title = "打水母冠軍"
                     iconName = "jellyFishPic"
-                    championName = "暱稱：\(self.jellyRankData.first?.name ?? "無排行")"
+                    championName = "暱稱：\(self.jellyRankData.first?.name ?? "讀取資料中")"
             championScore =  "最高積分：\(self.jellyRankData.first?.highest ?? 0)"
             case 2: title = "簽到總冠軍"
                     iconName = "loginPic"
-            championName = "暱稱：\(self.loginRankData.first?.name ?? "無排行")"
+            championName = "暱稱：\(self.loginRankData.first?.name ?? "讀取資料中")"
             championScore =  "登入天數：\(self.loginRankData.first?.highest ?? 0)"
                 
             default:
