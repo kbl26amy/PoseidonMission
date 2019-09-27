@@ -72,6 +72,7 @@ struct RankData {
     
     var name: String
     var highest: Int
+    var photo: String?
    
 }
 

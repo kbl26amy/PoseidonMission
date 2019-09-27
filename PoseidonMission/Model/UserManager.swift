@@ -25,6 +25,7 @@ class UserManager {
             guard let doc = snapshot,
                   let email = doc.data()?["email"] as? String,
                   let name = doc.data()?["userName"] as? String
+                
             
             else {
             
@@ -114,9 +115,11 @@ class UserManager {
             for index in docs.indices {
                 let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
                 let name = docs[index].data()["userName"] as? String
+                let photo = docs[index].data()["photo"] as? String
+                
                 
                 self.jellyRankData.append(RankData( name: name!,
-                                                highest: jellyFishHighest ?? 0))
+                                                    highest: jellyFishHighest ?? 0, photo: photo))
             }
         
             completion(self.jellyRankData)
@@ -141,9 +144,10 @@ class UserManager {
                 
                 let fishHighest = docs[index].data()["fishingHighest"] as? Int
                 let name = docs[index].data()["userName"] as? String
+                let photo = docs[index].data()["photo"] as? String
                 
                 self.fishRankData.append(RankData( name: name ?? "no name",
-                                                highest: fishHighest ?? 0))
+                                                highest: fishHighest ?? 0, photo: photo))
             }
             
             completion(self.fishRankData)

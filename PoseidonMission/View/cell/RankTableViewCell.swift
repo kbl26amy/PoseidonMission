@@ -8,10 +8,12 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 import NVActivityIndicatorView
 
 class RankTableViewCell: UITableViewCell {
     
+    var likeId:[String] = []
     var likeRecord: [Bool]  = {
         
         var array: [Bool] = []
@@ -52,7 +54,11 @@ class RankTableViewCell: UITableViewCell {
         
     }
 
-    @IBOutlet weak var contentCollectionView: UICollectionView!
+    @IBOutlet weak var contentCollectionView: UICollectionView! {
+        didSet{
+            self.contentCollectionView.reloadData()
+        }
+    }
 
 }
 
@@ -79,15 +85,27 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
         guard let contentCell = cell as? ContentCollectionViewCell else { return cell }
         
             contentCell.rankNumber.text = "\(indexPath.row + 1)"
-            contentCell.rankNumber.layer.cornerRadius = contentCell.rankNumber.frame.width / 2
-            contentCell.rankNumber.backgroundColor = UIColor(red: 157/255, green: 215/255, blue: 229/255, alpha: 1)
+            
+        contentCell.userImage.layer.cornerRadius = collectionView.frame.width / 48 * 3 
+            contentCell.userImage.layer.borderColor = .init(srgbRed: 98/255, green: 97/255, blue: 95/255, alpha: 1)
+            contentCell.userImage.layer.borderWidth = 1
             contentCell.userName.text = self.rankData[indexPath.row].name
        
-            contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].highest)"   
+            contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].highest)"
+        
+        if (self.rankData[indexPath.row].photo != nil) {
+           let url = URL(string: (self.rankData[indexPath.row].photo)!)
+            contentCell.userImage.kf.setImage(with: url)
+            
+        } else {
+            contentCell.userImage.image = UIImage(named: "ship")
+        }
+        
             contentCell.likeClosure = { cell in
             
             self.likeRecord[indexPath.row] = true
-            
+        self.likeId.append(self.rankData[indexPath.row].name)
+                
         }
         
         if self.likeRecord[indexPath.row]{
@@ -99,6 +117,7 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
             return contentCell
     }
 
+    
 }
     
 
