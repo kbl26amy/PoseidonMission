@@ -38,6 +38,8 @@ struct UserData {
     
     var fishingTime: Timestamp?
     
+    var photo: String?
+    
     init(email: String, name: String) {
         
         self.email = email

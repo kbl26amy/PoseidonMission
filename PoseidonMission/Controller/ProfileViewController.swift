@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import Kingfisher
 import NVActivityIndicatorView
 //import CoreImage
@@ -15,12 +16,19 @@ import NVActivityIndicatorView
 class ProfileViewController: PMBaseViewController  {
     
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
-    var photoArray:[String] = []
+  
     var userData: UserData? {
         didSet{
             userName.text = userData?.userName
             userEmail.text = userData?.email
             userTotalPoint.text = "暢遊卷： \( userData?.totalScore ?? 0)張"
+            if userData?.photo != nil {
+             
+                let url = URL(string: (userData?.photo)!)
+                userImage.kf.setImage(with: url)
+            } else {
+                userImage.image = UIImage(named: "ship")
+            }
         }
     }
     
@@ -45,56 +53,47 @@ class ProfileViewController: PMBaseViewController  {
            }
     }
     
+ 
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var hintLabel: UILabel!
    
     @IBAction func editPhoto(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
-        
-        // 委任代理
         imagePickerController.delegate = self
         
-        // 建立一個 UIAlertController 的實體
-        // 設定 UIAlertController 的標題與樣式為 動作清單 (actionSheet)
-        let imagePickerAlertController = UIAlertController(title: "上傳圖片", message: "請選擇要上傳的圖片", preferredStyle: .actionSheet)
+        let imagePickerAlertController = UIAlertController(title: "上傳圖片",
+                                                           message: "請選擇要上傳的圖片",
+                                                           preferredStyle: .actionSheet)
         
-        // 建立三個 UIAlertAction 的實體
-        // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
-        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (Void) in
-            
-            // 判斷是否可以從照片圖庫取得照片來源
+         let imageFromLibAction = UIAlertAction(title: "照片圖庫",
+                                                style: .default) { (Void) in
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 
-                // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.photoLibrary)，並 present UIImagePickerController
-                imagePickerController.sourceType = .photoLibrary
-                self.present(imagePickerController, animated: true, completion: nil)
+               imagePickerController.sourceType = .photoLibrary
+                self.present(imagePickerController, animated: true,
+                             completion: nil)
             }
         }
-        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (Void) in
-            
-            // 判斷是否可以從相機取得照片來源
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                
-                // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.camera)，並 present UIImagePickerController
+        let imageFromCameraAction = UIAlertAction(title: "相機",
+                                                  style: .default) { (Void) in
+             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true, completion: nil)
+                self.present(imagePickerController, animated: true,
+                             completion: nil)
             }
         }
-        
-        // 新增一個取消動作，讓使用者可以跳出 UIAlertController
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "取消",
+                                         style: .cancel) { (Void) in
             
-            imagePickerAlertController.dismiss(animated: true, completion: nil)
+            imagePickerAlertController.dismiss(animated: true,
+                                               completion: nil)
         }
-        
-        // 將上面三個 UIAlertAction 動作加入 UIAlertController
         imagePickerAlertController.addAction(imageFromLibAction)
         imagePickerAlertController.addAction(imageFromCameraAction)
         imagePickerAlertController.addAction(cancelAction)
-        
-        // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
-        present(imagePickerAlertController, animated: true, completion: nil)
+        present(imagePickerAlertController, animated: true,
+                completion: nil)
     
     }
     var userRecordData: [UserRecord]?{
@@ -133,16 +132,7 @@ class ProfileViewController: PMBaseViewController  {
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        segmentedController.selectedSegmentIndex = 0
         
-        loadFile()
-        if photoArray != []{
-            let fileManager = FileManager.default
-            let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-            let docUrl = docUrls.last
-            let url =  docUrl?.appendingPathComponent("\(KeyChainManager.shared.get("userid")!).txt")
-            userImage.image = UIImage(contentsOfFile: url!.path)
-        }
         UserManager.shared.getUserData(completion:  { user in
             self.userData = user
         })
@@ -152,16 +142,19 @@ class ProfileViewController: PMBaseViewController  {
             self.userRecordData = records
             self.segmentedControll()
         })
+        
     }
 
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return userRecordData?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = getPointTableView.dequeueReusableCell(
             withIdentifier: String(describing: GetPointTableViewCell.self),
             for: indexPath)
@@ -196,44 +189,52 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        // 取得從 UIImagePickerController 選擇的檔案
-            
-            guard let pickedImage = info[.originalImage] as? UIImage else {
+        guard let pickedImage = info[.originalImage] as? UIImage else {
                 fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             }
             
             selectedImageFromPicker = pickedImage
-        
-        // 當判斷有 selectedImage 時，我們會在 if 判斷式裡將圖片上傳
         if let selectedImage = selectedImageFromPicker {
+            let storageRef = Storage.storage().reference().child("AppCodaFireUpload").child("\(KeyChainManager.shared.get("userid")!).png")
             
             self.userImage.image = selectedImage
-            //取得路徑
-            let fileManager = FileManager.default
-            let docUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-            let docUrl = docUrls.first
-            let name = "\(KeyChainManager.shared.get("userid")!).jpg"
-            let url = docUrl?.appendingPathComponent(name)
-            let data = pickedImage.jpegData(compressionQuality:0.9)
-            try! data?.write(to: url!)
-            photoArray.append(name)
-//            saveFile()
-          
+            
+            if let uploadData = selectedImage.pngData() {
+                
+            storageRef.putData(uploadData, metadata: nil) {
+                (data, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                    return
+                }
+
+                let uniqueString = NSUUID().uuidString
+               storageRef.downloadURL(completion:{ (url, error) in
+                  guard let downloadURL = url else {
+                     return
+                  }
+                print(downloadURL.absoluteString)
+                
+                let photoUrl = ["photo": "\(downloadURL)"]
+                FireBaseHelper.updateData(update: photoUrl)
+                
+                let databaseRef = Database.database().reference(withPath: "ID/\(uniqueString)/Profile/Photo")
+                               
+                databaseRef.setValue(downloadURL.absoluteString, withCompletionBlock: { (error, dataRef) in
+                                                              
+                                     if error != nil {
+                                         print("Database Error: \(error!.localizedDescription)")
+                                     } else {
+                                       print("圖片已儲存")}
+                           
+                           })
+               })
+            }
         }
         
         dismiss(animated: true, completion: nil)
     }
+    }
     
-    //讀取紀錄位址的photoArray
-    func loadFile(){
-        let fileManager = FileManager.default
-        let docUrls = fileManager.urls(for: .documentDirectory, in:
-            .userDomainMask)
-        let docUrl = docUrls.last
-        let url = docUrl?.appendingPathComponent("\(KeyChainManager.shared.get("userid")!).txt")
-        if let array = NSArray(contentsOf: url!){
-            photoArray = array as! [String]
-        }}
 }
 
