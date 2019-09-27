@@ -13,7 +13,7 @@ class JellyfishViewController: PMBaseViewController {
     
     var timeStop:Int!
     var timer:Timer?
-    var counter = 60
+    var counter: Double = 60.0
     var index = 0
     var fishButtons : [UIButton] = []
     var score = 0
@@ -66,8 +66,9 @@ class JellyfishViewController: PMBaseViewController {
         
         let animateButton = fishButtons.randomElement()!
         print(animateButton.frame)
-
-        if counter % 2 == 0 {
+         
+        let result = counter.truncatingRemainder(dividingBy: 1)
+        if result == 0 {
             animateButton.setImage(UIImage(named: "goodWaterMother"), for: .normal)
        
         }else {
@@ -97,17 +98,17 @@ class JellyfishViewController: PMBaseViewController {
     
     func timerEanbled(){
         
-        self.timer = Timer.scheduledTimer(timeInterval: 1,
+        self.timer = Timer.scheduledTimer(timeInterval: 0.5,
                                           target: self,
                                           selector: #selector(secondCount),
                                           userInfo: nil, repeats: true)
     }
     
     @objc func secondCount(){
-        if (counter > 1){
-            counter = counter - 1
+        if (counter > 0.5){
+            counter = counter - 0.5
             jellyFishSetingAnimation()
-            secondLabel.text = "\(counter)";
+            secondLabel.text = "\(Int(counter))";
           
         }else{
             

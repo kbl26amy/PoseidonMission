@@ -48,6 +48,18 @@ class FishingViewController: UIViewController {
     @IBOutlet weak var sucessText: UILabel!
     @IBOutlet weak var failureText: UILabel!
     
+    @IBOutlet weak var introductionView: UIImageView!
+    @IBOutlet weak var closeIntroduction: UIButton!
+    
+    @IBOutlet weak var maskView: UIView!
+    @IBAction func startButton(_ sender: Any) {
+        closeIntroduction.isHidden = true
+        introductionView.isHidden = true
+        maskView.isHidden = true
+        self.energyTimerEanbled()
+        self.timerEanbled()
+    }
+    
     var energyBarAnimator: UIViewPropertyAnimator?
     
     let colorView = UIView(frame: CGRect(x: 0,
@@ -176,8 +188,7 @@ class FishingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        self.energyTimerEanbled()
-        self.timerEanbled()
+        
     }
   
     override func viewWillDisappear(_ animated: Bool) {
@@ -186,7 +197,7 @@ class FishingViewController: UIViewController {
         self.timer?.invalidate()
         self.fishingTimer?.invalidate()
         self.energyBarTimer?.invalidate()
-        
+        self.checkFishingHighest()
         if self.fishingCounts == 0 {
                    saveFishingRecord()
                }
@@ -203,7 +214,7 @@ class FishingViewController: UIViewController {
         
         self.energyBar.addSubview(colorView)
         
-        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1,
+        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.5,
                                                                            delay: 0,
                                                                            options: .curveLinear,
                                                                            animations: {
@@ -325,10 +336,32 @@ class FishingViewController: UIViewController {
         
     }
     
+    func fishScore() {
+        
+    }
+    
     @objc func fishingSucess() {
         
         for fish in fishViews {
       
+            var score = 0
+            switch fish.image {
+                case UIImage(named: "fish6"): score = 50
+                case UIImage(named: "fish1"): score = 50
+                case UIImage(named: "fish7"): score = 150
+                case UIImage(named: "fish3"): score = 150
+                case UIImage(named: "fish4"): score = 150
+                case UIImage(named: "fish2"): score = 200
+                case UIImage(named: "fish8"): score = 200
+                case UIImage(named: "fish5"): score = 250
+                case UIImage(named: "fish9"): score = 300
+   
+            case .none:
+                break
+            case .some(_):
+                break
+            }
+            
             // CAlayer 屬性
             let fishTouchX = Int((fishTouchSquare.layer.presentation()?.frame.origin.x)! + 12)
             let fishTouchY = Int((fishTouchSquare.layer.presentation()?.frame.origin.y)! + 12)
@@ -341,7 +374,7 @@ class FishingViewController: UIViewController {
 
                 self.resetAnimation()
                 self.isSucess = true
-                self.score += 150
+                self.score += score
                
                 UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1,
                                                                delay: 0,
@@ -351,6 +384,7 @@ class FishingViewController: UIViewController {
                    
                    self.sucessText.frame.origin.y -= 40;
                    self.sucessText.alpha = 1
+                   self.sucessText.text = "+ \(score)"
                    self.sucessText.transform.scaledBy(x: 3, y: 3)
                                                                 
                 }, completion: { _ in
@@ -408,7 +442,7 @@ class FishingViewController: UIViewController {
     
     func energyTimerEanbled() {
         
-        self.energyBarTimer = Timer.scheduledTimer(timeInterval: 1,
+        self.energyBarTimer = Timer.scheduledTimer(timeInterval: 1.5,
                                           target: self,
                                           selector: #selector(energyBarAnimation),
                                           userInfo: nil, repeats: true)
@@ -503,7 +537,7 @@ extension FishingViewController: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         
         saveFishingData()
-        checkFishingHighest()
+        
         if self.isSucess == false {
         fishingFailure()
         }

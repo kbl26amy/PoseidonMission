@@ -22,7 +22,7 @@ struct MissionContent {
     static let loginTodayMissionText = "每天簽到可獲得2張暢遊卷，連續簽到有更多額外張數。"
     static let shareMissionText = "分享APP即可獲得2張暢遊卷。"
     
-    static let missionReward = [ 2, 4, 5, 2, 2 ]
+    static let missionReward = [ 2, 9, 10, 2, 2 ]
     
 }
 
