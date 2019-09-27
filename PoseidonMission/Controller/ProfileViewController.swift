@@ -24,17 +24,30 @@ class ProfileViewController: PMBaseViewController  {
         }
     }
     
-    
-    @IBOutlet weak var hintLabel: UILabel!
-    @IBAction func segmentedControll(_ sender: Any) {
-        if (sender as AnyObject).selectedSegmentIndex == 0 {
-            self.getPointTableView.isHidden = false
-                   self.hintLabel.alpha = 0
-               } else {
-            self.getPointTableView.isHidden = true
-            self.hintLabel.alpha = 1
-               }
+    @IBAction func segmentedAction(_ sender: UISegmentedControl) {
+        segmentedControll()
     }
+    func segmentedControll() {
+        if segmentedController.selectedSegmentIndex == 0 {
+
+            if userRecordData?.count == 0 || userRecordData == nil {
+                self.getPointTableView.isHidden = true
+                self.hintLabel.alpha = 1
+                self.hintLabel.text = "目前無獲得積分紀錄"
+            } else {
+                self.getPointTableView.isHidden = false
+                self.hintLabel.alpha = 0
+            }
+        } else {
+            self.getPointTableView.isHidden = true
+            self.hintLabel.text = "功能尚未開放"
+            self.hintLabel.alpha = 1
+           }
+    }
+    
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var hintLabel: UILabel!
+   
     @IBAction func editPhoto(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
@@ -88,6 +101,8 @@ class ProfileViewController: PMBaseViewController  {
         didSet{
             getPointTableView.reloadData()
             loadingView.stopAnimating()
+            segmentedController.isHighlighted = true
+            segmentedController.selectedSegmentIndex = 0
         }
     }
     
@@ -105,6 +120,7 @@ class ProfileViewController: PMBaseViewController  {
         didSet{
             getPointTableView.delegate = self
             getPointTableView.dataSource = self
+            
         }
     }
     
@@ -117,6 +133,7 @@ class ProfileViewController: PMBaseViewController  {
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        segmentedController.selectedSegmentIndex = 0
         
         loadFile()
         if photoArray != []{
@@ -133,6 +150,7 @@ class ProfileViewController: PMBaseViewController  {
         UserManager.shared.getUserRecord(completion: { records in
             
             self.userRecordData = records
+            self.segmentedControll()
         })
     }
 
