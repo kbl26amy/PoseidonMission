@@ -18,6 +18,7 @@ class FishingViewController: UIViewController {
                                           PathFifth()]
     var fishViews: [UIImageView] = []
     var timer:Timer?
+    var energyBarTimer: Timer?
     var fishingTimer: Timer?
     var isSucess: Bool = false
     var fishingCounts = 10 {
@@ -94,8 +95,10 @@ class FishingViewController: UIViewController {
     }
     @IBAction func clickFishingButton(_ sender: UIButton) {
         
-         self.energyBarAnimator?.stopAnimation(true)
-       
+        self.energyBarTimer?.invalidate()
+        self.energyBarAnimator?.stopAnimation(true)
+        self.fishingButton.isEnabled = false
+        
         for button in self.moveButtonCollection{ button.isEnabled = false
         }
         
@@ -123,12 +126,13 @@ class FishingViewController: UIViewController {
         } else {
             
             let alertController = UIAlertController(title: "失敗",
-                                                    message: "能量條不足",
+                                                    message: "請注意能量條位置是否為空或不足",
                                                     preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
                 
-                     self.energyBarAnimation()
+                self.energyTimerEanbled()
+                self.fishingButton.isEnabled = true
                 }
       
             alertController.addAction(defaultAction)
@@ -172,25 +176,24 @@ class FishingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        
+        self.energyTimerEanbled()
         self.timerEanbled()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        energyBarAnimation()
-    }
-    
-    
+  
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     
         self.timer?.invalidate()
         self.fishingTimer?.invalidate()
+        self.energyBarTimer?.invalidate()
+        
+        if self.fishingCounts == 0 {
+                   saveFishingRecord()
+               }
        
     }
     
-    func energyBarAnimation() {
+    @objc func energyBarAnimation() {
      
         self.colorView.frame = CGRect(x: 0,
                                       y: 0,
@@ -200,7 +203,7 @@ class FishingViewController: UIViewController {
         
         self.energyBar.addSubview(colorView)
         
-        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2.0,
+        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1,
                                                                            delay: 0,
                                                                            options: .curveLinear,
                                                                            animations: {
@@ -398,11 +401,18 @@ class FishingViewController: UIViewController {
         self.fishingLine.layer.transform = CATransform3DIdentity
         self.fishingRod.layer.removeAllAnimations()
         self.fishingRod.layer.transform = CATransform3DIdentity
-        self.energyBarAnimation()
+        self.energyTimerEanbled()
         self.fishingTimer?.invalidate()
-        
+        self.fishingButton.isEnabled = true
     }
     
+    func energyTimerEanbled() {
+        
+        self.energyBarTimer = Timer.scheduledTimer(timeInterval: 1,
+                                          target: self,
+                                          selector: #selector(energyBarAnimation),
+                                          userInfo: nil, repeats: true)
+    }
     func timerEanbled() {
         
         self.timer = Timer.scheduledTimer(timeInterval: 2,
@@ -420,9 +430,7 @@ class FishingViewController: UIViewController {
     }
     
     @objc func generateFish(){
-        
-        self.energyBarAnimation()
-        fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
+    fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
         self.fishsView.addSubview(fishViews.last!)
     }
     
@@ -499,9 +507,6 @@ extension FishingViewController: CAAnimationDelegate {
         if self.isSucess == false {
         fishingFailure()
         }
-        
-        if self.fishingCounts == 0 {
-            saveFishingRecord()
-        }
+     
     }
 }
