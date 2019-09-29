@@ -53,6 +53,7 @@ class LobbyViewController: PMBaseViewController {
                     ProfileViewController.fishingHighest = 0
                     ProfileViewController.jellyFishHighest = 0
                     showRegisterButtonOutlet.isHidden = false
+                    showRegisterButtonOutlet.setTitle("您尚未登入，點擊前往登入頁面！", for: .normal)
                     logoutOulet.isEnabled = false
                     logoutOulet.tintColor = .white
                     runLightViewLabel.alpha = 0

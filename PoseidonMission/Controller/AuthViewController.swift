@@ -26,6 +26,13 @@ class AuthViewController: PMBaseViewController {
     var userNameView = UIImageView()
     var userNameTextfield = UITextField()
     
+    @IBOutlet weak var goBackButton: UIButton!
+    @IBAction func goBackToLogin(_ sender: Any) {
+        self.userNameView.isHidden = true
+        self.userNameTextfield.isHidden = true
+        self.loginButton.isHidden = false
+        self.goBackButton.isHidden = true
+    }
     func showAppleSignIn() {
         let appleButton = ASAuthorizationAppleIDButton()
     appleButton.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +60,7 @@ class AuthViewController: PMBaseViewController {
            controller.performRequests()
        }
     @IBAction func showRegisterButtonView(_ sender: UIButton) {
-        if userNameTextfield.text == ""{
+        if loginButton.isHidden == false {
             setRegisterView()
         }else {
             createAccountAction(self)
@@ -80,6 +87,7 @@ class AuthViewController: PMBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        goBackButton.isHidden = true
         treasureView.isHidden = true
         navigationController?.isNavigationBarHidden = true
         setLoginView()
@@ -112,7 +120,7 @@ class AuthViewController: PMBaseViewController {
     
     func setRegisterView(){
         self.loginButton.isHidden = true
-        
+        self.goBackButton.isHidden = false
         self.userNameView = UIImageView(frame: CGRect(x: self.loginButton.frame.origin.x, y: self.loginButton.frame.origin.y, width: self.treasureView.frame.width * 5/7, height: self.treasureView.frame.height * 1/7)
             )
         
@@ -135,8 +143,8 @@ class AuthViewController: PMBaseViewController {
     
     func createAccountAction(_ sender: AnyObject) {
         
-        if emailTextField.text == "" {
-            let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
+        if emailTextField.text == "" || userNameTextfield.text == "" || passwordTextField.text == "" {
+            let alertController = UIAlertController(title: "Error", message: "請填入完整資訊", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
