@@ -20,6 +20,7 @@ class ContentCollectionViewCell: UICollectionViewCell {
     @IBAction func clickLikeAction(_ sender: ContentCollectionViewCell) {
         isLikedUser = !isLikedUser
         likeClosure?(sender)
+        
     }
     
     var isLikedUser: Bool = false

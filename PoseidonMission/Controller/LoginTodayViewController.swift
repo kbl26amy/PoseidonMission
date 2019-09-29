@@ -11,7 +11,6 @@ import Firebase
 
 class LoginTodayViewController: UIViewController {
 
-    
     @IBAction func closeLoginToday(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
@@ -29,17 +28,12 @@ class LoginTodayViewController: UIViewController {
 
         checkIsLoginToday()
         
-        loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
-        loginTextMessage.numberOfLines = 0
-        loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts + 1) 天"
-        
         loginTodayView.layer.cornerRadius = 15
         leftUpBlueView.layer.cornerRadius = 5
         rightUpBlueView.layer.cornerRadius = 5
         rightDownView.layer.cornerRadius = 5
         leftDownView.layer.cornerRadius = 5
     }
-  
     
     func checkIsLoginToday() {
         
@@ -64,9 +58,17 @@ class LoginTodayViewController: UIViewController {
                     
                 } else {
                     self.saveLoginData()
+                    self.loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
+                    self.loginTextMessage.numberOfLines = 0
+                    self.loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts + 1) 天"
+                    
                 }
             } else {
-                 self.saveLoginData()
+                self.saveLoginData()
+                self.loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
+                
+                self.loginTextMessage.numberOfLines = 0
+                self.loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts + 1) 天"
             }
         })
     }
