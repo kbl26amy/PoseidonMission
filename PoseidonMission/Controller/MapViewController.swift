@@ -41,7 +41,7 @@ class MapViewController: PMBaseViewController {
     }
     
     var mapCouldTimes: Int = 1
-    var userData:UserData?
+   
     var currewntProgress: String? = "當前探索進度：0%"{
         
         didSet{
@@ -173,37 +173,38 @@ extension MapViewController: ScratchCardDelegate {
  func checkMapTimes() {
     
     UserManager.shared.getUserData(completion: {data in
-               guard let data = data else {return}
-               self.userData = data
-         })
         
-    if self.userData?.totalScore != nil {
-        ProfileViewController.totalScore =
-            self.userData!.totalScore!}
-          
-    if self.userData?.mapPlayTime != nil {
-        let timestamp = self.userData?.mapPlayTime
-        let converted = Date(timeIntervalSince1970:
-            TimeInterval(timestamp!.seconds) )
-                
-        let now:Date = Date()
-                
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = NSTimeZone.local
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-                
-        let mapPlayTime = dateFormatter.string(from: converted as Date)
-        let currentTime = dateFormatter.string(from: now as Date)
-  
-    if mapPlayTime == currentTime {
-        self.mapCouldTimes = 0
-        self.isTodayMap()
-       } else {
-        self.mapCouldTimes = 1
-       }
-    } else {
-      self.mapCouldTimes = 1
-     }
+        guard let data = data else {return}
+               
+        if data.totalScore != nil {
+               ProfileViewController.totalScore =
+                   data.totalScore!}
+                 
+           if data.mapPlayTime != nil {
+                 
+               let mapPlayTime = DateManager.timeStampToString(date:
+                   data.mapPlayTime!)
+               
+               let currentTime = DateManager.dateToString(date:
+                   Date())
+         
+           if mapPlayTime == currentTime {
+               
+               self.mapCouldTimes = 0
+               self.isTodayMap()
+               
+              } else {
+               
+               self.mapCouldTimes = 1
+               
+              }
+           } else {
+               
+             self.mapCouldTimes = 1
+               
+            }
+         })
+
  }
     
     @objc func showResult(){
@@ -240,7 +241,8 @@ extension MapViewController: ScratchCardDelegate {
         
     }
     func saveMapRecord() {
-        let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,
+        let scoreRecordData: [String: Any] = ["time":
+            FirebaseFirestore.Timestamp(date:Date()) ,
              "score": 2,
              "source": "map" ]
         

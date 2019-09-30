@@ -40,17 +40,10 @@ class LoginTodayViewController: UIViewController {
         UserManager.shared.getUserData(completion: {user in
             
             if user?.loginTodayTime != nil {
-                let timestamp = user?.loginTodayTime
-                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp!.seconds) )
-                
-                let now:Date = Date()
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeZone = NSTimeZone.local
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                
-                let loginTodayTime = dateFormatter.string(from: converted as Date)
-                let currentTime = dateFormatter.string(from: now as Date)
-                
+                let loginTodayTime = DateManager.timeStampToString(date:
+                    (user?.loginTodayTime)!)
+                let currentTime = DateManager.dateToString(date: Date())
+                  
                 if loginTodayTime == currentTime {
                 
                     self.loginTextMessage.text = "明日再來\n您今天已經簽到過了！"

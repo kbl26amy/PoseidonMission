@@ -102,12 +102,7 @@ class UserManager {
                 let score = docs[index].data()["score"] as! Int
                 let source = docs[index].data()["source"] as! String
                 let time = docs[index].data()["time"] as! Timestamp
-
-                    let converted = Date(timeIntervalSince1970: TimeInterval(time.seconds) )
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.timeZone = NSTimeZone.local
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    let playTime = dateFormatter.string(from: converted as Date)
+                let playTime = DateManager.timeStampToString(date: time, text: "yyyy-MM-dd HH:mm:ss")
         
                 self.userRecord.append(UserRecord(time: playTime,
                                                   source: RecordSource(rawValue: source) ?? .loginToday,

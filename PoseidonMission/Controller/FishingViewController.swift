@@ -491,17 +491,13 @@ class FishingViewController: UIViewController {
         
         UserManager.shared.getUserData(completion: {user in
             if user?.fishingTime != nil {
-                let timestamp = user?.fishingTime
-                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp!.seconds) )
                 
-                let now:Date = Date()
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeZone = NSTimeZone.local
-                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let fishingTime = DateManager.timeStampToString(
+                    date: (user?.fishingTime)!)
                 
-                let fishingTime = dateFormatter.string(from: converted as Date)
-                let currentTime = dateFormatter.string(from: now as Date)
-                
+                let currentTime = DateManager.dateToString(date:
+                    Date())
+                              
                 if fishingTime != currentTime {
                     self.fishingCounts = 10
                     self.score = 0

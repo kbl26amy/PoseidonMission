@@ -112,16 +112,22 @@ class JellyfishViewController: PMBaseViewController {
           
         }else{
             
-            let controller = UIAlertController(title: "遊戲結束", message: "您的分數為\(score)，是否直接計算點數？", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
+            let controller = UIAlertController(title: "遊戲結束",
+                                               message: "您的分數為\(score)，是否直接計算點數？",
+                preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "好的",
+                                         style: .default) { (_) in
                 print("開始計算分數")
                 if self.score >= 0 {
                 self.saveData()
                 self.appDelegate.interfaceOrientations = .portrait
                 self.backToRoot()
                 } else {
-                    let controller = UIAlertController(title: "分數不足", message: "分數需大於0分才可以獲得暢遊卷，請重新遊戲", preferredStyle: .alert)
-                   let okAction = UIAlertAction(title: "好的", style: .default) { (_) in
+                    let controller = UIAlertController(title: "分數不足",
+                                                       message: "分數需大於0分才可以獲得暢遊卷，請重新遊戲",
+                                                       preferredStyle: .alert)
+                   let okAction = UIAlertAction(title: "好的",
+                                                style: .default) { (_) in
                     
                     self.counter = 60
                     self.score = 0
@@ -136,7 +142,8 @@ class JellyfishViewController: PMBaseViewController {
             
             controller.addAction(okAction)
             
-            let cancelAction = UIAlertAction(title: "再玩一次", style:.default ){ (_) in
+            let cancelAction = UIAlertAction(title: "再玩一次",
+                                             style:.default ){ (_) in
                 self.counter = 60
                 self.score = 0
                 self.scoreLabel.text = "分數：0"
@@ -163,12 +170,12 @@ class JellyfishViewController: PMBaseViewController {
             hole.image = UIImage(named: "hole")
         }
         
-        let middleUpJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        let leftUpJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        let rightUpJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        let leftDownJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        let rightDownJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        let middleDownJellyFish = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        let middleUpJellyFish = UIButton()
+        let leftUpJellyFish = UIButton()
+        let rightUpJellyFish = UIButton()
+        let leftDownJellyFish = UIButton()
+        let rightDownJellyFish = UIButton()
+        let middleDownJellyFish = UIButton()
         
         fishButtons = [middleUpJellyFish, leftUpJellyFish, rightUpJellyFish,
                        middleDownJellyFish, leftDownJellyFish, rightDownJellyFish]
@@ -215,22 +222,24 @@ class JellyfishViewController: PMBaseViewController {
         
         appDelegate.interfaceOrientations = [.landscapeLeft, .landscapeRight]
         setJellyFishView()
-        checkJellyFishTimes()
         isTodayJellyFish()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkJellyFishTimes()
+    }
+    
     func saveData(){
-    //存用戶積分紀錄
-        let db = Firestore.firestore()
-        let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,"score": score/1000, "source": "jellyFish" ]
-        db.collection("user").document(KeyChainManager.shared.get("userid")!).collection("records").document().setData(scoreRecordData){ (error) in
-            if let error = error {
-                print(error)
-            }
-        }
-    //update用戶總積分
+ 
+        let scoreRecordData: [String: Any] = ["time":
+            FirebaseFirestore.Timestamp(date:Date()) ,
+             "score": score/1000,
+             "source": "jellyFish" ]
         
+        FireBaseHelper.saveUserRecord(saveData: scoreRecordData)
+    
         UserManager.shared.getUserData(completion:  { user in
             
             if user?.jellyFishHighest != nil {
@@ -243,8 +252,8 @@ class JellyfishViewController: PMBaseViewController {
                 self.saveUser()
             }
         })
-
-        }
+        
+    }
     
     func saveUser() {
         let updateData = ["totalScore": ProfileViewController.totalScore + self.score/1000,
@@ -255,47 +264,38 @@ class JellyfishViewController: PMBaseViewController {
     }
    
     func checkJellyFishTimes() {
-        let db = Firestore.firestore()
-        db.collection("user").document(KeyChainManager.shared.get("userid")!).getDocument { (document, error) in
-            
-            if let document = document, document.exists {
-                print(document.documentID, document.data() as Any)
-                
-                if document.data()!["totalScore"] != nil {
-                    ProfileViewController.totalScore = document.data()!["totalScore"] as! Int
-                }
-                //轉換 Time 格式
-                if document.data()!["jellyFishPlayTime"] != nil {
-                    let timestamp = document.data()!["jellyFishPlayTime"] as! Timestamp
-                    let converted = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds) )
-                    
-                    let now:Date = Date()
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.timeZone = NSTimeZone.local
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    
-                    let jellyFishPlayTime = dateFormatter.string(from: converted as Date)
-                    let currentTime = dateFormatter.string(from: now as Date)
-                    
+   
+        UserManager.shared.getUserData(completion:  { user in
+        
+            if user?.totalScore != nil {
+                ProfileViewController.totalScore = user!.totalScore!
+            }
+                  
+            if user?.jellyFishPlayTime != nil {
+                        
+                let jellyFishPlayTime = DateManager.timeStampToString(date:
+                    user!.jellyFishPlayTime!)
+                let currentTime = DateManager.dateToString(date: Date())
+              
+            if jellyFishPlayTime == currentTime {
+                self.jellyFishCouldTimes -= 1
+                self.isTodayJellyFish()
+                } else {
                     print(jellyFishPlayTime)
                     print(currentTime)
-                    
-                    if jellyFishPlayTime == currentTime {
-                        self.jellyFishCouldTimes -= 1
-                        self.isTodayJellyFish()
-                    }
                 }
-            } else {
-                print("Document does not exist")
             }
-        }
+        })
     }
     
     func isTodayJellyFish() {
         if jellyFishCouldTimes == 0 {
-            let controller = UIAlertController(title: "沒有次數", message: "您今日已經遊玩過了！", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "好", style: .default) { (_) in
+            let controller = UIAlertController(title: "沒有次數",
+                                               message: "您今日已經遊玩過了！",
+                                               preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "好",
+                                         style: .default) { (_) in
                 self.appDelegate.interfaceOrientations = .portrait
                 self.backToRoot()
             }
