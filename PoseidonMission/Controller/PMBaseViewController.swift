@@ -38,16 +38,26 @@ class PMBaseViewController: UIViewController {
             navigationItem.hidesBackButton = true
         }
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "missionbackground")!)
+        self.view.backgroundColor = UIColor(
+                                    patternImage: UIImage(named: "missionbackground")!)
+           
+        navigationController?.navigationBar.barTintColor = UIColor(red: 131.0/255.0,
+                                                                   green: 211.0/255.0,
+                                                                   blue: 222.0/255.0,
+                                                                   alpha: 1)
         
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-    
-        navigationController?.navigationBar.barTintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0, blue: 222.0/255.0, alpha: 1)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil,
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+        navigationController?
+            .navigationBar
+            .backIndicatorImage = UIImage(named: "Icons_24px_Back02")
         
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Icons_24px_Back02")
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Icons_24px_Back02")
+        navigationController?
+            .navigationBar
+            .backIndicatorTransitionMaskImage = UIImage(named: "Icons_24px_Back02")
         
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]

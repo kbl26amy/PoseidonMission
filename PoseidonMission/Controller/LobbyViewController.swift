@@ -43,61 +43,59 @@ class LobbyViewController: PMBaseViewController {
     @IBOutlet weak var showRegisterButtonOutlet: UIButton!
     @IBAction func logOutAction(_ sender: Any) {
         print("logout")
-       
-            if KeyChainManager.shared.get("userid") != nil {
-                do {
-                    try KeyChainManager.shared.delete("userid")
-                    ProfileViewController.totalScore = 0
-                    ProfileViewController.loginCounts = 0
+        if KeyChainManager.shared.get("userid") != nil {
+            KeyChainManager.shared.delete("userid")
+            ProfileViewController.totalScore = 0
+            ProfileViewController.loginCounts = 0
                     
-                    ProfileViewController.fishingHighest = 0
-                    ProfileViewController.jellyFishHighest = 0
-                    showRegisterButtonOutlet.isHidden = false
-                    showRegisterButtonOutlet.setTitle("目前尚未登入！請先登入後體驗全部功能！", for: .normal)
-                    logoutOulet.isEnabled = false
-                    logoutOulet.tintColor = .white
-                    runLightViewLabel.alpha = 0
-                    
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-            }
+            ProfileViewController.fishingHighest = 0
+            ProfileViewController.jellyFishHighest = 0
+            showRegisterButtonOutlet.isHidden = false
+            showRegisterButtonOutlet.setTitle("目前尚未登入！請先登入後體驗全部功能！",
+                                                  for: .normal)
+            logoutOulet.isEnabled = false
+            logoutOulet.tintColor = .white
+            runLightViewLabel.alpha = 0
+        }
     }
  
-    
     @IBOutlet weak var runLightViewLabel: UILabel!
     
     func runlight () {
-        
         self.runLightView.backgroundColor = .clear
         
         self.runLightViewLabel.frame.origin.x = UIScreen.main.bounds.width
         
-       var runLightAnimation: UIViewPropertyAnimator?
+        var runLightAnimation: UIViewPropertyAnimator?
     
-        runLightAnimation = UIViewPropertyAnimator(duration: 15, curve: .linear, animations: {
-           UIView.setAnimationRepeatCount(999);
+        runLightAnimation = UIViewPropertyAnimator(duration: 15,
+                                                   curve: .linear,
+                                                   animations: {
+            UIView.setAnimationRepeatCount(999);
             self.runLightViewLabel.frame.origin.x = -self.runLightViewLabel.frame.width
           
        })
-       runLightAnimation?.startAnimation()
-    
+        runLightAnimation?.startAnimation()
     }
     
     @IBAction func goToLogin(_ sender: Any) {
         
-        guard let loginViewController = UIStoryboard.auth.instantiateInitialViewController()
-            else { return }
+        guard let loginViewController = UIStoryboard
+                                        .auth
+                                        .instantiateInitialViewController()
+        else { return }
         
         loginViewController.modalPresentationStyle = .overFullScreen
-        navigationController?.pushViewController(loginViewController, animated: true)
+        navigationController?.pushViewController(loginViewController,
+                                                 animated: true)
 
         
     }
     
     lazy var cardLayout: FlatCardCollectionViewLayout = {
         let layout = FlatCardCollectionViewLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 3 / 5 , height: homeCollectionView.contentSize.height)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 3 / 5 ,
+                                 height: homeCollectionView.contentSize.height)
         return layout
     }()
     
@@ -117,11 +115,21 @@ class LobbyViewController: PMBaseViewController {
         }
     }
     
-    var bannerImages = ["FishingRank", "JellyRank", "LoginRank" ]
+    var bannerImages = ["FishingRank",
+                        "JellyRank",
+                        "LoginRank" ]
     
-    var homeCollectionImages = [ "map", "fishing", "jellyFish", "loginToday", "share"]
+    var homeCollectionImages = [ "map",
+                                 "fishing",
+                                 "jellyFish",
+                                 "loginToday",
+                                 "share"]
     
-    var homeCollectionLabel = [ "藏寶圖", "釣魚", "打水母", "簽到", "邀請好友"]
+    var homeCollectionLabel = [ "藏寶圖",
+                                "釣魚",
+                                "打水母",
+                                "簽到",
+                                "邀請好友"]
     
     var homeCollectionLabelColor = [
                                     UIColor(red: 127/255, green: 197/255, blue: 0, alpha: 1),
@@ -165,8 +173,10 @@ class LobbyViewController: PMBaseViewController {
                logoutOulet.tintColor = .white
            } else {
                logoutOulet.isEnabled = false
-               logoutOulet.tintColor = UIColor(red: 131.0/255.0, green: 211.0/255.0,
-                                               blue: 222.0/255.0, alpha: 1.0)
+               logoutOulet.tintColor = UIColor(red: 131.0/255.0,
+                                               green: 211.0/255.0,
+                                               blue: 222.0/255.0,
+                                               alpha: 1.0)
                runLightViewLabel.alpha = 0
            }
         
@@ -187,7 +197,9 @@ class LobbyViewController: PMBaseViewController {
 }
 
 
-extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension LobbyViewController:  UICollectionViewDelegate,
+                                UICollectionViewDataSource,
+                                UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView,
@@ -214,7 +226,9 @@ extension LobbyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return UICollectionReusableView()
   }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         if collectionView == homeCollectionView {
             return CGSize(width: UIScreen.main.bounds.width, height: 40.0)
         }
