@@ -13,20 +13,16 @@ import FirebaseDatabase
 class MapViewController: PMBaseViewController {
 
     @IBOutlet weak var mapBackground: UIImageView!
-    
     @IBOutlet weak var mapTitleLabel: UILabel!
-    
     @IBOutlet weak var mapchanceLabel: UILabel!
-    
     @IBOutlet weak var baseMapImage: UIImageView!
-    
     @IBOutlet weak var seeRecordButton: UIButton!
-    
     @IBOutlet weak var leaveOutlet: UIButton!
     
     @IBAction func leaveButton(_ sender: Any) {
         
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?
+            .popToRootViewController(animated: true)
     
     }
     
@@ -34,7 +30,9 @@ class MapViewController: PMBaseViewController {
    
         let appdelegate = UIApplication.shared.delegate
 
-        let tabBarController = appdelegate?.window??.rootViewController as? UITabBarController
+        let tabBarController = appdelegate?
+            .window??
+            .rootViewController as? UITabBarController
         
         self.navigationController?.backToRoot()
 
@@ -43,7 +41,7 @@ class MapViewController: PMBaseViewController {
     }
     
     var mapCouldTimes: Int = 1
-    
+    var userData:UserData?
     var currewntProgress: String? = "當前探索進度：0%"{
         
         didSet{
@@ -51,13 +49,33 @@ class MapViewController: PMBaseViewController {
         }
     }
     
-    let db = Firestore.firestore()
+    let firstButton = UIButton(frame:
+        CGRect(x: UIScreen.main.bounds.width * 67 / 414 - 20,
+               y: UIScreen.main.bounds.height * 89 / 736 - 20,
+               width: 40,
+               height: 40))
     
-    let firstButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 67 / 414 - 20, y: UIScreen.main.bounds.height * 89 / 736 - 20, width: 40, height: 40))
-    let secondButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width  * 239 / 414 - 20, y: UIScreen.main.bounds.height * 56 / 736 - 20, width: 40, height: 40))
-    let thirdButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 174 / 414 - 20, y: UIScreen.main.bounds.height * 205 / 736 - 20, width: 40, height: 40))
-    let forthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 310 / 414 - 20, y: UIScreen.main.bounds.height * 291 / 736 - 20, width: 40, height: 40))
-    let fifthButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width * 351 / 414 - 20, y: UIScreen.main.bounds.height * 260 / 736 - 20, width: 40, height: 40))
+    let secondButton = UIButton(frame:
+        CGRect(x:UIScreen.main.bounds.width  * 239 / 414 - 20,
+               y: UIScreen.main.bounds.height * 56 / 736 - 20,
+               width: 40,
+               height: 40))
+    
+    let thirdButton = UIButton(frame:
+        CGRect(x: UIScreen.main.bounds.width * 174 / 414 - 20,
+               y: UIScreen.main.bounds.height * 205 / 736 - 20,
+               width: 40,
+               height: 40))
+    let forthButton = UIButton(frame:
+        CGRect(x: UIScreen.main.bounds.width * 310 / 414 - 20,
+               y: UIScreen.main.bounds.height * 291 / 736 - 20,
+               width: 40,
+               height: 40))
+    let fifthButton = UIButton(frame:
+        CGRect(x: UIScreen.main.bounds.width * 351 / 414 - 20,
+               y: UIScreen.main.bounds.height * 260 / 736 - 20,
+               width: 40,
+               height: 40))
     
     var buttons: [UIButton] = []
     var index = 0
@@ -113,9 +131,7 @@ extension MapViewController: ScratchCardDelegate {
             mapchanceLabel.text = "五個座標中，僅 2 處有寶藏"
             self.scratchCard?.isHidden = true
             view.layoutIfNeeded()
-//            self.view.bringSubviewToFront(self.baseMapImage)
             self.setButton()
-      
         }
     }
 
@@ -128,12 +144,14 @@ extension MapViewController: ScratchCardDelegate {
                         self.thirdButton,
                         self.forthButton,
                         self.fifthButton]
+        
         for button in self.buttons{
                 button.tag = index
                 button.showsTouchWhenHighlighted = true
                 button.setTitle("📌", for: .normal)
                 button.titleLabel?.font = .systemFont(ofSize: 25)
-                button.addTarget(self, action: #selector(self.showResult), for: .touchUpInside)
+                button.addTarget(self, action: #selector(self.showResult),
+                                 for: .touchUpInside)
                 self.baseMapImage.addSubview(button)
                 index += 1
                 }
@@ -147,52 +165,46 @@ extension MapViewController: ScratchCardDelegate {
            
             self.baseMapImage.image = UIImage(named: "nomap")
             self.scratchCard?.isHidden = true
-
-    }
+            
+        }
     }
     
    
  func checkMapTimes() {
-    db.collection("user").document(KeyChainManager.shared.get("userid")!).getDocument { (document, error) in
-            
-            if let document = document, document.exists {
-                print(document.documentID, document.data() as Any)
+    
+    UserManager.shared.getUserData(completion: {data in
+               guard let data = data else {return}
+               self.userData = data
+         })
+        
+    if self.userData?.totalScore != nil {
+        ProfileViewController.totalScore =
+            self.userData!.totalScore!}
+          
+    if self.userData?.mapPlayTime != nil {
+        let timestamp = self.userData?.mapPlayTime
+        let converted = Date(timeIntervalSince1970:
+            TimeInterval(timestamp!.seconds) )
                 
-                if document.data()!["totalScore"] != nil {
-                ProfileViewController.totalScore = document.data()!["totalScore"] as! Int
-                }
-                //轉換 Time 格式
+        let now:Date = Date()
                 
-                if document.data()!["mapPlayTime"] != nil {
-                let timestamp = document.data()!["mapPlayTime"] as! Timestamp
-                let converted = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds) )
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+        dateFormatter.dateFormat = "yyyy-MM-dd"
                 
-                let now:Date = Date()
-                
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeZone = NSTimeZone.local
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                
-                let mapPlayTime = dateFormatter.string(from: converted as Date)
-                let currentTime = dateFormatter.string(from: now as Date)
-                
-                print(mapPlayTime)
-                print(currentTime)
-                
-                if mapPlayTime == currentTime {
-                    self.mapCouldTimes = 0
-                    self.isTodayMap()
-                } else {
-                    self.mapCouldTimes = 1
-                }
-                } else {
-                    self.mapCouldTimes = 1
-                }
-            } else {
-                print("Document does not exist")
-            }
-        }
-    }
+        let mapPlayTime = dateFormatter.string(from: converted as Date)
+        let currentTime = dateFormatter.string(from: now as Date)
+  
+    if mapPlayTime == currentTime {
+        self.mapCouldTimes = 0
+        self.isTodayMap()
+       } else {
+        self.mapCouldTimes = 1
+       }
+    } else {
+      self.mapCouldTimes = 1
+     }
+ }
     
     @objc func showResult(){
         let mapResult = result.randomElement()
@@ -208,39 +220,31 @@ extension MapViewController: ScratchCardDelegate {
             self.baseMapImage.image = UIImage(named: "getreward")
             mapchanceLabel.text = "您今日已無探索機會"
             mapTitleLabel.text = "請明日再來"
-            
-            let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,"score": 2, "source": "map" ]
-    
-           //存用戶積分紀錄
-            db.collection("user").document(KeyChainManager.shared.get("userid")!).collection("records").document().setData(scoreRecordData){ (error) in
-                if let error = error {
-                    print(error)
-                }
-            }
-            //update用戶總積分
-                db.collection("user").whereField("email", isEqualTo: KeyChainManager.shared.get("useremail") ?? "no email").getDocuments { (querySnapshot, error) in
-                if let querySnapshot = querySnapshot {
-                    let document = querySnapshot.documents.first
-                    document?.reference.updateData(["totalScore": ProfileViewController.totalScore + 2,"mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in
-                    })
-                }
-            }
+            saveMapRecord()
+            updateMapData()
             
         } else {
-            //update用戶總積分
-            db.collection("user").whereField("email", isEqualTo: KeyChainManager.shared.get("useremail") ?? "no email").getDocuments { (querySnapshot, error) in
-                if let querySnapshot = querySnapshot {
-                    let document = querySnapshot.documents.first
-                    document?.reference.updateData(["mapPlayTime": FirebaseFirestore.Timestamp(date:Date()) ], completion: { (error) in
-                    })
-                }
-            }
+            updateMapData()
             mapchanceLabel.text = "您今日已無探索機會"
             mapTitleLabel.text = "請明日再來"
             self.baseMapImage.image = UIImage(named: "unreward")
         }
-       
-      
+    }
+    func updateMapData() {
+        
+        let updateData = ["totalScore":ProfileViewController.totalScore + 2,
+                          "mapPlayTime": FirebaseFirestore.Timestamp(date:Date())]
+            as [String : Any]
+        
+        FireBaseHelper.updateData(update: updateData)
+        
+    }
+    func saveMapRecord() {
+        let scoreRecordData: [String: Any] = ["time":FirebaseFirestore.Timestamp(date:Date()) ,
+             "score": 2,
+             "source": "map" ]
+        
+        FireBaseHelper.saveUserRecord(saveData: scoreRecordData)
     }
     
     func scratchEnded(point: CGPoint) {

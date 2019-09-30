@@ -15,9 +15,16 @@ class ShareManager {
     
     static func shareClickButton(_ sender: UIViewController) {
         
-        let actionSheet = UIAlertController(title: "點擊分享", message: "分享 APP 給你的好友", preferredStyle: UIAlertController.Style.actionSheet)
+        let actionSheet = UIAlertController(title: "點擊分享",
+                                            message: "分享 APP 給你的好友",
+                                            preferredStyle:
+                                                UIAlertController
+                                                .Style
+                                                .actionSheet)
         
-        let facebookPostAction = UIAlertAction(title: "分享", style: UIAlertAction.Style.default) { (action) -> Void in
+        let facebookPostAction = UIAlertAction(title: "分享",
+                                               style: UIAlertAction.Style.default)
+        { (action) -> Void in
             
             guard let url = URL(string: "https://itunes.apple.com/tw/app/id1481162004"),
                 let image = UIImage(named: "fbbanner")
@@ -25,7 +32,9 @@ class ShareManager {
             
             let text = "和我一起玩波賽頓出任務，前往海底尋找神秘寶藏吧！"
             let shareMessage: [Any] = [text, image, url]
-            let shareViewController = UIActivityViewController(activityItems: shareMessage, applicationActivities: nil)
+            let shareViewController = UIActivityViewController(
+                activityItems: shareMessage,
+                applicationActivities: nil)
             
          
             shareViewController
@@ -41,28 +50,34 @@ class ShareManager {
             ]
             saveShareData()
             
-           sender.present(shareViewController, animated: true, completion: nil)
+           sender.present(shareViewController,
+                          animated: true,
+                          completion: nil)
             
         }
         
-        let dismissAction = UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel) { (action) -> Void in
-            
+        let dismissAction = UIAlertAction(title: "Close",
+                                          style: UIAlertAction.Style.cancel)
+        { (action) -> Void in
         }
         
         actionSheet.addAction(facebookPostAction)
         actionSheet.addAction(dismissAction)
-        
-        
+
         sender.present(actionSheet, animated: true, completion: nil)
     }
     
     static func saveShareData() {
         
-        let loginRecord = ["score":2, "source": "share", "time": FirebaseFirestore.Timestamp(date:Date()) ] as [String : Any]
+        let loginRecord = ["score":2,
+                           "source": "share",
+                           "time": FirebaseFirestore.Timestamp(date:Date()) ]
+            as [String : Any]
         FireBaseHelper.saveUserRecord(saveData: loginRecord)
         
         let updateData = ["totalScore": ProfileViewController.totalScore + 2 ,
-                          "shareTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
+                          "shareTime": FirebaseFirestore.Timestamp(date:Date())]
+            as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
         

@@ -25,8 +25,7 @@ class UserManager {
             guard let doc = snapshot,
                   let email = doc.data()?["email"] as? String,
                   let name = doc.data()?["userName"] as? String
-                
-            
+   
             else {
             
                 print("error")
@@ -39,20 +38,42 @@ class UserManager {
             //存到變數
             var userData = UserData(email: email, name: name)       
         
-            userData.fishingTime = doc.data()?["fishingTime"] as? Timestamp
-            userData.currentFishingScore = doc.data()?["currentFishingScore"] as? Int
-            userData.fishingCounts = doc.data()?["fishingCounts"] as? Int
-            userData.shareTime = doc.data()?["shareTime"] as? Timestamp
-            userData.loginTodayTime = doc.data()?["loginTodayTime"] as? Timestamp
-            userData.loginCounts = doc.data()?["loginCounts"] as? Int
-            userData.totalScore = doc.data()?["totalScore"] as? Int
-            userData.jellyFishPlayTime = doc.data()?["jellyFishPlayTime"] as? Timestamp
-            userData.jellyFishHighest = doc.data()?["jellyFishHighest"] as? Int
-            userData.mapPlayTime = doc.data()?["mapPlayTime"] as? Timestamp
-            userData.fishingHighest = doc.data()?["fishingHighest"] as? Int
-            userData.photo = doc.data()?["photo"] as? String
-//            print(doc.data() as Any)
-//            print(userData)
+            userData.fishingTime =
+                doc.data()?["fishingTime"] as? Timestamp
+            
+            userData.currentFishingScore =
+                doc.data()?["currentFishingScore"] as? Int
+            
+            userData.fishingCounts =
+                doc.data()?["fishingCounts"] as? Int
+            
+            userData.shareTime =
+                doc.data()?["shareTime"] as? Timestamp
+            
+            userData.loginTodayTime =
+                doc.data()?["loginTodayTime"] as? Timestamp
+            
+            userData.loginCounts =
+                doc.data()?["loginCounts"] as? Int
+            
+            userData.totalScore =
+                doc.data()?["totalScore"] as? Int
+            
+            userData.jellyFishPlayTime =
+                doc.data()?["jellyFishPlayTime"] as? Timestamp
+            
+            userData.jellyFishHighest =
+                doc.data()?["jellyFishHighest"] as? Int
+            
+            userData.mapPlayTime =
+                doc.data()?["mapPlayTime"] as? Timestamp
+            
+            userData.fishingHighest =
+                doc.data()?["fishingHighest"] as? Int
+            
+            userData.photo =
+                doc.data()?["photo"] as? String
+            
             self.user = userData
             
             completion(userData)
@@ -113,13 +134,19 @@ class UserManager {
             self.jellyRankData = []
             
             for index in docs.indices {
-                let jellyFishHighest = docs[index].data()["jellyFishHighest"] as? Int
-                let name = docs[index].data()["userName"] as? String
-                let photo = docs[index].data()["photo"] as? String
+                let jellyFishHighest =
+                    docs[index].data()["jellyFishHighest"] as? Int
+                
+                let name =
+                    docs[index].data()["userName"] as? String
+                
+                let photo =
+                    docs[index].data()["photo"] as? String
                 
                 
                 self.jellyRankData.append(RankData( name: name!,
-                                                    highest: jellyFishHighest ?? 0, photo: photo))
+                                                    highest: jellyFishHighest ?? 0,
+                                                    photo: photo))
             }
         
             completion(self.jellyRankData)
@@ -129,7 +156,8 @@ class UserManager {
     }
     func getFishHighestData(completion: @escaping ([RankData]?) -> Void) {
         
-        FireBaseHelper.getFishingHighestData(completion: {querySnapshot in
+        FireBaseHelper.getFishingHighestData(completion:
+            {querySnapshot in
             
             guard let docs = querySnapshot?.documents else {
                 
@@ -142,12 +170,18 @@ class UserManager {
             self.fishRankData = []
             for index in docs.indices {
                 
-                let fishHighest = docs[index].data()["fishingHighest"] as? Int
-                let name = docs[index].data()["userName"] as? String
-                let photo = docs[index].data()["photo"] as? String
+                let fishHighest =
+                    docs[index].data()["fishingHighest"] as? Int
                 
-                self.fishRankData.append(RankData( name: name ?? "no name",
-                                                highest: fishHighest ?? 0, photo: photo))
+                let name =
+                    docs[index].data()["userName"] as? String
+                
+                let photo =
+                    docs[index].data()["photo"] as? String
+                
+                self.fishRankData.append(RankData(name: name ?? "no name",
+                                                highest: fishHighest ?? 0,
+                                                photo: photo))
             }
             
             completion(self.fishRankData)
@@ -155,9 +189,11 @@ class UserManager {
         })
         
     }
-    func getLoginHighestData(completion: @escaping ([RankData]?) -> Void) {
+    func getLoginHighestData(completion:
+        @escaping ([RankData]?) -> Void) {
         
-        FireBaseHelper.getLoginHighestData(completion: {querySnapshot in
+        FireBaseHelper.getLoginHighestData(completion:
+            {querySnapshot in
             
             guard let docs = querySnapshot?.documents else {
                 
@@ -170,8 +206,11 @@ class UserManager {
             self.loginRankData = []
             for index in docs.indices {
                 
-                let loginHighest = docs[index].data()["loginCounts"] as? Int
-                let name = docs[index].data()["userName"] as? String
+                let loginHighest =
+                    docs[index].data()["loginCounts"] as? Int
+                
+                let name =
+                    docs[index].data()["userName"] as? String
                 
                 self.loginRankData.append(RankData( name: name ?? "no name",
                                                    highest: loginHighest ?? 0))

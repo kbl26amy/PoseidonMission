@@ -163,7 +163,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         
         getPointCell.getPointCount.text = "+ \(userRecordData?[indexPath.row].score ?? 0)"
         getPointCell.GetPointTime.text = userRecordData?[indexPath.row].time
-        getPointCell.getPointImage.image = UIImage(named: userRecordData?[indexPath.row].source.rawValue ?? "map")
+        getPointCell.getPointImage.image = UIImage(named:
+                                           userRecordData?[indexPath.row]
+                                           .source
+                                           .rawValue ?? "map")
         
         var source: String?
         
@@ -179,23 +182,31 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         return getPointCell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
    
 }
 
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ProfileViewController: UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let pickedImage = info[.originalImage] as? UIImage else {
-                fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+                               didFinishPickingMediaWithInfo info:
+        [UIImagePickerController.InfoKey : Any]) {
+        guard let pickedImage = info[.originalImage]
+            as? UIImage else {fatalError(
+            "Expected a dictionary containing an image, but was provided the following: \(info)")
             }
             
             selectedImageFromPicker = pickedImage
         if let selectedImage = selectedImageFromPicker {
-            let storageRef = Storage.storage().reference().child("AppCodaFireUpload").child("\(KeyChainManager.shared.get("userid")!).png")
+            let storageRef = Storage
+                .storage()
+                .reference()
+                .child("AppCodaFireUpload")
+                .child("\(KeyChainManager.shared.get("userid")!).png")
             
             self.userImage.image = selectedImage
             
@@ -218,9 +229,12 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 let photoUrl = ["photo": "\(downloadURL)"]
                 FireBaseHelper.updateData(update: photoUrl)
                 
-                let databaseRef = Database.database().reference(withPath: "ID/\(uniqueString)/Profile/Photo")
+                let databaseRef = Database
+                    .database()
+                    .reference(withPath: "ID/\(uniqueString)/Profile/Photo")
                                
-                databaseRef.setValue(downloadURL.absoluteString, withCompletionBlock: { (error, dataRef) in
+                databaseRef.setValue(downloadURL.absoluteString,
+                                     withCompletionBlock: { (error, dataRef) in
                                                               
                                      if error != nil {
                                          print("Database Error: \(error!.localizedDescription)")

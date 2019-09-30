@@ -13,7 +13,9 @@ import Firebase
 class FireBaseHelper {
 
     //獲取用戶資料
-    static func getUserData(completion: @escaping (DocumentSnapshot?) -> Void ) {
+    static func getUserData(completion:
+        @escaping (DocumentSnapshot?)
+        -> Void ) {
         
         let db = Firestore.firestore()
      
@@ -28,7 +30,9 @@ class FireBaseHelper {
     }
     
     //獲取用戶積分紀錄
-    static func getUserRecord(completion: @escaping (QuerySnapshot?) -> Void ) {
+    static func getUserRecord(completion:
+        @escaping (QuerySnapshot?)
+        -> Void ) {
         
         let db = Firestore.firestore()
         
@@ -44,7 +48,8 @@ class FireBaseHelper {
         }
     }
     
-    static func getJellyFishHighestData(completion: @escaping (QuerySnapshot?) -> Void ) {
+    static func getJellyFishHighestData(completion:
+        @escaping (QuerySnapshot?) -> Void ) {
         
         let db = Firestore.firestore()
         
@@ -58,7 +63,8 @@ class FireBaseHelper {
         }
     }
     
-    static func getFishingHighestData(completion: @escaping (QuerySnapshot?) -> Void ) {
+    static func getFishingHighestData(completion:
+        @escaping (QuerySnapshot?) -> Void ) {
         
         let db = Firestore.firestore()
         
@@ -71,7 +77,8 @@ class FireBaseHelper {
                 
         }
     }
-    static func getLoginHighestData(completion: @escaping (QuerySnapshot?) -> Void ) {
+    static func getLoginHighestData(completion:
+        @escaping (QuerySnapshot?) -> Void ) {
         
         let db = Firestore.firestore()
         
@@ -91,7 +98,7 @@ class FireBaseHelper {
         let db = Firestore.firestore()
             db
             .collection("user")
-                .document(KeyChainManager.shared.get("userid")!)
+            .document(KeyChainManager.shared.get("userid")!)
             .collection("records")
             .document()
             .setData(saveData){ (error) in
@@ -110,7 +117,8 @@ class FireBaseHelper {
             .document(KeyChainManager.shared.get("userid")!)
             .getDocument { (document, error) in
                 
-                document?.reference.updateData(update, completion: { (error) in
+                document?.reference.updateData(update,
+                                               completion: { (error) in
                     
                 })
         }

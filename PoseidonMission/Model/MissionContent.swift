@@ -10,11 +10,17 @@ import Foundation
 
 struct MissionContent {
     
-    static let missionTitles:[missionTitles] = [.map, .jellyFish, .fishing, .login, .invite]
+    static let missionTitles: [missionTitles] =
+        [.map, .jellyFish, .fishing, .login, .invite]
     
-    static let missionPictures:[missionPics] = [.mapPic, .jellyFishPic, .fishingPic, .loginPic, .invitePic]
+    static let missionPictures: [missionPics] =
+        [.mapPic, .jellyFishPic, .fishingPic, .loginPic, .invitePic]
     
-    static let missionIntroduction = [MissionContent.mapMissionText,MissionContent.jellyFishMissionText,MissionContent.fishingMissionText,MissionContent.shareMissionText,MissionContent.loginTodayMissionText]
+    static let missionIntroduction = [MissionContent.mapMissionText,
+                                      MissionContent.jellyFishMissionText,
+                                      MissionContent.fishingMissionText,
+                                      MissionContent.shareMissionText,
+                                      MissionContent.loginTodayMissionText]
 
     static let mapMissionText = "藏寶圖探索進度100%以後，會出現藏寶地點。"
     static let jellyFishMissionText = "找出表情邪惡的紅色水母，每1000積分可獲得1張暢遊卷！"

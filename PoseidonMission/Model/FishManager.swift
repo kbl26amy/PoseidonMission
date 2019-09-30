@@ -18,9 +18,17 @@ extension FishGenerator {
     
     func randomFishImage() -> UIImageView? {
         
-        let fishs = ["fish1", "fish2", "fish3", "fish4", "fish5", "fish6", "fish7", "fish8", "fish9"]
+        let fishs = [UIImage.asset(.blueFish),
+                     UIImage.asset(.redThornFish),
+                     UIImage.asset(.purpleFish),
+                     UIImage.asset(.greenFish),
+                     UIImage.asset(.longFish),
+                     UIImage.asset(.lightBlueFish),
+                     UIImage.asset(.darkRedFish),
+                     UIImage.asset(.LanternFish),
+                     UIImage.asset(.shark)]
         
-        let fishImageView = UIImageView(image:  UIImage(named: fishs.randomElement()!))
+        let fishImageView = UIImageView(image: fishs.randomElement()!)
         
         return fishImageView
     }

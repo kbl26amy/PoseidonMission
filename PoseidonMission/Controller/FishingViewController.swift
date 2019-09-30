@@ -346,15 +346,15 @@ class FishingViewController: UIViewController {
       
             var score = 0
             switch fish.image {
-                case UIImage(named: "fish6"): score = 50
-                case UIImage(named: "fish1"): score = 50
-                case UIImage(named: "fish7"): score = 150
-                case UIImage(named: "fish3"): score = 150
-                case UIImage(named: "fish4"): score = 150
-                case UIImage(named: "fish2"): score = 200
-                case UIImage(named: "fish8"): score = 200
-                case UIImage(named: "fish5"): score = 250
-                case UIImage(named: "fish9"): score = 300
+            case UIImage.asset(.lightBlueFish): score = 50
+            case UIImage.asset(.blueFish): score = 50
+            case UIImage.asset(.darkRedFish): score = 150
+            case UIImage.asset(.purpleFish): score = 150
+            case UIImage.asset(.greenFish): score = 150
+            case UIImage.asset(.redThornFish): score = 200
+            case UIImage.asset(.LanternFish): score = 200
+            case UIImage.asset(.longFish): score = 250
+            case UIImage.asset(.shark): score = 300
    
             case .none:
                 break
