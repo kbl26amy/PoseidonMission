@@ -871,13 +871,15 @@
                                 <rect key="frame" x="41.333333333333343" y="168.33333333333334" width="331.33333333333326" height="399.33333333333326"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAf-nf-M2M">
-                                <rect key="frame" x="155.33333333333334" y="585.33333333333326" width="103.33333333333334" height="31.666666666666629"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="155.33333333333334" y="583.66666666666663" width="103.33333333333334" height="34.333333333333371"/>
+                                <color key="backgroundColor" red="0.20504570007324219" green="0.3482515811920166" blue="0.66236764192581177" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tAf-nf-M2M" secondAttribute="height" multiplier="3:1" id="1o6-Fk-KUw"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" backgroundImage="checkmark.rectangle.fill" catalog="system"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="我明白了" image="pencil.and.ellipsis.rectangle" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="startButton:" destination="agF-26-D6X" eventType="touchUpInside" id="8Cf-a8-ywy"/>
                                 </connections>
@@ -992,8 +994,8 @@
     </scenes>
     <resources>
         <image name="back" width="72" height="72"/>
-        <image name="checkmark.rectangle.fill" catalog="system" width="64" height="48"/>
         <image name="introduction" width="900" height="1300"/>
         <image name="open" width="369" height="336"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
     </resources>
 </document>

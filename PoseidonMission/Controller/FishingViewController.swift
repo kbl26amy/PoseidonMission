@@ -239,6 +239,7 @@ class FishingViewController: UIViewController {
         pathLayer.removeAllAnimations()
         sucessText.text = "積分 ＋150"
         sucessText.alpha = 0
+        closeIntroduction.layer.cornerRadius = 10
        
     }
     
