@@ -15,10 +15,11 @@ class JellyfishViewController: PMBaseViewController {
     var timer:Timer?
     var counter: Double = 60.0
     var index = 0
-    var fishButtons : [UIButton] = []
+    var jellyfishButtons : [UIButton] = []
     var score = 0
     var jellyFishCouldTimes = 1
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate
+        as! AppDelegate
     
     @IBAction func leaveButton(_ sender: Any) {
         appDelegate.interfaceOrientations = .portrait
@@ -45,34 +46,33 @@ class JellyfishViewController: PMBaseViewController {
         }
     
     @objc func getScore(_ sender: UIButton){
-        print("click JellyFish")
         
-        if sender.imageView?.image == UIImage(named: "badWaterMother"){
+        if sender.imageView?.image == UIImage.asset(.badJellyfish) {
             sender.isEnabled = true
             score += 150
             scoreLabel.text = "分數：\(score)"
-            sender.setImage(UIImage(named: "badjellyfishclick"), for: .normal)
+            sender.setImage(UIImage.asset(.badJellyfishClick), for: .normal)
             
-        }else if sender.imageView?.image == UIImage(named: "goodWaterMother"){
+        }else if sender.imageView?.image == UIImage.asset(.goodJellyfish){
             sender.isEnabled = true
             score -= 150
             scoreLabel.text = "分數：\(score)"
-            sender.setImage(UIImage(named: "goodjellyfishclick"), for: .normal)
+            sender.setImage(UIImage.asset(.goodJellyfishClick), for: .normal)
           
         }
     }
 
     func jellyFishSetingAnimation(){
         
-        let animateButton = fishButtons.randomElement()!
+        let animateButton = jellyfishButtons.randomElement()!
         print(animateButton.frame)
          
         let result = counter.truncatingRemainder(dividingBy: 1)
         if result == 0 {
-            animateButton.setImage(UIImage(named: "goodWaterMother"), for: .normal)
+            animateButton.setImage(UIImage.asset(.goodJellyfish), for: .normal)
        
         }else {
-            animateButton.setImage(UIImage(named: "badWaterMother"), for: .normal)
+            animateButton.setImage(UIImage.asset(.badJellyfish), for: .normal)
         
         }
         view.addSubview(animateButton)
@@ -111,7 +111,7 @@ class JellyfishViewController: PMBaseViewController {
             secondLabel.text = "\(Int(counter))";
           
         }else{
-            
+           
             let controller = UIAlertController(title: "遊戲結束",
                                                message: "您的分數為\(score)，是否直接計算點數？",
                 preferredStyle: .alert)
@@ -119,9 +119,9 @@ class JellyfishViewController: PMBaseViewController {
                                          style: .default) { (_) in
                 print("開始計算分數")
                 if self.score >= 0 {
-                self.saveData()
-                self.appDelegate.interfaceOrientations = .portrait
-                self.backToRoot()
+                    self.saveData()
+                    self.appDelegate.interfaceOrientations = .portrait
+                    self.backToRoot()
                 } else {
                     let controller = UIAlertController(title: "分數不足",
                                                        message: "分數需大於0分才可以獲得暢遊卷，請重新遊戲",
@@ -177,16 +177,18 @@ class JellyfishViewController: PMBaseViewController {
         let rightDownJellyFish = UIButton()
         let middleDownJellyFish = UIButton()
         
-        fishButtons = [middleUpJellyFish, leftUpJellyFish, rightUpJellyFish,
+        jellyfishButtons = [middleUpJellyFish, leftUpJellyFish, rightUpJellyFish,
                        middleDownJellyFish, leftDownJellyFish, rightDownJellyFish]
         loadViewIfNeeded()
     
-        for button in fishButtons{
+        for button in jellyfishButtons{
         
             view.addSubview(button)
-            button.addTarget(self, action: #selector(getScore(_:)), for: .touchUpInside)
+            button.addTarget(self,
+                             action: #selector(getScore(_:)),
+                             for: .touchUpInside)
             
-                    if button.imageView?.image == UIImage(named: "goodjellyfishclick") || button.imageView?.image == UIImage(named: "badjellyfishclick"){
+            if button.imageView?.image == UIImage.asset(.goodJellyfishClick) || button.imageView?.image == UIImage.asset(.badJellyfishClick){
                         button.isHighlighted = false
                         button.showsTouchWhenHighlighted = false
                         
@@ -196,7 +198,7 @@ class JellyfishViewController: PMBaseViewController {
                     }
 
             button.alpha = 0
-            button.setImage(UIImage(named: "badWaterMother"), for: .normal)
+            button.setImage(UIImage.asset(.badJellyfish), for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.widthAnchor.constraint(equalTo: holeCollection[index].widthAnchor, multiplier: 0.25).isActive = true
             button.heightAnchor.constraint(equalTo: holeCollection[index].heightAnchor, multiplier: 0.5).isActive = true
@@ -290,18 +292,14 @@ class JellyfishViewController: PMBaseViewController {
     
     func isTodayJellyFish() {
         if jellyFishCouldTimes == 0 {
-            let controller = UIAlertController(title: "沒有次數",
-                                               message: "您今日已經遊玩過了！",
-                                               preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "好",
-                                         style: .default) { (_) in
-                self.appDelegate.interfaceOrientations = .portrait
-                self.backToRoot()
-            }
-            
-            controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+            UIAlertController
+                .showConfirm(message: "您今日已經遊玩過了！",
+                             confirm: { (_) in
+                                self.appDelegate.interfaceOrientations = .portrait
+                                self.backToRoot()
+                                          })
+
         }
         
     }

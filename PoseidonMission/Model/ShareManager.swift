@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Firebase
 
-
 class ShareManager {
     
     static func shareClickButton(_ sender: UIViewController) {
@@ -18,9 +17,9 @@ class ShareManager {
         let actionSheet = UIAlertController(title: "點擊分享",
                                             message: "分享 APP 給你的好友",
                                             preferredStyle:
-                                                UIAlertController
-                                                .Style
-                                                .actionSheet)
+            UIAlertController
+                .Style
+                .actionSheet)
         
         let facebookPostAction = UIAlertAction(title: "分享",
                                                style: UIAlertAction.Style.default)
@@ -36,7 +35,7 @@ class ShareManager {
                 activityItems: shareMessage,
                 applicationActivities: nil)
             
-         
+            
             shareViewController
                 .excludedActivityTypes = [UIActivity.ActivityType.mail,
                                           UIActivity.ActivityType.airDrop,
@@ -46,13 +45,13 @@ class ShareManager {
                                           UIActivity.ActivityType.assignToContact,
                                           UIActivity.ActivityType.print,
                                           UIActivity.ActivityType.openInIBooks,
-                                         
+                                          
             ]
             saveShareData()
             
-           sender.present(shareViewController,
-                          animated: true,
-                          completion: nil)
+            sender.present(shareViewController,
+                           animated: true,
+                           completion: nil)
             
         }
         
@@ -63,7 +62,7 @@ class ShareManager {
         
         actionSheet.addAction(facebookPostAction)
         actionSheet.addAction(dismissAction)
-
+        
         sender.present(actionSheet, animated: true, completion: nil)
     }
     
@@ -94,12 +93,7 @@ class ShareManager {
                 
                 if shareTodayTime == currentTime {
                     
-                    let controller = UIAlertController(title: "明日再來", message: "您已經分享過了！", preferredStyle: .alert)
-                    
-                    let cancelAction = UIAlertAction(title: "OK", style:.cancel )
-                    controller.addAction(cancelAction)
-                    
-                    sender.present(controller, animated: true, completion: nil)
+                    UIAlertController.showAlert(message: "今日已經分享過了！")
                     
                 } else {
                     shareClickButton(sender)

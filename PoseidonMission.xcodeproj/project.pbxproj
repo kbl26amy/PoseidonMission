@@ -44,6 +44,7 @@
 		62A9647E2314E02600BD4AE0 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9647D2314E02600BD4AE0 /* MissionViewController.swift */; };
 		62A964802314E04200BD4AE0 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9647F2314E04200BD4AE0 /* RankViewController.swift */; };
 		62A964822314E05200BD4AE0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A964812314E05200BD4AE0 /* ProfileViewController.swift */; };
+		62D6BF292342E81800292341 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D6BF282342E81800292341 /* Alert+Extension.swift */; };
 		62E1B0362313B73C007AC76D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0352313B73C007AC76D /* AppDelegate.swift */; };
 		62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0372313B73C007AC76D /* LobbyViewController.swift */; };
 		62E1B0402313B73D007AC76D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B03F2313B73D007AC76D /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		62A9647D2314E02600BD4AE0 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
 		62A9647F2314E04200BD4AE0 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		62A964812314E05200BD4AE0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		62D6BF282342E81800292341 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		62E1B0322313B73C007AC76D /* 波賽頓出任務.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "波賽頓出任務.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E1B0352313B73C007AC76D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62E1B0372313B73C007AC76D /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				62E1B0502313E4EB007AC76D /* UIStoryboard+Extension.swift */,
 				6218BE952341F88B004253B9 /* UIImage+Extension.swift */,
+				62D6BF282342E81800292341 /* Alert+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,
 				6286FF9E232688D700C48899 /* RankTableViewCell.swift in Sources */,
 				62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */,
+				62D6BF292342E81800292341 /* Alert+Extension.swift in Sources */,
 				620F8E66233B5B7500A189AA /* UserInfo.swift in Sources */,
 				62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */,
 				6286FF9A23250EA300C48899 /* DataType.swift in Sources */,

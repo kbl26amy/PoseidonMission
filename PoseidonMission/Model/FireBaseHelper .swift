@@ -123,6 +123,20 @@ class FireBaseHelper {
                 })
         }
     }
+    
+    static func saveData(saveData: [String:Any]) {
+        let db = Firestore.firestore()
+        
+        db
+            .collection("user")
+            .document(KeyChainManager.shared.get("userid")!)
+            .setData(saveData,merge: true,
+                     completion: { (error) in
+                        if let error = error {
+                            print(error)
+                        }
+            })
+    }
 }
 
       

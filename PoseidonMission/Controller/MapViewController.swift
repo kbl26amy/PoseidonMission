@@ -150,7 +150,8 @@ extension MapViewController: ScratchCardDelegate {
                 button.showsTouchWhenHighlighted = true
                 button.setTitle("📌", for: .normal)
                 button.titleLabel?.font = .systemFont(ofSize: 25)
-                button.addTarget(self, action: #selector(self.showResult),
+                button.addTarget(self,
+                                 action: #selector(self.showResult),
                                  for: .touchUpInside)
                 self.baseMapImage.addSubview(button)
                 index += 1
@@ -160,8 +161,7 @@ extension MapViewController: ScratchCardDelegate {
     
     func isTodayMap() {
         if mapCouldTimes == 0 {
-            mapchanceLabel.text = "您今日已無探索機會"
-            mapTitleLabel.text = "請明日再來"
+            changeText()
            
             self.baseMapImage.image = UIImage(named: "nomap")
             self.scratchCard?.isHidden = true
@@ -219,21 +219,24 @@ extension MapViewController: ScratchCardDelegate {
         
         if mapResult == true {
             self.baseMapImage.image = UIImage(named: "getreward")
-            mapchanceLabel.text = "您今日已無探索機會"
-            mapTitleLabel.text = "請明日再來"
+            changeText()
             saveMapRecord()
             updateMapData()
             
         } else {
             updateMapData()
-            mapchanceLabel.text = "您今日已無探索機會"
-            mapTitleLabel.text = "請明日再來"
+            changeText()
             self.baseMapImage.image = UIImage(named: "unreward")
         }
     }
+    
+    func changeText() {
+        mapchanceLabel.text = "您今日已無探索機會"
+        mapTitleLabel.text = "請明日再來"
+    }
     func updateMapData() {
         
-        let updateData = ["totalScore":ProfileViewController.totalScore + 2,
+        let updateData = ["totalScore": ProfileViewController.totalScore + 2,
                           "mapPlayTime": FirebaseFirestore.Timestamp(date:Date())]
             as [String : Any]
         

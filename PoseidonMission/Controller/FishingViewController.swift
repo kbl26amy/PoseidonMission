@@ -82,7 +82,8 @@ class FishingViewController: UIViewController {
         let clikLeftAnimator = UIViewPropertyAnimator()
         clikLeftAnimator.addAnimations {
    
-            if self.shipTrailingConstraint.constant > -UIScreen.main.bounds.width + 60 {
+            if self.shipTrailingConstraint.constant >
+                -UIScreen.main.bounds.width + 60 {
                 self.leftMoveButton.isHighlighted = true
             self.shipTrailingConstraint.constant -= 10
             self.view.layoutIfNeeded()
@@ -101,7 +102,7 @@ class FishingViewController: UIViewController {
             if self.shipTrailingConstraint.constant < 0 {
                 self.rightMoveButton.isHighlighted = true
             self.shipTrailingConstraint.constant += 10
-            self.view.layoutIfNeeded()                                            }
+            self.view.layoutIfNeeded()}
         }, completion: nil)
         
     }
@@ -114,43 +115,28 @@ class FishingViewController: UIViewController {
         for button in self.moveButtonCollection{ button.isEnabled = false
         }
         
-        if self.colorView.frame.width >= self.energyBar.frame.width * 0.95 {
+        if self.colorView.frame.width >= self.energyBar.frame.width * 0.9 {
             
             if fishingCounts > 0 {
-            rotateUpRod(sender)
-            } else {
-                let alertController = UIAlertController(title: "次數不足",
-                                                        message: "您的魚餌不足，請明日再來",
-                                                        preferredStyle: .alert)
                 
-                let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                rotateUpRod(sender)
+            
+            } else {
+                UIAlertController.showConfirm(message: "您的魚餌不足，請明日再來",
+                                              confirm: { (_) in
                     
                     self.backToRoot()
                     
-                }
-                
-                alertController.addAction(defaultAction)
-                
-                present(alertController, animated: true, completion: nil)
-                
+                })
             }
-            
         } else {
             
-            let alertController = UIAlertController(title: "失敗",
-                                                    message: "請注意能量條位置是否為空或不足",
-                                                    preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            UIAlertController.showConfirm(message: "請注意能量條位置是否為空或不足",
+            confirm: { (_) in
                 
                 self.energyTimerEanbled()
                 self.fishingButton.isEnabled = true
-                }
-      
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
- 
+                })
         }
  
     }
@@ -169,7 +155,8 @@ class FishingViewController: UIViewController {
             }
         })
 
-        let updateData = ["fishingHighest":ProfileViewController.fishingHighest] as [String : Any]
+        let updateData = ["fishingHighest": ProfileViewController.fishingHighest]
+            as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
         
@@ -210,7 +197,11 @@ class FishingViewController: UIViewController {
                                       y: 0,
                                       width: 0,
                                       height: UIScreen.main.bounds.height / 26)
-        colorView.backgroundColor = UIColor(red: 249/255, green: 191/255, blue: 90/255, alpha: 1)
+        
+        colorView.backgroundColor = UIColor(red: 249/255,
+                                            green: 191/255,
+                                            blue: 90/255,
+                                            alpha: 1)
         
         self.energyBar.addSubview(colorView)
         
@@ -218,7 +209,6 @@ class FishingViewController: UIViewController {
                                                                            delay: 0,
                                                                            options: .curveLinear,
                                                                            animations: {
-//            UIView.setAnimationRepeatCount(999);
             
             self.colorView.frame = CGRect(x: 0,
                                           y: 0,
@@ -258,24 +248,29 @@ class FishingViewController: UIViewController {
         self.isSucess = false
         self.fishingCounts -= 1
         
-        rodUpAnimation =  UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
-                                                                        delay: 0,
-                                                                        options:.beginFromCurrentState,
-                                                                        animations: {
+        rodUpAnimation =  UIViewPropertyAnimator
+            .runningPropertyAnimator(withDuration: 0.5,
+                                     delay: 0,
+                                     options:.beginFromCurrentState,
+                                     animations: {
                                                                             
             self.fishingLine.alpha = 0
-            self.fishingRod.transform = CGAffineTransform(rotationAngle: (20.0 * .pi) / 90.0)
+            self.fishingRod.transform = CGAffineTransform(rotationAngle:
+                (20.0 * .pi) / 90.0)
  
         }, completion: nil)
+        
         rodUpAnimation?.startAnimation()
 
         rodUpAnimation?.addCompletion() {_ in
-            rodDownAnimation = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5,
-                                                                              delay: 0,
-                                                                              options:.beginFromCurrentState,
-                                                                              animations: {
+            rodDownAnimation = UIViewPropertyAnimator
+                .runningPropertyAnimator(withDuration: 0.5,
+                                         delay: 0,
+                                         options:.beginFromCurrentState,
+                                         animations: {
 
-                self.fishingRod.transform = CGAffineTransform(rotationAngle: (-20.0 * .pi) / 90.0)
+                self.fishingRod.transform = CGAffineTransform(rotationAngle:
+                    (-20.0 * .pi) / 90.0)
 
             }, completion: nil)
 
@@ -363,14 +358,30 @@ class FishingViewController: UIViewController {
             }
             
             // CAlayer 屬性
-            let fishTouchX = Int((fishTouchSquare.layer.presentation()?.frame.origin.x)! + 12)
-            let fishTouchY = Int((fishTouchSquare.layer.presentation()?.frame.origin.y)! + 12)
-            let fishX = Int((fish.layer.presentation()?.frame.origin.x)!)
-            let fishY = Int((fish.layer.presentation()?.frame.origin.y)!)
+            let fishTouchX = Int((fishTouchSquare.layer
+                .presentation()?
+                .frame
+                .origin.x)! + 12)
+            
+            let fishTouchY = Int((fishTouchSquare.layer
+                .presentation()?
+                .frame
+                .origin.y)! + 12)
+            
+            let fishX = Int((fish.layer.presentation()?
+                .frame.origin.x)!)
+            
+            let fishY = Int((fish.layer.presentation()?
+                .frame.origin.y)!)
           
-            if  fishTouchX >= fishX - 40 && fishTouchY >= fishY - 20 &&
-                fishTouchX <= fishX + Int((fish.layer.presentation()?.frame.width)!) + 40 &&
-                fishTouchY <= fishY + Int((fish.layer.presentation()?.frame.height)!) + 20 {
+            if  fishTouchX >= fishX - 40 &&
+                fishTouchY >= fishY - 20 &&
+                fishTouchX <= fishX + Int((fish.layer
+                    .presentation()?
+                    .frame.width)!) + 40 &&
+                
+                fishTouchY <= fishY + Int((fish.layer
+                    .presentation()?.frame.height)!) + 20 {
 
                 self.resetAnimation()
                 self.isSucess = true
@@ -472,17 +483,21 @@ class FishingViewController: UIViewController {
         
         let updateData = ["fishingCounts": self.fishingCounts,
                           "currentFishingScore":  self.score,
-                      "fishingTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
+                      "fishingTime": FirebaseFirestore.Timestamp(date:Date())]
+            as [String : Any]
     
         FireBaseHelper.updateData(update: updateData)
     }
     
     func saveFishingRecord() {
-        let fishingRecord = ["score":self.score / 300, "source": "fishing", "time": FirebaseFirestore.Timestamp(date:Date()) ] as [String : Any]
+        let fishingRecord = ["score":self.score / 300, "source": "fishing",
+                             "time": FirebaseFirestore.Timestamp(date:Date()) ]
+            as [String : Any]
         
         FireBaseHelper.saveUserRecord(saveData: fishingRecord)
         
-        let updateData = ["totalScore": ProfileViewController.totalScore + self.score / 300] as [String : Any]
+        let updateData = ["totalScore": ProfileViewController.totalScore +
+            self.score / 300] as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
     }
