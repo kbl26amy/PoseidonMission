@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class LobbyViewController: PMBaseViewController {
     
+    var timer:Timer?
     var headerTitles = ["熱門遊戲", "每日任務"]
     var fishRankData: [RankData] = []{
         didSet{
@@ -52,7 +53,7 @@ class LobbyViewController: PMBaseViewController {
             ProfileViewController.jellyFishHighest = 0
             showRegisterButtonOutlet.isHidden = false
             showRegisterButtonOutlet.setTitle("目前尚未登入！請先登入後體驗全部功能！",
-                                                  for: .normal)
+                                              for: .normal)
             logoutOulet.isEnabled = false
             logoutOulet.tintColor = .white
             runLightViewLabel.alpha = 0
@@ -115,6 +116,27 @@ class LobbyViewController: PMBaseViewController {
         }
     }
     
+    func timerEanbled(){
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 4,
+                                          target: self,
+                                          selector: #selector(autoScroll),
+                                          userInfo: nil, repeats: true)
+    }
+
+    var x = 1
+    @objc func autoScroll() {
+       
+        if self.x < 4 {
+            let indexPath = IndexPath(item: x, section: 0)
+            self.bannerCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.x = self.x + 1
+        } else {
+            self.x = 0
+            self.bannerCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+    
     var bannerImages = ["FishingRank",
                         "JellyRank",
                         "LoginRank" ]
@@ -142,6 +164,7 @@ class LobbyViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        timerEanbled()
         setupCollectionViewLayout()
        
     }
@@ -192,6 +215,11 @@ class LobbyViewController: PMBaseViewController {
                                                        left: 0, bottom: 0, right: 0)
         self.bannerCollectionView.collectionViewLayout = cardLayout
  
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.timer?.invalidate()
     }
 
 }

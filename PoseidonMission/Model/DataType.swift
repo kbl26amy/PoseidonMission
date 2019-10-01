@@ -70,6 +70,7 @@ struct UserRecord {
 
 struct RankData {
     
+    var userId: String
     var name: String
     var highest: Int
     var photo: String?

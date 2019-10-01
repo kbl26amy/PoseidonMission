@@ -10,9 +10,6 @@ import UIKit
 
 class LobbyCollectionReusableView: UICollectionReusableView {
        
-    
     @IBOutlet weak var headerTitle: UILabel!
-    
-    
-    
+ 
 }

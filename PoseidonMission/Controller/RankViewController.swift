@@ -64,8 +64,8 @@ class RankViewController: PMBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView.startAnimating()
         
+        loadingView.startAnimating()
         
         self.rankTableView.separatorStyle = .none
       
@@ -92,16 +92,19 @@ class RankViewController: PMBaseViewController  {
     }
     
 }
-extension RankViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+extension RankViewController: UICollectionViewDelegate,
+UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+                        numberOfItemsInSection section: Int)
+        -> Int {
     
             return bannerImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
             
             let cell = rankCollectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: RankCollectionViewCell.self),
@@ -134,20 +137,26 @@ extension RankViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
 }
     
-extension RankViewController: UITableViewDelegate, UITableViewDataSource{
+extension RankViewController: UITableViewDelegate,
+UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+                   numberOfRowsInSection section: Int)
+        -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                   cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
         
         let cell = rankTableView.dequeueReusableCell(
+            
             withIdentifier: String(describing: RankTableViewCell.self),
             for: indexPath)
         
-        guard let rankCell = cell as? RankTableViewCell else { return cell }
+        guard let rankCell = cell as? RankTableViewCell
+            else { return cell }
         
         switch indexPath.section {
             
@@ -167,25 +176,31 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource{
      
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView)
+        -> Int {
         return sectionTitle.count
     }
 
     
     func tableView(_ tableView: UITableView,
-                   viewForHeaderInSection section: Int) -> UIView? {
+                   viewForHeaderInSection section: Int)
+        -> UIView? {
         
         let headerView = UIView()
         
         headerView.frame = CGRect(x: 0, y: 0,
-                                  width: tableView.frame.width, height: 40)
+                                  width: tableView.frame.width,
+                                  height: 40)
+            
         headerView.backgroundColor = UIColor.clear
         
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.darkGray
         titleLabel.text = sectionTitle[section]
         titleLabel.frame = CGRect(x: 16, y: 0,
-                                  width: tableView.frame.width, height: 40)
+                                  width: tableView.frame.width,
+                                  height: 40)
+            
         headerView.addSubview(titleLabel)
         
 //        let seeRecord = UIButton()
@@ -203,7 +218,8 @@ extension RankViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView,
-                   heightForHeaderInSection section: Int) -> CGFloat {
+                   heightForHeaderInSection section: Int)
+        -> CGFloat {
         return 40
     }
     

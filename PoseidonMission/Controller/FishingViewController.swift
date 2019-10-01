@@ -44,14 +44,12 @@ class FishingViewController: UIViewController {
     @IBOutlet weak var leftMoveButton: UIButton!
     @IBOutlet weak var rightMoveButton: UIButton!
     @IBOutlet weak var fishingLine: UIImageView!
-    
     @IBOutlet weak var sucessText: UILabel!
     @IBOutlet weak var failureText: UILabel!
-    
     @IBOutlet weak var introductionView: UIImageView!
     @IBOutlet weak var closeIntroduction: UIButton!
-    
     @IBOutlet weak var maskView: UIView!
+    
     @IBAction func startButton(_ sender: Any) {
         closeIntroduction.isHidden = true
         introductionView.isHidden = true
@@ -88,7 +86,7 @@ class FishingViewController: UIViewController {
             self.shipTrailingConstraint.constant -= 10
             self.view.layoutIfNeeded()
             }
-                }
+        }
     
         clikLeftAnimator.startAnimation()
 
@@ -101,8 +99,8 @@ class FishingViewController: UIViewController {
                                                        animations: {
             if self.shipTrailingConstraint.constant < 0 {
                 self.rightMoveButton.isHighlighted = true
-            self.shipTrailingConstraint.constant += 10
-            self.view.layoutIfNeeded()}
+                self.shipTrailingConstraint.constant += 10
+                self.view.layoutIfNeeded()}
         }, completion: nil)
         
     }
@@ -112,7 +110,8 @@ class FishingViewController: UIViewController {
         self.energyBarAnimator?.stopAnimation(true)
         self.fishingButton.isEnabled = false
         
-        for button in self.moveButtonCollection{ button.isEnabled = false
+        for button in self.moveButtonCollection{
+            button.isEnabled = false
         }
         
         if self.colorView.frame.width >= self.energyBar.frame.width * 0.9 {
@@ -136,7 +135,10 @@ class FishingViewController: UIViewController {
                 
                 self.energyTimerEanbled()
                 self.fishingButton.isEnabled = true
-                })
+                for button in self.moveButtonCollection{
+                    button.isEnabled = true
+                }
+            })
         }
  
     }
@@ -205,11 +207,12 @@ class FishingViewController: UIViewController {
         
         self.energyBar.addSubview(colorView)
         
-        energyBarAnimator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.5,
-                                                                           delay: 0,
-                                                                           options: .curveLinear,
-                                                                           animations: {
-            
+        energyBarAnimator = UIViewPropertyAnimator
+            .runningPropertyAnimator(withDuration: 1.5,
+                                     delay: 0,
+                                     options: .curveLinear,
+                                     animations: {
+                                        
             self.colorView.frame = CGRect(x: 0,
                                           y: 0,
                                           width: self.energyBar.frame.width,
@@ -328,10 +331,6 @@ class FishingViewController: UIViewController {
         self.fishsView.addSubview(fishTouchSquare)
         self.fishsView.layer.addSublayer(pathLayer)
         fishingProcess()
-        
-    }
-    
-    func fishScore() {
         
     }
     
@@ -475,7 +474,8 @@ class FishingViewController: UIViewController {
     }
     
     @objc func generateFish(){
-    fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
+        
+        fishViews.append(fishGenerater.randomElement()!.fetchFishImageView())
         self.fishsView.addSubview(fishViews.last!)
     }
     
@@ -550,7 +550,7 @@ extension FishingViewController: CAAnimationDelegate {
         saveFishingData()
         
         if self.isSucess == false {
-        fishingFailure()
+            fishingFailure()
         }
      
     }

@@ -62,27 +62,32 @@ class RankTableViewCell: UITableViewCell {
 
 }
 
-extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource{
+extension RankTableViewCell: UICollectionViewDelegate,
+UICollectionViewDataSource{
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView)
+        -> Int {
         return 2
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+                        numberOfItemsInSection section: Int)
+        -> Int {
         print(self.rankData.count)
         return self.rankData.count
     
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         
         let cell = contentCollectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: ContentCollectionViewCell.self),
             for: indexPath)
         
-        guard let contentCell = cell as? ContentCollectionViewCell else { return cell }
+        guard let contentCell = cell as? ContentCollectionViewCell
+            else { return cell }
         
             contentCell.rankNumber.text = "\(indexPath.row + 1)"
             
@@ -104,14 +109,17 @@ extension RankTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource
             contentCell.likeClosure = { cell in
             
             self.likeRecord[indexPath.row] = true
-        self.likeId.append(self.rankData[indexPath.row].name)
-                
+//            self.likeId.append(self.rankData[indexPath.row].userId)
+//            print(self.likeId)
         }
         
         if self.likeRecord[indexPath.row]{
-            contentCell.clickGoodButton.setImage(UIImage(named: "clickGood"), for: .normal)
+            contentCell.clickGoodButton.setImage(UIImage(named: "clickGood"),
+                                                 for: .normal)
+            
         } else {
-            contentCell.clickGoodButton.setImage(UIImage(named: "unClickGood"), for: .normal)
+            contentCell.clickGoodButton.setImage(UIImage(named: "unClickGood"),
+                                                 for: .normal)
         }
 
             return contentCell

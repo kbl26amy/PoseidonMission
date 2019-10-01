@@ -81,14 +81,18 @@ class JellyfishViewController: PMBaseViewController {
         var upAnimation: UIViewPropertyAnimator?
         var downAnimation: UIViewPropertyAnimator?
         
-        upAnimation = UIViewPropertyAnimator(duration: 1.9, dampingRatio: 30, animations: {
+        upAnimation = UIViewPropertyAnimator(duration: 1.9,
+                                             dampingRatio: 30,
+                                             animations: {
             animateButton.alpha = 1
             animateButton.frame.origin.y -= 50
             animateButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0 )
         })
         upAnimation?.startAnimation()
         upAnimation?.addCompletion() {_ in
-        downAnimation = UIViewPropertyAnimator(duration: 0.1, dampingRatio: 30, animations: {
+        downAnimation = UIViewPropertyAnimator(duration: 0.1,
+                                               dampingRatio: 30,
+                                               animations: {
                         animateButton.alpha = 0
                         animateButton.frame.origin.y += 50
                 })
@@ -222,7 +226,8 @@ class JellyfishViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate.interfaceOrientations = [.landscapeLeft, .landscapeRight]
+        appDelegate.interfaceOrientations = [.landscapeLeft,
+                                             .landscapeRight]
         setJellyFishView()
         isTodayJellyFish()
         
@@ -260,7 +265,8 @@ class JellyfishViewController: PMBaseViewController {
     func saveUser() {
         let updateData = ["totalScore": ProfileViewController.totalScore + self.score/1000,
                           "jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()),
-                          "jellyFishHighest":ProfileViewController.jellyFishHighest] as [String : Any]
+                          "jellyFishHighest":ProfileViewController.jellyFishHighest]
+            as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
     }
@@ -293,13 +299,12 @@ class JellyfishViewController: PMBaseViewController {
     func isTodayJellyFish() {
         if jellyFishCouldTimes == 0 {
             
-            UIAlertController
-                .showConfirm(message: "您今日已經遊玩過了！",
-                             confirm: { (_) in
-                                self.appDelegate.interfaceOrientations = .portrait
-                                self.backToRoot()
-                                          })
-
+            UIAlertController.showConfirm(message: "您今日已經遊玩過了！",
+                confirm: { (_) in
+                    self.appDelegate.interfaceOrientations = .portrait
+                    self.backToRoot()
+            })
+            
         }
         
     }

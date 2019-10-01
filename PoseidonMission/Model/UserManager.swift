@@ -132,6 +132,9 @@ class UserManager {
                 let jellyFishHighest =
                     docs[index].data()["jellyFishHighest"] as? Int
                 
+                let userId =
+                    docs[index].documentID as String
+                
                 let name =
                     docs[index].data()["userName"] as? String
                 
@@ -139,7 +142,7 @@ class UserManager {
                     docs[index].data()["photo"] as? String
                 
                 
-                self.jellyRankData.append(RankData( name: name!,
+                self.jellyRankData.append(RankData( userId: userId, name: name!,
                                                     highest: jellyFishHighest ?? 0,
                                                     photo: photo))
             }
@@ -168,13 +171,17 @@ class UserManager {
                 let fishHighest =
                     docs[index].data()["fishingHighest"] as? Int
                 
+                let userId =
+                docs[index].documentID as String
+                
                 let name =
                     docs[index].data()["userName"] as? String
                 
                 let photo =
                     docs[index].data()["photo"] as? String
                 
-                self.fishRankData.append(RankData(name: name ?? "no name",
+                self.fishRankData.append(RankData(userId: userId,
+                                                  name: name ?? "no name",
                                                 highest: fishHighest ?? 0,
                                                 photo: photo))
             }
@@ -201,13 +208,17 @@ class UserManager {
             self.loginRankData = []
             for index in docs.indices {
                 
+                let userId =
+                docs[index].documentID as String
+                
                 let loginHighest =
                     docs[index].data()["loginCounts"] as? Int
                 
                 let name =
                     docs[index].data()["userName"] as? String
                 
-                self.loginRankData.append(RankData( name: name ?? "no name",
+                self.loginRankData.append(RankData( userId: userId,
+                                                    name: name ?? "no name",
                                                    highest: loginHighest ?? 0))
             }
             
