@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIAlertController {
-    //在指定视图控制器上弹出普通消息提示框
+
     static func showAlert(message: String,
                           in viewController: UIViewController) {
         let alert = UIAlertController(title: nil,
@@ -22,7 +22,6 @@ extension UIAlertController {
         viewController.present(alert, animated: true)
     }
     
-    //在根视图控制器上弹出普通消息提示框
     static func showAlert(message: String) {
         if let viewController = UIApplication
             .shared
@@ -33,7 +32,6 @@ extension UIAlertController {
         }
     }
     
-    //在指定视图控制器上弹出确认框
     static func showConfirm(message: String,
                             in viewController: UIViewController,
                             confirm: ((UIAlertAction) -> Void)?) {
@@ -49,7 +47,6 @@ extension UIAlertController {
         viewController.present(alert, animated: true)
     }
     
-    //在根视图控制器上弹出确认框
     static func showConfirm(message: String,
                             confirm: ((UIAlertAction) -> Void)?) {
         

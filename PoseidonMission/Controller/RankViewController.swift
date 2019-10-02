@@ -163,7 +163,6 @@ UITableViewDataSource{
             
             rankCell.rankData = self.fishRankData
             rankCell.giftRecord = self.userRankData.fishGiveId
-            print("self.userRankData.fishGiveId: \(self.userRankData.fishGiveId)")
                       
             rankCell.giftClosure = { cell, giftId in
                 
@@ -182,7 +181,7 @@ UITableViewDataSource{
             
             rankCell.rankData = self.jellyRankData
             rankCell.giftRecord = self.userRankData.jellyGiveId
-            print("self.userRankData.jellyGiveId: \(self.userRankData.jellyGiveId)")
+        
             rankCell.giftClosure = { cell, giftId in
                 
                 self.jellyGiveId = giftId
