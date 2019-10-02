@@ -19,20 +19,26 @@ private enum Tab {
     
     case profile
     
+    case exchange
+    
     func controller() -> UIViewController {
         
         var controller: UIViewController
         
         switch self {
             
-        case .lobby: controller = UIStoryboard.lobby.instantiateInitialViewController()!
+        case .lobby: controller =
+            UIStoryboard.lobby.instantiateInitialViewController()!
             
         case .mission: controller = UIStoryboard.mission.instantiateInitialViewController()!
             
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
             
-        case .rank: controller = UIStoryboard.rank.instantiateInitialViewController()!
+        case .rank: controller =
+            UIStoryboard.rank.instantiateInitialViewController()!
             
+        case .exchange: controller =
+            UIStoryboard.exchange.instantiateInitialViewController()!
         }
         
         controller.tabBarItem = tabBarItem()
@@ -70,12 +76,19 @@ private enum Tab {
                 image: UIImage(named: "profile"),
                 selectedImage: UIImage(named: "profile")
             )
+            
+        case .exchange:
+            return UITabBarItem(
+                title: "兌換",
+                image: UIImage(named: "treasurebox"),
+                selectedImage: UIImage(named: "treasurebox")
+            )
         }
 }
 }
 class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
-     private let tabs: [Tab] = [.lobby, .mission, .rank, .profile]
+    private let tabs: [Tab] = [.lobby, .mission, .exchange, .rank, .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()

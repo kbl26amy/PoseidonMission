@@ -28,6 +28,9 @@ enum ImageAsset: String {
     case goodJellyfishClick
     case goodJellyfish
     
+    case paper
+    case pearl
+    
 }
 
 // swiftlint:enable identifier_name
