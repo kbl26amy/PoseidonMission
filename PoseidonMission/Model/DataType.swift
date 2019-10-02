@@ -38,7 +38,7 @@ struct UserData {
     
     var fishingTime: Timestamp?
     
-    var getGift: Int = 0
+    var getGift: Int?
     
     var jellyGiveId: [String]?
     

@@ -75,13 +75,13 @@ class UserManager {
                 doc.data()?["photo"] as? String
             
             userData.getGift =
-                doc.data()?["getGift"] as! Int
+                doc.data()?["getGift"] as? Int
             
             userData.fishGiveId =
-                doc.data()?["fishGiveId"] as! [String]?
+                doc.data()?["fishGiveId"] as? [String]
             
             userData.jellyGiveId =
-                doc.data()?["jellyGiveId"] as! [String]?
+                doc.data()?["jellyGiveId"] as? [String]
             self.user = userData
             
             completion(userData)
