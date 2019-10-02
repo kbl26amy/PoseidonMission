@@ -13,25 +13,21 @@ import NVActivityIndicatorView
 
 class RankTableViewCell: UITableViewCell {
     
-    var likeId:[String] = []
-    var likeRecord: [Bool]  = {
-        
-        var array: [Bool] = []
-        
-        for i in 0...1000 {
-            array.append(false)
+    var giveId: [String] = []
+    
+    var giftRecord: [String]? {
+        didSet{
+            contentCollectionView.reloadData()
         }
-        
-        return array
-    }()
+    }
+    
+    var giftClosure: ((RankTableViewCell, [String]) -> ())?
+    
     var rankData:[RankData] = [] {
         didSet{
             contentCollectionView.reloadData()
-            
         }
     }
-   
-    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var userRecord: UILabel!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImage: UIImageView!
@@ -44,7 +40,6 @@ class RankTableViewCell: UITableViewCell {
         return layout
     }()
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -53,13 +48,12 @@ class RankTableViewCell: UITableViewCell {
         self.contentCollectionView.collectionViewLayout = cardLayout
         
     }
-
+    
     @IBOutlet weak var contentCollectionView: UICollectionView! {
         didSet{
             self.contentCollectionView.reloadData()
         }
     }
-
 }
 
 extension RankTableViewCell: UICollectionViewDelegate,
@@ -67,65 +61,85 @@ UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView)
         -> Int {
-        return 2
+            return 2
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int)
         -> Int {
-        print(self.rankData.count)
-        return self.rankData.count
-    
+            return self.rankData.count
+            
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
-        
-        let cell = contentCollectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: ContentCollectionViewCell.self),
-            for: indexPath)
-        
-        guard let contentCell = cell as? ContentCollectionViewCell
-            else { return cell }
-        
-            contentCell.rankNumber.text = "\(indexPath.row + 1)"
             
-        contentCell.userImage.layer.cornerRadius = collectionView.frame.width / 48 * 3 
-            contentCell.userImage.layer.borderColor = .init(srgbRed: 98/255, green: 97/255, blue: 95/255, alpha: 1)
+            let cell = contentCollectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing:
+                    ContentCollectionViewCell.self),
+                for: indexPath)
+            
+            guard let contentCell = cell as? ContentCollectionViewCell
+                else { return cell }
+            
+            contentCell.rankNumber.text =
+            "\(indexPath.row + 1)"
+            
+            contentCell.userImage.layer.cornerRadius = collectionView
+                .frame
+                .width / 48 * 3
+            
+            contentCell.userImage.layer.borderColor = .init(srgbRed: 98/255,
+                                                            green: 97/255,
+                                                            blue: 95/255,
+                                                            alpha: 1)
             contentCell.userImage.layer.borderWidth = 1
+            
             contentCell.userName.text = self.rankData[indexPath.row].name
-       
+            
             contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].highest)"
-        
-        if (self.rankData[indexPath.row].photo != nil) {
-           let url = URL(string: (self.rankData[indexPath.row].photo)!)
-            contentCell.userImage.kf.setImage(with: url)
             
-        } else {
-            contentCell.userImage.image = UIImage(named: "ship")
-        }
-        
-            contentCell.likeClosure = { cell in
+            if (self.rankData[indexPath.row].photo != nil) {
+                let url = URL(string: (self.rankData[indexPath.row].photo)!)
+                contentCell.userImage.kf.setImage(with: url)
+                
+            } else {
+                contentCell.userImage.image = UIImage(named: "ship")
+            }
             
-            self.likeRecord[indexPath.row] = true
-//            self.likeId.append(self.rankData[indexPath.row].userId)
-//            print(self.likeId)
-        }
-        
-        if self.likeRecord[indexPath.row]{
-            contentCell.clickGoodButton.setImage(UIImage(named: "clickGood"),
-                                                 for: .normal)
-            
-        } else {
-            contentCell.clickGoodButton.setImage(UIImage(named: "unClickGood"),
-                                                 for: .normal)
-        }
+            contentCell.likeClosure = { [weak self] cell in
+                
+                contentCell.giftButton.isEnabled = false
+                contentCell.giftButton.setBackgroundImage(
+                    UIImage(systemName: "gift.fill"), for: .normal)
+                contentCell.giftButton.tintColor =
+                    UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                
+                guard let strongSelf = self else { return }
+                strongSelf.giveId.append(strongSelf.rankData[indexPath.row].userId)
+                
+                strongSelf.giftClosure!(strongSelf, strongSelf.giveId )
+            }
 
+            if giftRecord != nil {
+                self.giveId = giftRecord!
+                if giftRecord!.contains(rankData[indexPath.row].userId) {
+                    contentCell.giftButton.isEnabled = false
+                    contentCell.giftButton.setBackgroundImage(
+                        UIImage(systemName: "gift.fill"), for: .normal)
+                    contentCell.giftButton.tintColor =
+                        UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                } else {
+                    contentCell.giftButton.isEnabled = true
+                    contentCell.giftButton.setBackgroundImage(
+                        UIImage(systemName:
+                        "gift"), for: .normal)
+                    contentCell.giftButton.tintColor =
+                        UIColor.darkGray
+                }
+            }
             return contentCell
     }
 
-    
 }
-    
-

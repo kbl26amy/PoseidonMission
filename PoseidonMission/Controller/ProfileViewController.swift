@@ -15,12 +15,14 @@ import NVActivityIndicatorView
 
 class ProfileViewController: PMBaseViewController  {
     
+    @IBOutlet weak var giftCount: UILabel!
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
   
     var userData: UserData? {
         didSet{
             userName.text = userData?.userName
             userEmail.text = userData?.email
+            giftCount.text = "\(userData?.getGift ?? 0)"
             userTotalPoint.text = "暢遊卷： \( userData?.totalScore ?? 0)張"
             if userData?.photo != nil {
              

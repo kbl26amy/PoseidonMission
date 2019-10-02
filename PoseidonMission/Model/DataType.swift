@@ -38,6 +38,12 @@ struct UserData {
     
     var fishingTime: Timestamp?
     
+    var getGift: Int = 0
+    
+    var jellyGiveId: [String]?
+    
+    var fishGiveId: [String]?
+    
     var photo: String?
     
     init(email: String, name: String) {

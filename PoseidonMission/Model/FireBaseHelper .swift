@@ -21,7 +21,7 @@ class FireBaseHelper {
      
         db
         .collection("user")
-            .document(KeyChainManager.shared.get("userid")!)
+        .document(KeyChainManager.shared.get("userid")!)
         .getDocument { (document, error) in
             
             completion(document)
@@ -115,6 +115,21 @@ class FireBaseHelper {
             db
             .collection("user")
             .document(KeyChainManager.shared.get("userid")!)
+            .getDocument { (document, error) in
+                
+                document?.reference.updateData(update,
+                                               completion: { (error) in
+                    
+                })
+        }
+    }
+    
+    static func updateOtherData(other: String, update: [String:Any]) {
+        let db = Firestore.firestore()
+            
+            db
+            .collection("user")
+            .document(other)
             .getDocument { (document, error) in
                 
                 document?.reference.updateData(update,

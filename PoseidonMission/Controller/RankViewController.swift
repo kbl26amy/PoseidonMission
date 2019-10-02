@@ -12,7 +12,8 @@ import NVActivityIndicatorView
 
 class RankViewController: PMBaseViewController  {
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
-    
+    var fishGiveId: [String] = []
+    var jellyGiveId: [String] = []
     var userRankData = UserData(email: "", name: "") {
         didSet {
            
@@ -27,7 +28,6 @@ class RankViewController: PMBaseViewController  {
             rankTableView.dataSource = self
             rankTableView.reloadData()
             loadingView.stopAnimating()
-            print(fishRankData)
         }
     }
     var jellyRankData: [RankData] = [] {
@@ -35,7 +35,6 @@ class RankViewController: PMBaseViewController  {
             rankTableView.delegate = self
             rankTableView.dataSource = self
             rankTableView.reloadData()
-            print(jellyRankData)
         }
     }
     
@@ -75,7 +74,7 @@ class RankViewController: PMBaseViewController  {
         UserManager.shared.getUserData(completion: {data in
             guard let data = data else {return}
             self.userRankData = data
-            
+ 
             self.rankCollectionView.collectionViewLayout = self.bannerLayout
         })
         
@@ -157,23 +156,53 @@ UITableViewDataSource{
         
         guard let rankCell = cell as? RankTableViewCell
             else { return cell }
-        
+            
         switch indexPath.section {
             
         case 0 :
             
             rankCell.rankData = self.fishRankData
-            
+            rankCell.giftRecord = self.userRankData.fishGiveId
+            print("self.userRankData.fishGiveId: \(self.userRankData.fishGiveId)")
+                      
+            rankCell.giftClosure = { cell, giftId in
+                
+                self.fishGiveId = giftId
+                print("fish : \(self.fishGiveId)")
+                
+                let fishGiveIdData = ["fishGiveId": self.fishGiveId]
+                FireBaseHelper.updateData(update: fishGiveIdData)
+                let getGift = ["getGift": 1]
+                for userid in self.fishGiveId{
+                    FireBaseHelper.updateOtherData(other:
+                        userid, update: getGift)
+                }
+            }
         case 1 :
             
             rankCell.rankData = self.jellyRankData
+            rankCell.giftRecord = self.userRankData.jellyGiveId
+            print("self.userRankData.jellyGiveId: \(self.userRankData.jellyGiveId)")
+            rankCell.giftClosure = { cell, giftId in
+                
+                self.jellyGiveId = giftId
+                print("jellyfish : \(self.jellyGiveId)")
+                
+                let jellyGiveIdData = ["jellyGiveId": self.jellyGiveId]
+                FireBaseHelper.updateData(update: jellyGiveIdData)
+                let getGift = ["getGift": 1]
+                for userid in self.fishGiveId{
+                    FireBaseHelper.updateOtherData(other:
+                        userid, update: getGift)
+                }
+            }
             
         default:
             print("error")
             
         }
         return rankCell
-     
+        
     }
     
     func numberOfSections(in tableView: UITableView)
