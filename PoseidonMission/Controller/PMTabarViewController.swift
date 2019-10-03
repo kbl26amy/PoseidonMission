@@ -79,7 +79,7 @@ private enum Tab {
             
         case .exchange:
             return UITabBarItem(
-                title: "兌換",
+                title: "",
                 image: UIImage(named: "treasurebox"),
                 selectedImage: UIImage(named: "treasurebox")
             )

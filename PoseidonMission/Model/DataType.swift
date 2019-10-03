@@ -74,6 +74,16 @@ struct UserRecord {
  
 }
 
+struct ExchangeRecord {
+    
+    var time: String
+    
+    var source: String
+
+    var introduction: String
+ 
+}
+
 struct RankData {
     
     var userId: String

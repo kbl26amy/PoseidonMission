@@ -47,6 +47,23 @@ class FireBaseHelper {
                 
         }
     }
+    static func getExchangeRecord(completion:
+        @escaping (QuerySnapshot?)
+        -> Void ) {
+        
+        let db = Firestore.firestore()
+        
+        db
+            .collection("user")
+            .document(KeyChainManager.shared.get("userid")!)
+            .collection("exchanges")
+            .order(by: "time", descending: true)
+            .getDocuments { (querySnapshot, error) in
+                
+                completion(querySnapshot)
+                
+        }
+    }
     
     static func getJellyFishHighestData(completion:
         @escaping (QuerySnapshot?) -> Void ) {
@@ -107,6 +124,22 @@ class FireBaseHelper {
                 }
         }
     }
+    
+    // 添加兌換紀錄
+     static func saveExchangeRecord(saveData:[String: Any]) {
+         
+         let db = Firestore.firestore()
+             db
+             .collection("user")
+             .document(KeyChainManager.shared.get("userid")!)
+             .collection("exchanges")
+             .document()
+             .setData(saveData){ (error) in
+                 if let error = error {
+                     print(error)
+                 }
+         }
+     }
     
     //update用戶資料
     static func updateData(update: [String:Any]) {

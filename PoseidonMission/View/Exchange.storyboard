@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zVl-KN-GnI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7DU-hA-7CJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -10,7 +10,7 @@
         <!--Exchange View Controller-->
         <scene sceneID="SOg-zO-aFP">
             <objects>
-                <viewController storyboardIdentifier="ExchangeViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7DU-hA-7CJ" customClass="ExchangeViewController" customModule="波賽頓出任務" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExchangeViewController" wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7DU-hA-7CJ" customClass="ExchangeViewController" customModule="波賽頓出任務" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pWI-nl-r8w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,13 +19,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZE-4d-dOX">
-                                <rect key="frame" x="0.0" y="271" width="414" height="354"/>
+                                <rect key="frame" x="41.5" y="270.5" width="331" height="283"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eZE-4d-dOX" secondAttribute="height" multiplier="69:59" id="Oo5-jj-YyS"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消耗10張暢遊卷可兌換一次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAi-w1-klT">
+                                <rect key="frame" x="103" y="577.5" width="208.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20504570010000001" green="0.34825158119999999" blue="0.66236764189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpf-Tm-KfL">
-                                <rect key="frame" x="103.5" y="671" width="207" height="41.5"/>
+                                <rect key="frame" x="124" y="622.5" width="166" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Cpf-Tm-KfL" secondAttribute="height" multiplier="5:1" id="qgu-o0-b4v"/>
@@ -98,7 +104,7 @@
                             <constraint firstItem="d7L-Ac-dQG" firstAttribute="leading" secondItem="W4A-ry-Dy2" secondAttribute="leading" id="1Oz-2o-WFS"/>
                             <constraint firstItem="jzA-DV-0lk" firstAttribute="height" secondItem="7SK-tB-txr" secondAttribute="height" multiplier="3:5" id="1Pg-hj-gj7"/>
                             <constraint firstItem="3uM-eF-iH0" firstAttribute="centerX" secondItem="d7L-Ac-dQG" secondAttribute="centerX" id="1cp-QK-kfk"/>
-                            <constraint firstItem="eZE-4d-dOX" firstAttribute="width" secondItem="W4A-ry-Dy2" secondAttribute="width" id="3iy-2w-4G5"/>
+                            <constraint firstItem="eZE-4d-dOX" firstAttribute="width" secondItem="W4A-ry-Dy2" secondAttribute="width" multiplier="4:5" id="3iy-2w-4G5"/>
                             <constraint firstItem="7SK-tB-txr" firstAttribute="top" secondItem="pWI-nl-r8w" secondAttribute="top" id="5s7-HL-gNV"/>
                             <constraint firstItem="3uM-eF-iH0" firstAttribute="width" secondItem="d7L-Ac-dQG" secondAttribute="width" multiplier="1:2" id="6aF-qY-KFh"/>
                             <constraint firstItem="Yhu-3d-sXA" firstAttribute="top" secondItem="q3n-TW-dqn" secondAttribute="bottom" constant="24" id="8Wd-X1-ln1"/>
@@ -107,8 +113,9 @@
                             <constraint firstItem="7SK-tB-txr" firstAttribute="leading" secondItem="W4A-ry-Dy2" secondAttribute="leading" id="HLz-bF-a30"/>
                             <constraint firstItem="7SK-tB-txr" firstAttribute="leading" secondItem="2ab-B4-IJw" secondAttribute="leading" constant="-24" id="IsI-4D-E33"/>
                             <constraint firstItem="q3n-TW-dqn" firstAttribute="centerX" secondItem="pWI-nl-r8w" secondAttribute="centerX" id="JHF-HZ-Vdn"/>
-                            <constraint firstItem="eZE-4d-dOX" firstAttribute="centerY" secondItem="pWI-nl-r8w" secondAttribute="centerY" id="LKa-84-qv0"/>
+                            <constraint firstItem="eZE-4d-dOX" firstAttribute="centerY" secondItem="pWI-nl-r8w" secondAttribute="centerY" constant="-36" id="LKa-84-qv0"/>
                             <constraint firstItem="eZE-4d-dOX" firstAttribute="centerX" secondItem="pWI-nl-r8w" secondAttribute="centerX" id="M76-Sv-529"/>
+                            <constraint firstItem="pAi-w1-klT" firstAttribute="centerX" secondItem="pWI-nl-r8w" secondAttribute="centerX" id="OZx-jn-Gob"/>
                             <constraint firstItem="jzA-DV-0lk" firstAttribute="trailing" secondItem="W4A-ry-Dy2" secondAttribute="trailing" id="Od2-F6-ugN"/>
                             <constraint firstItem="Cpf-Tm-KfL" firstAttribute="centerX" secondItem="W4A-ry-Dy2" secondAttribute="centerX" id="OyG-wP-GGy"/>
                             <constraint firstItem="jzA-DV-0lk" firstAttribute="centerY" secondItem="pWI-nl-r8w" secondAttribute="centerY" id="TDT-tw-oLM"/>
@@ -119,7 +126,7 @@
                             <constraint firstItem="7SK-tB-txr" firstAttribute="trailing" secondItem="W4A-ry-Dy2" secondAttribute="trailing" id="XfJ-RX-tyb"/>
                             <constraint firstItem="q3n-TW-dqn" firstAttribute="top" secondItem="tKh-ky-nTs" secondAttribute="bottom" constant="24" id="Yr9-gp-XA4"/>
                             <constraint firstItem="d7L-Ac-dQG" firstAttribute="top" secondItem="pWI-nl-r8w" secondAttribute="top" id="ZOb-6w-lVv"/>
-                            <constraint firstItem="Cpf-Tm-KfL" firstAttribute="top" secondItem="eZE-4d-dOX" secondAttribute="bottom" constant="46" id="bEf-rP-Z3J"/>
+                            <constraint firstItem="Cpf-Tm-KfL" firstAttribute="top" secondItem="pAi-w1-klT" secondAttribute="bottom" constant="24" id="bEf-rP-Z3J"/>
                             <constraint firstItem="tKh-ky-nTs" firstAttribute="centerX" secondItem="q3n-TW-dqn" secondAttribute="centerX" id="cHj-zj-onu"/>
                             <constraint firstItem="q3n-TW-dqn" firstAttribute="centerY" secondItem="pWI-nl-r8w" secondAttribute="centerY" id="dpI-gc-5bb"/>
                             <constraint firstItem="jzA-DV-0lk" firstAttribute="leading" secondItem="W4A-ry-Dy2" secondAttribute="leading" id="fml-o9-bV5"/>
@@ -129,15 +136,16 @@
                             <constraint firstItem="d7L-Ac-dQG" firstAttribute="trailing" secondItem="W4A-ry-Dy2" secondAttribute="trailing" id="rkc-qc-Ord"/>
                             <constraint firstItem="7SK-tB-txr" firstAttribute="top" secondItem="2ab-B4-IJw" secondAttribute="top" constant="-36" id="uKm-o0-nht"/>
                             <constraint firstItem="Yhu-3d-sXA" firstAttribute="centerX" secondItem="pWI-nl-r8w" secondAttribute="centerX" id="z1k-sE-vJZ"/>
+                            <constraint firstItem="pAi-w1-klT" firstAttribute="top" secondItem="eZE-4d-dOX" secondAttribute="bottom" constant="24" id="zDa-HB-GsV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W4A-ry-Dy2"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vDd-bg-vcY"/>
                     <connections>
                         <outlet property="background" destination="7SK-tB-txr" id="6Yl-o3-qWa"/>
                         <outlet property="coinView" destination="jzA-DV-0lk" id="UYa-W9-l6U"/>
                         <outlet property="exchangeButton" destination="Cpf-Tm-KfL" id="E9S-Pm-lNj"/>
                         <outlet property="exchangeCouponLabel" destination="Hqe-wU-4zO" id="jsX-c9-n03"/>
+                        <outlet property="exchangeLabel" destination="pAi-w1-klT" id="0OX-hl-JmM"/>
                         <outlet property="getRewardButton" destination="3uM-eF-iH0" id="bdR-OR-009"/>
                         <outlet property="introductionLabel" destination="Yhu-3d-sXA" id="t1J-xP-Fcb"/>
                         <outlet property="maskView" destination="d7L-Ac-dQG" id="9PR-To-M8a"/>
@@ -149,24 +157,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9R-ng-p3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="795.6521739130435" y="65.625"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cAm-yO-IvD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zVl-KN-GnI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UjS-88-PD7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7DU-hA-7CJ" kind="relationship" relationship="rootViewController" id="bY7-ZC-F7v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xhw-aQ-vak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-114.49275362318842" y="65.625"/>
         </scene>
     </scenes>
     <resources>

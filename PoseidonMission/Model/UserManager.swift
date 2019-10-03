@@ -13,6 +13,7 @@ class UserManager {
     
     var user: UserData?
     var userRecord: [UserRecord] = []
+    var exchangeRecord: [ExchangeRecord] = []
     var fishRankData:[RankData] = []
     var jellyRankData:[RankData] = []
     var loginRankData:[RankData] = []
@@ -121,6 +122,37 @@ class UserManager {
             
         })
     }
+    
+    func getExchangeRecord(completion: @escaping ([ExchangeRecord]?) -> Void) {
+           
+           FireBaseHelper.getExchangeRecord(completion: { querySnapshot in
+               
+               guard let docs = querySnapshot?.documents else {
+                       
+                       print("error")
+                       
+                       completion(nil)
+                       
+                       return
+               }
+               
+               self.exchangeRecord = []
+               
+               // 0..< docs.count
+               for index in docs.indices {
+                 
+                   let source = docs[index].data()["item"] as! String
+                   let introduction = docs[index].data()["introduction"] as! String
+                   let time = docs[index].data()["time"] as! Timestamp
+                   let playTime = DateManager.timeStampToString(date: time, text: "yyyy-MM-dd HH:mm:ss")
+           
+                self.exchangeRecord.append(ExchangeRecord(time: playTime, source: source, introduction: introduction))
+               }
+               
+               completion(self.exchangeRecord)
+               
+           })
+       }
     
     func getJellyHighestData(completion: @escaping ([RankData]?) -> Void) {
         
