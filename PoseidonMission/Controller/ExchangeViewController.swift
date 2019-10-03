@@ -11,6 +11,11 @@ import Firebase
 
 class ExchangeViewController: PMBaseViewController {
 
+    var rewardPics = RewardGroup( item: [
+         Rewards.coupon,
+         Rewards.pearl
+     ])
+    
     @IBOutlet weak var exchangeLabel: UILabel!
     @IBOutlet weak var exchangeCouponLabel: UILabel!
     @IBOutlet weak var getRewardButton: UIButton!
@@ -27,10 +32,6 @@ class ExchangeViewController: PMBaseViewController {
     }
     @IBOutlet weak var introductionLabel: UILabel!
     @IBOutlet weak var rewardLabel: UILabel!
-    var rewardPics = RewardGroup( item: [
-        Rewards.coupon,
-        Rewards.pearl
-    ])
     @IBOutlet weak var maskView: UIView!
     @IBOutlet weak var resultView: UIImageView!
     @IBOutlet weak var coinView: UIImageView!
@@ -145,5 +146,4 @@ class ExchangeViewController: PMBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
            self.tabBarController?.tabBar.isHidden = false
        }
-    
 }

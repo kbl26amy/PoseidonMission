@@ -90,18 +90,34 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     private let tabs: [Tab] = [.lobby, .mission, .exchange, .rank, .profile]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        viewControllers = tabs.map({ $0.controller() })
+     override func viewDidLoad() {
+          super.viewDidLoad()
+          
+          viewControllers = tabs.map({ $0.controller() })
  
-        UITabBar.appearance().barTintColor = UIColor(red: 131.0/255.0,
-                                                     green: 211.0/255.0,
-                                                     blue: 222.0/255.0,
-                                                     alpha: 1.0)
-
-        delegate = self
-    }
+          UITabBar.appearance().barTintColor =
+               UIColor(red: 131.0/255.0,
+                       green: 211.0/255.0,
+                       blue: 222.0/255.0,
+                       alpha: 1.0)
+          middleTabItemBackground()
+          
+          delegate = self
+     }
+     
+     func middleTabItemBackground() {
+          let bgColor = UIColor(red: 0.08, green: 0.726, blue: 0.702, alpha: 1.0)
+          
+          let bgView = UIView(frame:
+               CGRect(x: Int(tabBar.frame.width) / 2
+                    - Int(tabBar.frame.height) / 2,
+                      y: 0,
+                      width: Int(tabBar.frame.height),
+                      height: Int(tabBar.frame.height)))
+          bgView.backgroundColor = bgColor
+          bgView.layer.cornerRadius = CGFloat(Int(tabBar.frame.height) / 2)
+          tabBar.insertSubview(bgView, at: 0)
+     }
     
     func tabBarController(_ tabBarController: UITabBarController,
                           shouldSelect viewController: UIViewController) -> Bool {

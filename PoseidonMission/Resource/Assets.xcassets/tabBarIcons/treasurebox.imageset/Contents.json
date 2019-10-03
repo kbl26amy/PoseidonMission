@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Icons_36px_treasure.png",
+      "filename" : "Icons_36px_treasure-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icons_36px_treasure@2x.png",
+      "filename" : "Icons_36px_treasure@2x-2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icons_36px_treasure@3x-2.png",
+      "filename" : "Icons_36px_treasure@3x-2-2.png",
       "scale" : "3x"
     }
   ],
