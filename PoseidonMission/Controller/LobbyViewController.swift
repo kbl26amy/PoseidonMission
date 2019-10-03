@@ -12,7 +12,7 @@ import FirebaseAuth
 class LobbyViewController: PMBaseViewController {
     
     var timer:Timer?
-    var headerTitles = ["熱門遊戲", "每日任務"]
+    var headerTitles = ["熱門推薦", "每日任務"]
     var fishRankData: [RankData] = []{
         didSet{
         runLightViewLabel.text =
