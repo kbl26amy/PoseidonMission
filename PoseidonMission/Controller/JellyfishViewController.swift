@@ -251,11 +251,11 @@ class JellyfishViewController: PMBaseViewController {
             
             if user?.jellyFishHighest != nil {
                 if self.score > (user?.jellyFishHighest)! {
-                    ProfileViewController.jellyFishHighest = self.score
+                    UserManager.jellyFishHighest = self.score
                     self.saveUser()
                 }
             }else {
-                ProfileViewController.jellyFishHighest = self.score
+                UserManager.jellyFishHighest = self.score
                 self.saveUser()
             }
         })
@@ -263,9 +263,9 @@ class JellyfishViewController: PMBaseViewController {
     }
     
     func saveUser() {
-        let updateData = ["totalScore": ProfileViewController.totalScore + self.score/1000,
+        let updateData = ["totalScore": UserManager.totalScore + self.score/1000,
                           "jellyFishPlayTime": FirebaseFirestore.Timestamp(date:Date()),
-                          "jellyFishHighest":ProfileViewController.jellyFishHighest]
+                          "jellyFishHighest":UserManager.jellyFishHighest]
             as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
@@ -276,7 +276,7 @@ class JellyfishViewController: PMBaseViewController {
         UserManager.shared.getUserData(completion:  { user in
         
             if user?.totalScore != nil {
-                ProfileViewController.totalScore = user!.totalScore!
+                UserManager.totalScore = user!.totalScore!
             }
                   
             if user?.jellyFishPlayTime != nil {

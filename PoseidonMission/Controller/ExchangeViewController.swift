@@ -13,7 +13,9 @@ class ExchangeViewController: PMBaseViewController {
 
     var rewardPics = RewardGroup( item: [
          Rewards.coupon,
-         Rewards.pearl
+         Rewards.pearl,
+         Rewards.seaweed,
+         Rewards.bottle
      ])
     
     @IBOutlet weak var exchangeLabel: UILabel!
@@ -47,7 +49,7 @@ class ExchangeViewController: PMBaseViewController {
     @IBOutlet weak var exchangeButton: UIButton!
     
     @IBAction func exchangeAction(_ sender: Any) {
-        if ProfileViewController.totalScore >= 10 {
+        if UserManager.totalScore >= 10 {
             
             self.coinView.alpha = 1
             var coinAnimation: UIViewPropertyAnimator?
@@ -88,15 +90,15 @@ class ExchangeViewController: PMBaseViewController {
         self.getRewardButton.alpha = 1
         self.getRewardButton.layer.cornerRadius = 15
         
-        ProfileViewController.totalScore -= 10
-        self.exchangeCouponLabel.text = "暢遊卷：\(ProfileViewController.totalScore)張"
+        UserManager.totalScore -= 10
+        self.exchangeCouponLabel.text = "暢遊卷：\(UserManager.totalScore)張"
         
         let reward = self.rewardPics.item.randomElement()
         self.resultView.image = reward?.image!
         self.rewardLabel.text = "恭喜你獲得\(reward!.title)"
         self.introductionLabel.text = reward?.introduction
         
-        let scoreData = ["totalScore":ProfileViewController.totalScore]
+        let scoreData = ["totalScore":UserManager.totalScore]
         FireBaseHelper.updateData(update: scoreData)
         
         let exchangeData = ["item": reward?.title as Any,
@@ -128,13 +130,13 @@ class ExchangeViewController: PMBaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.layoutIfNeeded()
-        self.tabBarController?.tabBar.isHidden = true
         
+        self.tabBarController?.tabBar.isHidden = true
+        view.layoutIfNeeded()
         UserManager.shared.getUserData(completion:  { user in
             
             if user?.totalScore != nil {
-                ProfileViewController.totalScore = user!.totalScore!
+                UserManager.totalScore = user!.totalScore!
                 self.exchangeCouponLabel.text = "暢遊卷：\(user?.totalScore ?? 0)張"
             }else {
                 self.exchangeCouponLabel.text = "暢遊卷：0張"

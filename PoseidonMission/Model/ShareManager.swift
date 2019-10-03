@@ -74,7 +74,7 @@ class ShareManager {
             as [String : Any]
         FireBaseHelper.saveUserRecord(saveData: loginRecord)
         
-        let updateData = ["totalScore": ProfileViewController.totalScore + 2 ,
+        let updateData = ["totalScore": UserManager.totalScore + 2 ,
                           "shareTime": FirebaseFirestore.Timestamp(date:Date())]
             as [String : Any]
         

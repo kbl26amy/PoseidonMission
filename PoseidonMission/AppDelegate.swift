@@ -47,11 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserManager.shared.getUserData(completion: {user in
 
             if user?.totalScore != nil {
-                ProfileViewController.totalScore = user!.totalScore!
+                UserManager.totalScore = user!.totalScore!
             }
 
             if user?.loginCounts != nil {
-                ProfileViewController.loginCounts = user!.loginCounts!
+                UserManager.loginCounts = user!.loginCounts!
             }
         })
         }

@@ -126,10 +126,10 @@ class ProfileViewController: PMBaseViewController  {
         }
     }
     
-    static var totalScore: Int = 0
-    static var jellyFishHighest: Int = 0
-    static var fishingHighest: Int = 0
-    static var loginCounts: Int = 0
+//    static var totalScore: Int = 0
+//    static var jellyFishHighest: Int = 0
+//    static var fishingHighest: Int = 0
+//    static var loginCounts: Int = 0
     
     var selectedImageFromPicker: UIImage?
     @IBOutlet weak var userImage: UIImageView!
@@ -237,6 +237,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             switch exchangeRecordData?[indexPath.row].source {
             case Rewards.pearl.title: image = Rewards.pearl.image
             case Rewards.coupon.title: image = Rewards.coupon.image
+            case Rewards.seaweed.title: image = Rewards.seaweed.image
+            case Rewards.bottle.title: image = Rewards.bottle.image
             case .none: image = Rewards.pearl.image
             case .some(_): image = Rewards.pearl.image
                 

@@ -12,6 +12,7 @@ import FirebaseAuth
 import AuthenticationServices
 
 class AuthViewController: PMBaseViewController {
+    @IBOutlet weak var versionLabel: UILabel!
     
     var userNameView = UIImageView()
     var userNameTextfield = UITextField()
@@ -32,6 +33,17 @@ class AuthViewController: PMBaseViewController {
         self.userNameTextfield.isHidden = true
         self.loginButton.isHidden = false
         self.goBackButton.isHidden = true
+    }
+    
+    func appVersion() {
+        let infoDictionary = Bundle.main.infoDictionary
+        
+        let majorVersion :String? = infoDictionary? ["CFBundleShortVersionString"] as? String
+
+        let minorVersion :String? = infoDictionary? ["CFBundleVersion"] as? String 
+
+        let appversion = (majorVersion ?? "") + (minorVersion ?? "")
+        self.versionLabel.text = "版本號：\(appversion)"
     }
     func showAppleSignIn() {
         let appleButton = ASAuthorizationAppleIDButton()
@@ -102,7 +114,7 @@ class AuthViewController: PMBaseViewController {
         showAppleSignIn()
         emailTextField.placeholder = "Email Adress"
         passwordTextField.placeholder = "Password"
-        
+        appVersion()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -220,11 +232,11 @@ class AuthViewController: PMBaseViewController {
                     UserManager.shared.getUserData(completion: {user in
                         
                         if user?.totalScore != nil {
-                            ProfileViewController.totalScore = user!.totalScore!
+                            UserManager.totalScore = user!.totalScore!
                         }
                         
                         if user?.loginCounts != nil {
-                            ProfileViewController.loginCounts = user!.loginCounts!
+                            UserManager.loginCounts = user!.loginCounts!
                         }
                     })
                     

@@ -113,13 +113,21 @@
                                     <action selector="goBackToLogin:" destination="2FU-mD-kaa" eventType="touchUpInside" id="4HC-vG-nFe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="版本號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjE-dm-fwR">
+                                <rect key="frame" x="317" y="44" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RQV-1Q-H1E" firstAttribute="leading" secondItem="fXq-Ru-IL6" secondAttribute="trailing" id="0xc-tL-86y"/>
+                            <constraint firstItem="VjE-dm-fwR" firstAttribute="centerY" secondItem="IYM-lC-oca" secondAttribute="centerY" id="2pO-9D-hOB"/>
                             <constraint firstItem="eHh-I8-y2J" firstAttribute="centerX" secondItem="VDF-mK-SUM" secondAttribute="centerX" id="3g0-4q-0h8"/>
                             <constraint firstItem="Nkx-RD-1Ha" firstAttribute="height" secondItem="4ys-X7-Rzq" secondAttribute="height" id="4aV-rH-GQr"/>
                             <constraint firstItem="eHh-I8-y2J" firstAttribute="leading" secondItem="FY7-0I-zHW" secondAttribute="leading" constant="80" id="51Q-Ji-IoM"/>
+                            <constraint firstItem="VjE-dm-fwR" firstAttribute="trailing" secondItem="1x7-C0-bDh" secondAttribute="trailing" constant="-24" id="61u-bh-qOf"/>
                             <constraint firstAttribute="bottom" secondItem="1x7-C0-bDh" secondAttribute="bottom" id="6Kx-W2-HqB"/>
                             <constraint firstItem="eoo-xa-Pxd" firstAttribute="trailing" secondItem="jkr-6y-Ni4" secondAttribute="trailing" constant="-24" id="7R3-ty-AVR"/>
                             <constraint firstItem="4ys-X7-Rzq" firstAttribute="height" secondItem="EgA-Hu-YGH" secondAttribute="height" id="7v5-nO-mMf"/>
@@ -174,6 +182,7 @@
                         <outlet property="passwordTextField" destination="55X-3t-PM5" id="LCd-5I-C4R"/>
                         <outlet property="registerButtonLayout" destination="Nkx-RD-1Ha" id="ATk-K3-xez"/>
                         <outlet property="treasureView" destination="eHh-I8-y2J" id="SXi-Nb-aSp"/>
+                        <outlet property="versionLabel" destination="VjE-dm-fwR" id="huJ-XJ-iFR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmt-NT-tIT" userLabel="First Responder" sceneMemberID="firstResponder"/>

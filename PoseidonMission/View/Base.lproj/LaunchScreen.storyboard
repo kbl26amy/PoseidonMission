@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +24,12 @@
                                     <constraint firstAttribute="width" secondItem="fUn-EQ-5Vf" secondAttribute="height" multiplier="39:40" id="8Y7-wf-ZwP"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed by Freepik &amp; pngtree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVa-gJ-yZx">
+                                <rect key="frame" x="119.5" y="857.5" width="175" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -33,9 +37,11 @@
                             <constraint firstAttribute="bottom" secondItem="2SZ-U8-7tF" secondAttribute="bottom" id="8qy-3W-XcR"/>
                             <constraint firstItem="fUn-EQ-5Vf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Eaw-Jg-9Xs"/>
                             <constraint firstItem="2SZ-U8-7tF" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Nw0-dD-unw"/>
+                            <constraint firstItem="XVa-gJ-yZx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Uh4-SC-DoY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2SZ-U8-7tF" secondAttribute="trailing" id="XZ6-Wf-lbd"/>
                             <constraint firstItem="fUn-EQ-5Vf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aXr-fb-oYQ"/>
                             <constraint firstItem="fUn-EQ-5Vf" firstAttribute="height" secondItem="2SZ-U8-7tF" secondAttribute="height" multiplier="1:3" id="cvs-Qm-wyK"/>
+                            <constraint firstItem="XVa-gJ-yZx" firstAttribute="bottom" secondItem="2SZ-U8-7tF" secondAttribute="bottom" constant="-24" id="sb0-Sa-bch"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

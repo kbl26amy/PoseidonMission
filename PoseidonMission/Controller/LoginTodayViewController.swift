@@ -53,7 +53,7 @@ class LoginTodayViewController: UIViewController {
                     self.saveLoginData()
                     self.loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
                     self.loginTextMessage.numberOfLines = 0
-                    self.loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts + 1) 天"
+                    self.loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(UserManager.loginCounts + 1) 天"
                     
                 }
             } else {
@@ -61,7 +61,7 @@ class LoginTodayViewController: UIViewController {
                 self.loginTextMessage.lineBreakMode = NSLineBreakMode.byWordWrapping
                 
                 self.loginTextMessage.numberOfLines = 0
-                self.loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(ProfileViewController.loginCounts + 1) 天"
+                self.loginTextMessage.text = " 成功簽到 + 2 暢遊卷 \n 已累積簽到 \(UserManager.loginCounts + 1) 天"
             }
         })
     }
@@ -73,7 +73,7 @@ class LoginTodayViewController: UIViewController {
     
         var bonus = 0
         
-        switch ProfileViewController.loginCounts {
+        switch UserManager.loginCounts {
         case 2:
             bonus = 2
         case 6:
@@ -86,8 +86,8 @@ class LoginTodayViewController: UIViewController {
             bonus = 0
         }
 
-        let updateData = ["totalScore": ProfileViewController.totalScore + 2 + bonus,
-                          "loginCounts": ProfileViewController.loginCounts + 1,
+        let updateData = ["totalScore": UserManager.totalScore + 2 + bonus,
+                          "loginCounts": UserManager.loginCounts + 1,
                           "loginTodayTime": FirebaseFirestore.Timestamp(date:Date())] as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)

@@ -46,11 +46,11 @@ class LobbyViewController: PMBaseViewController {
         print("logout")
         if KeyChainManager.shared.get("userid") != nil {
             KeyChainManager.shared.delete("userid")
-            ProfileViewController.totalScore = 0
-            ProfileViewController.loginCounts = 0
+            UserManager.totalScore = 0
+            UserManager.loginCounts = 0
                     
-            ProfileViewController.fishingHighest = 0
-            ProfileViewController.jellyFishHighest = 0
+            UserManager.fishingHighest = 0
+            UserManager.jellyFishHighest = 0
             showRegisterButtonOutlet.isHidden = false
             showRegisterButtonOutlet.setTitle("目前尚未登入！請先登入後體驗全部功能！",
                                               for: .normal)
@@ -172,17 +172,17 @@ class LobbyViewController: PMBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewwillappear")
-        UserManager.shared.getFishHighestData(completion: {data in
+        RankManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
             self.fishRankData = data
             
         })
-        UserManager.shared.getJellyHighestData(completion: {data in
+        RankManager.shared.getJellyHighestData(completion: {data in
             guard let data = data else {return}
             self.jellyRankData = data
             
         })
-        UserManager.shared.getLoginHighestData(completion: {data in
+        RankManager.shared.getLoginHighestData(completion: {data in
             guard let data = data else {return}
             self.loginRankData = data
             print(self.loginRankData)

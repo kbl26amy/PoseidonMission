@@ -177,7 +177,7 @@ extension MapViewController: ScratchCardDelegate {
         guard let data = data else {return}
                
         if data.totalScore != nil {
-               ProfileViewController.totalScore =
+               UserManager.totalScore =
                    data.totalScore!}
                  
            if data.mapPlayTime != nil {
@@ -236,7 +236,7 @@ extension MapViewController: ScratchCardDelegate {
     }
     func updateMapData() {
         
-        let updateData = ["totalScore": ProfileViewController.totalScore + 2,
+        let updateData = ["totalScore": UserManager.totalScore + 2,
                           "mapPlayTime": FirebaseFirestore.Timestamp(date:Date())]
             as [String : Any]
         

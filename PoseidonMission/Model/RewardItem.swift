@@ -28,12 +28,20 @@ enum Rewards: RewardItem {
 
     case pearl
     
+    case seaweed
+    
+    case bottle
+    
     var introduction: String {
         switch self {
 
         case .coupon: return "波賽頓的詔書，似乎有什麼秘密？"
 
         case .pearl: return "精緻美麗的珍珠，值得收藏！"
+            
+        case .seaweed: return "隨處可見的海草，毫無用處。"
+            
+        case .bottle: return "裝著信紙的漂流瓶，找不到寄件人。"
         }
     }
     
@@ -43,6 +51,10 @@ enum Rewards: RewardItem {
         case .coupon: return UIImage.asset(.paper)
 
         case .pearl: return UIImage.asset(.pearl)
+       
+        case .seaweed: return UIImage.asset(.seaweed)
+            
+            case .bottle: return UIImage.asset(.bottle)
         }
     }
     
@@ -52,6 +64,11 @@ enum Rewards: RewardItem {
         case .coupon: return "神秘詔書"
 
         case .pearl: return "精緻珍珠"
+            
+        case .seaweed: return "海草"
+            
+        case .bottle: return "漂流瓶"
+            
         }
     }
     

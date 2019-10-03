@@ -30,6 +30,8 @@ enum ImageAsset: String {
     
     case paper
     case pearl
+    case seaweed
+    case bottle
     
 }
 

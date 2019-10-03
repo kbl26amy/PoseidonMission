@@ -149,15 +149,15 @@ class FishingViewController: UIViewController {
             
             if user?.fishingHighest != nil {
                 if self.score > (user?.fishingHighest)! {
-                    ProfileViewController.fishingHighest = self.score
+                    UserManager.fishingHighest = self.score
                     
                 }
             }else {
-                ProfileViewController.fishingHighest = self.score
+                UserManager.fishingHighest = self.score
             }
         })
 
-        let updateData = ["fishingHighest": ProfileViewController.fishingHighest]
+        let updateData = ["fishingHighest": UserManager.fishingHighest]
             as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
@@ -497,7 +497,7 @@ class FishingViewController: UIViewController {
         
         FireBaseHelper.saveUserRecord(saveData: fishingRecord)
         
-        let updateData = ["totalScore": ProfileViewController.totalScore +
+        let updateData = ["totalScore": UserManager.totalScore +
             self.score / 300] as [String : Any]
         
         FireBaseHelper.updateData(update: updateData)
