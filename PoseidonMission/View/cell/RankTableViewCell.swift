@@ -13,15 +13,14 @@ import NVActivityIndicatorView
 
 class RankTableViewCell: UITableViewCell {
     
-    var giveId: [String] = []
-    
-    var giftRecord: [String]? {
-        didSet{
-            contentCollectionView.reloadData()
+    var currentId = ""
+    var giveId: [String] = [] {
+            didSet{
+                contentCollectionView.reloadData()
+            }
         }
-    }
-    
-    var giftClosure: ((RankTableViewCell, [String]) -> ())?
+ 
+    var giftClosure: ((ContentCollectionViewCell, [String], String) -> ())?
     
     var rankData:[RankData] = [] {
         didSet{
@@ -45,7 +44,7 @@ class RankTableViewCell: UITableViewCell {
         
         contentCollectionView.delegate = self
         contentCollectionView.dataSource = self
-        self.contentCollectionView.collectionViewLayout = cardLayout
+    self.contentCollectionView.collectionViewLayout = cardLayout
         
     }
     
@@ -119,12 +118,14 @@ UICollectionViewDataSource{
                 guard let strongSelf = self else { return }
                 strongSelf.giveId.append(strongSelf.rankData[indexPath.row].userId)
                 
-                strongSelf.giftClosure!(strongSelf, strongSelf.giveId )
+                strongSelf.currentId = strongSelf.rankData[indexPath.row].userId
+                
+                strongSelf.giftClosure!(contentCell, strongSelf.giveId, strongSelf.currentId )
             }
 
-            if giftRecord != nil {
-                self.giveId = giftRecord!
-                if giftRecord!.contains(rankData[indexPath.row].userId) {
+            if giveId != [] {
+               
+                if giveId.contains(rankData[indexPath.row].userId) {
                     contentCell.giftButton.isEnabled = false
                     contentCell.giftButton.setBackgroundImage(
                         UIImage(systemName: "gift.fill"), for: .normal)
@@ -138,6 +139,13 @@ UICollectionViewDataSource{
                     contentCell.giftButton.tintColor =
                         UIColor.darkGray
                 }
+            } else {
+                contentCell.giftButton.isEnabled = true
+                contentCell.giftButton.setBackgroundImage(
+                    UIImage(systemName:
+                    "gift"), for: .normal)
+                contentCell.giftButton.tintColor =
+                    UIColor.darkGray
             }
             return contentCell
     }

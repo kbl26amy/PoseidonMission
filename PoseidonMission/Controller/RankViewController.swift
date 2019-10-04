@@ -16,8 +16,10 @@ class RankViewController: PMBaseViewController  {
     var jellyGiveId: [String] = []
     var userRankData = UserData(email: "", name: "") {
         didSet {
-           
+            rankTableView.delegate = self
+            rankTableView.dataSource = self
             rankCollectionView.reloadData()
+            rankTableView.reloadData()
             print(userRankData)
         }
     }
@@ -71,6 +73,7 @@ class RankViewController: PMBaseViewController  {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         UserManager.shared.getUserData(completion: {data in
             guard let data = data else {return}
             self.userRankData = data
@@ -108,7 +111,8 @@ UICollectionViewDataSource {
             let cell = rankCollectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: RankCollectionViewCell.self),
                 for: indexPath)
-            guard let bannerCell = cell as? RankCollectionViewCell else { return cell }
+            guard let bannerCell = cell as? RankCollectionViewCell
+                else { return cell }
         
             bannerCell.layer.cornerRadius = 6.0
             bannerCell.layer.borderWidth = 1.0
@@ -162,38 +166,82 @@ UITableViewDataSource{
         case 0 :
             
             rankCell.rankData = self.fishRankData
-            rankCell.giftRecord = self.userRankData.fishGiveId
+            rankCell.giveId = self.userRankData.fishGiveId ?? []
                       
-            rankCell.giftClosure = { cell, giftId in
+            rankCell.giftClosure = { cell, giftId, singleId in
                 
                 self.fishGiveId = giftId
                 print("fish : \(self.fishGiveId)")
                 
+                if rankCell.giveId != [] {
+                             
+                    if rankCell.giveId.contains(self.fishRankData[indexPath.row].userId) {
+                                  cell.giftButton.isEnabled = false
+                                  cell.giftButton.setBackgroundImage(
+                                      UIImage(systemName: "gift.fill"), for: .normal)
+                                  cell.giftButton.tintColor =
+                                      UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                              } else {
+                                  cell.giftButton.isEnabled = true
+                                  cell.giftButton.setBackgroundImage(
+                                      UIImage(systemName:
+                                      "gift"), for: .normal)
+                                  cell.giftButton.tintColor =
+                                      UIColor.darkGray
+                              }
+                } else {
+                    cell.giftButton.isEnabled = true
+                    cell.giftButton.setBackgroundImage(
+                        UIImage(systemName:
+                        "gift"), for: .normal)
+                    cell.giftButton.tintColor =
+                        UIColor.darkGray
+                }
+                
+            
                 let fishGiveIdData = ["fishGiveId": self.fishGiveId]
                 FireBaseHelper.updateData(update: fishGiveIdData)
-                let getGift = ["getGift": 1]
-                for userid in self.fishGiveId{
-                    FireBaseHelper.updateOtherData(other:
-                        userid, update: getGift)
-                }
+                FireBaseHelper.updateOtherData(other: singleId)
+                
             }
         case 1 :
             
             rankCell.rankData = self.jellyRankData
-            rankCell.giftRecord = self.userRankData.jellyGiveId
+            rankCell.giveId = self.userRankData.jellyGiveId ?? []
         
-            rankCell.giftClosure = { cell, giftId in
+            rankCell.giftClosure = { cell, giftId, singleId in
                 
                 self.jellyGiveId = giftId
                 print("jellyfish : \(self.jellyGiveId)")
                 
+                if rankCell.giveId != [] {
+                         
+                if rankCell.giveId.contains(self.jellyRankData[indexPath.row].userId) {
+                              cell.giftButton.isEnabled = false
+                              cell.giftButton.setBackgroundImage(
+                                  UIImage(systemName: "gift.fill"), for: .normal)
+                              cell.giftButton.tintColor =
+                                  UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                          } else {
+                              cell.giftButton.isEnabled = true
+                              cell.giftButton.setBackgroundImage(
+                                  UIImage(systemName:
+                                  "gift"), for: .normal)
+                              cell.giftButton.tintColor =
+                                  UIColor.darkGray
+                          }
+                } else {
+                    cell.giftButton.isEnabled = true
+                    cell.giftButton.setBackgroundImage(
+                        UIImage(systemName:
+                        "gift"), for: .normal)
+                    cell.giftButton.tintColor =
+                        UIColor.darkGray
+                }
                 let jellyGiveIdData = ["jellyGiveId": self.jellyGiveId]
                 FireBaseHelper.updateData(update: jellyGiveIdData)
-                let getGift = ["getGift": 1]
-                for userid in self.fishGiveId{
-                    FireBaseHelper.updateOtherData(other:
-                        userid, update: getGift)
-                }
+                FireBaseHelper.updateOtherData(other: singleId)
+                
             }
             
         default:

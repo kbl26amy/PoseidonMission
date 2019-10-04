@@ -157,17 +157,22 @@ class FireBaseHelper {
         }
     }
     
-    static func updateOtherData(other: String, update: [String:Any]) {
+    static func updateOtherData(other: String) {
+        var getGiftNumber = 0
         let db = Firestore.firestore()
-            
-            db
+        
+        db
             .collection("user")
             .document(other)
             .getDocument { (document, error) in
                 
-                document?.reference.updateData(update,
+                if document?.data()?["getGift"]  != nil {
+                    getGiftNumber = document?.data()?["getGift"] as! Int
+                } 
+                let updateGetGift = ["getGift": getGiftNumber + 1]
+                document?.reference.updateData(updateGetGift,
                                                completion: { (error) in
-                    
+                                                
                 })
         }
     }
