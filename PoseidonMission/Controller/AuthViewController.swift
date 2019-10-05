@@ -266,8 +266,10 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                 KeyChainManager.shared.set(user.id, forKey: "useremail")
             }
             if user.email != "" {
-                let loginRecord = ["email":user.email,
-                                   "userName": user.lastName + user.firstName]
+                
+                let loginRecord =
+                    ["email": handleEmail(mail: user.email),
+                    "userName": user.lastName + user.firstName]
                     as [String : Any]
                 
                 FireBaseHelper.saveData(saveData: loginRecord)
@@ -279,6 +281,14 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
             }
         default: break
         }
+    }
+    
+    private func handleEmail(mail: String) -> String {
+        
+        return mail.contains("privaterelay") ?
+        mail.split(separator: "@")[0] + "@private.com" :
+        mail
+            
     }
     
     func authorizationController(controller: ASAuthorizationController,
