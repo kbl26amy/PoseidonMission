@@ -17,7 +17,8 @@ class ContentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
-    @IBAction func clickLikeAction(_ sender: ContentCollectionViewCell) {
+    @IBAction func clickLikeAction(_ sender: ContentCollectionViewCell)
+    {
         
         likeClosure?(sender)
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LobbyCollectionReusableView: UICollectionReusableView {
+class HotCollectionHeaderView: UICollectionReusableView {
        
     @IBOutlet weak var headerTitle: UILabel!
  

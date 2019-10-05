@@ -9,10 +9,8 @@
 import UIKit
 
 class RankCollectionViewCell: UICollectionViewCell {
-    
-    
+
     @IBOutlet weak var bannerLabel: UILabel!
     @IBOutlet weak var bannerImage: UIImageView!
-    
     
 }

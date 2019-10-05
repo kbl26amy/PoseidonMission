@@ -25,7 +25,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionViewCell" id="bkS-Mo-CFB" customClass="HomeCollectionViewCell" customModule="波賽頓出任務" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HotCollectionViewCell" id="bkS-Mo-CFB" customClass="HotCollectionViewCell" customModule="波賽頓出任務" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="148" height="139"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -61,11 +61,11 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LobbyCollectionReusableView" id="kBV-mI-ILY" customClass="LobbyCollectionReusableView" customModule="波賽頓出任務" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HotCollectionHeaderView" id="kBV-mI-ILY" customClass="HotCollectionHeaderView" customModule="波賽頓出任務" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="熱門遊戲" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slB-3n-sOu">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="熱門推薦" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slB-3n-sOu">
                                             <rect key="frame" x="8" y="14" width="89.5" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -238,7 +238,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bannerCollectionView" destination="xwj-hn-YpQ" id="YJ9-PY-j8O"/>
-                        <outlet property="homeCollectionView" destination="RhQ-sz-8lp" id="ye4-qg-RX6"/>
+                        <outlet property="hotCollectionView" destination="RhQ-sz-8lp" id="ye4-qg-RX6"/>
                         <outlet property="logoutOulet" destination="mKg-Oo-X8G" id="s5u-4h-Yaz"/>
                         <outlet property="runLightView" destination="C5V-F6-rTb" id="P4N-S0-Xo0"/>
                         <outlet property="runLightViewLabel" destination="i4Q-oE-0wg" id="yZq-lo-LV7"/>

@@ -65,7 +65,6 @@ class JellyfishViewController: PMBaseViewController {
     func jellyFishSetingAnimation(){
         
         let animateButton = jellyfishButtons.randomElement()!
-        print(animateButton.frame)
          
         let result = counter.truncatingRemainder(dividingBy: 1)
         if result == 0 {
@@ -121,7 +120,7 @@ class JellyfishViewController: PMBaseViewController {
                 preferredStyle: .alert)
             let okAction = UIAlertAction(title: "好的",
                                          style: .default) { (_) in
-                print("開始計算分數")
+              
                 if self.score >= 0 {
                     self.saveData()
                     self.appDelegate.interfaceOrientations = .portrait

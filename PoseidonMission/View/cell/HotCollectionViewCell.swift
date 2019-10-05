@@ -8,10 +8,7 @@
 
 import UIKit
 
-class HomeCollectionViewCell: UICollectionViewCell {
-    
-    
-    @IBOutlet weak var bannerImageView: UIImageView!
+class HotCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var homeCollectionViewImage: UIImageView!
     

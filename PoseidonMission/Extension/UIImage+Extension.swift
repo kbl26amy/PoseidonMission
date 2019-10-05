@@ -11,7 +11,7 @@ import UIKit
 
 enum ImageAsset: String {
  
-    // swiftlint:disable identifier_name
+    // fishes
     case blueFish
     case redThornFish
     case purpleFish
@@ -22,16 +22,29 @@ enum ImageAsset: String {
     case LanternFish
     case shark
     
-    
+    // jellyFish
     case badJellyfishClick
     case badJellyfish
     case goodJellyfishClick
     case goodJellyfish
     
+    //rewards
     case paper
     case pearl
     case seaweed
     case bottle
+    
+    //missionPic
+    case fishingPic
+    case jellyFishPic
+    case loginPic
+    
+    //icons
+    case fishing
+    case jellyFish
+    case loginToday
+    case map
+    case share
     
 }
 

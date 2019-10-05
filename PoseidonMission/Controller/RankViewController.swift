@@ -20,7 +20,7 @@ class RankViewController: PMBaseViewController  {
             rankTableView.dataSource = self
             rankCollectionView.reloadData()
             rankTableView.reloadData()
-            print(userRankData)
+           
         }
     }
     

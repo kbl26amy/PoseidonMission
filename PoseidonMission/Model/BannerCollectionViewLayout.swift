@@ -18,15 +18,19 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
         
         let inset = (UIScreen.main.bounds.width - itemSize.width) * 0.5
         sectionInset = UIEdgeInsets(top:  0, left: inset, bottom: 0, right: inset)
-//
+
     }
     
     override open var collectionViewContentSize: CGSize {
         if collectionView == nil { return CGSize.zero }
         
         let itemsCount = CGFloat(collectionView!.numberOfItems(inSection: 0))
-        return CGSize(width: collectionView!.bounds.width * itemsCount * 3 / 4 ,
-                      height: collectionView!.bounds.height )
+        
+        return CGSize(
+            width: collectionView!.bounds.width * itemsCount * 3 / 4 ,
+            height: collectionView!.bounds.height
+        )
+        
     }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

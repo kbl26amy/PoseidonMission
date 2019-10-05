@@ -17,17 +17,6 @@ class MissionTableViewCell: UITableViewCell {
     @IBOutlet weak var limitTimesView: UIView!
     @IBOutlet weak var missionImage: UIImageView!
     @IBOutlet weak var missionLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-       
-            }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
 
