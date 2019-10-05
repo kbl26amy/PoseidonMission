@@ -200,10 +200,7 @@ class FishingViewController: UIViewController {
                                       width: 0,
                                       height: UIScreen.main.bounds.height / 26)
         
-        colorView.backgroundColor = UIColor(red: 249/255,
-                                            green: 191/255,
-                                            blue: 90/255,
-                                            alpha: 1)
+        colorView.backgroundColor = UIColor.lightOrange
         
         self.energyBar.addSubview(colorView)
         

@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
         let tabBarController = self.window?.rootViewController as! UITabBarController
-        tabBarController.tabBar.tintColor = UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+        tabBarController.tabBar.tintColor = UIColor.darkBlue
         
         tabBarController.tabBar.unselectedItemTintColor = UIColor.white
         UITabBar.appearance().isTranslucent = false

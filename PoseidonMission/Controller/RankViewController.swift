@@ -179,11 +179,7 @@ UITableViewDataSource{
                                   cell.giftButton.setBackgroundImage(
                                       UIImage(systemName: "gift.fill"),
                                       for: .normal)
-                                  cell.giftButton.tintColor =
-                                      UIColor(red: 24/255,
-                                              green: 74/255,
-                                              blue: 82/255,
-                                              alpha: 1)
+                                  cell.giftButton.tintColor = UIColor.darkBlue
                               } else {
                                   cell.giftButton.isEnabled = true
                                   cell.giftButton.setBackgroundImage(
@@ -225,11 +221,7 @@ UITableViewDataSource{
                               cell.giftButton.setBackgroundImage(
                                   UIImage(systemName: "gift.fill"),
                                   for: .normal)
-                              cell.giftButton.tintColor =
-                                  UIColor(red: 24/255,
-                                          green: 74/255,
-                                          blue: 82/255,
-                                          alpha: 1)
+                              cell.giftButton.tintColor = UIColor.darkBlue
                           } else {
                               cell.giftButton.isEnabled = true
                               cell.giftButton.setBackgroundImage(

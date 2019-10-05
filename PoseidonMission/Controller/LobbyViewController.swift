@@ -192,10 +192,7 @@ class LobbyViewController: PMBaseViewController {
             logoutOulet.tintColor = .white
         } else {
             logoutOulet.isEnabled = false
-            logoutOulet.tintColor = UIColor(red: 131.0/255.0,
-                                            green: 211.0/255.0,
-                                            blue: 222.0/255.0,
-                                            alpha: 1.0)
+            logoutOulet.tintColor = UIColor.poseidonBlue
             runLightViewLabel.alpha = 0
         }
         

@@ -41,10 +41,7 @@ class PMBaseViewController: UIViewController {
         self.view.backgroundColor = UIColor(
             patternImage: UIImage.asset(.missionbackground)!)
            
-        navigationController?.navigationBar.barTintColor = UIColor(red: 131.0/255.0,
-                                                                   green: 211.0/255.0,
-                                                                   blue: 222.0/255.0,
-                                                                   alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.poseidonBlue
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: nil,
                                                            style: .plain,

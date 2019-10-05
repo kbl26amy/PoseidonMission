@@ -112,8 +112,7 @@ UICollectionViewDataSource{
                 contentCell.giftButton.isEnabled = false
                 contentCell.giftButton.setBackgroundImage(
                     UIImage(systemName: "gift.fill"), for: .normal)
-                contentCell.giftButton.tintColor =
-                    UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                contentCell.giftButton.tintColor = UIColor.darkBlue
                 
                 guard let strongSelf = self else { return }
                 strongSelf.giveId.append(strongSelf.rankData[indexPath.row].userId)
@@ -129,8 +128,7 @@ UICollectionViewDataSource{
                     contentCell.giftButton.isEnabled = false
                     contentCell.giftButton.setBackgroundImage(
                         UIImage(systemName: "gift.fill"), for: .normal)
-                    contentCell.giftButton.tintColor =
-                        UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                    contentCell.giftButton.tintColor = UIColor.darkBlue
                 } else {
                     contentCell.giftButton.isEnabled = true
                     contentCell.giftButton.setBackgroundImage(

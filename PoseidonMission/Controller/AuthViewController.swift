@@ -160,10 +160,7 @@ class AuthViewController: PMBaseViewController {
             width: self.userNameView.frame.width * 5/7,
             height: self.userNameView.frame.height))
         
-        self.userNameTextfield.textColor = UIColor(red: 58/255,
-                                                   green: 88/255,
-                                                   blue: 152/255,
-                                                   alpha: 1)
+        self.userNameTextfield.textColor = UIColor.darkBlue
         
         self.userNameTextfield.font = UIFont(name:self
             .userNameTextfield.font!.fontName, size: 14)

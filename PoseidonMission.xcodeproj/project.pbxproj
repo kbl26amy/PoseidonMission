@@ -31,6 +31,7 @@
 		624029C9232BBC9800363D29 /* FishManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624029C8232BBC9800363D29 /* FishManager.swift */; };
 		624413E7234738AF001F0A46 /* championRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624413E6234738AF001F0A46 /* championRank.swift */; };
 		624413E923474B11001F0A46 /* HotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624413E823474B11001F0A46 /* HotItem.swift */; };
+		624413EB23484254001F0A46 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624413EA23484254001F0A46 /* UIColor+Extension.swift */; };
 		6286FF932322531F00C48899 /* StoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FF922322531F00C48899 /* StoryContent.swift */; };
 		6286FF942323D82800C48899 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0412313B73D007AC76D /* LaunchScreen.storyboard */; };
 		6286FF982324F3AC00C48899 /* FireBaseHelper .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286FF972324F3AC00C48899 /* FireBaseHelper .swift */; };
@@ -90,6 +91,7 @@
 		624029C8232BBC9800363D29 /* FishManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishManager.swift; sourceTree = "<group>"; };
 		624413E6234738AF001F0A46 /* championRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = championRank.swift; sourceTree = "<group>"; };
 		624413E823474B11001F0A46 /* HotItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotItem.swift; sourceTree = "<group>"; };
+		624413EA23484254001F0A46 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		6286FF922322531F00C48899 /* StoryContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContent.swift; sourceTree = "<group>"; };
 		6286FF972324F3AC00C48899 /* FireBaseHelper .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FireBaseHelper .swift"; sourceTree = "<group>"; };
 		6286FF9923250EA300C48899 /* DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				62E1B0502313E4EB007AC76D /* UIStoryboard+Extension.swift */,
 				6218BE952341F88B004253B9 /* UIImage+Extension.swift */,
 				62D6BF282342E81800292341 /* Alert+Extension.swift */,
+				624413EA23484254001F0A46 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				6223F72F2328F74A003E249B /* ShareManager.swift in Sources */,
 				621F44132339023C005989C6 /* KeyChainManager.swift in Sources */,
 				62353B702315935200A4FBA0 /* BannerCollectionViewCell.swift in Sources */,
+				624413EB23484254001F0A46 /* UIColor+Extension.swift in Sources */,
 				6286FF9E232688D700C48899 /* RankTableViewCell.swift in Sources */,
 				62353B6C23153EB800A4FBA0 /* FishingViewController.swift in Sources */,
 				624413E7234738AF001F0A46 /* championRank.swift in Sources */,

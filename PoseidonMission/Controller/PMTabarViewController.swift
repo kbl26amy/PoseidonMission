@@ -95,18 +95,14 @@ class PMTabBarViewController: UITabBarController, UITabBarControllerDelegate {
           
           viewControllers = tabs.map({ $0.controller() })
  
-          UITabBar.appearance().barTintColor =
-               UIColor(red: 131.0/255.0,
-                       green: 211.0/255.0,
-                       blue: 222.0/255.0,
-                       alpha: 1.0)
+          UITabBar.appearance().barTintColor = UIColor.poseidonBlue
           middleTabItemBackground()
           
           delegate = self
      }
      
      func middleTabItemBackground() {
-          let bgColor = UIColor(red: 0.08, green: 0.726, blue: 0.702, alpha: 1.0)
+          let bgColor = UIColor.greenBlue
           
           let bgView = UIView(frame:
                CGRect(x: Int(tabBar.frame.width) / 2

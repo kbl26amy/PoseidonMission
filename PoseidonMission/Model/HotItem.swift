@@ -59,16 +59,11 @@ enum Hots: HotItem {
         
         switch self {
             
-        case .map: return
-            UIColor(red: 127/255, green: 197/255, blue: 0, alpha: 1)
-        case .fishing: return
-            UIColor(red: 139/255, green: 152/255, blue: 206/255, alpha: 1)
-        case .jellyFish: return
-            UIColor(red: 139/255, green: 152/255, blue: 206/255, alpha: 1)
-        case .loginToday: return
-            UIColor(red: 249/255, green: 97/255, blue: 43/255, alpha: 1)
-        case .invite: return
-            UIColor(red: 255/255, green: 181/255, blue: 37/255, alpha: 1)
+        case .map: return UIColor.lightGreen!
+        case .fishing: return UIColor.lightPurple!
+        case .jellyFish: return UIColor.lightBlue!
+        case .loginToday: return UIColor.lightRed!
+        case .invite: return UIColor.lightOrange!
             
         }
     }
