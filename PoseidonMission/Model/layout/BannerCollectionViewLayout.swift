@@ -34,14 +34,19 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
     }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        
         if collectionView == nil { return nil }
 
-        // 從supser 獲取已經計算好的佈局屬性
-        let attributes = super.layoutAttributesForElements(in: rect)
+        guard let superArray = super.layoutAttributesForElements(in: rect) else { return nil }
+
+        guard let attributes = NSArray(array: superArray,
+                                       copyItems: true)
+            as? [UICollectionViewLayoutAttributes]
+            else { return nil }
 
         let centerX = collectionView!.contentOffset.x + collectionView!.bounds.width / 2.0
 
-        for attribute in attributes! {
+        for attribute in attributes {
 
             // cell 中心點 和 collectionView 中心點的間距
             let delta = Swift.abs(attribute.center.x - centerX)
@@ -51,8 +56,6 @@ class FlatCardCollectionViewLayout: UICollectionViewFlowLayout {
 
             // 設置縮放比例
             attribute.transform = CGAffineTransform(scaleX: scale, y: scale);
-
-
         }
 
         return attributes

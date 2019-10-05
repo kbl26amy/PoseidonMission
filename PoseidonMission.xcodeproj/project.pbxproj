@@ -230,17 +230,17 @@
 		62E1B0342313B73C007AC76D /* PoseidonMission */ = {
 			isa = PBXGroup;
 			children = (
-				62CCF9CD23486D3F00C095F7 /* Third Party Wrapper */,
 				621F44112338C790005989C6 /* PoseidonMission.entitlements */,
 				62E1B0612314D239007AC76D /* GoogleService-Info.plist */,
 				62E1B0602314D239007AC76D /* Info.plist */,
 				62E1B0622314D23A007AC76D /* PoseidonMission.xcdatamodeld */,
+				62E1B0352313B73C007AC76D /* AppDelegate.swift */,
+				62CCF9CD23486D3F00C095F7 /* Third Party Wrapper */,
 				62353B7523164ECA00A4FBA0 /* Model */,
 				62E1B0532314C397007AC76D /* Resource */,
 				62E1B0522314C361007AC76D /* View */,
 				62E1B04F2313E4C3007AC76D /* Extension */,
 				62E1B04C2313E414007AC76D /* Controller */,
-				62E1B0352313B73C007AC76D /* AppDelegate.swift */,
 			);
 			path = PoseidonMission;
 			sourceTree = "<group>";

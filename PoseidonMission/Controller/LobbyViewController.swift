@@ -101,10 +101,10 @@ class LobbyViewController: PMBaseViewController {
             userInfo: nil, repeats: true)
     }
     
-    var x = 1
+    var x = 0
     @objc func autoScroll() {
         
-        if self.x <= rankList.item.count {
+        if self.x <= rankList.item.count - 1 {
             
             let indexPath = IndexPath(item: x, section: 0)
             self.bannerCollectionView.scrollToItem(
