@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import Firebase
 
 class FireBaseHelper {
@@ -64,44 +63,16 @@ class FireBaseHelper {
                 
         }
     }
-    
-    static func getJellyFishHighestData(completion:
+ 
+    static func getHighestData(queryParameter: String,
+        completion:
         @escaping (QuerySnapshot?) -> Void ) {
         
         let db = Firestore.firestore()
         
         db
             .collection("user")
-            .order(by: "jellyFishHighest", descending: true)
-            .getDocuments { (document, error) in
-                
-                completion(document)
-                
-        }
-    }
-    
-    static func getFishingHighestData(completion:
-        @escaping (QuerySnapshot?) -> Void ) {
-        
-        let db = Firestore.firestore()
-        
-        db
-            .collection("user")
-            .order(by: "fishingHighest", descending: true)
-            .getDocuments { (document, error) in
-                
-                completion(document)
-                
-        }
-    }
-    static func getLoginHighestData(completion:
-        @escaping (QuerySnapshot?) -> Void ) {
-        
-        let db = Firestore.firestore()
-        
-        db
-            .collection("user")
-            .order(by: "loginCounts", descending: true)
+            .order(by: queryParameter, descending: true)
             .getDocuments { (document, error) in
                 
                 completion(document)

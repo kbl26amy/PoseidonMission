@@ -13,14 +13,15 @@ protocol ChampionRank {
     
     var title: String { get }
     var image: UIImage? { get }
+    var queryParameter: String { get }
 }
 
 struct Champion {
     let item : [ChampionRank]
 }
 
-enum ChampionList: ChampionRank {
-  
+enum ChampionList: ChampionRank, CaseIterable {
+
     case fishing
 
     case jellyFish
@@ -49,6 +50,17 @@ enum ChampionList: ChampionRank {
         case .login: return UIImage.asset(.loginPic)!
             
         }
+    }
+    var queryParameter: String {
+        switch self {
+
+         case .fishing: return "fishingHighest"
+
+         case .jellyFish: return "jellyFishHighest"
+        
+         case .login: return "loginCounts"
+             
+         }
     }
     
 }

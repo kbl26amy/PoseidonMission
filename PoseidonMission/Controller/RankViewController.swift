@@ -81,14 +81,14 @@ class RankViewController: PMBaseViewController  {
             self.rankCollectionView.collectionViewLayout = self.bannerLayout
         })
         
-        RankManager.shared.getFishHighestData(completion: {data in
-            guard let data = data else {return}
-            self.fishRankData = data
+        RankManager.shared.getHighestData(type: ChampionList.fishing, completion: {[weak self] data in
+           
+            self?.fishRankData = data
             
         })
-        RankManager.shared.getJellyHighestData(completion: {data in
-            guard let data = data else {return}
-            self.jellyRankData = data
+        RankManager.shared.getHighestData(type: ChampionList.jellyFish, completion: {[weak self] data in
+           
+            self?.jellyRankData = data
             
         })
     }

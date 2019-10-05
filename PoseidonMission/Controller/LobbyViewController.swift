@@ -164,26 +164,26 @@ class LobbyViewController: PMBaseViewController {
         
         setupCollectionViewLayout()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         timerEnabled()
-        RankManager.shared.getFishHighestData(completion: {data in
-            guard let data = data else {return}
-            self.fishRankData = data
-            
-        })
-        RankManager.shared.getJellyHighestData(completion: {data in
-            guard let data = data else {return}
-            self.jellyRankData = data
-            
-        })
-        RankManager.shared.getLoginHighestData(completion: {data in
-            guard let data = data else {return}
-            self.loginRankData = data
-        })
         
+        for type in ChampionList.allCases {
+            RankManager.shared.getHighestData(type: type,
+                                              completion:
+                {[weak self] data in
+                    
+                    switch type {
+                    case .fishing : self?.fishRankData = data
+                    case .jellyFish: self?.jellyRankData = data
+                    case .login: self?.loginRankData = data
+                        
+                    }
+            })
+        }
+
         if KeyChainManager.shared.get("userid") != nil {
             runLightViewLabel.alpha = 1
             runlight()

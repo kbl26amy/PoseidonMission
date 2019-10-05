@@ -54,9 +54,7 @@ class StoryViewController: PMBaseViewController {
             goToMissionViewController =  UIStoryboard.mission.instantiateViewController(withIdentifier: "MissionViewController")
         }
         self.navigationController?.pushViewController(goToMissionViewController, animated: true)
-        
-       
+ 
     }
-    
-
+   
 }
