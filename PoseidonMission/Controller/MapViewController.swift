@@ -90,8 +90,8 @@ class MapViewController: PMBaseViewController {
         mapchanceLabel.text = self.currewntProgress
         navigationController?.isNavigationBarHidden = true
         mapTitleLabel.adjustsFontSizeToFitWidth = true
-        self.mapBackground.image = UIImage(named: "mapbackground")
-        self.baseMapImage.image = UIImage(named: "showmap")
+        self.mapBackground.image = UIImage.asset(.mapbackground)
+        self.baseMapImage.image = UIImage.asset(.showmap)
         
         self.leaveOutlet.layer.cornerRadius = 20
         self.seeRecordButton.layer.cornerRadius = 20
@@ -102,8 +102,8 @@ class MapViewController: PMBaseViewController {
         view.layoutIfNeeded()
     
         self.scratchCard = ScratchCard(frame: self.baseMapImage.frame,
-                                      mapImage: UIImage(named: "showmap")!,
-                                      maskImage: UIImage(named: "unmap")!)
+                                       mapImage: UIImage.asset(.showmap)!,
+                                       maskImage: UIImage.asset(.unmap)!)
         
         view.addSubview(scratchCard!)
         view.bringSubviewToFront(scratchCard!)
@@ -163,7 +163,7 @@ extension MapViewController: ScratchCardDelegate {
         if mapCouldTimes == 0 {
             changeText()
            
-            self.baseMapImage.image = UIImage(named: "nomap")
+            self.baseMapImage.image = UIImage.asset(.nomap)
             self.scratchCard?.isHidden = true
             
         }
@@ -218,7 +218,7 @@ extension MapViewController: ScratchCardDelegate {
         self.fifthButton.isHidden = true
         
         if mapResult == true {
-            self.baseMapImage.image = UIImage(named: "getreward")
+            self.baseMapImage.image = UIImage.asset(.getreward)
             changeText()
             saveMapRecord()
             updateMapData()
@@ -226,7 +226,7 @@ extension MapViewController: ScratchCardDelegate {
         } else {
             updateMapData()
             changeText()
-            self.baseMapImage.image = UIImage(named: "unreward")
+            self.baseMapImage.image = UIImage.asset(.unreward)
         }
     }
     

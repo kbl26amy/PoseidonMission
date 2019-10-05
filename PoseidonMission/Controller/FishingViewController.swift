@@ -225,14 +225,14 @@ class FishingViewController: UIViewController {
     
     func setFishingView() {
         
-        ship.image = UIImage(named: "ship")
+        ship.image = UIImage.asset(.ship)
         chanceBagroundView.layer.cornerRadius = 10
         fishingButton.layer.cornerRadius = 10
-        fishingBackground.image = UIImage(named: "background")
-        fishingRod.image = UIImage(named: "fishingRod")
-        fishingLine.image = UIImage(named: "fishingLine")
-        rightMoveButton.setImage(UIImage(named: "rightButton"), for: .normal)
-        leftMoveButton.setImage(UIImage(named: "leftButton"), for: .normal)
+        fishingBackground.image = UIImage.asset(.background)
+        fishingRod.image = UIImage.asset(.fishingRod)
+        fishingLine.image = UIImage.asset(.fishingLine)
+        rightMoveButton.setImage(UIImage.asset(.rightButton), for: .normal)
+        leftMoveButton.setImage(UIImage.asset(.leftButton), for: .normal)
         energyBar.layer.cornerRadius = 10
         energyBar.layer.borderWidth = 3
         energyBar.layer.borderColor = #colorLiteral(red: 0.1359939873, green: 0.3958500326, blue: 0.4860774279, alpha: 1)
@@ -293,7 +293,7 @@ class FishingViewController: UIViewController {
     
     func fishLineAnimation() {
         
-        fishTouchSquare = UIImageView(image: UIImage(named: "fishingHook"))
+        fishTouchSquare = UIImageView(image: UIImage.asset(.fishingHook))
         fishTouchSquare.frame = CGRect(x: -100, y: 0, width: 15, height: 15)
       
         let fishingRodWidth = self.fishingRod.frame.width

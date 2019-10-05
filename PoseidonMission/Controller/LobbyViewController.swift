@@ -38,8 +38,8 @@ class LobbyViewController: PMBaseViewController {
             UserManager.fishingHighest = 0
             UserManager.jellyFishHighest = 0
             showRegisterButtonOutlet.isHidden = false
-            showRegisterButtonOutlet.setTitle("目前尚未登入！請先登入後體驗全部功能！",
-                                              for: .normal)
+            showRegisterButtonOutlet.setTitle(
+                "目前尚未登入！請先登入後體驗全部功能！", for: .normal)
             logoutOulet.isEnabled = false
             logoutOulet.tintColor = .white
             runLightViewLabel.alpha = 0
@@ -78,7 +78,8 @@ class LobbyViewController: PMBaseViewController {
         
         self.runLightView.backgroundColor = .clear
         
-        self.runLightViewLabel.frame.origin.x = UIScreen.main.bounds.width
+        self.runLightViewLabel.frame.origin.x =
+            UIScreen.main.bounds.width
         
         var runLightAnimation: UIViewPropertyAnimator?
         
@@ -86,7 +87,8 @@ class LobbyViewController: PMBaseViewController {
             duration: 15, curve: .linear, animations:
             {
                 UIView.setAnimationRepeatCount(999);
-                self.runLightViewLabel.frame.origin.x = -self.runLightViewLabel.frame.width
+                self.runLightViewLabel.frame.origin.x =
+                    -self.runLightViewLabel.frame.width
         })
         runLightAnimation?.startAnimation()
     }
@@ -308,7 +310,7 @@ extension LobbyViewController:  UICollectionViewDelegate,
                     
                     else { return cell }
                 
-                bannerCell.bannerImages.image = UIImage(named: "champion")
+                bannerCell.bannerImages.image = UIImage.asset(.champion)
                 
                 var championName = ""
                 var championScore = ""
@@ -329,7 +331,8 @@ extension LobbyViewController:  UICollectionViewDelegate,
                 }
                 bannerCell.bannerTitle.text =
                     rankList.item[indexPath.row].title
-                bannerCell.iconImage.image = rankList.item[indexPath.row].image
+                bannerCell.iconImage.image =
+                    rankList.item[indexPath.row].image
                 bannerCell.nameLabel.text = championName
                 bannerCell.rankScore.text = championScore
                 
@@ -360,7 +363,8 @@ extension LobbyViewController:  UICollectionViewDelegate,
         
         let goStoryViewController = UIStoryboard
             .mission
-            .instantiateViewController(withIdentifier: "StoryViewController")
+            .instantiateViewController(withIdentifier:
+                "StoryViewController")
             as! StoryViewController
         
         if KeyChainManager.shared.get("userid") != nil {
@@ -370,19 +374,25 @@ extension LobbyViewController:  UICollectionViewDelegate,
                 switch indexPath.row {
                     
                 case 0:
-                    goStoryViewController.storyText = StoryContent.mapStory
-                    goStoryViewController.targetText = StoryContent.mapTarget
+                    goStoryViewController.storyText =
+                        StoryContent.mapStory
+                    goStoryViewController.targetText =
+                        StoryContent.mapTarget
                     self.navigationController?.pushViewController(
                         goStoryViewController, animated: true)
                 case 1:
                     
-                    goStoryViewController.storyText = StoryContent.fishingStory
-                    goStoryViewController.targetText = StoryContent.fishingTarget
+                    goStoryViewController.storyText =
+                        StoryContent.fishingStory
+                    goStoryViewController.targetText =
+                        StoryContent.fishingTarget
                     self.navigationController?.pushViewController(
                         goStoryViewController, animated: true)
                 case 2:
-                    goStoryViewController.storyText = StoryContent.jellyFishStory
-                    goStoryViewController.targetText = StoryContent.jellyFishTarget
+                    goStoryViewController.storyText =
+                        StoryContent.jellyFishStory
+                    goStoryViewController.targetText =
+                        StoryContent.jellyFishTarget
                     self.navigationController?.pushViewController(
                         goStoryViewController, animated: true)
                 case 3:
@@ -392,8 +402,10 @@ extension LobbyViewController:  UICollectionViewDelegate,
                         .instantiateViewController(withIdentifier:
                             "LoginTodayViewController")
                         as! LoginTodayViewController
-                    loginTodayController.modalPresentationStyle = .overFullScreen
-                    loginTodayController.modalTransitionStyle = .crossDissolve
+                    loginTodayController.modalPresentationStyle =
+                        .overFullScreen
+                    loginTodayController.modalTransitionStyle =
+                        .crossDissolve
                     
                     present(loginTodayController,
                             animated: true,
@@ -413,9 +425,10 @@ extension LobbyViewController:  UICollectionViewDelegate,
                 UIStoryboard.auth.instantiateInitialViewController()
                 else { return }
             
-            loginViewController.modalPresentationStyle = .overFullScreen
-            navigationController?.pushViewController(loginViewController,
-                                                     animated: true)
+            loginViewController.modalPresentationStyle =
+                .overFullScreen
+            navigationController?.pushViewController(
+                loginViewController, animated: true)
         }
     }
 }

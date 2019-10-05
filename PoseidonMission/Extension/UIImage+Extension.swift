@@ -46,6 +46,49 @@ enum ImageAsset: String {
     case map
     case share
     
+    case fbbanner
+    case ship
+    case champion
+    
+    //tabbar icon
+    case home
+    case mission
+    case rank
+    case profile
+    case treasurebox
+    
+    //mission page
+    case missionbackground
+    case back02
+    case missiontask
+    
+    //map page
+    case mapbackground
+    case showmap
+    case unmap
+    case nomap
+    case getreward
+    case unreward
+    
+    //jellyfish page
+    case jellyfishbackground
+    case hole
+    
+    case background
+    case fishingRod
+    case fishingLine
+    case rightButton
+    case leftButton
+    case fishingHook
+    
+    case treasure
+    case register
+    case account
+    case password
+    case login
+    
+    case coin
+    case treasureBox
 }
 
 // swiftlint:enable identifier_name

@@ -28,7 +28,7 @@ class ProfileViewController: PMBaseViewController  {
                 let url = URL(string: (userData?.photo)!)
                 userImage.kf.setImage(with: url)
             } else {
-                userImage.image = UIImage(named: "ship")
+                userImage.image = UIImage.asset(.ship)
             }
         }
     }
@@ -187,11 +187,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                   cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
         
         let cell = getPointTableView.dequeueReusableCell(
-            withIdentifier: String(describing: GetPointTableViewCell.self),
-            for: indexPath)
+            withIdentifier: String(describing:
+                GetPointTableViewCell.self), for: indexPath)
         
         guard let getPointCell = cell as? GetPointTableViewCell
             else { return cell }
@@ -210,9 +211,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
                     .source
                     .rawValue ?? "map")
             
-            
             var source: String?
-            
             
             switch userRecordData?[indexPath.row].source {
             case .map: source = "藏寶圖"

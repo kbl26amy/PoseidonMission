@@ -52,36 +52,36 @@ private enum Tab {
         case .lobby:
             return UITabBarItem(
                 title: "首頁",
-                image: UIImage(named: "home"),
-                selectedImage: UIImage(named: "home")
+                image: UIImage.asset(.home),
+                selectedImage: UIImage.asset(.home)
             )
             
         case .mission:
             return UITabBarItem(
                 title: "任務",
-                image: UIImage(named: "mission"),
-                selectedImage: UIImage(named: "mission")
+                image: UIImage.asset(.mission),
+                selectedImage: UIImage.asset(.mission)
             )
             
         case .rank:
             return UITabBarItem(
                 title: "排行",
-                image: UIImage(named: "rank"),
-                selectedImage: UIImage(named: "rank")
+                image: UIImage.asset(.rank),
+                selectedImage: UIImage.asset(.rank)
             )
             
         case .profile:
             return UITabBarItem(
                 title: "個人",
-                image: UIImage(named: "profile"),
-                selectedImage: UIImage(named: "profile")
+                image: UIImage.asset(.profile),
+                selectedImage: UIImage.asset(.profile)
             )
             
         case .exchange:
             return UITabBarItem(
                 title: "",
-                image: UIImage(named: "treasurebox"),
-                selectedImage: UIImage(named: "treasurebox")
+                image: UIImage.asset(.treasurebox),
+                selectedImage: UIImage.asset(.treasurebox)
             )
         }
 }

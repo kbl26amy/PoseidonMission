@@ -26,7 +26,7 @@ class ShareManager {
         { (action) -> Void in
             
             guard let url = URL(string: "https://itunes.apple.com/tw/app/id1481162004"),
-                let image = UIImage(named: "fbbanner")
+                let image = UIImage.asset(.fbbanner)
                 else { return }
             
             let text = "和我一起玩波賽頓出任務，前往海底尋找神秘寶藏吧！"

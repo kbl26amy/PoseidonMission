@@ -122,10 +122,10 @@ class ExchangeViewController: PMBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        coinView.image = UIImage(named: "coin")
-        treasureView.image = UIImage(named: "treasureBox")
+        coinView.image = UIImage.asset(.coin)
+        treasureView.image = UIImage.asset(.treasureBox)
         exchangeButton.layer.cornerRadius = 15
-        background.image =  UIImage(named: "background")
+        background.image =  UIImage.asset(.background)
         
     }
     override func viewWillAppear(_ animated: Bool) {

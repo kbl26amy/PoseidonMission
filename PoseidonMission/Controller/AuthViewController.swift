@@ -128,12 +128,12 @@ class AuthViewController: PMBaseViewController {
     }
     
     func setLoginView(){
-        self.authBackgroundImage.image = UIImage(named: "background")
-        self.treasureView.image = UIImage(named: "treasure")
-        self.registerButtonLayout.setImage(UIImage(named: "register"), for: .normal)
-        self.emailBackImage.image = UIImage(named: "account")
-        self.passwordBackImage.image = UIImage(named: "password")
-        self.loginButton.setImage(UIImage(named: "login"), for: .normal)
+        self.authBackgroundImage.image = UIImage.asset(.background)
+        self.treasureView.image = UIImage.asset(.treasure)
+        self.registerButtonLayout.setImage(UIImage.asset(.register), for: .normal)
+        self.emailBackImage.image = UIImage.asset(.account)
+        self.passwordBackImage.image = UIImage.asset(.password)
+        self.loginButton.setImage(UIImage.asset(.login), for: .normal)
         self.loginButton.imageView?.contentMode = .scaleAspectFit
         self.registerButtonLayout.imageView?.contentMode = .scaleAspectFit
     }
@@ -149,7 +149,7 @@ class AuthViewController: PMBaseViewController {
                    height: self.treasureView.frame.height * 1/7)
         )
         
-        self.userNameView.image = UIImage(named:"account")
+        self.userNameView.image = UIImage.asset(.account)
         
         self.userNameView.center.x =  self.treasureView.center.x
         view.addSubview(self.userNameView)

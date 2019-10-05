@@ -39,7 +39,7 @@ class PMBaseViewController: UIViewController {
         }
         
         self.view.backgroundColor = UIColor(
-                                    patternImage: UIImage(named: "missionbackground")!)
+            patternImage: UIImage.asset(.missionbackground)!)
            
         navigationController?.navigationBar.barTintColor = UIColor(red: 131.0/255.0,
                                                                    green: 211.0/255.0,
@@ -53,11 +53,11 @@ class PMBaseViewController: UIViewController {
         
         navigationController?
             .navigationBar
-            .backIndicatorImage = UIImage(named: "Icons_24px_Back02")
+            .backIndicatorImage = UIImage.asset(.back02)
         
         navigationController?
             .navigationBar
-            .backIndicatorTransitionMaskImage = UIImage(named: "Icons_24px_Back02")
+            .backIndicatorTransitionMaskImage = UIImage.asset(.back02)
         
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]

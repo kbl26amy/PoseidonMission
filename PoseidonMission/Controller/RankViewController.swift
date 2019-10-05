@@ -92,7 +92,6 @@ class RankViewController: PMBaseViewController  {
             
         })
     }
-    
 }
 extension RankViewController: UICollectionViewDelegate,
 UICollectionViewDataSource {
@@ -135,7 +134,6 @@ UICollectionViewDataSource {
             bannerCell.bannerLabel.text = bannerLabelText
         
             return bannerCell
-            
     }
     
 }
@@ -175,12 +173,17 @@ UITableViewDataSource{
                 
                 if rankCell.giveId != [] {
                              
-                    if rankCell.giveId.contains(self.fishRankData[indexPath.row].userId) {
+                    if rankCell.giveId.contains(
+                        self.fishRankData[indexPath.row].userId) {
                                   cell.giftButton.isEnabled = false
                                   cell.giftButton.setBackgroundImage(
-                                      UIImage(systemName: "gift.fill"), for: .normal)
+                                      UIImage(systemName: "gift.fill"),
+                                      for: .normal)
                                   cell.giftButton.tintColor =
-                                      UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                                      UIColor(red: 24/255,
+                                              green: 74/255,
+                                              blue: 82/255,
+                                              alpha: 1)
                               } else {
                                   cell.giftButton.isEnabled = true
                                   cell.giftButton.setBackgroundImage(
@@ -216,12 +219,17 @@ UITableViewDataSource{
                 
                 if rankCell.giveId != [] {
                          
-                if rankCell.giveId.contains(self.jellyRankData[indexPath.row].userId) {
+                if rankCell.giveId.contains(
+                    self.jellyRankData[indexPath.row].userId) {
                               cell.giftButton.isEnabled = false
                               cell.giftButton.setBackgroundImage(
-                                  UIImage(systemName: "gift.fill"), for: .normal)
+                                  UIImage(systemName: "gift.fill"),
+                                  for: .normal)
                               cell.giftButton.tintColor =
-                                  UIColor(red: 24/255, green: 74/255, blue: 82/255, alpha: 1)
+                                  UIColor(red: 24/255,
+                                          green: 74/255,
+                                          blue: 82/255,
+                                          alpha: 1)
                           } else {
                               cell.giftButton.isEnabled = true
                               cell.giftButton.setBackgroundImage(
@@ -279,17 +287,6 @@ UITableViewDataSource{
             
         headerView.addSubview(titleLabel)
         
-//        let seeRecord = UIButton()
-//        seeRecord.frame = CGRect(x: tableView.frame.width - tableView.frame.width / 5,
-//                                 y: 0, width: tableView.frame.width / 5, height: 50)
-//        seeRecord.setTitle("查看全部", for: .normal)
-//        seeRecord.setTitleColor(UIColor(red: 147/255, green: 208/255,
-//                                        blue: 218/255, alpha: 1),
-//                                for: .normal)
-//        seeRecord.titleLabel?.font = .systemFont(ofSize: 14)
-//        
-//        headerView.addSubview(seeRecord)
-        
         return headerView
     }
     
@@ -298,6 +295,4 @@ UITableViewDataSource{
         -> CGFloat {
         return 40
     }
-    
-  
 }

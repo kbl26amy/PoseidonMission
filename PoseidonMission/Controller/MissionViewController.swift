@@ -20,47 +20,59 @@ class MissionViewController: PMBaseViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       missionTableView.backgroundView = UIImageView(
-                                         image: UIImage(named: "missionbackground"))
+       missionTableView.backgroundView =
+        UIImageView(image: UIImage.asset(.missionbackground))
        missionTableView.separatorStyle = .none
     }
     
 }
-extension MissionViewController: UITableViewDelegate,UITableViewDataSource{
+extension MissionViewController: UITableViewDelegate,
+UITableViewDataSource{
     
     func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+                   numberOfRowsInSection section: Int)
+        -> Int {
         return 5
     }
     
     func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+                   heightForRowAt indexPath: IndexPath)
+        -> CGFloat {
         return 200
     }
     
     func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                   cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
         
         let cell = missionTableView.dequeueReusableCell(
             withIdentifier: String(
                             describing: MissionTableViewCell.self),
                             for: indexPath)
         
-        guard let missionCell = cell as? MissionTableViewCell else { return cell }
+        guard let missionCell = cell as? MissionTableViewCell
+            else { return cell }
         
-        missionCell.backgroundView = UIImageView(image: UIImage(named: "missiontask"))
-        missionCell.missionImage.image = UIImage(
-                                         named: MissionContent.missionPictures[indexPath.row].rawValue)
+        missionCell.backgroundView = UIImageView(image:
+            UIImage.asset(.missiontask))
+        missionCell.missionImage.image =
+            UIImage(named: MissionContent
+                .missionPictures[indexPath.row]
+                .rawValue)
+            
         missionCell.rewardView.layer.cornerRadius = 5
         missionCell.limitTimesView.layer.cornerRadius = 5
         missionCell.missionInstroduction.text = MissionContent.missionIntroduction[indexPath.row]
-        missionCell.missionTitle.text = MissionContent.missionTitles[indexPath.row].rawValue
-        missionCell.rewardLabel.text = "\(MissionContent.missionReward[indexPath.row])暢遊卷"
+        missionCell.missionTitle.text =
+            MissionContent.missionTitles[indexPath.row].rawValue
+        missionCell.rewardLabel.text =
+            "\(MissionContent.missionReward[indexPath.row])暢遊卷"
         missionCell.selectionStyle = .none
         return missionCell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         
         var goToMissionsController = UIViewController()
         switch indexPath.row {

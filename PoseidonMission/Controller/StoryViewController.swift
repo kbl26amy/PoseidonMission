@@ -23,7 +23,7 @@ class StoryViewController: PMBaseViewController {
         self.backImage.layer.cornerRadius = 10
         chalengeButtonLayout.layer.cornerRadius = 15
         navigationController?.isNavigationBarHidden = true
-        backgroundImage.image = UIImage(named: "background")
+        backgroundImage.image = UIImage.asset(.background)
         storyTextLabel.adjustsFontSizeToFitWidth = true
         targetLabel.adjustsFontSizeToFitWidth = true
         targetLabel.text = targetText

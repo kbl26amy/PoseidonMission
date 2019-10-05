@@ -104,7 +104,7 @@ UICollectionViewDataSource{
                 contentCell.userImage.kf.setImage(with: url)
                 
             } else {
-                contentCell.userImage.image = UIImage(named: "ship")
+                contentCell.userImage.image = UIImage.asset(.ship)
             }
             
             contentCell.likeClosure = { [weak self] cell in

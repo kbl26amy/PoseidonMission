@@ -167,11 +167,10 @@ class JellyfishViewController: PMBaseViewController {
     func setJellyFishView()  {
         navigationController?.isNavigationBarHidden = true
         
-        jellyBackGroundView.image = UIImage(named: "jellyfishbackground")
+        jellyBackGroundView.image = UIImage.asset(.jellyfishbackground)
         
         for hole in holeCollection {
-            hole.image = UIImage(named: "hole")
-        }
+            hole.image = UIImage.asset(.hole)        }
         
         let middleUpJellyFish = UIButton()
         let leftUpJellyFish = UIButton()
