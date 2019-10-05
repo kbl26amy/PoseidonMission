@@ -93,7 +93,7 @@ class LobbyViewController: PMBaseViewController {
         runLightAnimation?.startAnimation()
     }
     
-    func timerEanbled(){
+    func timerEnabled(){
         
         self.timer = Timer.scheduledTimer(
             timeInterval: 4, target: self,
@@ -168,7 +168,7 @@ class LobbyViewController: PMBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        timerEanbled()
+        timerEnabled()
         RankManager.shared.getFishHighestData(completion: {data in
             guard let data = data else {return}
             self.fishRankData = data
