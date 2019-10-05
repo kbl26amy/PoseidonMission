@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import FirebaseStorage
-import Kingfisher
 import NVActivityIndicatorView
 
 class ProfileViewController: PMBaseViewController  {
@@ -24,9 +23,7 @@ class ProfileViewController: PMBaseViewController  {
             giftCount.text = "\(userData?.getGift ?? 0)"
             userTotalPoint.text = "暢遊卷： \( userData?.totalScore ?? 0)張"
             if userData?.photo != nil {
-                
-                let url = URL(string: (userData?.photo)!)
-                userImage.kf.setImage(with: url)
+                userImage.loadImage(userData?.photo)
             } else {
                 userImage.image = UIImage.asset(.ship)
             }

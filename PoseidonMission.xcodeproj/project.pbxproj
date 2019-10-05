@@ -48,6 +48,7 @@
 		62CCF9CA2348614800C095F7 /* championRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCF9C62348614800C095F7 /* championRank.swift */; };
 		62CCF9CB2348614800C095F7 /* HotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCF9C72348614800C095F7 /* HotItem.swift */; };
 		62CCF9CC2348614800C095F7 /* RewardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCF9C82348614800C095F7 /* RewardItem.swift */; };
+		62CCF9CF23486D6F00C095F7 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCF9CE23486D6F00C095F7 /* KingfisherWrapper.swift */; };
 		62D6BF292342E81800292341 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D6BF282342E81800292341 /* Alert+Extension.swift */; };
 		62D6BF2B23449EE600292341 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62D6BF2A23449EE600292341 /* Exchange.storyboard */; };
 		62D6BF2D2344A25F00292341 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D6BF2C2344A25F00292341 /* ExchangeViewController.swift */; };
@@ -105,6 +106,7 @@
 		62CCF9C62348614800C095F7 /* championRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = championRank.swift; sourceTree = "<group>"; };
 		62CCF9C72348614800C095F7 /* HotItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotItem.swift; sourceTree = "<group>"; };
 		62CCF9C82348614800C095F7 /* RewardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardItem.swift; sourceTree = "<group>"; };
+		62CCF9CE23486D6F00C095F7 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
 		62D6BF282342E81800292341 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		62D6BF2A23449EE600292341 /* Exchange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		62D6BF2C2344A25F00292341 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,14 @@
 			path = manager;
 			sourceTree = "<group>";
 		};
+		62CCF9CD23486D3F00C095F7 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				62CCF9CE23486D6F00C095F7 /* KingfisherWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
 		62E1B0292313B73C007AC76D = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +230,7 @@
 		62E1B0342313B73C007AC76D /* PoseidonMission */ = {
 			isa = PBXGroup;
 			children = (
+				62CCF9CD23486D3F00C095F7 /* Third Party Wrapper */,
 				621F44112338C790005989C6 /* PoseidonMission.entitlements */,
 				62E1B0612314D239007AC76D /* GoogleService-Info.plist */,
 				62E1B0602314D239007AC76D /* Info.plist */,
@@ -469,6 +480,7 @@
 				62CCF9CA2348614800C095F7 /* championRank.swift in Sources */,
 				62CCF9CC2348614800C095F7 /* RewardItem.swift in Sources */,
 				62D6BF292342E81800292341 /* Alert+Extension.swift in Sources */,
+				62CCF9CF23486D6F00C095F7 /* KingfisherWrapper.swift in Sources */,
 				620F8E66233B5B7500A189AA /* RankManager.swift in Sources */,
 				62CCF9C92348614800C095F7 /* MissionContent.swift in Sources */,
 				62E1B0382313B73C007AC76D /* LobbyViewController.swift in Sources */,

@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Kingfisher
 import NVActivityIndicatorView
 
 class RankTableViewCell: UITableViewCell {
@@ -100,8 +99,7 @@ UICollectionViewDataSource{
             contentCell.userScore.text = "最高積分：\(self.rankData[indexPath.row].highest)"
             
             if (self.rankData[indexPath.row].photo != nil) {
-                let url = URL(string: (self.rankData[indexPath.row].photo)!)
-                contentCell.userImage.kf.setImage(with: url)
+                contentCell.userImage.loadImage(self.rankData[indexPath.row].photo)
                 
             } else {
                 contentCell.userImage.image = UIImage.asset(.ship)
