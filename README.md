@@ -6,3 +6,5 @@ Implemented : 
 handle value, design polymorphism and encapsulation Object to achieve MVC model.
 - Core : implement Apple Login and Firebase Cloud Database / Auth to create data source, use Keychain and Singleton to handle user information.
 - UI : design many animations with UIViewPropertyAnimator, change App style with UITabBarController and using UICollection view to achieve different performance.
+
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/app%20introduction.png?raw=true)
