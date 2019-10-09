@@ -1,10 +1,55 @@
 # PoseidonMission
-An app with a lot of missions like share, daily check-in, fishing, scratch card, etc. User can complete the tasks to get coupon, exchange items in the app.
+製作期間大量使用 UIViewPropertyAnimator 動畫，其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
 
-Implemented : 
-- Design Patterns : using Closure and Delegate to
-handle value, design polymorphism and encapsulation Object to achieve MVC model.
-- Core : implement Apple Login and Firebase Cloud Database / Auth to create data source, use Keychain and Singleton to handle user information.
-- UI : design many animations with UIViewPropertyAnimator, change App style with UITabBarController and using UICollection view to achieve different performance.
+1. 設計protocol
+
+```
+protocol FishGenerator {
+    
+    func fetchFishImageView() -> UIImageView
+}
+```
+2. 運用 extension 讓9種魚的圖片隨機產生
+```
+extension FishGenerator {
+    
+    func randomFishImage() -> UIImageView? {
+        
+        let fishs = [UIImage.asset(.blueFish),
+                     UIImage.asset(.redThornFish),
+                     UIImage.asset(.purpleFish),
+                     UIImage.asset(.greenFish),
+                     UIImage.asset(.longFish),
+                     UIImage.asset(.lightBlueFish),
+                     UIImage.asset(.darkRedFish),
+                     UIImage.asset(.LanternFish),
+                     UIImage.asset(.shark)]
+        
+        let fishImageView = UIImageView(image: fishs.randomElement()!)
+        
+        return fishImageView
+    }
+}
+```
+3. 設計多種魚的路線，遵從我們設計的 protocol，之後將每個路線存成同一個array，藉此取得一個個可以游動的魚
+```
+struct PathOne: FishGenerator {
+    
+    func fetchFishImageView() -> UIImageView {
+        let fish = randomFishImage()
+        fish?.frame = CGRect(x: -60, y: 300, width: 40, height: 30)
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 11, delay: 0, animations: {
+            fish?.frame.origin.x = UIScreen.main.bounds.size.width
+         
+            fish?.frame.origin.y = UIScreen.main.bounds.size.height / 2
+            
+        }, completion: nil)
+     
+        return fish!
+    }
+}
+```
 
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/app%20introduction.png?raw=true)
+
+
