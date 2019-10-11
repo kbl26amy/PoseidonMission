@@ -1,5 +1,5 @@
 # PoseidonMission
-製作期間大量使用 UIViewPropertyAnimator 動畫，其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
+波賽頓出任務為一個任務型 APP，製作期間大量使用 UIViewPropertyAnimator 動畫，其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
 
 1. 設計protocol
 
@@ -50,6 +50,66 @@ struct PathOne: FishGenerator {
 }
 ```
 
+除了動畫設計之外，也使用Firebase的各種資料處理方法，完成每日次數限制、用戶總成績、兌換資料與排行榜資料顯示，其中在處理 Firebase 回傳的資料時，透過兩次Closure 方法，額外製作一個 User Manager 處理資料的型別，完成資料的同步：
+
+```
+ func getUserRecord(completion: @escaping ([UserRecord]?) -> Void) {
+        
+        FireBaseHelper.getUserRecord(completion: { querySnapshot in
+            
+            guard let docs = querySnapshot?.documents else {
+                    
+                    print("error")
+                    
+                    completion(nil)
+                    
+                    return
+            }
+            
+            self.userRecord = []
+            
+            // 0..< docs.count
+            for index in docs.indices {
+              
+                let score = docs[index].data()["score"] as! Int
+                let source = docs[index].data()["source"] as! String
+                let time = docs[index].data()["time"] as! Timestamp
+                let playTime = DateManager.timeStampToString(date: time, text: "yyyy-MM-dd HH:mm:ss")
+        
+                self.userRecord.append(UserRecord(time: playTime,
+                                                  source: RecordSource(rawValue: source) ?? .loginToday,
+                                                  score: score))
+            }
+            
+            completion(self.userRecord)
+            
+        })
+    }
+```
+
+另外在排行榜頁面，是在 TableView 的 cell 中使用 CollectionView ，並且完成兩個 section 中 cell 的資料傳遞與功能實現，因此大量使用 Closure 的方式：
+
+```
+    var giftClosure: ((ContentCollectionViewCell, [String], String) -> ())?
+```
+在 closure 中修改按鈕的變化，並且留意 retain cycle 的問題，將所有贈送過禮物的用戶 Id 記錄到 Firebase 上，並且解決頁面滑動時cell reuse 可能產生的問題
+ 
+```
+contentCell.likeClosure = { [weak self] cell in
+                
+                contentCell.giftButton.isEnabled = false
+                contentCell.giftButton.setBackgroundImage(
+                    UIImage(systemName: "gift.fill"), for: .normal)
+                contentCell.giftButton.tintColor = UIColor.darkBlue
+                
+                guard let strongSelf = self else { return }
+                strongSelf.giveId.append(strongSelf.rankData[indexPath.row].userId)
+                
+                strongSelf.currentId = strongSelf.rankData[indexPath.row].userId
+                
+                strongSelf.giftClosure!(contentCell, strongSelf.giveId, strongSelf.currentId )
+            }
+```
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/app%20introduction.png?raw=true)
 
 
