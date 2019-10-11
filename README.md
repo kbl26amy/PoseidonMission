@@ -95,21 +95,28 @@ struct PathOne: FishGenerator {
 在 closure 中修改按鈕的變化，並且留意 retain cycle 的問題，將所有贈送過禮物的用戶 Id 記錄到 Firebase 上，並且解決頁面滑動時cell reuse 可能產生的問題
  
 ```
-contentCell.likeClosure = { [weak self] cell in
+  rankCell.giftClosure = { cell, giftId, singleId in
                 
-                contentCell.giftButton.isEnabled = false
-                contentCell.giftButton.setBackgroundImage(
-                    UIImage(systemName: "gift.fill"), for: .normal)
-                contentCell.giftButton.tintColor = UIColor.darkBlue
+            if rankCell.giveId.contains(
+                 self.fishRankData[indexPath.row].userId) {
+                        cell.giftButton.isEnabled = false
+                        cell.giftButton.setBackgroundImage(UIImage(systemName: "gift.fill"), for: .normal)
+                        cell.giftButton.tintColor = UIColor.darkBlue
+                            } else {
+                              cell.giftButton.isEnabled = true
+                              cell.giftButton.setBackgroundImage(UIImage(systemName: "gift"), for: .normal)
+                              cell.giftButton.tintColor = UIColor.darkGray
+                              }
+                } 
+            
+                let fishGiveIdData = ["fishGiveId": self.fishGiveId]
+                FireBaseHelper.updateData(update: fishGiveIdData)
+                FireBaseHelper.updateOtherData(other: singleId)
                 
-                guard let strongSelf = self else { return }
-                strongSelf.giveId.append(strongSelf.rankData[indexPath.row].userId)
-                
-                strongSelf.currentId = strongSelf.rankData[indexPath.row].userId
-                
-                strongSelf.giftClosure!(contentCell, strongSelf.giveId, strongSelf.currentId )
             }
 ```
+
+其它APP內畫面展示如下：
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/app%20introduction.png?raw=true)
 
 
