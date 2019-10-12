@@ -6,8 +6,8 @@ target 'PoseidonMission' do
   use_frameworks!
 
   # Pods for PoseidonMission
-  pod ‘Firebase/Core’
-  pod ‘Firebase/Auth’
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
@@ -17,10 +17,9 @@ target 'PoseidonMission' do
   pod 'KeychainSwift'
   pod 'NVActivityIndicatorView'
   
-  abstract_target 'tests' do
-    target 'Demo AppTests'
-    target 'Demo AppUITests'
-
+  target 'PoseidonMissionTests' do
     inherit! :search_paths
+    pod 'Firebase'
+  end
   
 end

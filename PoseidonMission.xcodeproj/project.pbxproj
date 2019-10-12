@@ -61,10 +61,24 @@
 		62E1B0592314C49B007AC76D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E1B0582314C49B007AC76D /* Profile.storyboard */; };
 		62E1B05B2314C5CB007AC76D /* PMBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B05A2314C5CB007AC76D /* PMBaseViewController.swift */; };
 		62E1B0662314D23A007AC76D /* PoseidonMission.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62E1B0622314D23A007AC76D /* PoseidonMission.xcdatamodeld */; };
+		62F1AA142351B62800890EEC /* PoseidonMissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1AA132351B62800890EEC /* PoseidonMissionTests.swift */; };
+		CB5F480BE379F7AA25185698 /* Pods_PoseidonMission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2297F2EA1F041D3A7A9A62 /* Pods_PoseidonMission.framework */; };
+		DB32394CFD609B63C2BDE16B /* Pods_PoseidonMissionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CAECF3B2AFDD4A90346FD6 /* Pods_PoseidonMissionTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62F1AA162351B62800890EEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62E1B02A2313B73C007AC76D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62E1B0312313B73C007AC76D;
+			remoteInfo = PoseidonMission;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.release.xcconfig"; sourceTree = "<group>"; };
+		61CAECF3B2AFDD4A90346FD6 /* Pods_PoseidonMissionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoseidonMissionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		620F600923331BE9007CFBCA /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		620F8E65233B5B7500A189AA /* RankManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankManager.swift; sourceTree = "<group>"; };
 		6213667C23376A2B00EE0696 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -123,7 +137,13 @@
 		62E1B0602314D239007AC76D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E1B0612314D239007AC76D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62E1B0632314D23A007AC76D /* PoseidonMission.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PoseidonMission.xcdatamodel; sourceTree = "<group>"; };
+		62F1AA112351B62800890EEC /* PoseidonMissionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoseidonMissionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62F1AA132351B62800890EEC /* PoseidonMissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseidonMissionTests.swift; sourceTree = "<group>"; };
+		62F1AA152351B62800890EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD35440A53EEC573206705C4 /* Pods-PoseidonMissionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMissionTests.debug.xcconfig"; path = "Target Support Files/Pods-PoseidonMissionTests/Pods-PoseidonMissionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED2EB9E2E577FD63E399E8C1 /* Pods-PoseidonMission.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMission.debug.xcconfig"; path = "Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission.debug.xcconfig"; sourceTree = "<group>"; };
+		FB2297F2EA1F041D3A7A9A62 /* Pods_PoseidonMission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoseidonMission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCF15B4A2CD773F183A009E0 /* Pods-PoseidonMissionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseidonMissionTests.release.xcconfig"; path = "Target Support Files/Pods-PoseidonMissionTests/Pods-PoseidonMissionTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +151,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB5F480BE379F7AA25185698 /* Pods_PoseidonMission.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62F1AA0E2351B62800890EEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB32394CFD609B63C2BDE16B /* Pods_PoseidonMissionTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				62E1B0342313B73C007AC76D /* PoseidonMission */,
+				62F1AA122351B62800890EEC /* PoseidonMissionTests */,
 				62E1B0332313B73C007AC76D /* Products */,
 				C5A718CBD54F6B3E9EDFD1AF /* Pods */,
 				A3474B76A12EE4047691BD20 /* Frameworks */,
@@ -220,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				62E1B0322313B73C007AC76D /* 波賽頓出任務.app */,
+				62F1AA112351B62800890EEC /* PoseidonMissionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,10 +329,21 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		62F1AA122351B62800890EEC /* PoseidonMissionTests */ = {
+			isa = PBXGroup;
+			children = (
+				62F1AA132351B62800890EEC /* PoseidonMissionTests.swift */,
+				62F1AA152351B62800890EEC /* Info.plist */,
+			);
+			path = PoseidonMissionTests;
+			sourceTree = "<group>";
+		};
 		A3474B76A12EE4047691BD20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6213667C23376A2B00EE0696 /* Social.framework */,
+				FB2297F2EA1F041D3A7A9A62 /* Pods_PoseidonMission.framework */,
+				61CAECF3B2AFDD4A90346FD6 /* Pods_PoseidonMissionTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -311,6 +353,8 @@
 			children = (
 				ED2EB9E2E577FD63E399E8C1 /* Pods-PoseidonMission.debug.xcconfig */,
 				45ED4A0B0E8A2210755F27BF /* Pods-PoseidonMission.release.xcconfig */,
+				AD35440A53EEC573206705C4 /* Pods-PoseidonMissionTests.debug.xcconfig */,
+				FCF15B4A2CD773F183A009E0 /* Pods-PoseidonMissionTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -338,6 +382,26 @@
 			productReference = 62E1B0322313B73C007AC76D /* 波賽頓出任務.app */;
 			productType = "com.apple.product-type.application";
 		};
+		62F1AA102351B62800890EEC /* PoseidonMissionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62F1AA182351B62800890EEC /* Build configuration list for PBXNativeTarget "PoseidonMissionTests" */;
+			buildPhases = (
+				3988ABFAE740D57BD999C5D2 /* [CP] Check Pods Manifest.lock */,
+				62F1AA0D2351B62800890EEC /* Sources */,
+				62F1AA0E2351B62800890EEC /* Frameworks */,
+				62F1AA0F2351B62800890EEC /* Resources */,
+				6A671A4BE2A8FC7333452AE7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62F1AA172351B62800890EEC /* PBXTargetDependency */,
+			);
+			name = PoseidonMissionTests;
+			productName = PoseidonMissionTests;
+			productReference = 62F1AA112351B62800890EEC /* PoseidonMissionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -350,6 +414,10 @@
 				TargetAttributes = {
 					62E1B0312313B73C007AC76D = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					62F1AA102351B62800890EEC = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 62E1B0312313B73C007AC76D;
 					};
 				};
 			};
@@ -367,6 +435,7 @@
 			projectRoot = "";
 			targets = (
 				62E1B0312313B73C007AC76D /* PoseidonMission */,
+				62F1AA102351B62800890EEC /* PoseidonMissionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -386,6 +455,13 @@
 				62D6BF2B23449EE600292341 /* Exchange.storyboard in Resources */,
 				62E1B0592314C49B007AC76D /* Profile.storyboard in Resources */,
 				62E1B0572314C47C007AC76D /* Mission.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62F1AA0F2351B62800890EEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +485,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PoseidonMission/Pods-PoseidonMission-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3988ABFAE740D57BD999C5D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PoseidonMissionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		621F44102338C28E005989C6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +523,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		6A671A4BE2A8FC7333452AE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PoseidonMissionTests/Pods-PoseidonMissionTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PoseidonMissionTests/Pods-PoseidonMissionTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PoseidonMissionTests/Pods-PoseidonMissionTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		8DD6EFE9C6AC78FB74CB9049 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -502,7 +617,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		62F1AA0D2351B62800890EEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F1AA142351B62800890EEC /* PoseidonMissionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62F1AA172351B62800890EEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62E1B0312313B73C007AC76D /* PoseidonMission */;
+			targetProxy = 62F1AA162351B62800890EEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		62E1B0392313B73C007AC76D /* Main.storyboard */ = {
@@ -658,6 +789,7 @@
 				);
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amyyang.PoseidonMission;
+				PRODUCT_MODULE_NAME = PoseidonMission;
 				PRODUCT_NAME = "波賽頓出任務";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -681,9 +813,55 @@
 				);
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amyyang.PoseidonMission;
+				PRODUCT_MODULE_NAME = PoseidonMission;
 				PRODUCT_NAME = "波賽頓出任務";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		62F1AA192351B62800890EEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD35440A53EEC573206705C4 /* Pods-PoseidonMissionTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4MM6T8568W;
+				INFOPLIST_FILE = PoseidonMissionTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amyyang.PoseidonMissionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/波賽頓出任務.app/波賽頓出任務";
+			};
+			name = Debug;
+		};
+		62F1AA1A2351B62800890EEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCF15B4A2CD773F183A009E0 /* Pods-PoseidonMissionTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4MM6T8568W;
+				INFOPLIST_FILE = PoseidonMissionTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.amyyang.PoseidonMissionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/波賽頓出任務.app/波賽頓出任務";
 			};
 			name = Release;
 		};
@@ -704,6 +882,15 @@
 			buildConfigurations = (
 				62E1B0482313B73D007AC76D /* Debug */,
 				62E1B0492313B73D007AC76D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62F1AA182351B62800890EEC /* Build configuration list for PBXNativeTarget "PoseidonMissionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62F1AA192351B62800890EEC /* Debug */,
+				62F1AA1A2351B62800890EEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
