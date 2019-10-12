@@ -16,4 +16,11 @@ target 'PoseidonMission' do
   pod 'Crashlytics'
   pod 'KeychainSwift'
   pod 'NVActivityIndicatorView'
+  
+  abstract_target 'tests' do
+    target 'Demo AppTests'
+    target 'Demo AppUITests'
+
+    inherit! :search_paths
+  
 end
