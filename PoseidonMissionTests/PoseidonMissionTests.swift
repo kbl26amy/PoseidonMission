@@ -9,25 +9,33 @@
 import XCTest
 @testable import PoseidonMission
 class PoseidonMissionTests: XCTestCase {
-
+   
+    let earlyDate = Date(timeIntervalSince1970: 1)
+    let todayDate = Date(timeIntervalSince1970: 1570950191)
+    let zeroDate = Date(timeIntervalSince1970: 1570838400)
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func testdateToString(date:Date,
+                                 text: String = "yyyy-MM-dd")
+            -> String {
+    
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone.local
+        dateFormatter.dateFormat = text
+       
+            return dateFormatter.string(from: date)
         }
+    
+    func testToday() {
+        XCTAssert(testdateToString(date: todayDate) == "2019-10-13", "日期正確")
+        XCTAssert(testdateToString(date: earlyDate) == "1970-01-01", "日期正確")
+        XCTAssert(testdateToString(date: zeroDate) == "2019-10-12", "日期正確")
     }
 
 }

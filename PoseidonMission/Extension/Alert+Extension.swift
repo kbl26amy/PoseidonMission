@@ -40,7 +40,6 @@ extension UIAlertController {
                                       message: message,
                                       preferredStyle: .alert)
         
-//        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
         alert.addAction(UIAlertAction(title: "確定", style: .default,
                                       handler: confirm))
         
@@ -59,5 +58,13 @@ extension UIAlertController {
                         in: viewController,
                         confirm: confirm)
         }
+    }
+    
+    typealias Handler = (UIAlertAction) -> ()
+    func buildAlert(viewController: UIViewController,handler : @escaping Handler){
+        let alertController = UIAlertController(title: "Alert", message: nil, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: handler)
+        alertController.addAction(alertAction)
+        viewController.present(alertController, animated: true, completion: nil)
     }
 }
