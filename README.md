@@ -7,7 +7,8 @@
 
 
 *首頁內容：* 
-使用 ｀collectionview｀ 製作輪播banner效果，並且計算中心位置做放大縮小，除此外針對排行榜第一名進行跑馬燈展示： 
+     
+使用 `collectionview`製作輪播banner效果，並且計算中心位置做放大縮小，除此外針對排行榜第一名進行跑馬燈展示： 
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/LobbyView.gif?raw=true)
 
 >特色說明：
