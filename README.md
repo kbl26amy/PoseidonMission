@@ -7,7 +7,7 @@
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/jellyfish.gif?raw=true)
 
 
->*支援系統：* 
+>支援系統： 
      
 *  首頁：使用 `collectionview`製作輪播banner效果，並且計算中心位置做放大縮小，再針對排行榜第一名進行跑馬燈展示
      
