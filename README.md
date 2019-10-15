@@ -3,6 +3,7 @@
 
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/fishing.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/map.gif?raw=true)
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/exchange.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/jellyfish.gif?raw=true)
 
 
