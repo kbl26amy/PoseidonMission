@@ -3,7 +3,7 @@
 
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/fishing.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/map.gif?raw=true)
-![image](https://github.com/kbl26amy/PoseidonMission/blob/master/jellyFish.gif?raw=true)
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/jellyfish.gif?raw=true)
 
 
 >*支援系統：* 
@@ -16,7 +16,7 @@
      
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/lobby_480.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/profile.gif?raw=true)
-![image](https://github.com/kbl26amy/PoseidonMission/blob/master/rankView.gif?raw=true)
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/rank.gif?raw=true)
 
 >特色說明：
 
