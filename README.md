@@ -8,9 +8,9 @@
 
 >*支援系統：* 
      
-＃ 首頁：使用 `collectionview`製作輪播banner效果，並且計算中心位置做放大縮小，再針對排行榜第一名進行跑馬燈展示<\b>
-＃ 排行：在 `tableView` 中加入 `collectionview` 製作橫向滑動，並且可以贈送禮物給排行榜上的用戶 <\b>
-＃ 個人：可以看到所有兌換與遊戲積分紀錄，並且上傳個人照片，該照片將會展示在排行榜上面<\b>
+<b>＃ 首頁：使用 `collectionview`製作輪播banner效果，並且計算中心位置做放大縮小，再針對排行榜第一名進行跑馬燈展示<\b>
+<b>＃ 排行：在 `tableView` 中加入 `collectionview` 製作橫向滑動，並且可以贈送禮物給排行榜上的用戶 <\b>
+<b>＃ 個人：可以看到所有兌換與遊戲積分紀錄，並且上傳個人照片，該照片將會展示在排行榜上面<\b>
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/LobbyView.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/profile.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/rankView.gif?raw=true)
