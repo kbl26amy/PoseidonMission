@@ -14,7 +14,7 @@
      
 *  個人：可以看到所有兌換與遊戲積分紀錄，並且上傳個人照片，該照片將會展示在排行榜上面
      
-![image](https://github.com/kbl26amy/PoseidonMission/blob/master/LobbyView.gif?raw=true)
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/lobby.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/profile.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/rankView.gif?raw=true)
 
