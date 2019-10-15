@@ -8,18 +8,19 @@
 
 >*支援系統：* 
      
-＃ 首頁：使用 `collectionview`製作輪播banner效果，並且計算中心位置做放大縮小，再針對排行榜第一名進行跑馬燈展示
+*  首頁：使用 `collectionview`製作輪播banner效果，並且計算中心位置做放大縮小，再針對排行榜第一名進行跑馬燈展示
      
-＃ 排行：在 `tableView` 中加入 `collectionview` 製作橫向滑動，並且可以贈送禮物給排行榜上的用戶 
+*  排行：在 `tableView` 中加入 `collectionview` 製作橫向滑動，並且可以贈送禮物給排行榜上的用戶 
      
-＃ 個人：可以看到所有兌換與遊戲積分紀錄，並且上傳個人照片，該照片將會展示在排行榜上面
+*  個人：可以看到所有兌換與遊戲積分紀錄，並且上傳個人照片，該照片將會展示在排行榜上面
+     
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/LobbyView.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/profile.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/rankView.gif?raw=true)
 
 >特色說明：
 
-#### *一、動畫與遊戲製作內容：*
+### *一、動畫與遊戲製作內容：*
    
 其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
 
@@ -72,7 +73,7 @@ struct PathOne: FishGenerator {
     }
 }
 ```
-#### *二、資料處理與網路相關：*
+### *二、資料處理與網路相關：*
     
 除了動畫設計之外，也使用Firebase的各種資料處理方法，完成每日次數限制、用戶總成績、兌換資料與排行榜資料顯示，其中在處理 Firebase 回傳的資料時，透過兩次Closure 方法，額外製作一個 User Manager 處理資料的型別，完成資料的同步：
 
@@ -141,6 +142,24 @@ struct PathOne: FishGenerator {
                 
             }
 ```
+
+### Third-Party Libraries
+* Firebase
+     Auth - 驗證用戶註冊與登入資訊，並針對錯誤進行處理
+     Storage - 儲存用戶上傳後的照片，並顯示於畫面
+     Crashlytics - 掌握 App 的 Crash報告
+* Kingfisher - 善用快取的方式處理網路圖片並呈現在 App
+* IQKeyboardManager - 解決鍵盤彈起時遮住輸入框的工具
+* AV - 顯示狀態的提示窗
+     
+### Requirements
+-----------------
+* Xcode11
+* iOS 13
+
+### download (ios13 Device only)
+-------------------
+https://apps.apple.com/tw/app/波賽頓出任務/id1481162004
 
 截圖展示：
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/app%20introduction.png?raw=true)
