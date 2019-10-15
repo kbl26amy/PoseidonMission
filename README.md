@@ -145,9 +145,9 @@ struct PathOne: FishGenerator {
 
 ### Third-Party Libraries
 * Firebase
-     *Auth - 驗證用戶註冊與登入資訊，並針對錯誤進行處理
-     *Storage - 儲存用戶上傳後的照片，並顯示於畫面
-     *Crashlytics - 掌握 App 的 Crash報告
+     * Auth - 驗證用戶註冊與登入資訊，並針對錯誤進行處理
+     * Storage - 儲存用戶上傳後的照片，並顯示於畫面
+     * Crashlytics - 掌握 App 的 Crash報告
 * Kingfisher - 善用快取的方式處理網路圖片並呈現在 App
 * IQKeyboardManager - 解決鍵盤彈起時遮住輸入框的工具
 * AV - 顯示狀態的提示窗
