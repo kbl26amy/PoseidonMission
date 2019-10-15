@@ -1,8 +1,20 @@
 # PoseidonMission
+波賽頓出任務為一個任務型 APP，製作期間大量使用 UIViewPropertyAnimator 動畫，用戶可以選擇喜愛的任務，前往執行並獲得暢遊卷，再消耗暢遊卷抽寶箱獲得海底寶藏。
 
-一、動畫與遊戲製作內容：
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/fishing.gif?raw=true)
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/map.gif?raw=true)
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/jellyFish.gif?raw=true)
+
+
+*首頁內容：* 
+使用 ｀collectionview｀ 製作輪播banner效果，並且計算中心位置做放大縮小，除此外針對排行榜第一名進行跑馬燈展示： 
+![image](https://github.com/kbl26amy/PoseidonMission/blob/master/LobbyView.gif?raw=true)
+
+
+
+*一、動畫與遊戲製作內容：*
    
-波賽頓出任務為一個任務型 APP，製作期間大量使用 UIViewPropertyAnimator 動畫，其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
+其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
 
 1. 設計protocol
 
@@ -52,7 +64,7 @@ struct PathOne: FishGenerator {
     }
 }
 ```
-二、資料處理與網路相關：
+*二、資料處理與網路相關：*
     
 除了動畫設計之外，也使用Firebase的各種資料處理方法，完成每日次數限制、用戶總成績、兌換資料與排行榜資料顯示，其中在處理 Firebase 回傳的資料時，透過兩次Closure 方法，額外製作一個 User Manager 處理資料的型別，完成資料的同步：
 
@@ -91,7 +103,7 @@ struct PathOne: FishGenerator {
     }
 ```
 
-三、Swift 開發技巧相關：
+*三、Swift 開發技巧相關：*
     
 另外在排行榜頁面，是在 TableView 的 cell 中使用 CollectionView ，並且完成兩個 section 中 cell 的資料傳遞與功能實現，因此大量使用 Closure 的方式：
 
@@ -122,7 +134,7 @@ struct PathOne: FishGenerator {
             }
 ```
 
-其它APP內畫面展示如下：
+其它APP內畫面說明如下：
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/app%20introduction.png?raw=true)
 
 
