@@ -1,5 +1,5 @@
 # PoseidonMission
-波賽頓出任務為一個任務型 APP，製作期間大量使用 UIViewPropertyAnimator 動畫，用戶可以選擇喜愛的任務，前往執行並獲得暢遊卷，再消耗暢遊卷抽寶箱獲得海底寶藏。
+波賽頓出任務為一個任務型 APP，製作期間大量使用 `UIViewPropertyAnimator` 動畫，用戶可以選擇喜愛的任務，前往執行並獲得暢遊卷，再消耗暢遊卷抽寶箱獲得海底寶藏。
 
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/fishing.gif?raw=true)
 ![image](https://github.com/kbl26amy/PoseidonMission/blob/master/map.gif?raw=true)
@@ -24,7 +24,7 @@
    
 其中以釣魚頁面處理最多動畫間的問題，運用物件導向中多型與封裝的概念，將魚製作成物件，並進行相關動畫演示：
 
-1. 設計protocol
+1. 設計`protocol`
 
 ```Swift
 protocol FishGenerator {
@@ -32,7 +32,7 @@ protocol FishGenerator {
     func fetchFishImageView() -> UIImageView
 }
 ```
-2. 運用 extension 讓9種魚的圖片隨機產生
+2. 運用 `extension` 讓9種魚的圖片隨機產生
 ```Swift 
 extension FishGenerator {
     
@@ -55,7 +55,7 @@ extension FishGenerator {
 }
 ```
 
-3. 設計多種魚的路線，遵從我們設計的 protocol，之後將每個路線存成同一個array，藉此取得一個個可以游動的魚
+3. 設計多種魚的路線，遵從我們設計的 `protocol`，之後將每個路線存成同一個 array，藉此取得一個個可以游動的魚
 ```Swift
 struct PathOne: FishGenerator {
     
@@ -74,8 +74,8 @@ struct PathOne: FishGenerator {
 }
 ```
 ###  二、資料處理與網路相關：
-    
-除了動畫設計之外，也使用Firebase的各種資料處理方法，完成每日次數限制、用戶總成績、兌換資料與排行榜資料顯示，其中在處理 Firebase 回傳的資料時，透過兩次Closure 方法，額外製作一個 User Manager 處理資料的型別，完成資料的同步：
+     
+除了動畫設計之外，也使用 `Firebase` 的各種資料處理方法，完成每日次數限制、用戶總成績、兌換資料與排行榜資料顯示，其中在處理 `Firebase` 回傳的資料時，透過兩次`Closure` 方法，額外製作一個 User Manager 處理資料的型別，完成資料的同步：
 
 ```Swift
  func getUserRecord(completion: @escaping ([UserRecord]?) -> Void) {
@@ -114,7 +114,7 @@ struct PathOne: FishGenerator {
 
 ###  三、Swift 開發技巧相關：
     
-另外在排行榜頁面，是在 TableView 的 cell 中使用 CollectionView ，並且完成兩個 section 中 cell 的資料傳遞與功能實現，因此大量使用 Closure 的方式：
+另外在排行榜頁面，是在 `TableView` 的 cell 中使用 `CollectionView` ，並且完成兩個 section 中 cell 的資料傳遞與功能實現，因此大量使用 `Closure` 的方式：
 
 ```Swift
     var giftClosure: ((ContentCollectionViewCell, [String], String) -> ())?
