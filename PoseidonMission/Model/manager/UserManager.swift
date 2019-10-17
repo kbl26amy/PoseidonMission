@@ -11,11 +11,15 @@ import Firebase
 
 class UserManager {
     
-    var user: UserData?
-    var userRecord: [UserRecord] = []
-    var exchangeRecord: [ExchangeRecord] = []
-
     static let shared = UserManager()
+
+    private var user: UserData?
+    private var userRecord: [UserRecord] = []
+    private var exchangeRecord: [ExchangeRecord] = []
+  
+    private init() {
+
+    }
     
     static var totalScore: Int = 0
     static var jellyFishHighest: Int = 0
